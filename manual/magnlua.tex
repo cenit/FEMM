@@ -1,0 +1,990 @@
+﻿% ------------------------------------------------------------------------
+%  My Format for a Article
+
+\chapter{Lua Scripting}
+
+\section{What Lua Scripting?}
+
+The Lua extension language has been used to add scripting/batch
+processing facilities to FEMM. The Interactive Shell can run Lua scripts
+through the {\tt Open Lua Script} selection on the Files menu, or Lua commands can be
+entered in directly to the Lua Console Window.
+
+Lua is a complete, open-source scripting language.  Source code for
+Lua, in addition to detailed documentation about programming in
+Lua, can be obtained from the Lua homepage at
+\href{http://www.lua.org}{\tt http://www.lua.org}. 
+%\verb+http://www.lua.org+. 
+Because the
+scripting files are text, they can be edited with any text editor
+({\em e.g.} notepad). As of this writing, the latest release of Lua
+is version 5.0. However, the version of Lua incorporated into FEMM
+is Lua 4.0.
+
+In addition to the standard Lua command set described in \cite{luaman}, a number of
+FEMM-specific functions have been added for manipulating files in
+both the pre- and post-processor.  These commands are described in
+the following sections.
+
+\section{Common Lua Command Set}
+
+A number of FEMM-specific Lua commands exist that are not
+associated with any particular problem type.
+
+\begin{itemize}
+
+\item {\tt clearconsole()} Clears the output window of the Lua console.
+
+\item {\tt newdocument(doctype)} Creates a new preprocessor document
+and opens up a new preprocessor window.  Specify {\tt doctype} to
+be {\tt 0} for a magnetics problem, {\tt 1} for an electrostatics
+problem, {\tt 2} for a heat flow problem, or {\tt 3} for a current
+flow problem. An alternative syntax for this command is {\tt create(doctype)} 
+
+\item{\tt hideconsole()} Hides the floating Lua console window.
+
+\item{\tt hidepointprops()} Hides the floating FEMM Properties
+display window.
+
+\item \texttt{messagebox("message")} displays the \texttt{"message" }string to the
+screen in a pop-up message box.
+
+\item {\tt open("filename")} Opens a document specified by
+{\tt filename}.
+
+\item \texttt{pause()} Waits for the ok button to be pressed, a debug helper.
+
+\item \texttt{print()} This is standard Lua ``print'' command directed to the
+output of the Lua console window. Any number of comma-separated items can be
+printed at once via the print command.
+
+\item \texttt{prompt("message")} This function allows a Lua script to prompt a
+user for input. When this command is used, a dialog box pops up with the
+\texttt{"message"} string on the title bar of the dialog box. The user can
+enter in a single line of input via the dialog box. prompt returns the
+user's input as a string. If a numerical value is desired, the syntax
+\texttt{tonumber(prompt("message"))} can be used.
+
+\item {\tt quit()} Close all documents and exit the the Interactive
+Shell at the end of the currently executing Lua script.
+
+\item {\tt setcompatibilitymode(value)} If {\tt value} is set to {\tt 1}, various magnetics-related
+commands with complex arguments revert to their definitions in the FEMM 4.1 manual.  If {\tt value} is
+set to {\tt 0}, the FEMM 4.2 definitions are used.  The default mode is compatibility mode {\tt 0}. Affected functions include:
+\begin{itemize}
+\item {\tt mi\_addmaterial}
+\item {\tt mi\_modifymaterial}
+\item {\tt mi\_addpointprop}
+\item {\tt mi\_modifypointprop}
+\item {\tt mi\_addcircprop}
+\item {\tt mi\_modifycircprop}
+\item {\tt mo\_getpointvalues}
+\item {\tt mo\_lineintegral}
+\item {\tt mo\_blockintegral}
+\item {\tt mo\_getcircuitproperties}
+\end{itemize}
+
+\item{\tt showconsole()} Displays the floating Lua console window.
+
+\item{\tt showpointprops()} Displays the floating FEMM Properties
+display window.
+
+\item{\tt smartmesh(state)} Calling with a state of 0 turns off ``smart mesh'' functionality for the present session; calling with a state of 1 turns ``smarth meshing'' on. The {\tt smartmesh} function applies across all problem types. 
+To set smart meshing on or off on a file-by-file basis, use  \verb+mi_smartmesh+,\verb+ei_smartmesh+, \verb+hi_smartmesh+, and \verb+ci_smartmesh+, depending on problem type.  Note that calling the global \verb+smartmesh+ with a value of -1 sets the program to defer to the file-by-file setting rather than forcing all smart meshing on or off.
+\end{itemize}
+
+
+\section{Magnetics Preprocessor Lua Command Set}
+
+A number of different commands are available in the preprocessor.
+Two naming conventions can be used: one which separates words in
+the command names by underscores, and one that eliminates the
+underscores.
+
+\subsection{Object Add/Remove Commands}
+
+\begin{itemize}
+
+\item{\tt mi\_addnode(x,y)} Add a new node at x,y
+
+\item{\tt mi\_addsegment(x1,y1,x2,y2)} Add a new line segment from node
+closest to (x1,y1) to node closest to (x2,y2)
+
+\item{\tt mi\_addblocklabel(x,y)} Add a new block label at (x,y)
+
+\item{\tt mi\_addarc(x1,y1,x2,y2,angle,maxseg)} Add a new arc segment
+from the nearest node to (x1,y1) to the nearest node to (x2,y2)
+with angle `angle' divided into `maxseg' segments.
+
+\item{\tt mi\_deleteselected} Delete all selected objects.
+
+\item{\tt mi\_deleteselectednodes} Delete selected nodes.
+
+\item{\tt mi\_deleteselectedlabels} Delete selected block labels.
+
+\item{\tt mi\_deleteselectedsegments} Delete selected segments.
+
+\item{\tt mi\_deleteselectedarcsegments} Delete selects arcs.
+\end{itemize}
+
+\subsection{Geometry Selection Commands}
+
+\begin{itemize}
+\item{\tt mi\_clearselected()} Clear all selected nodes, blocks, segments
+and arc segments.
+
+\item{\tt mi\_selectsegment(x,y)} Select the line segment closest to
+(x,y)
+
+\item{\tt mi\_selectnode(x,y)} Select the node closest to (x,y).
+Returns the coordinates of the selected node.
+
+\item{\tt mi\_selectlabel(x,y)} Select the label closet to (x,y).
+Returns the coordinates of the selected label.
+
+\item{\tt mi\_selectarcsegment(x,y)} Select the arc segment closest to
+(x,y)
+
+\item{\tt mi\_selectgroup(n)} Select the $n^{th}$ group of nodes, segments, arc
+segments and blocklabels. This function will clear all previously selected
+elements and leave the editmode in 4 (group)
+
+\item{\tt mi\_selectcircle(x,y,R,editmode)} selects objects within a circle of radius
+R centered at (x,y).  If only x, y, and R paramters are given, the current
+edit mode is used.  If the editmode parameter is used, 0 denotes nodes, 2
+denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 specifies
+that all entity types are to be selected.
+
+\item{\tt mi\_selectrectangle(x1,y1,x2,y2,editmode)} selects objects within a rectangle
+defined by points (x1,y1) and (x2,y2). If no editmode parameter is supplied,
+the current edit mode is used.  If the editmode parameter is used, 0 denotes
+nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 
+specifies that all entity types are to be selected.
+
+\end{itemize}
+
+\subsection{Object Labeling Commands}
+
+\begin{itemize}
+\item{\tt mi\_setnodeprop("propname",groupno)} Set the selected nodes to
+have the nodal property {\tt mi\_"propname"} and group number {\tt
+groupno}.
+
+\item{\tt mi\_setblockprop("blockname", automesh, meshsize, "incircuit",
+magdirection, group, turns)} Set the selected block labels to have the
+properties:
+\begin{itemize}
+\item Block property {\tt "blockname"}.
+\item {\tt automesh}: 0 = mesher defers to mesh size constraint defined in {\tt meshsize},
+         1 = mesher automatically chooses the mesh density.
+\item {\tt meshsize}: size constraint on the mesh in the block marked by this label.
+\item Block is a member of the circuit named {\tt "incircuit"}
+\item The magnetization is directed along an angle in measured in degrees denoted by the parameter
+        {\tt magdirection}.  Alternatively, {\tt magdirection} can be a string containing a
+		formula that prescribes the magnetization direction as a function of element position.
+		In this formula {\tt theta} and {\tt R} denotes the angle in degrees of a line connecting the
+		center each element with the origin and the length of this line, respectively;
+		{\tt x} and {\tt y} denote the x- and y-position of the
+		center of the each element.  For axisymmetric problems, {\tt r} and {\tt z} should
+		be used in place of {\tt x} and {\tt y}.
+\item A member of group number {\tt group}
+\item The number of turns associated with this label is denoted by {\tt turns}.
+\end{itemize}
+
+\item{\tt mi\_setsegmentprop("propname", elementsize, automesh, hide,
+group)} Set the select segments to have:
+\begin{itemize}
+\item Boundary property {\tt "propname"}
+\item Local element size along segment no greater than {\tt
+elementsize}
+\item {\tt automesh}:  0 = mesher defers to the element constraint defined by {\tt elementsize},
+        1 = mesher automatically chooses mesh size along the selected segments
+\item {\tt hide}: 0 =  not hidden in post-processor, 1 == hidden in post processor
+\item A member of group number {\tt group}
+\end{itemize}
+
+\item{\tt mi\_setarcsegmentprop(maxsegdeg, "propname", hide, group)} Set the
+selected arc segments to:
+\begin{itemize}
+\item Meshed with elements that span at most {\tt maxsegdeg} degrees per
+element
+\item Boundary property {\tt "propname"}
+\item {\tt hide}: 0 =  not hidden in post-processor, 1 == hidden in post processor
+\item A member of group number {\tt group}
+\end{itemize}
+
+
+\item{\tt mi\_setgroup(n)} Set the group associated of the selected items to n
+
+\end{itemize}
+
+\subsection{Problem Commands}
+
+\begin{itemize}
+\item{\tt mi\_probdef(frequency,units,type,precision,(depth),(minangle),(acsolver)} changes the
+problem definition. Set {\tt frequency} to the desired frequency in
+Hertz.  The {\tt units} parameter specifies the units used for
+measuring length in the problem domain.  Valid {\tt "units"}
+entries are {\tt "inches"}, {\tt "millimeters"}, {\tt
+"centimeters"}, {\tt "mils"}, {\tt "meters}, and {\tt
+"micrometers"}. Set the parameter {\tt problemtype} to {\tt "planar"} for a 2-D
+planar problem, or to {\tt "axi"} for an axisymmetric problem. The
+{\tt precision} parameter dictates the precision required by the
+solver.  For example, entering {\tt 1E-8} requires the RMS of the
+residual to be less than $10^{-8}$.  A fifth parameter, representing the depth of
+the problem in the into-the-page direction for 2-D planar problems, can also
+also be specified. A sixth parameter represents the minimum angle constraint sent to the mesh generator.
+A seventh parameter specifies the solver type to be used for AC problems.
+
+\item{\tt mi\_analyze(flag)}
+runs {\tt fkern} to solve the problem.  The {\tt flag} parameter
+controls whether the {\tt fkern} window is visible or minimized.  For a
+visible window, either specify no value for {\tt flag} or specify
+{\tt 0}. For a minimized window, {\tt flag} should be set to {\tt
+1}.
+
+\item{\tt mi\_loadsolution()} loads and displays the solution corresponding to the
+current geometry.
+
+\item {\tt mi\_setfocus("documentname")} Switches the
+magnetics input file upon which Lua commands are to act. If
+more than one magnetics input file is being edited at a time,
+this command can be used to switch between files so that the
+mutiple files can be operated upon programmatically via Lua. {\tt
+documentname} should contain the name of the desired document as
+it appears on the window's title bar.
+
+\item{\tt mi\_saveas("filename")} saves the file with name {\tt "filename"}.
+Note if you use a path you must use two backslashes {\em e.g.}
+\verb+"c:\\temp\\myfemmfile.fem"+
+\end{itemize}
+
+\subsection{Mesh Commands}
+
+\begin{itemize}
+\item{\tt mi\_createmesh()} runs triangle to create a mesh. Note that this is not a
+necessary precursor of performing an analysis, as {\tt
+mi\_analyze()} will make sure the mesh is up to date before running
+an analysis. The number of elements in the mesh is pushed back onto
+the lua stack.
+
+\item{\tt mi\_showmesh()} shows the mesh.
+
+\item{\tt mi\_purgemesh()} clears the mesh out of both the screen and
+memory.
+\end{itemize}
+
+\subsection{Editing Commands}
+
+\begin{itemize}
+\item{\tt mi\_copyrotate(bx, by, angle, copies, (editaction) )}
+        \begin{itemize}
+        \item{\tt bx, by} -- base point for rotation
+        \item{\tt angle} -- angle by which the selected objects are incrementally
+        shifted to make each copy.  {\tt angle} is measured in degrees.
+        \item{\tt copies} -- number of copies to be produced from
+        the selected objects.
+
+        \end{itemize}
+
+\item{\tt mi\_copytranslate(dx, dy, copies, (editaction))}
+        \begin{itemize}
+        \item{\tt dx,dy} -- distance by which the selected objects are incrementally shifted.
+        \item{\tt copies} -- number of copies to be produced from the selected objects.
+        \item{\tt editaction}  0 --nodes, 1 -- lines (segments), 2 --block labels, 3 -- arc
+                segments, 4- group
+        \end{itemize}
+
+\item{\tt mi\_createradius(x, y, r)} turns a corner located at {\tt (x,y)} into a curve of radius {\tt r}.
+
+\item{\tt mi\_moverotate(bx,by,shiftangle (editaction))}
+        \begin{itemize}
+        \item{\tt bx, by} -- base point for rotation
+        \item{\tt shiftangle} -- angle in degrees by which the selected objects are rotated.
+        \item{\tt editaction}  0 --nodes, 1 -- lines (segments), 2 --block labels, 3 -- arc
+                segments, 4- group
+        \end{itemize}
+
+\item{\tt mi\_movetranslate(dx,dy,(editaction))}
+        \begin{itemize}
+        \item{\tt dx,dy} -- distance by which the selected objects are shifted.
+        \item{\tt editaction}  0 --nodes, 1 -- lines (segments), 2 --block labels, 3 -- arc
+                segments, 4- group
+        \end{itemize}
+
+\item{\tt mi\_scale(bx,by,scalefactor,(editaction))}
+        \begin{itemize}
+        \item{\tt bx, by} -- base point for scaling
+        \item{\tt scalefactor} -- a multiplier that determines how
+        much the selected objects are scaled
+        \item{\tt editaction}  0 --nodes, 1 -- lines (segments), 2 --block labels, 3 -- arc
+                segments, 4- group
+        \end{itemize}
+
+\item{\tt mi\_mirror(x1,y1,x2,y2,(editaction))}
+mirror the selected objects about a line passing through the points
+{\tt (x1,y1)} and {\tt (x2,y2)}. Valid {\tt editaction} entries are
+0 for nodes, 1 for lines (segments), 2 for block labels, 3 for arc
+segments, and 4 for groups.
+
+\item{\tt mi\_seteditmode(editmode)}
+Sets the current editmode to:
+        \begin{itemize}
+        \item{\tt "nodes"} - nodes
+        \item{\tt "segments"} - line segments
+        \item{\tt "arcsegments"} - arc segments
+        \item{\tt "blocks"} - block labels
+        \item{\tt "group"} - selected group
+        \end{itemize}
+This command will affect all subsequent uses of the other editing
+commands, if they are used WITHOUT the {\tt editaction} parameter.
+\end{itemize}
+
+\subsection{Zoom Commands}
+
+\begin{itemize}
+\item{\tt mi\_zoomnatural()} zooms to a ``natural'' view with sensible extents.
+\item{\tt mi\_zoomout()} zooms out by a factor of 50\%.
+\item{\tt mi\_zoomin()} zoom in by a factor of 200\%.
+\item{\tt mi\_zoom(x1,y1,x2,y2)}
+Set the display area to be from the bottom left corner specified by
+{\tt (x1,y1}) to the top right corner specified by {\tt (x2,y2)}.
+\end{itemize}
+
+\subsection{View Commands}
+
+\begin{itemize}
+\item{\verb+mi_showgrid()+} Show the grid points.
+\item{\verb+mi_hidegrid()+} Hide the grid points points.
+\item{\verb+mi_grid_snap("flag")+}
+Setting {\tt flag} to "on" turns on snap to grid, setting {\tt
+flag} to {\tt "off"} turns off snap to grid.
+\item{\verb+mi_setgrid(density,"type")+} Change the grid spacing.  The {\tt density}
+parameter specifies the space between grid points, and the {\tt
+type} parameter is set to {\tt "cart"} for cartesian coordinates or
+{\tt "polar"} for polar coordinates.
+\item{\tt mi\_refreshview()} Redraws the current view.
+\item{\tt mi\_minimize()} minimizes the active magnetics input view.
+\item{\tt mi\_maximize()} maximizes the active magnetics input view.
+\item{\tt mi\_restore()} restores the active magnetics input view from a
+ minimized or maximized state.
+\item{\tt mi\_resize(width,height)} resizes the active magnetics input
+ window client area to width $\times$ height.
+\end{itemize}
+
+\subsection{Object Properties}
+
+\begin{itemize}
+\item \texttt{mi\_getmaterial("materialname")} fetches the material specified by \texttt{materialname} 
+from the materials library.
+
+\item{\tt mi\_addmaterial("materialname", mu{\_}x, mu{\_}y, H{\_}c,
+J, Cduct, Lam{\_}d, Phi{\_}hmax, lam{\_}fill, LamType, Phi{\_}hx, Phi{\_}hy,NStrands,WireD}) adds a
+new material with called {\tt "materialname"} with the material
+properties:
+        \begin{itemize}
+        \item{\tt mu{\_}x} Relative permeability in the x- or r-direction.
+        \item{\tt mu{\_}y} Relative permeability in the y- or z-direction.
+        \item{\tt H{\_}c} Permanent magnet coercivity in
+        Amps/Meter.
+        \item{\tt J} Real Applied source current density in Amps/mm$^2$.
+        \item{\tt Cduct} Electrical conductivity of the material
+        in~MS/m.
+        \item{\tt Lam{\_}d} Lamination thickness in millimeters.
+        \item{\tt Phi\_hmax} Hysteresis lag angle in degrees, used for nonlinear BH curves.
+        \item{\tt Lam{\_}fill} Fraction of the volume occupied per lamination that
+        is actually filled with iron (Note that this parameter defaults to 1 the
+        {\tt femme} preprocessor dialog box because, by default, iron completely
+        fills the volume)
+        \item{\tt Lamtype} Set to
+                \begin{itemize}
+                \item 0 -- Not laminated or laminated in plane
+                \item 1 -- laminated x or r
+                \item 2 -- laminated y or z
+                                \item 3 -- Magnet wire
+                                \item 4 -- Plain stranded wire
+                                \item 5 -- Litz wire
+                                \item 6 -- Square wire
+                \end{itemize}
+        \item{\tt Phi\_hx} Hysteresis lag in degrees in the x-direction for linear problems.
+        \item{\tt Phi\_hy} Hysteresis lag in degrees in the y-direction for linear problems.
+                \item{\tt NStrands} Number of strands in the wire build.  Should be 1 for Magnet or Square wire.
+                \item{\tt WireD} Diameter of each wire constituent strand in millimeters.
+        \end{itemize}
+Note that not all properties need be defined--properties that aren't defined are assigned default values.
+
+\item{\tt mi\_addbhpoint("blockname",b,h)} Adds a B-H data point the
+the material specified by the string {\tt "blockname"}.  The point to be added
+has a flux density of {\tt b} in units of Teslas and a field
+intensity of {\tt h} in units of Amps/Meter.
+
+\item{\tt mi\_clearbhpoints("blockname")} Clears all B-H data points
+associatied with the material specified by {\tt "blockname"}.
+
+\item{\tt mi\_addpointprop("pointpropname",a,j)}
+adds a new point property of name {\tt "pointpropname"} with either
+a specified potential {\tt a} in units Webers/Meter
+or a point current {\tt j} in units of Amps. Set the
+unused parameter pairs to 0.
+
+\item{\tt mi\_addboundprop("propname", A0, A1, A2, Phi, Mu, Sig, c0, c1,
+BdryFormat, ia, oa)} \\ adds a new boundary property with name {\tt
+"propname"}
+        \begin{itemize}
+        \item For a ``Prescribed A'' type boundary condition, set the {\tt A0,
+        A1, A2} and {\tt Phi} parameters as required. Set all other
+        parameters to zero.
+
+        \item For a ``Small Skin Depth'' type boundary condtion, set the {\tt Mu}
+        to the desired relative permeability and {\tt Sig} to the desired
+        conductivity in MS/m.  Set {\tt BdryFormat} to 1 and all other
+        parameters to zero.
+
+        \item To obtain a ``Mixed'' type boundary condition, set {\tt C1} and
+        {\tt C0} as required and {\tt BdryFormat} to 2.  Set all other
+        parameters to zero.
+
+        \item For a ``Strategic dual image'' boundary, set {\tt BdryFormat} to 3
+        and set all other parameters to zero.
+
+        \item For a ``Periodic'' boundary condition, set {\tt BdryFormat} to 4 and
+        set all other parameters to zero.
+
+        \item For an ``Anti-Perodic'' boundary condition, set {\tt BdryFormat} to
+        5 set all other parameters to zero.
+        
+        \item  For a ``Periodic Air Gap'', set BdryFormat to 6. Parameters {\tt ia} and {\tt oa}specify the inner boundary angle and outer boundary angle, respectively.
+
+        \item  For an ``Anti-periodic Air Gap'', set BdryFormat to 7.  The same  {\tt ia} and {\tt oa} parameters also apply here."
+
+        \end{itemize}
+
+\item{\tt mi\_addcircprop("circuitname", i, circuittype)} \\
+adds a new circuit property with name {\tt "circuitname"} with a prescribed current, {\tt i}.
+The {\tt circuittype} parameter is 0 for a parallel-connected circuit and 1 for a
+series-connected circuit.
+\item{\tt mi\_deletematerial("materialname")} deletes the material named {\tt
+"materialname"}.
+\item{\tt mi\_deleteboundprop("propname")} deletes the boundary property named
+{\tt "propname"}.
+\item{\tt mi\_deletecircuit("circuitname")} deletes the circuit named {\tt
+circuitname}.
+\item{\tt mi\_deletepointprop("pointpropname")} deletes the point property named
+{\tt "pointpropname"}
+\item{\verb+mi_modifymaterial("BlockName",propnum,value)+} This
+function allows for modification of a material's properties without
+redefining the entire material ({\em e.g.} so that current can be
+modified from run to run).  The material to be modified is
+specified by {\tt "BlockName"}.  The next parameter is the number
+of the property to be set. The last number is the value to be
+applied to the specified property.  The various properties that can
+be modified are listed below:
+\begin{center}
+\begin{tabular}{lll} \hline
+{\tt propnum}& Symbol & Description \\ \hline
+ 0 & {\tt BlockName} & Name of the material \\
+ 1 & $\mu_x$ & x (or r) direction relative permeability \\
+ 2 & $\mu_y$ & y (or z) direction relative permeability \\
+ 3 & $H_c$   & Coercivity, Amps/Meter \\
+ 4 & $J_r$   & Source current density, MA/m$^2$ \\
+ 5 & $\sigma$ & Electrical conductivity, MS/m \\
+ 6 & $d_{lam}$  & Lamination thickness, mm \\
+ 7 & $\phi_{hmax}$ & Hysteresis lag angle for nonlinear problems, degrees \\
+ 8 & LamFill & Iron fill fraction \\
+ 9 & LamType & 0 = None/In plane, 1 = parallel to x, 2=parallel to y \\
+ 10 & $\phi_{hx}$ & Hysteresis lag in x-direction for linear problems, degrees \\
+ 11 & $\phi_{hy}$ & Hysteresis lag in y-direction for linear problems, degrees \\
+ \hline
+ \end{tabular}
+ \end{center}
+\item{\verb+mi_modifyboundprop("BdryName",propnum,value)+}
+This function allows for modification of a boundary property. The
+BC to be modified is specified by {\tt "BdryName"}.  The next
+parameter is the number of the property to be set. The last number
+is the value to be applied to the specified property.  The various
+properties that can be modified are listed below:
+\begin{center}
+\begin{tabular}{lll} \hline
+{\tt propnum}& Symbol & Description \\ \hline
+ 0 & {\tt BdryName} & Name of boundary property \\
+ 1 & $A_0$ & Prescribed A parameter \\
+ 2 & $A_1$ & Prescribed A parameter \\
+ 3 & $A_2$ & Prescribed A parameter \\
+ 4 & $\phi$ & Prescribed A phase \\
+ 5 & $\mu$ & Small skin depth relative permeability \\
+ 6 & $\sigma$ & Small skin depth conductivity, MS/m \\
+ 7 & $c_0$ & Mixed BC parameter \\
+ 8 & $c_1$ & Mixed BC parameter \\
+ 9 & {\tt BdryFormat} & Type of boundary condition: \\
+   &                 & 0 = Prescribed A \\
+   &                 & 1 = Small skin depth \\
+   &                 & 2 = Mixed \\
+   &                 & 3 = Strategic Dual Image \\
+   &                 & 4 = Periodic \\
+   &                 & 5 = Antiperiodic \\ 
+   &                 & 6 = Periodic Air Gap \\ 
+   &                 & 7 = Antiperiodic Air Gap \\ 
+10 & $ia$ &  Inner boundary angle for air gap element \\
+11 & $oa$ & Outer boundary angle for air gap element \\ \hline
+\end{tabular}
+\end{center}
+\item{\verb+mi_modifypointprop("PointName",propnum,value)+}
+This function allows for modification of a point property. The
+point property to be modified is specified by {\tt "PointName"}.
+The next parameter is the number of the property to be set. The
+last number is the value to be applied to the specified property.
+The various properties that can be modified are listed below:
+\begin{center}
+\begin{tabular}{lll} \hline
+{\tt propnum}& Symbol & Description \\ \hline
+ 0 & {\tt PointName} & Name of the point property \\
+ 1 & $A$ & Nodal potential, Weber/Meter \\
+ 2 & $J$ & Nodal current, Amps \\ \hline
+\end{tabular}
+\end{center}
+\item{\verb+mi_modifycircprop("CircName",propnum,value)+}
+This function allows for modification of a circuit property. The
+circuit property to be modified is specified by {\tt "CircName"}.
+The next parameter is the number of the property to be set. The
+last number is the value to be applied to the specified property.
+The various properties that can be modified are listed below:
+\begin{center}
+\begin{tabular}{lll} \hline
+{\tt propnum}& Symbol & Description \\ \hline
+ 0 & {\tt CircName} & Name of the circuit property \\
+ 1 & $i$ & Total current \\
+ 2 & {\tt CircType} & 0 = Parallel, 1 = Series \\ \hline
+ \end{tabular}
+ \end{center}
+\end{itemize}
+
+\subsection{Miscellaneous}
+\begin{itemize}
+\item{\tt mi\_savebitmap("filename")} saves a bitmapped screenshot of the current
+view to the file specified by {\tt "filename"}, subject to the {\tt
+printf}-type formatting explained previously for the {\tt
+savefemmfile} command.
+\item{\tt mi\_savemetafile("filename")} saves a metafile screenshot of the current
+view to the file specified by {\tt "filename"}, subject to the {\tt
+printf}-type formatting explained previously for the {\tt
+savefemmfile} command.
+\item{\tt mi\_refreshview()} Redraws the current view.
+\item{\tt mi\_close()} Closes current magnetics preprocessor
+document and destroys magnetics preprocessor window.
+\item{\tt mi\_shownames(flag)} This function allow the user to display or hide the block label
+names on screen.  To hide the block label names, {\tt flag} should be 0.  To display the
+names, the parameter should be set to 1.
+\item{\tt mi\_readdxf("filename")} This function imports a dxf file specified by {\tt "filename"}.
+\item{\tt mi\_savedxf("filename")} This function saves geometry informationin a dxf file specified by {\tt "filename"}.
+\item{\tt mi\_defineouterspace(Zo,Ro,Ri)} defines
+an axisymmetric external region to be used in conjuction with the
+Kelvin Transformation method of modeling unbounded problems.  The
+{\tt Zo} parameter is the z-location of the origin of the outer region,
+the {\tt Ro} parameter is the radius of the outer region, and the {\tt
+Ri} parameter is the radius of the inner region ({\em i.e.} the region of
+interest). In the exterior region, the permeability varies as a function of
+distance from the origin of the external region.  These parameters
+are necessary to define the permeability variation in the external
+region.
+\item{\tt mi\_attachouterspace()} marks all
+selected block labels as members of the external region used for
+modeling unbounded axisymmetric problems via the Kelvin
+Transformation.
+\item{\tt mi\_detachouterspace()} undefines all selected block labels
+as members of the external region used for modeling unbounded axisymmetric
+problems via the Kelvin Transformation.
+
+\item{\tt mi\_attachdefault()} marks the
+selected block label as the default block label.  This block label
+is applied to any region that has not been explicitly labeled.
+
+\item{\tt mi\_detachdefault()} undefines the default
+attribute for the selected block labels.
+
+\item{\tt mi\_makeABC(n,R,x,y,bc)} creates a series of circular shells that emulate the
+impedance of an unbounded domain (i.e. an Inprovised Asymptotic Boundary
+Condition).  The {\tt n} parameter contains the number of shells to be used
+(should be between 1 and 10), {\tt R} is the radius of the solution domain, and
+{\tt (x,y)} denotes the center of the solution domain.  The {\tt bc} parameter should
+be specified as 0 for a Dirichlet outer edge or 1 for a Neumann outer edge.
+If the function is called without all the parameters, the function makes up
+reasonable values for the missing parameters. 
+
+\item{\tt mi\_setprevious(filename,prevtype)} defines the previous solution to be used as the basis for an AC incremental
+permeability or frozen permeability solution.  The {\tt prevtype} field is an integer that specifies whether the solution 
+is to be incremental permeability ({\tt 1}) or frozen permeability ({\tt 2}). The filename should include the {\tt .ans}
+extension, {\em e.g.} {\tt mi\_setprevious("mymodel.ans",1)}
+
+\end{itemize}
+
+\section{Magnetics Post Processor Command Set}
+
+There are a number of Lua scripting commands designed to operate in
+the postprocessor.  As with the preprocessor commands, these
+commands can be used with either the underscore naming or with the
+no-underscore naming convention.
+
+\subsection{Data Extraction Commands}
+
+\begin{itemize}
+\item{\tt mo\_lineintegral(type)} Calculate the line integral for the defined contour
+\begin{small}\begin{center}
+\begin{tabular}{llllll}\hline
+ {\tt type} & name & values 1 & values 2 & values 3 & values 4 \\  \hline
+ 0 & B.n & total B.n & avg B.n & - & -\\
+ 1 & H.t & total H.t & avg H.t & - & - \\
+ 2 & Contour length & surface area & - & -\\
+ 3 & Stress Tensor Force & DC r/x force & DC y/z force & $2\times$ r/x force & $2\times$ y/z force \\
+ 4 & Stress Tensor Torque& DC torque & $2\times$ torque & - & - \\
+ 5 & (B.n)\^{}2 & total (B.n)\^{}2 & avg (B.n)\^{}2 & - & - \\ \hline
+\end{tabular}
+\end{center}
+\end{small}
+Returns typically two (possibly complex) values as results. For force
+and torque results, the $2\times$ results are only relevant for
+problems where $\omega \neq 0$.  The $1\times$ results are only relevant
+for incremental permeability AC problems.  The $1\times$ results represent
+the force and torque interactions between the steady-state and the
+incremental AC solution.
+
+\item{\tt mo\_blockintegral(type)}
+Calculate a block integral for the selected blocks
+\begin{center}
+\begin{tabular}{ll} \hline
+ Type & Definition \\ \hline
+ 0 & $A \cdot J$ \\
+ 1 & A \\
+ 2 & Magnetic field energy \\
+ 3 & Hysteresis and/or lamination losses \\
+ 4 & Resistive losses \\
+ 5 & Block cross-section area \\
+ 6 & Total losses \\
+ 7 & Total current \\
+ 8 & Integral of $B_x$ (or $B_r$) over block \\
+ 9 & Integral of $B_y$ (or $B_z$) over block \\
+ 10 & Block volume \\
+ 11 & x (or r) part of steady-state Lorentz force \\
+ 12 & y (or z) part of steady-state Lorentz force \\
+ 13 & x (or r) part of $2\times$ Lorentz force \\
+ 14 & y (or z) part of $2\times$ Lorentz force \\
+ 15 & Steady-state Lorentz torque \\
+ 16 & $2 \times$ component of Lorentz torque \\
+ 17 & Magnetic field coenergy \\
+ 18 & x (or r) part of steady-state weighted stress tensor force \\
+ 19 & y (or z) part of steady-state weighted stress tensor force \\
+ 20 & x (or r) part of $2\times$ weighted stress tensor force \\
+ 21 & y (or z) part of $2\times$ weighted stress tensor force \\
+ 22 & Steady-state weighted stress tensor torque \\
+ 23 & $2 \times$ component of weighted stress tensor torque \\
+ 24 & $R^2$ ({\em i.e.} moment of inertia / density) \\ 
+ 25 & x (or r) part of $1\times$ weighted stress tensor force \\
+ 26 & y (or z) part of $1\times$ weighted stress tensor force \\
+ 27 & $1 \times$ component of weighted stress tensor torque \\
+ 28 & x (or r) part of $1\times$ Lorentz force \\
+ 29 & y (or z) part of $1\times$ Lorentz force \\
+ 30 & $1 \times$ component of Lorentz torque \\ \hline
+ \end{tabular}
+ \end{center}
+This function returns one (possibly complex) value, {\em
+e.g.}: {\tt volume = mo\_blockintegral(10)}
+
+
+\item{\tt mo\_getpointvalues(X,Y)}
+Get the values associated with the point at x,y RETURN values in
+order
+\begin{center}
+\begin{tabular}{ll} \hline
+Symbol & Definition \\ \hline
+ A & vector potential A or flux $\phi$ \\
+ B1 & flux density $B_x$ if planar, $B_r$ if axisymmetric \\
+ B2 & flux density $B_y$ if planar, $B_z$ if axisymmetric \\
+ Sig & electrical conductivity $\sigma$ \\
+ E & stored energy density\\
+ H1 & field intensity $H_x$ if planar, $H_r$ if axisymmetric \\
+ H2 & field intensity $H_y$ if planar, $H_z$ if axisymmetric \\
+ Je & eddy current density \\
+ Js & source current density\\
+ Mu1 & relative permeability $\mu_x$ if planar, $\mu_r$ if axisymmetric \\
+ Mu2 & relative permeability $\mu_y$ if planar, $\mu_z$ if axisymmetric \\
+ Pe & Power density dissipated through ohmic losses \\
+ Ph & Power density dissipated by hysteresis \\ \hline
+ \end{tabular}
+\end{center}
+
+Example: To catch all values at (0.01,0) use
+
+{\tt A, B1, B2, Sig, E, H1, H2, Je, Js, Mu1, Mu2, Pe, Ph = mo\_getpointvalues(0.01,0)}
+
+For magnetostatic problems, all imaginary quantities are zero.
+
+\item \verb+mo_makeplot(PlotType,NumPoints,Filename,FileFormat)+
+Allows Lua access to the X-Y plot routines.  If only {\tt PlotType} or only {\tt PlotType}
+and {\tt NumPoints} are specified, the command is interpreted as a request to plot the
+requested plot type to the screen.  If, in addition, the {\tt Filename} parameter is specified,
+the plot is instead written to disk to the specified file name as an extended metafile.
+If the {\tt FileFormat} parameter is also, the command is instead interpreted as a command to
+write the data to disk to the specfied file name, rather than display it to make a
+graphical plot.
+Valid entries for {\tt PlotType} are:
+\begin{center}
+\begin{tabular}{ll} \hline
+{\tt PlotType} & Definition \\ \hline
+0 & Potential \\
+1 & $|B|$ \\
+2 & $B \cdot n$ \\
+3 & $B \cdot t$ \\
+4 & $|H|$ \\
+5 & $H \cdot n$ \\
+6 & $H \cdot t$ \\
+7 & $J_{eddy}$ \\
+8 & $J_{source}+J_{eddy}$ \\
+\hline
+\end{tabular}
+\end{center}
+Valid file formats are
+\begin{center}
+\begin{tabular}{ll} \hline
+{\tt FileFormat} & Definition \\ \hline
+0 & Multi-column text with legend \\
+1 & Multi-column text with no legend \\
+2 & Mathematica-style formatting \\
+\hline
+\end{tabular}
+\end{center}
+For example, if one wanted to plot $B \cdot n$ to the screen with 200 points evaluated to
+make the graph, the command would be:
+
+\begin{tabular}{l} {\tt mo\_makeplot(2,200)} \end{tabular}
+
+If this plot were to be written to disk as a metafile, the command would be:
+
+\begin{tabular}{l} \verb+mo_makeplot(2,200,"c:\\temp\myfile.emf")+ \end{tabular}
+
+To write data instead of a plot to disk, the command would
+be of the form:
+
+\begin{tabular}{l} \verb+mo_makeplot(2,200,"c:\\temp\myfile.txt",0)+ \end{tabular}
+
+\item \verb+mo_getprobleminfo()+
+Returns info on problem description.  Returns four values:
+\begin{center}
+\begin{tabular}{ll} \hline
+Return value & Definition \\ \hline 
+1 &  problem type  \\ 
+2 &  frequency in Hz \\ 
+3 &  depth assumed for planar problems in meters \\
+4 &  length unit used to draw the problem in meters
+\end{tabular}
+\end{center}
+
+\item{\verb+mo_getcircuitproperties("circuit")+}
+Used primarily to obtain impedance information associated with
+circuit properties.  Properties are returned for the circuit
+property named {\tt "circuit"}. Three values are returned by the
+function.  In order, these results are:
+\begin{itemize}
+        \item{\verb+current+} Current carried by the circuit
+        \item{\verb+volts+}  Voltage drop across the circuit
+        \item{\verb+flux_re+} Circuit's flux linkage
+        \end{itemize}
+
+
+
+
+\item{\verb+mo_getgapb("BdryName",angle)+}
+Computes the radial and tangential flux density on the centerline of the
+specified air gap element name (\verb+BdryName+) at the specified \verb+angle+.  The angle is specified in degrees."
+
+\item{\verb+mo_getgapa("BdryName",angle)+}
+Computes the magnetic vector potential on the centerline of the
+specified air gap element name (\verb+BdryName+) at the specified \verb+angle+.  The angle is specified in degrees."
+
+\item{\verb+mo_gapintegral("BdryName",inttype)+}
+Computes an integral specifiedy by \verb+inttype+ over an air gap element specified
+by \verb+BdryName+. Values for {\tt inttype} in are:
+\begin{center}
+\begin{tabular}{ll} \hline
+0  & DC Torque\\
+1  & DC Force\\
+2  & Stored Energy\\
+3  & 2X Torque\\
+4  & 2X Force\\
+5  & Interaction Torque\\
+6  & Interaction Force\\
+\hline
+\end{tabular}
+\end{center}
+Torque and energy integrals return one result; force integrals return two results for the x- and y- direction force, respectively.
+
+\item{\verb+mo_getgapharmonicsl("BdryName",n)+}
+Returns the {\tt acc}, {\tt acs},{\tt brc},{\tt  brs},{\tt  btc}, and {\tt bts}.  These quantities represent the
+components of vector potential, radial flux density, and tangential flux density on the centerline of the specified air gap element at the specified angle.  
+For the $n^{th}$ harmonic, vector potential, radial flux density, and tangential flux density can be represented explicitly as functions of angle via:
+\begin{eqnarray}
+A    & = & acc \cos{n \theta} + acs \sin{n \theta} \nonumber  \\ 
+B_r & = & brc \cos{n \theta}+ brs \sin{n \theta}   \nonumber \\
+B_\theta & = & btc \cos{n \theta} + bts \sin{n \theta}  \nonumber
+\end{eqnarray}
+ The angle is  specified in degrees.  If the function is called with just the {\tt BdryName}, the function returns the number of harmonics available.
+
+\end{itemize}
+
+
+\subsection{Selection Commands}
+\begin{itemize}
+\item{\tt mo\_seteditmode(mode)} Sets the mode of the postprocessor to
+point, contour, or area mode.  Valid entries for {\tt mode} are
+{\tt "point"}, {\tt "contour"}, and {\tt "area"}.
+\item{\tt mo\_selectblock(x,y)} Select the block that contains point (x,y).
+\item{\tt mo\_groupselectblock(n)} Selects all of the blocks that are labeled by block
+        labels that are members of group {\tt n}. If no number is specified ({\em i.e.} {\tt mo\_groupselectblock()} ),
+                all blocks are selected.
+
+\item{\tt mo\_addcontour(x,y)} Adds a contour point at (x,y). If this
+is the first point then it starts a contour, if there are existing
+points the contour runs from the previous point to this point. The
+{\tt mo\_addcontour} command has the same functionality as a
+right-button-click contour point addition when the program is
+running in interactive mode.
+\item{\tt mo\_bendcontour(angle,anglestep)} Replaces the straight line
+formed by the last two points in the contour by an arc that spans {\tt angle}
+degrees.  The arc is actually composed of many straight lines, each
+of which is constrained to span no more than {\tt anglestep} degrees.
+The {\tt angle} parameter can take on values from -180 to 180 degrees.
+The {\tt anglestep} parameter must be greater than zero.  If there are less
+than two points defined in the contour, this command is ignored.
+\item{\tt mo\_selectpoint(x,y)} Adds a contour point at the closest
+input point to (x,y).  If the selected point and a previous
+selected points lie at the ends of an arcsegment, a contour is
+added that traces along the arcsegment.  The {\tt mo\_selectpoint}
+command has the same functionality as the left-button-click contour
+point selection when the program is running in interactive mode.
+\item{\tt mo\_clearcontour()} Clear a prevously defined contour
+\item{\tt mo\_clearblock()} Clear block selection
+\end{itemize}
+
+\subsection{Zoom Commands}
+\begin{itemize}
+\item{\verb+mo_zoomnatural()+} Zoom to the natural boundaries of
+the geometry.
+\item{\verb+mo_zoomin()+} Zoom in one level.
+\item{\verb+mo_zoomout()+} Zoom out one level.
+\item{\tt mo\_zoom(x1,y1,x2,y2)} Zoom to the window defined by lower left corner (x1,y1)
+and upper right corner (x2,y2).
+
+\end{itemize}
+
+\subsection{View Commands}
+\begin{itemize}
+\item{\verb+mo_showmesh()+} Show the mesh.
+\item{\verb+mo_hidemesh()+} Hide the mesh.
+\item{\verb+mo_showpoints()+} Show the node points from the input geometry.
+\item{\verb+mo_hidepoints()+} Hide the node points from the input geometry.
+\item{\tt mo\_smooth("flag")} This function controls whether or not smoothing
+is applied to the $B$ and $H$ fields, which are naturally
+piece-wise constant over each element.  Setting {\tt flag} equal to
+{\tt "on"} turns on smoothing, and setting {\tt flag} to {\tt
+"off"} turns off smoothing.
+\item{\verb+mo_showgrid()+} Show the grid points.
+\item{\verb+mo_hidegrid()+} Hide the grid points points.
+\item{\verb+mo_grid_snap("flag")+}
+Setting {\tt flag} to "on" turns on snap to grid, setting {\tt
+flag} to {\tt "off"} turns off snap to grid.
+\item{\verb+mo_setgrid(density,"type")+} Change the grid spacing.  The {\tt density}
+parameter specifies the space between grid points, and the {\tt
+type} parameter is set to {\tt "cart"} for cartesian coordinates or
+{\tt "polar"} for polar coordinates.
+\item{\verb+mo_hidedensityplot()+} hides the flux density plot.
+\item{\verb+mo_showdensityplot(legend,gscale,upper_B,lower_B,type)+}
+Shows the flux density plot with options:
+        \begin{itemize}
+        \item {\tt legend} Set to {\tt 0} to hide the plot legend or {\tt 1} to show the plot
+        legend.
+        \item {\tt gscale} Set to {\tt 0} for a colour density plot or {\tt 1} for a grey scale density
+        plot.
+        \item{\verb+upper_B+} Sets the upper display limit for the density
+        plot.
+        \item{\verb+lower_B+} Sets the lower display limit for the density
+        plot.
+        \item{\tt type} Type of density plot to display. Valid
+        entries are {\tt "bmag"}, {\tt "breal"}, and {\tt "bimag"} for
+        magnitude, real component, and imaginary component of flux density ($B$),
+        respectively; {\tt "hmag"}, {\tt "hreal"}, and {\tt "himag"} for
+        magnitude, real component, and imaginary component of field intensity ($H$);
+		and {\tt "jmag"}, {\tt "jreal"}, and {\tt "jimag"} for
+        magnitude, real component, and imaginary component of current density ($J$).
+        \end{itemize}
+        if {\tt legend} is set to {\tt -1} all parameters are ignored and default values are
+        used {\em e.g.}: \\ \verb+mo_showdensityplot(-1)+
+\item{\verb+mo_hidecontourplot()+} Hides the contour plot.
+\item{\verb+mo_showcontourplot(numcontours,lower_A,upper_A,type)+}
+shows the $A$ contour plot with options:
+        \begin{itemize}
+        \item{\tt numcontours} Number of $A$ equipotential lines
+        to be plotted.
+        \item{\verb+upper_A+} Upper limit for $A$ contours.
+        \item{\verb+lower_A+} Lower limit for $A$ contours.
+                \item{\verb+type+} Choice of {\tt "real"}, {\tt "imag"}, or {\tt "both"}
+                        to show either the real, imaginary of both real and imaginary components of A.
+        \end{itemize}
+        If {\tt numcontours} is {\tt -1} all parameters are ignored and default
+        values are used, {\em e.g.}: \\ \verb+mo_showcontourplot(-1)+
+
+\item{\tt mo\_showvectorplot(type,scalefactor)}
+controls the display of vectors denoting the field strength and
+direction. The parameters taken are the \texttt{type} of plot,
+which should be set to 0 for no vector plot,  1 for the real part of flux density B;
+2 for the real part of field intensity H; 3 for the imaginary part of B;
+4 for the imaginary part of H; 5 for both the real and imaginary parts of B;
+and 6 for both the real and imaginary parts of H. The \texttt{scalefactor}
+determines the relative length of the vectors. If the scale is set
+to 1, the length of the vectors are chosen so that the highest flux
+density corresponds to a vector that is the same length as the
+current grid size setting.
+
+
+\item{\tt mo\_minimize} minimizes the active magnetics output view.
+\item{\tt mo\_maximize} maximizes the active magnetics output view.
+\item{\tt mo\_restore} restores the active magnetics output view from a
+ minimized or maximized state.
+\item{\tt mo\_resize(width,height)} resizes the active magnetics output
+ window client area to width $\times$ height.
+\end{itemize}
+
+\subsection{Miscellaneous}
+\begin{itemize}
+
+\item{\tt mo\_close()} Closes the current post-processor instance.
+\item{\tt mo\_refreshview()} Redraws the current view.
+\item{\tt mo\_reload()} Reloads the solution from disk.
+\item{\tt mo\_savebitmap("filename")} saves a bitmapped screen shot of the current
+view to the file specified by {\tt "filename"}. Note that if you
+use a path you must use two backslashes ({\em e.g.}
+\verb+"c:\\temp\\myfemmfile.fem"+). If the file name contains a space
+({\em e.g.} file names like \verb+c:\program files\stuff+) you must
+enclose the file name in (extra) quotes by using a
+\verb+\"+ sequence. For example:\\
+ \verb+mo_save_bitmap("\"c:\\temp\\screenshot.bmp\"")+
+\item{\tt mo\_savemetafile("filename")} saves a metafile screenshot of the current
+view to the file specified by {\tt "filename"}, subject to the {\tt
+printf}-type formatting explained previously for the {\tt
+savebitmap} command.
+\item{\tt mo\_shownames(flag)} This function allow the user to display or hide the block label
+names on screen.  To hide the block label names, {\tt flag} should be 0.  To display the
+names, the parameter should be set to 1.
+
+\item{\tt mo\_numnodes()} Returns the number of nodes in the in focus magnetics output mesh.
+\item{\tt mo\_numelements()} Returns the number of elements in the in focus magnets output mesh.
+\item{\tt mo\_getnode(n)} Returns the (x,y) or (r,z) position of the nth mesh node.
+\item{\tt mo\_getelement(n)} MOGetElement[n] returns the following proprerties for the nth element:
+    \begin{enumerate}
+        \item Index of first element node
+        \item Index of second element node
+        \item Index of third element node
+        \item x (or r) coordinate of the element centroid
+        \item y (or z) coordinate of the element centroid
+        \item element area using the length unit defined for the problem
+        \item group number associated with the element
+    \end{enumerate}
+
+\end{itemize}

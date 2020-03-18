@@ -1,0 +1,74 @@
+\chapter{Mathematica Interface}
+
+FEMM can interact with Mathematica via Mathematica's MathLink API. Once Mathematica and FEMM are connected, any
+any string sent by Mathematica is automatically collected and interpreted as a command to FEMM's Lua interpreter.
+Results can be returned across the link by a special Lua print command that sends the results to Mathematica
+as a list, rather than to the Lua console screen.
+
+The MathLink connection to FEMM can be initialized in two ways.  The link can either be established
+automatically on startup, or during a session via commands in the Lua console.  To establish the connection on
+startup, just use the LinkLaunch function in Mathematica, {\em e.g.}:
+
+\verb+mlink = LinkLaunch["c:\\progra~1\\femm42\\bin\\femm.exe"];+
+
+To initialize the link, some string must first be sent over the link from the Mathematica side, {\em e.g.}:
+
+\verb+LinkWrite[mlink, "print(0)"]+
+
+All strings sent to FEMM are then sent using the same sort of LinkWrite command. When it is time to close the link,
+the link can be closed using the LinkClose command, {\em e.g.}:
+
+\verb+LinkClose[mlink]+
+
+To start a link during a session, the Lua command {\tt mlopen()} can be used.  A dialog will then appear, prompting
+for a name for the link.  Choose any name that you want, e.g. {\tt portname}.  On the Mathematica side, one connects
+to the newly formed link via the Mathematica command:
+
+\verb+mlink = LinkConnect["portname"]+
+
+After this point, the link is used and closed in the same way as the link that is automatically created on startup.
+
+As previously noted, LinkWrite is used on the mathematica side to send a string to FEMM.  FEMM automatically monitors
+the link and interprets the string with no further user action required.  To send results back to Mathematica, one
+uses the {\tt mlput} command in Lua.  This function works exactly like the {\tt print} command in lua, except that
+the result gets pushed back across the link as a list of mixed reals and strings, as appropriate.  To retrieve this
+information on the Mathematica side, one uses the LinkRead command, {\em e.g.}:
+
+\verb+result = LinkRead[mlink]+
+
+To automate the interaction between FEMM and Mathematica, a Mathematica package called MathFEMM is available.
+This package implements a set of Mathematica functions similar to those implemented in Lua.  With MathFEMM, the
+the user does not have to deal with the specifics of creating the Mathlink connection and manually transferring
+information across it.  All MathLink details are taken care of automatically by the package, and the Mathematica
+front-end can then be used to directly control FEMM via a set of Mathematica function calls.
+
+\chapter{ActiveX Interface}
+
+FEMM also allows for interprocess communication via ActiveX.  FEMM is set up to act as an ActiveX Automation Server
+so that other programs can connect to FEMM as clients and command FEMM to perform various actions and analyses in
+a programmatic way.
+
+FEMM registers itself as an ActiveX server under the name {\tt femm.ActiveFEMM42}. An explanation of how to connect to
+and manipulate an ActiveX server are beyond the treatment of this manual, in part because the specifics depend upon
+what client platform is being used (e.g. VB, VC++, Matlab, etc.)
+
+The interface to FEMM contains no properties and only two methods:
+
+\begin{itemize}
+\item {\tt BSTR call2femm(BSTR luacmd);}
+\item {\tt BSTR mlab2femm(BSTR luacmd);}
+\end{itemize}
+
+In each case, a string is passed to the method, and a string is returned as a result.  The incoming string is sent
+to the Lua interpreter.  Any results from the Lua command are returned as a string. The difference between the two
+methods is that {\tt call2femm} returns a string with each returned item separated by a newline character, whereas
+{\tt mlab2femm} returns the result formatted as a Matlab array, with the total package enclosed by square brackets
+and the individual items separated by spaces. FEMM assumes that it is the client's responsibility to free the memory
+allocated for both the input and output strings.
+
+One program that can connect to FEMM as a client via Active X is Matlab. From Matlab, one can send
+commands to the FEMM Lua interpreter and receive the results of the command.  To aid in the use of FEMM from
+Matlab, a toolbox called OctaveFEMM is available. This toolbox implements Matlab commands that
+subsume the functionality of Lua using equivalent Matlab commands, in a similar way to the fashion that MathFEMM works
+with Mathematica.  Using the toolbox, all details of the ActiveX interface are taken care of in a way that is
+completely transparent to the user.

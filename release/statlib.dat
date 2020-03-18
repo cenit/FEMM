@@ -1,0 +1,182 @@
+<BeginBlock>
+<BlockName> = "Air"
+<ex> = 1
+<ey> = 1
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Delrin"
+<ex> = 3.7
+<ey> = 3.7
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Ethanol"
+<ex> = 25
+<ey> = 25
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Germanium"
+<ex> = 16
+<ey> = 16
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Kapton 100"
+<ex> = 3.9
+<ey> = 3.9
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Kapton 150"
+<ex> = 2.9
+<ey> = 2.9
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Lexan"
+<ex> = 2.96
+<ey> = 2.96
+<qv> = 0	
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Marble"
+<ex> = 8
+<ey> = 8
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Mica"
+<ex> = 6
+<ey> = 6
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Mylar"
+<ex> = 3.2
+<ey> = 3.2
+<qv> = 0	
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Nylon"
+<ex> = 3.8
+<ey> = 3.8
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Paper"
+<ex> = 3
+<ey> = 3
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Polyamide"
+<ex> = 2.5
+<ey> = 2.5
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Polyethylene LDPE/HDPE"
+<ex> = 2.3
+<ey> = 2.3
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Polypropylene"
+<ex> = 2.2
+<ey> = 2.2
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Polystyrene"
+<ex> = 2.5
+<ey> = 2.5
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Porcelain"
+<ex> = 5.9
+<ey> = 5.9
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "PVC"
+<ex> = 3
+<ey> = 3
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Pyrex"
+<ex> = 4.7
+<ey> = 4.7
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Rubber"
+<ex> = 3
+<ey> = 3
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Silicon"
+<ex> = 12
+<ey> = 12
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Teflon"
+<ex> = 2.1
+<ey> = 2.1
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Transformer Oil"
+<ex> = 4.5
+<ey> = 4.5
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Vinyl"
+<ex> = 3
+<ey> = 3
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Water@20C"
+<ex> = 80.4
+<ey> = 80.4
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Water@50C"
+<ex> = 78.5
+<ey> = 78.5
+<qv> = 0
+<EndBlock>
+

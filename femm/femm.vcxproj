@@ -1,0 +1,978 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug with Mathematica|Win32">
+      <Configuration>Debug with Mathematica</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug with Mathematica|x64">
+      <Configuration>Debug with Mathematica</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release with Mathematica|Win32">
+      <Configuration>Release with Mathematica</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release with Mathematica|x64">
+      <Configuration>Release with Mathematica</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{123BD622-918C-496A-9D63-532CCFAE62F7}</ProjectGuid>
+    <RootNamespace>femm</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.23107.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'">
+    <OutDir>.\femm___Win32_Debug_with_Mathematica\</OutDir>
+    <IntDir>.\femm___Win32_Debug_with_Mathematica\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'">
+    <OutDir>.\femm___Win32_Release_with_Mathematica\</OutDir>
+    <IntDir>.\femm___Win32_Release_with_Mathematica\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\femm___Win32_Debug_with_Mathematica/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;MATHLINK;WINVER=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\femm___Win32_Debug_with_Mathematica/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\femm___Win32_Debug_with_Mathematica/</AssemblerListingLocation>
+      <ObjectFileName>.\femm___Win32_Debug_with_Mathematica/</ObjectFileName>
+      <ProgramDataBaseFileName>.\femm___Win32_Debug_with_Mathematica/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>c:\Program Files\Microsoft Visual Studio\VC98\Lib\ml32i2m.lib;..\liblua\Debug\liblua.lib;..\ResizableLib\debug\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug/femm.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\femm___Win32_Debug_with_Mathematica/femm.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\femm___Win32_Debug_with_Mathematica/femm.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\femm___Win32_Debug_with_Mathematica/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>.\femm___Win32_Debug_with_Mathematica/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;MATHLINK;WINVER=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\femm___Win32_Debug_with_Mathematica/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\femm___Win32_Debug_with_Mathematica/</AssemblerListingLocation>
+      <ObjectFileName>.\femm___Win32_Debug_with_Mathematica/</ObjectFileName>
+      <ProgramDataBaseFileName>.\femm___Win32_Debug_with_Mathematica/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>c:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\lib\amd64\ml64i2m.lib;..\liblua\x64\Debug\liblua.lib;..\ResizableLib\x64\debug\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug64/femm_math.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\femm___Win32_Debug_with_Mathematica/femm.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\femm___Win32_Debug_with_Mathematica/femm.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\femm___Win32_Debug_with_Mathematica/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Release/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Release/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>..\liblua\Release\liblua.lib;..\ResizableLib\Release\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Release/femm.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/femm_nomath.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Release/femm_nomath.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>.\Release/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;WINVER=0x0501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Release/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>..\liblua\x64\Release\liblua.lib;..\ResizableLib\x64\Release\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Release64/femm.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\Release/femm_nomath.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Release/femm_nomath.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\femm___Win32_Release_with_Mathematica/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;MATHLINK;WINVER=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\femm___Win32_Release_with_Mathematica/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\femm___Win32_Release_with_Mathematica/</AssemblerListingLocation>
+      <ObjectFileName>.\femm___Win32_Release_with_Mathematica/</ObjectFileName>
+      <ProgramDataBaseFileName>.\femm___Win32_Release_with_Mathematica/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>C:\Program Files\Wolfram Research\Mathematica\7.0\SystemFiles\Links\MathLink\DeveloperKit\Windows\CompilerAdditions\mldev32\lib\ml32i2m.lib;..\liblua\Release\liblua.lib;..\ResizableLib\Release\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Release/femm_math.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\femm___Win32_Release_with_Mathematica/femm_math.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\femm___Win32_Release_with_Mathematica/femm_math.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\femm___Win32_Release_with_Mathematica/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>.\femm___Win32_Release_with_Mathematica/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;MATHLINK;WINVER=0x0500;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\femm___Win32_Release_with_Mathematica/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\femm___Win32_Release_with_Mathematica/</AssemblerListingLocation>
+      <ObjectFileName>.\femm___Win32_Release_with_Mathematica/</ObjectFileName>
+      <ProgramDataBaseFileName>.\femm___Win32_Release_with_Mathematica/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d:\Program Files\Microsoft Visual Studio 9.0\VC\lib\amd64\ml64i2m.lib;..\liblua\x64\Release\liblua.lib;..\ResizableLib\x64\Release\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Release64/femm_math.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <ProgramDatabaseFile>.\femm___Win32_Release_with_Mathematica/femm_math.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\femm___Win32_Release_with_Mathematica/femm_math.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\femm___Win32_Release_with_Mathematica/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>Win32</TargetEnvironment>
+      <TypeLibraryName>.\Debug/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Debug/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>..\liblua\Debug\liblua.lib;..\ResizableLib\debug\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug/femm.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/femm.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Debug/femm.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <TargetEnvironment>X64</TargetEnvironment>
+      <TypeLibraryName>.\Debug/femm.tlb</TypeLibraryName>
+      <HeaderFileName />
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;WINVER=0x0501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Debug/femm.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>..\liblua\x64\Debug\liblua.lib;..\ResizableLib\x64\debug\ResizableLib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug64/femm.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>.\Debug/femm.pdb</ProgramDatabaseFile>
+      <GenerateMapFile>true</GenerateMapFile>
+      <MapFileName>.\Debug/femm.map</MapFileName>
+      <SubSystem>Windows</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <DataExecutionPrevention />
+      <TargetMachine>MachineX64</TargetMachine>
+    </Link>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/femm.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ActiveFEMM.cpp" />
+    <ClCompile Include="ArcDlg.cpp" />
+    <ClCompile Include="BdryDlg.cpp" />
+    <ClCompile Include="bd_BdryDlg.cpp" />
+    <ClCompile Include="bd_CircProp.cpp" />
+    <ClCompile Include="bd_libdlg.cpp" />
+    <ClCompile Include="bd_MatDlg.cpp" />
+    <ClCompile Include="bd_movecopy.cpp" />
+    <ClCompile Include="bd_NodeProp.cpp" />
+    <ClCompile Include="bd_nosebl.cpp" />
+    <ClCompile Include="bd_OpArcSegDlg.cpp" />
+    <ClCompile Include="bd_OpBlkDlg.cpp" />
+    <ClCompile Include="bd_OpNodeDlg.cpp" />
+    <ClCompile Include="bd_OpSegDlg.cpp" />
+    <ClCompile Include="bd_Pref.cpp" />
+    <ClCompile Include="bd_probdlg.cpp" />
+    <ClCompile Include="bd_PtProp.cpp" />
+    <ClCompile Include="bd_writepoly.cpp" />
+    <ClCompile Include="beladrawDoc.cpp" />
+    <ClCompile Include="beladrawLua.cpp" />
+    <ClCompile Include="beladrawView.cpp" />
+    <ClCompile Include="belaviewDoc.cpp" />
+    <ClCompile Include="belaviewLua.cpp" />
+    <ClCompile Include="belaviewView.cpp" />
+    <ClCompile Include="BendContourDlg.cpp" />
+    <ClCompile Include="BHData.cpp" />
+    <ClCompile Include="BHDatafile.cpp" />
+    <ClCompile Include="bhplot.cpp" />
+    <ClCompile Include="BlockInt.cpp" />
+    <ClCompile Include="bv_BlockInt.cpp" />
+    <ClCompile Include="bv_CircDlg.cpp" />
+    <ClCompile Include="bv_CplotDlg2.cpp" />
+    <ClCompile Include="bv_DPlotDlg2.cpp" />
+    <ClCompile Include="bv_LIntDlg.cpp" />
+    <ClCompile Include="bv_makemask.cpp" />
+    <ClCompile Include="bv_Pref.cpp" />
+    <ClCompile Include="bv_problem.cpp" />
+    <ClCompile Include="bv_VPlotDlg.cpp" />
+    <ClCompile Include="bv_XYPlotDlg.cpp" />
+    <ClCompile Include="CDRAWDOC.CPP" />
+    <ClCompile Include="CDRAWLUA.CPP" />
+    <ClCompile Include="cdrawView.cpp" />
+    <ClCompile Include="cd_BdryDlg.cpp" />
+    <ClCompile Include="cd_CircProp.cpp" />
+    <ClCompile Include="cd_libdlg.cpp" />
+    <ClCompile Include="cd_MatDlg.cpp" />
+    <ClCompile Include="cd_movecopy.cpp" />
+    <ClCompile Include="cd_NodeProp.cpp" />
+    <ClCompile Include="cd_nosebl.cpp" />
+    <ClCompile Include="cd_OpArcSegDlg.cpp" />
+    <ClCompile Include="cd_OpBlkDlg.cpp" />
+    <ClCompile Include="cd_OpNodeDlg.cpp" />
+    <ClCompile Include="cd_OpSegDlg.cpp" />
+    <ClCompile Include="CD_PREF.CPP" />
+    <ClCompile Include="cd_probdlg.cpp" />
+    <ClCompile Include="cd_PtProp.cpp" />
+    <ClCompile Include="cd_writepoly.cpp" />
+    <ClCompile Include="ChildFrm.cpp" />
+    <ClCompile Include="CircDlg.cpp" />
+    <ClCompile Include="CircProp.cpp" />
+    <ClCompile Include="CopyDlg.cpp" />
+    <ClCompile Include="CPlotDlg.cpp" />
+    <ClCompile Include="CplotDlg2.cpp" />
+    <ClCompile Include="CVIEWDOC.CPP" />
+    <ClCompile Include="CVIEWLUA.CPP" />
+    <ClCompile Include="cviewView.cpp" />
+    <ClCompile Include="cv_BlockInt.cpp" />
+    <ClCompile Include="cv_CircDlg.cpp" />
+    <ClCompile Include="cv_CplotDlg2.cpp" />
+    <ClCompile Include="cv_DPlotDlg2.cpp" />
+    <ClCompile Include="cv_LIntDlg.cpp" />
+    <ClCompile Include="cv_makemask.cpp" />
+    <ClCompile Include="CV_PREF.CPP" />
+    <ClCompile Include="cv_problem.cpp" />
+    <ClCompile Include="cv_VPlotDlg.cpp" />
+    <ClCompile Include="cv_XYPlotDlg.cpp" />
+    <ClCompile Include="DXFImport.cpp" />
+    <ClCompile Include="EnterPt.cpp" />
+    <ClCompile Include="ExteriorProps.cpp" />
+    <ClCompile Include="femm.cpp" />
+    <ClCompile Include="FemmeDoc.cpp" />
+    <ClCompile Include="femmeLua.cpp" />
+    <ClCompile Include="FemmeView.cpp" />
+    <ClCompile Include="femmplotDoc.cpp" />
+    <ClCompile Include="femmplotView.cpp" />
+    <ClCompile Include="FemmviewDoc.cpp" />
+    <ClCompile Include="femmviewLua.cpp" />
+    <ClCompile Include="FemmviewView.cpp" />
+    <ClCompile Include="fe_libdlg.cpp" />
+    <ClCompile Include="fullmatrix.cpp" />
+    <ClCompile Include="GapIntegral.cpp" />
+    <ClCompile Include="GapPlotDlg.cpp" />
+    <ClCompile Include="GeneralPrefs.cpp" />
+    <ClCompile Include="GRIDDLG.CPP" />
+    <ClCompile Include="GridMod.cpp" />
+    <ClCompile Include="GroupNumber.cpp" />
+    <ClCompile Include="HDRAWDOC.CPP" />
+    <ClCompile Include="HDRAWLUA.CPP" />
+    <ClCompile Include="hdrawView.cpp" />
+    <ClCompile Include="hd_BdryDlg.cpp" />
+    <ClCompile Include="hd_CircProp.cpp" />
+    <ClCompile Include="hd_libdlg.cpp" />
+    <ClCompile Include="hd_MatDlg.cpp" />
+    <ClCompile Include="hd_movecopy.cpp" />
+    <ClCompile Include="hd_NodeProp.cpp" />
+    <ClCompile Include="hd_nosebl.cpp" />
+    <ClCompile Include="hd_OpArcSegDlg.cpp" />
+    <ClCompile Include="hd_OpBlkDlg.cpp" />
+    <ClCompile Include="hd_OpNodeDlg.cpp" />
+    <ClCompile Include="hd_OpSegDlg.cpp" />
+    <ClCompile Include="HD_PREF.CPP" />
+    <ClCompile Include="hd_probdlg.cpp" />
+    <ClCompile Include="hd_PtProp.cpp" />
+    <ClCompile Include="hd_writepoly.cpp" />
+    <ClCompile Include="hviewDoc.cpp" />
+    <ClCompile Include="hviewLua.cpp" />
+    <ClCompile Include="hviewView.cpp" />
+    <ClCompile Include="hv_BlockInt.cpp" />
+    <ClCompile Include="hv_CircDlg.cpp" />
+    <ClCompile Include="hv_CplotDlg2.cpp" />
+    <ClCompile Include="hv_DPlotDlg2.cpp" />
+    <ClCompile Include="hv_LIntDlg.cpp" />
+    <ClCompile Include="HV_PREF.CPP" />
+    <ClCompile Include="hv_problem.cpp" />
+    <ClCompile Include="hv_VPlotDlg.cpp" />
+    <ClCompile Include="hv_XYPlotDlg.cpp" />
+    <ClCompile Include="KbdZoom.cpp" />
+    <ClCompile Include="KCurve.cpp" />
+    <ClCompile Include="LibFolderInfo.cpp" />
+    <ClCompile Include="LIntDlg.cpp" />
+    <ClCompile Include="LuaConsoleDlg.cpp" />
+    <ClCompile Include="luaDDX.cpp" />
+    <ClCompile Include="LuaEdit.cpp" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MakeABCDlg.cpp" />
+    <ClCompile Include="makemask.cpp" />
+    <ClCompile Include="MaskProgress.cpp" />
+    <ClCompile Include="MatDlg.cpp" />
+    <ClCompile Include="MDITabs.cpp" />
+    <ClCompile Include="MirrorDlg.cpp" />
+    <ClCompile Include="MOVECOPY.CPP" />
+    <ClCompile Include="MyCommandLineInfo.cpp" />
+    <ClCompile Include="MyMsgBox.cpp" />
+    <ClCompile Include="MyRecentFileList.cpp" />
+    <ClCompile Include="MyTabCtrl.cpp" />
+    <ClCompile Include="NewDocDlg.cpp" />
+    <ClCompile Include="NodeProp.cpp" />
+    <ClCompile Include="NOSEBL.CPP" />
+    <ClCompile Include="OpArcSegDlg.cpp" />
+    <ClCompile Include="OpBlkDlg.cpp" />
+    <ClCompile Include="OpGrp.cpp" />
+    <ClCompile Include="OpNodeDlg.cpp" />
+    <ClCompile Include="OpSegDlg.cpp" />
+    <ClCompile Include="OutBox.cpp" />
+    <ClCompile Include="Pref.cpp" />
+    <ClCompile Include="Preferences.cpp" />
+    <ClCompile Include="probdlg.cpp" />
+    <ClCompile Include="Problem.cpp" />
+    <ClCompile Include="PromptBox.cpp" />
+    <ClCompile Include="PtProp.cpp" />
+    <ClCompile Include="ScaleDlg.cpp" />
+    <ClCompile Include="spars.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="TKDatafile.cpp" />
+    <ClCompile Include="viewpref.cpp" />
+    <ClCompile Include="VPlotDlg.cpp" />
+    <ClCompile Include="writepoly.cpp" />
+    <ClCompile Include="Xyplot.cpp" />
+    <ClCompile Include="XYPlotDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActiveFEMM.h" />
+    <ClInclude Include="ArcDlg.h" />
+    <ClInclude Include="BdryDlg.h" />
+    <ClInclude Include="bd_BdryDlg.h" />
+    <ClInclude Include="bd_CircProp.h" />
+    <ClInclude Include="bd_libdlg.h" />
+    <ClInclude Include="bd_MatDlg.h" />
+    <ClInclude Include="bd_NodeProp.h" />
+    <ClInclude Include="bd_nosebl.h" />
+    <ClInclude Include="bd_OpArcSegDlg.h" />
+    <ClInclude Include="bd_OpBlkDlg.h" />
+    <ClInclude Include="bd_OpNodeDlg.h" />
+    <ClInclude Include="bd_OpSegDlg.h" />
+    <ClInclude Include="bd_Pref.h" />
+    <ClInclude Include="bd_probdlg.h" />
+    <ClInclude Include="bd_PtProp.h" />
+    <ClInclude Include="beladrawDoc.h" />
+    <ClInclude Include="beladrawView.h" />
+    <ClInclude Include="belaviewDoc.h" />
+    <ClInclude Include="belaviewView.h" />
+    <ClInclude Include="BendContourDlg.h" />
+    <ClInclude Include="BHData.h" />
+    <ClInclude Include="BHDatafile.h" />
+    <ClInclude Include="bhplot.h" />
+    <ClInclude Include="BlockInt.h" />
+    <ClInclude Include="bv_BlockInt.h" />
+    <ClInclude Include="bv_CircDlg.h" />
+    <ClInclude Include="bv_CplotDlg2.h" />
+    <ClInclude Include="bv_DPlotDlg2.h" />
+    <ClInclude Include="bv_LIntDlg.h" />
+    <ClInclude Include="bv_Pref.h" />
+    <ClInclude Include="bv_problem.h" />
+    <ClInclude Include="bv_VPlotDlg.h" />
+    <ClInclude Include="bv_XYPlotDlg.h" />
+    <ClInclude Include="CDRAWDOC.H" />
+    <ClInclude Include="cdrawView.h" />
+    <ClInclude Include="cd_BdryDlg.h" />
+    <ClInclude Include="cd_CircProp.h" />
+    <ClInclude Include="cd_libdlg.h" />
+    <ClInclude Include="cd_MatDlg.h" />
+    <ClInclude Include="cd_NodeProp.h" />
+    <ClInclude Include="cd_nosebl.h" />
+    <ClInclude Include="cd_OpArcSegDlg.h" />
+    <ClInclude Include="cd_OpBlkDlg.h" />
+    <ClInclude Include="cd_OpNodeDlg.h" />
+    <ClInclude Include="cd_OpSegDlg.h" />
+    <ClInclude Include="CD_PREF.H" />
+    <ClInclude Include="cd_probdlg.h" />
+    <ClInclude Include="cd_PtProp.h" />
+    <ClInclude Include="ChildFrm.h" />
+    <ClInclude Include="CircDlg.h" />
+    <ClInclude Include="CircProp.h" />
+    <ClInclude Include="COMPLEX.H" />
+    <ClInclude Include="CopyDlg.h" />
+    <ClInclude Include="CPlotDlg.h" />
+    <ClInclude Include="CplotDlg2.h" />
+    <ClInclude Include="CVIEWDOC.H" />
+    <ClInclude Include="cviewView.h" />
+    <ClInclude Include="cv_BlockInt.h" />
+    <ClInclude Include="cv_CircDlg.h" />
+    <ClInclude Include="cv_CplotDlg2.h" />
+    <ClInclude Include="cv_DPlotDlg2.h" />
+    <ClInclude Include="cv_LIntDlg.h" />
+    <ClInclude Include="CV_PREF.H" />
+    <ClInclude Include="cv_problem.h" />
+    <ClInclude Include="cv_VPlotDlg.h" />
+    <ClInclude Include="cv_XYPlotDlg.h" />
+    <ClInclude Include="DPlotDlg1.h" />
+    <ClInclude Include="DPlotDlg2.h" />
+    <ClInclude Include="DXFImport.h" />
+    <ClInclude Include="EnterPt.h" />
+    <ClInclude Include="ExteriorProps.h" />
+    <ClInclude Include="femm.h" />
+    <ClInclude Include="FemmeDoc.h" />
+    <ClInclude Include="FemmeView.h" />
+    <ClInclude Include="femmplotDoc.h" />
+    <ClInclude Include="femmplotView.h" />
+    <ClInclude Include="FemmviewDoc.h" />
+    <ClInclude Include="FemmviewView.h" />
+    <ClInclude Include="fe_libdlg.h" />
+    <ClInclude Include="fullmatrix.h" />
+    <ClInclude Include="GapIntegral.h" />
+    <ClInclude Include="GapPlotDlg.h" />
+    <ClInclude Include="GeneralPrefs.h" />
+    <ClInclude Include="GRIDDLG.H" />
+    <ClInclude Include="GridMod.h" />
+    <ClInclude Include="GroupNumber.h" />
+    <ClInclude Include="HDRAWDOC.H" />
+    <ClInclude Include="hdrawView.h" />
+    <ClInclude Include="hd_BdryDlg.h" />
+    <ClInclude Include="hd_CircProp.h" />
+    <ClInclude Include="hd_libdlg.h" />
+    <ClInclude Include="hd_MatDlg.h" />
+    <ClInclude Include="hd_NodeProp.h" />
+    <ClInclude Include="hd_nosebl.h" />
+    <ClInclude Include="hd_OpArcSegDlg.h" />
+    <ClInclude Include="hd_OpBlkDlg.h" />
+    <ClInclude Include="hd_OpNodeDlg.h" />
+    <ClInclude Include="hd_OpSegDlg.h" />
+    <ClInclude Include="HD_PREF.H" />
+    <ClInclude Include="hd_probdlg.h" />
+    <ClInclude Include="hd_PtProp.h" />
+    <ClInclude Include="hviewDoc.h" />
+    <ClInclude Include="hviewView.h" />
+    <ClInclude Include="hv_BlockInt.h" />
+    <ClInclude Include="hv_CircDlg.h" />
+    <ClInclude Include="hv_CplotDlg2.h" />
+    <ClInclude Include="hv_DPlotDlg2.h" />
+    <ClInclude Include="hv_LIntDlg.h" />
+    <ClInclude Include="HV_PREF.H" />
+    <ClInclude Include="hv_problem.h" />
+    <ClInclude Include="hv_VPlotDlg.h" />
+    <ClInclude Include="hv_XYPlotDlg.h" />
+    <ClInclude Include="KbdZoom.h" />
+    <ClInclude Include="KCurve.h" />
+    <ClInclude Include="LibFolderInfo.h" />
+    <ClInclude Include="LIntDlg.h" />
+    <ClInclude Include="LuaConsoleDlg.h" />
+    <ClInclude Include="luaDDX.h" />
+    <ClInclude Include="LuaEdit.h" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MakeABCDlg.h" />
+    <ClInclude Include="MaskProgress.h" />
+    <ClInclude Include="MatDlg.h" />
+    <ClInclude Include="MDITabs.h" />
+    <ClInclude Include="MirrorDlg.h" />
+    <ClInclude Include="MyCommandLineInfo.h" />
+    <ClInclude Include="MyMsgBox.h" />
+    <ClInclude Include="MyRecentFileList.h" />
+    <ClInclude Include="MyTabCtrl.h" />
+    <ClInclude Include="NewDocDlg.h" />
+    <ClInclude Include="NodeProp.h" />
+    <ClInclude Include="NOSEBL.H" />
+    <ClInclude Include="OpArcSegDlg.h" />
+    <ClInclude Include="OpBlkDlg.h" />
+    <ClInclude Include="OpGrp.h" />
+    <ClInclude Include="OpNodeDlg.h" />
+    <ClInclude Include="OpSegDlg.h" />
+    <ClInclude Include="OutBox.h" />
+    <ClInclude Include="Pref.h" />
+    <ClInclude Include="Preferences.h" />
+    <ClInclude Include="probdlg.h" />
+    <ClInclude Include="Problem.h" />
+    <ClInclude Include="PromptBox.h" />
+    <ClInclude Include="PtProp.h" />
+    <ClInclude Include="ResizableDialog.h" />
+    <ClInclude Include="ResizableGrip.h" />
+    <ClInclude Include="ResizableLayout.h" />
+    <ClInclude Include="ResizableMinMax.h" />
+    <ClInclude Include="ResizableState.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ScaleDlg.h" />
+    <ClInclude Include="spars.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="TKDatafile.h" />
+    <ClInclude Include="viewpref.h" />
+    <ClInclude Include="VPlotDlg.h" />
+    <ClInclude Include="Xyplot.h" />
+    <ClInclude Include="XYPlotDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="femm.odl">
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'">..\Debug/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'">..\Debug/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">..\Debug/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">..\Debug/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'">..\Release/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'">..\Release/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">..\Release/femm.tlb</TypeLibraryName>
+      <TargetEnvironment Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Win32</TargetEnvironment>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">..\Release/femm.tlb</TypeLibraryName>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="femm.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug with Mathematica|x64'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release with Mathematica|x64'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OUTDIR);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\bmp00001.bmp" />
+    <Image Include="res\bmp00002.bmp" />
+    <Image Include="res\bmp00003.bmp" />
+    <Image Include="res\bmp00004.bmp" />
+    <Image Include="res\bmp00005.bmp" />
+    <Image Include="res\bmp00006.bmp" />
+    <Image Include="res\bmp00007.bmp" />
+    <Image Include="res\bmp00013.bmp" />
+    <Image Include="res\femmetyp.bmp" />
+    <Image Include="res\femmtype.bmp" />
+    <Image Include="res\femmview.bmp" />
+    <Image Include="res\hdrawtyp.bmp" />
+    <Image Include="res\hviewtyp.bmp" />
+    <Image Include="res\idr_beladrawtype.ico" />
+    <Image Include="res\idr_belaviewtype.ico" />
+    <Image Include="res\idr_cdrawtype.ico" />
+    <Image Include="res\idr_cviewtype.ico" />
+    <Image Include="res\idr_femmetype.ico" />
+    <Image Include="res\idr_femmplottype.ico" />
+    <Image Include="res\idr_femmviewtype.ico" />
+    <Image Include="res\idr_hdra.ico" />
+    <Image Include="res\idr_hdrawtype.ico" />
+    <Image Include="res\idr_hvie.ico" />
+    <Image Include="res\idr_hviewtype.ico" />
+    <Image Include="res\idr_mainframe.ico" />
+    <Image Include="res\left1.bmp" />
+    <Image Include="res\left2.bmp" />
+    <Image Include="res\main1.bmp" />
+    <Image Include="res\main2.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+    <Image Include="res\tree.bmp" />
+    <Image Include="res\viewtool.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="femm.reg" />
+    <None Include="res\femm.rc2" />
+    <None Include="res\femm.tlb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\liblua\liblua.vcxproj">
+      <Project>{1d7d14a0-1b59-4d05-9b18-a9a18cdd6e14}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\ResizableLib\ResizableLib.vcxproj">
+      <Project>{6c165729-ec2b-4804-9a8e-40297abd77b2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="femm.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

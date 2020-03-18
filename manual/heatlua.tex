@@ -1,0 +1,826 @@
+﻿\section{Heat Flow Preprocessor Lua Command Set}
+
+A number of different commands are available in the preprocessor.
+Two naming conventions can be used: one which separates words in
+the command names by underscores, and one that eliminates the
+underscores.
+
+\subsection{Object Add/Remove Commands}
+\begin{itemize}
+\item {\tt hi\_addnode(x,y)} Add a new node at x,y
+
+\item {\tt hi\_addsegment(x1,y1,x2,y2)} Add a new line segment from node closest to
+(x1,y1) to node closest to (x2,y2)
+
+\item {\tt hi\_addblocklabel(x,y)} Add a new block label at (x,y)
+
+\item {\tt hi\_addarc(x1,y1,x2,y2,angle,maxseg)} Add a new arc segment from the
+nearest node to (x1,y1) to the nearest node to (x2,y2) with angle `angle'
+divided into `maxseg' segments.
+
+\item {\tt hi\_deleteselected} Delete all selected objects.
+
+\item {\tt hi\_deleteselectednodes} Delete selected nodes.
+
+\item {\tt hi\_deleteselectedlabels} Delete selected block labels.
+
+\item {\tt hi\_deleteselectedsegments} Delete selected segments.
+
+\item {\tt hi\_deleteselectedarcsegments} Delete selects arcs.
+\end{itemize}
+
+
+\subsection{Geometry Selection Commands}
+
+\begin{itemize}
+\item {\tt hi\_clearselected()} Clear all selected nodes, blocks, segments and arc
+segments.
+
+\item {\tt hi\_selectsegment(x,y)} Select the line segment closest to (x,y)
+
+\item {\tt hi\_selectnode(x,y)} Select the node closest to (x,y).
+Returns the coordinates of the selected node.
+
+\item {\tt hi\_selectlabel(x,y)} Select the label closet to (x,y).
+Returns the coordinates of the selected label.
+
+\item {\tt hi\_selectarcsegment(x,y)} Select the arc segment closest to (x,y)
+
+\item {\tt hi\_selectgroup(n)} Select the n$^{th}$ group of nodes, segments, arc
+segments and block labels. This function will clear all previously selected
+elements and leave the edit mode in 4 (group)
+
+\item{\tt hi\_selectcircle(x,y,R,editmode)} selects objects within a circle of radius
+R centered at (x,y).  If only x, y, and R paramters are given, the current
+edit mode is used.  If the editmode parameter is used, 0 denotes nodes, 2
+denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 specifies
+that all entity types are to be selected.
+
+\item{\tt hi\_selectrectangle(x1,y1,x2,y2,editmode)} selects objects within a rectangle
+defined by points (x1,y1) and (x2,y2). If no editmode parameter is supplied,
+the current edit mode is used.  If the editmode parameter is used, 0 denotes
+nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 
+specifies that all entity types are to be selected.
+\end{itemize}
+
+
+\subsection{Object Labeling Commands}
+
+\begin{itemize}
+\item {\tt hi\_setnodeprop("propname",groupno, "inconductor")} Set the selected
+nodes to have the nodal property \texttt{"propname"} and group
+number \texttt{groupno}. The \texttt{"inconductor"} string
+specifies which conductor the node belongs to. If the node doesn't
+belong to a named conductor, this parameter can be set to
+\texttt{"<None>"}.
+
+\item {\tt hi\_setblockprop("blockname", automesh, meshsize, group)} Set the
+selected block labels to have the properties:
+
+Block property \texttt{"blockname"}.
+
+\texttt{automesh}: 0 = mesher defers to mesh size constraint defined in
+\texttt{meshsize}, 1 = mesher automatically chooses the mesh density.
+
+\texttt{meshsize}: size constraint on the mesh in the block marked by this
+label.
+
+A member of group number \texttt{group}
+
+\item {\tt hi\_setsegmentprop("propname", elementsize, automesh, hide, group,
+"inconductor")} Set the select segments to have:
+
+Boundary property \texttt{"propname"}
+
+Local element size along segment no greater than
+\texttt{elementsize}
+
+\texttt{automesh}: 0 = mesher defers to the element constraint defined by
+\texttt{elementsize}, 1 = mesher automatically chooses mesh size along the
+selected segments
+
+\texttt{hide}: 0 = not hidden in post-processor, 1 == hidden in post
+processor
+
+A member of group number \texttt{group}
+
+A member of the conductor specified by the string
+\texttt{"inconductor".} If the segment is not part of a conductor,
+this parameter can be specified as
+\texttt{"<None>"}.
+
+\item {\tt hi\_setarcsegmentprop(maxsegdeg, "propname", hide, group,
+"inconductor")} Set the selected arc segments to:
+
+Meshed with elements that span at most \texttt{maxsegdeg} degrees
+per element
+
+Boundary property \texttt{"propname"}
+
+\texttt{hide}: 0 = not hidden in post-processor, 1 == hidden in post
+processor
+
+A member of group number \texttt{group}
+
+A member of the conductor specified by the string
+\texttt{"inconductor".} If the segment is not part of a conductor,
+this parameter can be specified as
+\texttt{"<None>"}.
+
+\item{\tt hi\_setgroup(n)} Set the group associated of the selected items to n
+
+\end{itemize}
+
+\subsection{Problem Commands}
+
+\begin{itemize}
+\item {\tt hi\_probdef(units,type,precision,(depth),(minangle),(prevsoln),(timestep))} changes the problem
+definition. The \texttt{units} parameter specifies the units used
+for measuring length in the problem domain. Valid \texttt{"units"}
+entries are
+\texttt{"inches"}, \texttt{"millimeters"}, \texttt{"centimeters"},
+\texttt{"mils"}, \texttt{"meters}, and \texttt{"micrometers"}. Set
+\texttt{problemtype} to \texttt{"planar"} for a 2-D planar problem, or to
+\texttt{"axi"} for an axisymmetric problem. The \texttt{precision} parameter
+dictates the precision required by the solver. For example, entering
+\texttt{1.E-8} requires the RMS of the residual to be less than 10$^{ - 8}$.
+A fourth parameter, representing the depth of the problem in the
+into-the-page direction for 2-D planar problems, can also be specified
+for planar problems. A fifth parameter represents the minimum angle constraint sent to the mesh generator.
+The sixth parameter indicates the solution from the previous time step
+to be used in time-transient problems. The seventh parameter is the time step assumed
+for time transient problems.
+
+\item {\tt hi\_analyze(flag)} runs \texttt{hsolv} to solve the problem. The
+\texttt{flag} parameter controls whether the hsolve window is visible or
+minimized. For a visible window, either specify no value for
+\texttt{flag} or specify 0. For a minimized window, \texttt{flag}
+should be set to 1.
+
+\item {\tt hi\_loadsolution()} loads and displays the solution corresponding to the
+current geometry.
+
+\item {\tt hi\_setfocus("documentname")} Switches the
+heat flow input file upon which Lua commands are to act. If
+more than one heat flow input file is being edited at a time,
+this command can be used to switch between files so that the
+mutiple files can be operated upon programmatically via Lua. {\tt
+documentname} should contain the name of the desired document as
+it appears on the window's title bar.
+
+\item {\tt hi\_saveas("filename")} saves the file with name
+\texttt{"filename"}. Note if you use a path you must use two backslashes
+{\em e.g.} \verb+c:\\temp\\myfile.feh+
+
+\end{itemize}
+
+\subsection{Mesh Commands}
+
+\begin{itemize}
+\item \texttt{hi\_createmesh()} runs triangle to create a mesh. Note that this is not
+a necessary precursor of performing an analysis, as
+\texttt{hi\_analyze()} will make sure the mesh is up to date before
+running an analysis. The number of elements in the mesh is pushed
+back onto the lua stack.
+
+\item \texttt{hi\_showmesh()} toggles the flag that shows or hides the mesh.
+
+\item \texttt{hi\_purgemesh()} clears the mesh out of both the screen and memory.
+\end{itemize}
+
+\subsection{Editing Commands}
+\begin{itemize}
+
+\item \texttt{hi\_copyrotate(bx, by, angle, copies, (editaction) )}
+
+\texttt{bx, by} -- base point for rotation
+
+\texttt{angle} -- angle by which the selected objects are incrementally
+shifted to make each copy. \texttt{angle} is measured in degrees.
+
+\texttt{copies} -- number of copies to be produced from the selected
+objects.
+
+\texttt{editaction} 0 --nodes, 1 -- lines (segments), 2 --block labels, 3 --
+arc segments, 4- group
+
+\item \texttt{hi\_copytranslate(dx, dy, copies, (editaction))}
+
+\texttt{dx,dy} -- distance by which the selected objects are incrementally
+shifted.
+
+\texttt{copies} -- number of copies to be produced from the selected
+objects.
+
+\texttt{editaction} 0 --nodes, 1 -- lines (segments), 2 --block labels, 3 --
+arc segments, 4- group
+
+\item{\tt�mi\_createradius(x,�y,�r)}�turns�a�corner�located�at�{\tt�(x,y)}�into�a�curve�of�radius�{\tt�r}.
+
+\item \texttt{hi\_moverotate(bx,by,shiftangle (editaction))}
+
+\texttt{bx, by} -- base point for rotation
+
+\texttt{shiftangle} -- angle in degrees by which the selected objects are
+rotated.
+
+\texttt{editaction} 0 --nodes, 1 -- lines (segments), 2 --block labels, 3 --
+arc segments, 4- group
+
+\item \texttt{hi\_movetranslate(dx,dy,(editaction))}
+
+\texttt{dx,dy} -- distance by which the selected objects are shifted.
+
+\texttt{editaction} 0 --nodes, 1 -- lines (segments), 2 --block labels, 3 --
+arc segments, 4- group
+
+\item \texttt{hi\_scale(bx,by,scalefactor,(editaction))}
+
+\texttt{bx, by} -- base point for scaling
+
+\texttt{scalefactor} -- a multiplier that determines how much the selected
+objects are scaled
+
+\texttt{editaction} 0 --nodes, 1 -- lines (segments), 2 --block labels, 3 --
+arc segments, 4- group
+
+\item \texttt{hi\_mirror(x1,y1,x2,y2,(editaction))} mirror the selected objects about
+a line passing through the points \texttt{(x1,y1)} and
+\texttt{(x2,y2)}. Valid \texttt{editaction} entries are 0 for
+nodes, 1 for lines (segments), 2 for block labels, 3 for arc
+segments, and 4 for groups.
+
+\item \texttt{hi\_seteditmode(editmode)} Sets the current editmode to:
+
+\texttt{"nodes"} -- nodes
+
+\texttt{"segments"} - line segments
+
+\texttt{"arcsegments"} - arc segments
+
+\texttt{"blocks"} - block labels
+
+\texttt{"group"} - selected group
+
+This command will affect all subsequent uses of the other editing
+commands, if they are used WITHOUT the \texttt{editaction}
+parameter.
+\end{itemize}
+
+\subsection{Zoom Commands}
+
+\begin{itemize}
+\item \texttt{hi\_zoomnatural()} zooms to a ``natural'' view with sensible extents.
+
+\item \texttt{hi\_zoomout()} zooms out by a factor of 50{\%}.
+
+\item \texttt{hi\_zoomin()} zoom in by a factor of 200{\%}.
+
+\item \texttt{hi\_zoom(x1,y1,x2,y2)} Set the display area to be from the bottom left
+corner specified by \texttt{(x1,y1}) to the top right corner
+specified by \texttt{(x2,y2)}.
+\end{itemize}
+
+\subsection{View Commands}
+\begin{itemize}
+\item \texttt{hi\_showgrid()} Show the grid points.
+
+\item \texttt{hi\_hidegrid()} Hide the grid points points.
+
+\item \texttt{hi\_gridsnap("flag")} Setting flag to ''on'' turns on snap to grid,
+setting flag to "off"turns off snap to grid.
+
+\item \texttt{hi\_setgrid(density,"type")} Change the grid spacing. The density
+parameter specifies the space between grid points, and the type
+parameter is set to \texttt{"cart"} for Cartesian coordinates or
+\texttt{"polar"} for polar coordinates.
+
+\item \texttt{hi\_refreshview()} Redraws the current view.
+
+\item{\tt hi\_minimize()} minimizes the active heat flow input view.
+
+\item{\tt hi\_maximize()} maximizes the active heat flow input view.
+
+\item{\tt hi\_restore()} restores the active heat flow input view from a
+ minimized or maximized state.
+
+\item{\tt hi\_resize(width,height)} resizes the active heat flow input
+ window client area to width $\times$ height.
+
+\end{itemize}
+
+
+\subsection{Object Properties}
+
+\begin{itemize}
+\item \texttt{hi\_getmaterial("materialname")} fetches the material specified by \texttt{materialname} 
+from the materials library.
+
+\item \texttt{hi\_addmaterial("materialname", kx, ky, qv, kt)} adds a new material with
+called \texttt{"materialname"} with the material properties:
+
+\texttt{kx} Thermal conductivity in the x- or r-direction.
+
+\texttt{ky} Thermal conductivity in the y- or z-direction.
+
+\texttt{qv} Volume heat generation density in units of W/m$^{3}$.
+
+\texttt{kt} Volumetric heat capacity in units of MJ/(m$^{3}$*K).
+
+\item \texttt{hi\_addpointprop("pointpropname",Tp,qp)} adds a new point property of
+name \texttt{"pointpropname"} with either a specified temperature
+\texttt{Tp} or a point heat generation density \texttt{qp} in units of W/m.
+
+\item \texttt{hi\_addboundprop("boundpropname", BdryFormat, Tset, qs, Tinf, h, beta)}
+ adds a new boundary property with name {\tt "boundpropname"}.
+\begin{itemize}
+\item For a ``Fixed Temperature'' type boundary condition, set the {\tt Tset} parameter to the
+desired temperature and all other parameters to zero.
+\item To obtain a ``Heat Flux'' type boundary condition, set {\tt qs} to be the heat flux density and
+{\tt BdryFormat} to 1. Set all other parameters to zero.
+\item To obtain a convection boundary condition, set {\tt h} to the desired heat transfer coefficient and
+{\tt Tinf} to the desired external temperature and set {\tt BdryFormat} to 2.
+\item For a Radiation boundary condition, set {\tt beta} equal to the desired emissivity and {\tt Tinf} to the 
+desired external temperature and set {\tt BdryFormat} to 3.
+\item For a ``Periodic'' boundary condition, set {\tt BdryFormat} to 4 and set all other
+parameters to zero.
+\item For an ``Anti-Perodic'' boundary condition, set {\tt BdryFormat} to 5 set all other
+parameters to zero.
+\end{itemize}
+
+\item \texttt{hi\_addconductorprop("conductorname", Tc, qc, conductortype)} adds a new
+conductor property with name \texttt{"conductorname"} with either a
+prescribed temperature or a prescribed total heat flux. Set the unused
+property to zero. The \texttt{conductortype} parameter is 0 for
+prescribed heat flux and 1 for prescribed temperature.
+
+\item \texttt{hi\_deletematerial("materialname")} deletes the material named
+\texttt{"materialname"}.
+
+\item \texttt{hi\_deleteboundprop("boundpropname")} deletes the boundary property
+named \texttt{"boundpropname"}.
+
+\item \texttt{hi\_deleteconductor("conductorname")} deletes the conductor named
+\texttt{conductorname}.
+
+\item \texttt{hi\_deletepointprop("pointpropname")} deletes the point property named
+\texttt{"pointpropname"}
+
+\item \texttt{hi\_modifymaterial("BlockName",propnum,value)} This function allows for
+modification of a material's properties without redefining the
+entire material (e.g. so that current can be modified from run to
+run). The material to be modified is specified by
+\texttt{"BlockName"}. The next parameter is the number of the
+property to be set. The last number is the value to be applied to
+the specified property. The various properties that can be modified
+are listed below:
+
+\begin{tabular}{lll}
+propnum & Symbol &  Description \\ \hline
+ 0 & \texttt{BlockName} & Name of the material \\
+ 1 & \texttt{kx} & x (or r) direction thermal conductivity \\
+ 2 & \texttt{ky} & y (or z) direction thermal conductivity \\
+ 3 & \texttt{qs} & Volume heat generation \\
+ 4 & \texttt{kt} & Volumetric heat capacity 
+\end{tabular}
+
+
+\item \texttt{hi\_modifyboundprop("BdryName",propnum,value) }This function allows for
+modification of a boundary property. The BC to be modified is specified by
+\texttt{"BdryName"}. The next parameter is the number of the property to be
+set. The last number is the value to be applied to the specified property.
+The various properties that can be modified are listed below:
+
+\begin{tabular}{lll}
+ \texttt{propnum} & Symbol & Description \\ \hline
+ 0 & \texttt{BdryName} & Name of boundary property \\ 
+ 1 & \texttt{BdryFormat} & Type of boundary condition:\\
+   &   &
+   \begin{tabular}{lll}
+   0 & = & Prescribed temperature \\
+   1 & = & Heat Flux \\
+   2 & = & Convection \\
+   3 & = & Radiation \\
+   4 & = & Periodic \\
+   5 & = & Antiperiodic
+   \end{tabular} \\
+ 2 & \texttt{Tset} & Fixed Temperature \\
+ 3 & \texttt{qs} & Prescribed heat flux density \\
+ 4 & \texttt{Tinf} & External temperature \\
+ 5 & \texttt{h} & Heat transfer coefficient \\
+ 6 & \texttt{beta} & Emissivity \\
+\end{tabular}
+
+\item \texttt{hi\_modifypointprop("PointName",propnum,value)} This function allows for
+modification of a point property. The point property to be modified
+is specified by \texttt{"PointName"}. The next parameter is the
+number of the property to be set. The last number is the value to
+be applied to the specified property. The various properties that
+can be modified are listed below:
+
+\begin{tabular}{lll}
+\texttt{propnum} & Symbol & Description \\ \hline
+ 0 & \texttt{PointName} & Name of the point property \\
+ 1 & \texttt{Tp} & Prescribed nodal temperature \\
+ 2 & \texttt{qp} & Point heat generation in W/m
+\end{tabular}
+
+\item \texttt{hi\_modifyconductorprop("ConductorName",propnum,value)} This function
+allows for modification of a conductor property. The conductor
+property to be modified is specified by \texttt{"ConductorName"}.
+The next parameter is the number of the property to be set. The
+last number is the value to be applied to the specified property.
+The various properties that can be modified are listed below:
+
+\begin{tabular}{lll}
+\texttt{propnum} & Symbol & Description \\ \hline
+  0 & \texttt{ConductorName} & Name of the conductor property \\
+  1 & \texttt{Tc} &  Conductor temperature \\
+  2 & \texttt{qc} &  Total conductor heat flux \\
+  3 & \texttt{ConductorType} & 0 = Prescribed heat flow, 1 = Prescribed temperature
+\end{tabular}
+
+\item \texttt{hi\_addtkpoint("materialname",T,k)} adds
+the point {\tt (T,k)} to the thermal conductivity vs. temperature curve for the material specified by
+{\tt "materialname"}.
+
+\item \texttt{hi\_cleartkpoints("materialname")} erases
+all of the thermal conductivity points that have been defined for the material named
+{\tt "materialname"}.
+
+\end{itemize}
+
+\subsection{Miscellaneous}
+
+\begin{itemize}
+\item \texttt{hi\_savebitmap("filename")} saves a bitmapped screenshot of the current
+view to the file specified by \texttt{"filename"}, subject to the
+\texttt{printf}-type formatting explained previously for the
+\texttt{hi\_saveas} command.
+
+\item \texttt{hi\_savemetafile("filename")} saves a metafile screenshot of the current
+view to the file specified by \texttt{"filename"}, subject to the
+\texttt{printf}-type formatting explained previously for the
+\texttt{hi\_saveas} command.
+
+\item \texttt{hi\_refreshview()} Redraws the current view.
+
+\item \texttt{hi\_close()} closes the preprocessor window and
+destroys the current document.
+
+\item \texttt{hi\_shownames(flag)} This function allow the user to display or hide the
+block label names on screen. To hide the block label names,
+\texttt{flag} should be 0. To display the names, the parameter
+should be set to 1.
+
+\item{\tt hi\_readdxf("filename")} This function imports a dxf file specified by {\tt "filename"}.
+
+\item{\tt hi\_savedxf("filename")} This function saves geometry information in a dxf file specified by {\tt "filename"}.
+
+\item{\tt hi\_defineouterspace(Zo,Ro,Ri)} defines
+an axisymmetric external region to be used in conjuction with the
+Kelvin Transformation method of modeling unbounded problems.  The
+{\tt Zo} parameter is the z-location of the origin of the outer region,
+the {\tt Ro} parameter is the radius of the outer region, and the {\tt
+Ri} parameter is the radius of the inner region ({\em i.e.} the region of
+interest). In the exterior region, the permeability varies as a function of
+distance from the origin of the external region.  These parameters
+are necessary to define the permeability variation in the external
+region.
+
+\item{\tt hi\_attachouterspace()} marks all
+selected block labels as members of the external region used for
+modeling unbounded axisymmetric problems via the Kelvin
+Transformation.
+
+\item{\tt hi\_detachouterspace()} undefines all selected block labels
+as members of the external region used for modeling unbounded axisymmetric
+problems via the Kelvin Transformation.
+
+\item{\tt hi\_attachdefault()} marks the
+selected block label as the default block label.  This block label
+is applied to any region that has not been explicitly labeled.
+
+\item{\tt hi\_detachdefault()} undefines the default
+attribute for the selected block labels.
+
+\item{\tt hi\_makeABC(n,R,x,y,bc)} creates a series of circular shells that emulate the
+impedance of an unbounded domain (i.e. an Inprovised Asymptotic Boundary
+Condition).  The {\tt n} parameter contains the number of shells to be used
+(should be between 1 and 10), {\tt R} is the radius of the solution domain, and
+{\tt (x,y)} denotes the center of the solution domain.  The {\tt bc} parameter should
+be specified as 0 for a Dirichlet outer edge or 1 for a Neumann outer edge.
+If the function is called without all the parameters, the function makes up
+reasonable values for the missing parameters. 
+
+\end{itemize}
+
+\section{Heat Flow Post Processor Command Set}
+
+There are a number of Lua scripting commands designed to operate in
+the postprocessor. As with the preprocessor commands, these
+commands can be used with either the underscore naming or with the
+no-underscore naming convention.
+
+\subsection{Data Extraction Commands}
+\begin{itemize}
+
+\item \texttt{ho\_lineintegral(type)} Calculate the line integral for the defined contour
+
+\begin{tabular}{ll}
+\texttt{type} & Integral \\ \hline
+ 0 & Temperature difference ($G \cdot t$) \\
+ 1 & Heat flux through the contour ($F \cdot n$) \\
+ 2 & Contour length \\
+ 3 & Average Temperature \\
+\end{tabular}
+
+This integral returns either 1 or 2 values, depending on the
+integral type, $e.g.:$
+
+\texttt{Ftot, Favg = ho\_lineintegral(2)}
+
+\item \texttt{ho\_blockintegral(type)} Calculate a block integral for the selected
+blocks
+
+\begin{tabular}{ll}
+\texttt{type} & Integral \\ \hline
+ 0 & Average $T$ over the block \\
+ 1 & Block Cross-section \\
+ 2 & Block Volume \\
+ 3 & Average $F$ over the block \\
+ 4 & Average $G$ over the block \\
+\end{tabular}
+
+Returns one or two floating point values as results, $e.g$.:
+
+\texttt{Gx, Gy = ho\_blockintegral(4)}
+
+\item \texttt{ho\_getpointvalues(X,Y)} Get the values associated with the point at x,y
+The return values, in order, are:
+
+\begin{tabular}{ll}
+\texttt{Symbol} &  Definition \\ \hline
+\texttt{V} & Temperature \\
+\texttt{Fx} & x- or r- direction component of heat flux density \\
+\texttt{Fy} & y- or z- direction component of heat flux density \\
+\texttt{Gx} & x- or r- direction component of temperature gradient \\
+\texttt{Gy} & y- or z- direction component of temperature gradient \\
+\texttt{kx} & x- or r- direction component of thermal conductivity \\
+\texttt{ky} & y- or z- direction component of thermal conductivity \\
+\end{tabular}
+
+Example: To catch all values at (0.01,0) use
+
+\texttt{T,Fx,Fy,Gx,Gy,kx,ky= ho\_getpointvalues(0.01,0) }
+
+\item \texttt{ho\_makeplot(PlotType,NumPoints,Filename,FileFormat) }Allows Lua access
+to the X-Y plot routines. If only PlotType or only PlotType and NumPoints
+are specified, the command is interpreted as a request to plot the requested
+plot type to the screen. If, in addition, the Filename parameter is
+specified, the plot is instead written to disk to the specified file name as
+an extended metafile. If the FileFormat parameter is also, the command is
+instead interpreted as a command to write the data to disk to the specfied
+file name, rather than display it to make a graphical plot. Valid entries
+for PlotType are:
+
+\begin{tabular}{ll}
+\texttt{PlotType} &  Definition \\ \hline
+ 0 & \texttt{V (Temperature)} \\
+ 1 & \texttt{$\vert$D$\vert$ (Magnitude of heat flux density)} \\
+ 2 & \texttt{D . n (Normal heat flux density)} \\
+ 3 & \texttt{D . t (Tangential heat flux density)} \\
+ 4 & \texttt{$\vert$E$\vert$ (Magnitude of field intensity)} \\
+ 5 & \texttt{E . n (Normal field intensity)} \\
+ 6 & \texttt{E . t (Tangential field intensity)}
+\end{tabular}
+
+\vspace*{8pt}
+Valid file formats are:
+
+\begin{tabular}{ll}
+\texttt{FileFormat} &  Definition  \\ \hline
+ 0 & \texttt{Multi-column text with legend } \\
+ 1 & \texttt{Multi-column text with no legend } \\
+ 2 & \texttt{Mathematica-style formatting}
+\end{tabular}
+
+For example, if one wanted to plot $V $ to the screen with 200 points evaluated
+to make the graph, the command would be: \newline
+\texttt{ho\_makeplot(0,200) } \newline
+If this plot were to be written to disk as a metafile, the command
+would be:\texttt{ } \newline
+\texttt{ho\_makeplot(0,200,"c:temp.emf")} \newline
+To write data instead of a plot to disk, the command would be of
+the form:\texttt{ } \newline
+\texttt{ho\_makeplot(0,200,"c:temp.txt",0)} \newline
+
+
+\item \texttt{ho\_getprobleminfo() }Returns info on problem description. Returns three
+values: the Problem type (0 for planar and 1 for axisymmetric); the depth
+assumed for planar problems in units of meters; and the length unit used to draw the
+problem in meters.
+
+\item \texttt{ho\_getconductorproperties("conductor")} Properties are returned for the
+conductor property named "conductor". Two values are returned: The temperature
+of the specified conductor, and the total heat flux through the specified
+conductor.
+\end{itemize}
+
+\subsection{Selection Commands}
+
+\begin{itemize}
+\item \texttt{ho\_seteditmode(mode) }Sets the mode of the postprocessor to point,
+contour, or area mode. Valid entries for mode are\texttt{ "point",
+"contour", }and\texttt{ "area". }
+
+\item \texttt{ho\_selectblock(x,y) }Select the block that contains point\texttt{
+(x,y).}
+
+\item \texttt{ho\_groupselectblock(n) }Selects all of the blocks that are labeled by
+block labels that are members of group n. If no number is specified
+({\em i.e.} \texttt{ho\_groupselectblock()}), all blocks are selected.
+
+\item \texttt{ho\_selectconductor("name")} Selects all nodes, segments, and arc
+segments that are part of the conductor specified by the string
+\texttt{("name")}. This command is used to select conductors for the
+purposes of the ``weighted stress tensor'' force and torque
+integrals, where the conductors are points or surfaces, rather than
+regions ({\em i.e.} can't be selected with \texttt{ho\_selectblock}).
+
+\item \texttt{ho\_addcontour(x,y) }Adds a contour point at\texttt{ (x,y). }If this is
+the first point then it starts a contour, if there are existing
+points the contour runs from the previous point to this point. The
+\texttt{ho\_addcontour }command has the same functionality as a
+right-button-click contour point addition when the program is
+running in interactive mode.\texttt{ }
+
+\item \texttt{ho\_bendcontour(angle,anglestep)} Replaces the straight line formed by
+the last two points in the contour by an arc that spans angle
+degrees. The arc is actually composed of many straight lines, each
+of which is constrained to span no more than anglestep degrees. The
+\texttt{angle} parameter can take on values from -180 to 180
+degrees. The \texttt{anglestep} parameter must be greater than
+zero. If there are less than two points defined in the contour,
+this command is ignored.
+
+\item \texttt{ho\_selectpoint(x,y)} Adds a contour point at the closest input point to
+\texttt{(x,y).} If the selected point and a previous selected points lie at
+the ends of an arcsegment, a contour is added that traces along the
+arcsegment. The \texttt{selectpoint} command has the same
+functionality as the left-button-click contour point selection when
+the program is running in interactive mode.
+
+\item \texttt{ho\_clearcontour()} Clear a prevously defined contour
+
+\item \texttt{ho\_clearblock()} Clear block selection
+\end{itemize}
+
+
+
+\subsection{Zoom Commands}
+
+\begin{itemize}
+\item \texttt{ho\_zoomnatural()} Zoom to the natural boundaries of the geometry.
+
+\item \texttt{ho\_zoomin()} Zoom in one level.
+
+\item \texttt{ho\_zoomout()} Zoom out one level.
+
+\item \texttt{ho\_zoom(x1,y1,x2,y2)} Zoom to the window defined by lower left corner
+\texttt{(x1,y1)} and upper right corner\texttt{ (x2,y2).}
+\end{itemize}
+
+
+
+\subsection{View Commands}
+
+\begin{itemize}
+\item \texttt{ho\_showmesh()} Show the mesh.
+
+\item \texttt{ho\_hidemesh()} Hide the mesh.
+
+\item \texttt{ho\_showpoints()} Show the node points from the input geometry.
+
+\item \texttt{ho\_hidepoints()} Hide the node points from the input geometry.
+
+\item \texttt{ho\_smooth("flag")} This function controls whether or not smoothing is
+applied to the $F$ and $G$ fields which are naturally piece-wise
+constant over each element. Setting flag equal to \texttt{"on"}
+turns on smoothing, and setting flag to \texttt{"off"} turns off
+smoothing.
+
+\item \texttt{ho\_showgrid()} Show the grid points.
+
+\item \texttt{ho\_hidegrid()} Hide the grid points points.
+
+\texttt{ho\_gridsnap("flag")} Setting flag to ''on'' turns on snap to grid,
+setting flag to "off" turns off snap to grid.
+
+\item \texttt{ho\_setgrid(density,"type")} Change the grid spacing. The density
+parameter specifies the space between grid points, and the type
+parameter is set to \texttt{"cart"} for Cartesian coordinates or
+\texttt{"polar"} for polar coordinates.
+
+\item \texttt{ho\_hidedensityplot()} hides the heat flux density plot.
+
+\item \texttt{ho\_showdensityplot(legend,gscale,type,upper,lower)} Shows the
+heat flux density plot with options:
+
+\texttt{legend} Set to 0 to hide the plot legend or 1 to show the plot
+legend.
+
+\texttt{gscale} Set to 0 for a colour density plot or 1 for a grey scale
+density plot.
+
+\texttt{upper} Sets the upper display limit for the density plot.
+
+\texttt{lower} Sets the lower display limit for the density plot.
+
+\texttt{type} Sets the type of density plot. A value of 0 plots temperature, 1
+plots the magnitude of $F$, and 2 plots the magnitude of $G$
+
+\item \texttt{ho\_hidecontourplot()} Hides the contour plot.
+
+\item \texttt{ho\_showcontourplot(numcontours,lower{\_}V,upper{\_}V)} shows the
+$V$ contour plot with options:
+
+\texttt{numcontours} Number of equipotential lines to be plotted.
+
+\texttt{upper{\_}V} Upper limit for contours.
+
+\texttt{lower{\_}V} Lower limit for contours.
+
+If \texttt{ho\_numcontours} is -1 all parameters are ignored and
+default values are used, \\ e.g. \texttt{show{\_}contour{\_}plot(-1)}
+
+\item \texttt{ho\_showvectorplot(type,scalefactor)}
+controls the display of vectors denoting the field strength and
+direction. The parameters taken are the \texttt{type} of plot,
+which should be set to 0 for no vector plot, 1 for heat flux density
+$F$, and 2 for temperature gradient $G$. The \texttt{scalefactor}
+determines the relative length of the vectors. If the scale is set
+to 1, the length of the vectors are chosen so that the highest flux
+density corresponds to a vector that is the same length as the
+current grid size setting.
+
+\item{\tt ho\_minimize()} minimizes the active heat flow input view.
+
+\item{\tt ho\_maximize()} maximizes the active heat flow input view.
+
+\item{\tt ho\_restore()} restores the active heat flow input view from a
+ minimized or maximized state.
+
+\item{\tt ho\_resize(width,height)} resizes the active heat flow input
+ window client area to width $\times$ height.
+
+\end{itemize}
+
+\subsection{Miscellaneous}
+
+\begin{itemize}
+
+\item \texttt{ho\_close()} close the current postprocessor window.
+
+\item{\tt ho\_refreshview()} Redraws the current view.
+
+\item{\tt ho\_reload()} Reloads the solution from disk.
+
+\item \texttt{ho\_savebitmap("filename")} saves a bitmapped screen shot of the current
+view to the file specified by \texttt{"filename"}. Note that if you
+use a path you must use two backslashes (e.g.
+\texttt{"c:$\backslash \backslash $temp$\backslash \backslash
+$myfile.bmp"}). If the file name contains a space (e.g. file
+names like c:$\backslash $program files$\backslash $stuff) you must
+enclose the file name in (extra) quotes by using a
+\texttt{$\backslash $"} sequence. For example:
+
+\texttt{ho\_savebitmap("$\backslash $"c:$\backslash \backslash
+$temp$\backslash \backslash $screenshot.bmp$\backslash $"")}
+
+\item \texttt{ho\_savemetafile("filename")} saves a metafile screenshot of the current
+view to the file specified by \texttt{"filename"}, subject to the
+printf-type formatting explained previously for the
+\texttt{savebitmap} command.
+
+\item \texttt{ho\_shownames(flag)} This function allow the user to display or hide the
+block label names on screen. To hide the block label names,
+\texttt{flag} should be 0. To display the names, the parameter
+should be set to 1.
+
+
+\item{\tt ho\_numnodes()} Returns the number of nodes in the in focus heat flow output mesh.
+\item{\tt ho\_numelements()} Returns the number of elements in the in focus heat flow output mesh.
+\item{\tt ho\_getnode(n)} Returns the (x,y) or (r,z) position of the nth mesh node.
+\item{\tt ho\_getelement(n)} MOGetElement[n] returns the following proprerties for the nth element:
+    \begin{enumerate}
+        \item Index of first element node
+        \item Index of second element node
+        \item Index of third element node
+        \item x (or r) coordinate of the element centroid
+        \item y (or z) coordinate of the element centroid
+        \item element area using the length unit defined for the problem
+        \item group number associated with the element
+    \end{enumerate}
+
+\end{itemize}

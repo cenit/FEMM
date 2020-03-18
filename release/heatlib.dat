@@ -1,0 +1,1650 @@
+<BeginFolder>
+<FolderName> = "Metallic Solids"
+<BeginFolder>
+<FolderName> = "Aluminum"
+<BeginBlock>
+<BlockName> = "Aluminum, Pure"
+<Kx> = 236
+<Ky> = 236
+<Kt> = 2.4500000000000002
+<qv> = 0
+    <TKPoints> = 4
+      273	236
+      473	238
+      673	228
+      873	215
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 2024-T3"
+<Kx> = 121
+<Ky> = 121
+<Kt> = 2.4329999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 2024-O"
+<Kx> = 193
+<Ky> = 193
+<Kt> = 2.4329999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 2024-T351"
+<Kx> = 121
+<Ky> = 121
+<Kt> = 2.4329999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 2024-T4"
+<Kx> = 121
+<Ky> = 121
+<Kt> = 2.4329999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 2024-T6"
+<Kx> = 171
+<Ky> = 171
+<Kt> = 2.4329999999999998
+<qv> = 0
+    <TKPoints> = 2
+      273	171
+      473	186
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 6061-T6"
+<Kx> = 167
+<Ky> = 167
+<Kt> = 2.419
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 6061-T651"
+<Kx> = 167
+<Ky> = 167
+<Kt> = 2.419
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 7075-T6"
+<Kx> = 130
+<Ky> = 130
+<Kt> = 2.698
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Aluminum, 7075-T651"
+<Kx> = 130
+<Ky> = 130
+<Kt> = 2.698
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Beryllium"
+<Kx> = 218
+<Ky> = 218
+<Kt> = 3.4020000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	218
+      473	144
+      673	118
+      873	100
+      1073	83
+      1273	69
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Boron"
+<Kx> = 31.699999999999999
+<Ky> = 31.699999999999999
+<Kt> = 2.8250000000000002
+<qv> = 0
+    <TKPoints> = 6
+      273	31.699999999999999
+      473	18.300000000000001
+      673	10
+      873	7.4000000000000004
+      1073	5.9000000000000004
+      1273	4.7999999999999998
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Cadmium"
+<Kx> = 104
+<Ky> = 104
+<Kt> = 1.99
+<qv> = 0
+    <TKPoints> = 2
+      273	104
+      473	99
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Chromium"
+<Kx> = 95
+<Ky> = 95
+<Kt> = 3.2570000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	95
+      473	86
+      673	77
+      873	69
+      1073	64
+      1273	62
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Cobalt"
+<Kx> = 104
+<Ky> = 104
+<Kt> = 3.7480000000000002
+<qv> = 0
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Copper"
+<BeginBlock>
+<BlockName> = "Constantan"
+<Kx> = 22
+<Ky> = 22
+<Kt> = 3.6579999999999999
+<qv> = 0
+    <TKPoints> = 2
+      273	22
+      473	26
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Copper, Pure"
+<Kx> = 401
+<Ky> = 401
+<Kt> = 3.4380000000000002
+<qv> = 0
+    <TKPoints> = 6
+      273	401
+      473	389
+      673	378
+      873	366
+      1073	352
+      1273	336
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Brass"
+<Kx> = 110
+<Ky> = 110
+<Kt> = 3.2810000000000001
+<qv> = 0
+    <TKPoints> = 3
+      273	110
+      473	142
+      673	151
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Bronze"
+<Kx> = 49
+<Ky> = 49
+<Kt> = 3.696
+<qv> = 0
+    <TKPoints> = 3
+      273	49
+      473	54
+      673	61
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Core-materials"
+<FolderVendor> = "Carpenter"
+<BeginBlock>
+<BlockName> = "HyMu80"
+<Kx> = 34.600000000000001
+<Ky> = 34.600000000000001
+<Kt> = 4.3209999999999997
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Carpenter49"
+<Kx> = 13
+<Ky> = 13
+<Kt> = 4.125
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Germanium"
+<Kx> = 67
+<Ky> = 67
+<Kt> = 1.7150000000000001
+<qv> = 0
+    <TKPoints> = 4
+      273	67
+      473	40
+      673	19
+      873	17
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Gold"
+<Kx> = 318
+<Ky> = 318
+<Kt> = 2.492
+<qv> = 0
+    <TKPoints> = 6
+      273	318
+      473	309
+      673	299
+      873	286
+      1073	273
+      1273	254
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Iron"
+<BeginBlock>
+<BlockName> = "Iron, Wrought"
+<Kx> = 59
+<Ky> = 59
+<Kt> = 3.5419999999999998
+<qv> = 0
+    <TKPoints> = 4
+      273	59
+      473	52
+      673	45
+      873	33
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Iron, Pure"
+<Kx> = 83
+<Ky> = 83
+<Kt> = 3.5299999999999998
+<qv> = 0
+    <TKPoints> = 6
+      273	83
+      473	66
+      673	53
+      873	41
+      1073	32
+      1273	30
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Iron, Cast (4% C)"
+<Kx> = 52
+<Ky> = 52
+<Kt> = 3.0539999999999998
+<qv> = 0
+    <TKPoints> = 5
+      273	52
+      473	40
+      673	34
+      873	24
+      1073	21
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Iron, Armco"
+<Kx> = 75
+<Ky> = 75
+<Kt> = 3.634
+<qv> = 0
+    <TKPoints> = 6
+      273	75
+      473	62
+      673	49
+      873	38
+      1073	29
+      1273	29
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Steels"
+<BeginBlock>
+<BlockName> = "Steel, 1% Chrome"
+<Kx> = 62
+<Ky> = 62
+<Kt> = 3.6160000000000001
+<qv> = 0
+    <TKPoints> = 5
+      273	62
+      473	52
+      673	42
+      873	36
+      1073	33
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Steel, 1% Carbon"
+<Kx> = 43
+<Ky> = 43
+<Kt> = 3.6899999999999999
+<qv> = 0
+    <TKPoints> = 5
+      273	43
+      473	42
+      673	36
+      873	29
+      1073	28
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "347 Stainless Steel"
+<Kx> = 14
+<Ky> = 14
+<Kt> = 3.829
+<qv> = 0
+    <TKPoints> = 6
+      273	14
+      473	17
+      673	19
+      873	23
+      1073	25
+      1273	26
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "304 Stainless Steel"
+<Kx> = 14
+<Ky> = 14
+<Kt> = 3.768
+<qv> = 0
+    <TKPoints> = 5
+      273	14
+      473	18
+      673	21
+      873	24
+      1073	26
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "SST 17Cr-4Ni, Cond H900"
+<Kx> = 17.899999999999999
+<Ky> = 17.899999999999999
+<Kt> = 3.2679999999999998
+<qv> = 0
+    <TKPoints> = 4
+      422.14999999999998	17.899999999999999
+      533.14999999999998	19.5
+      733.14999999999998	22.5
+      755.14999999999998	22.600000000000001
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Lead"
+<Kx> = 36
+<Ky> = 36
+<Kt> = 1.478
+<qv> = 0
+    <TKPoints> = 2
+      273	36
+      473	33
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Lithium"
+<Kx> = 79
+<Ky> = 79
+<Kt> = 1.863
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Magnesium"
+<Kx> = 157
+<Ky> = 157
+<Kt> = 1.786
+<qv> = 0
+    <TKPoints> = 4
+      273	157
+      473	151
+      673	147
+      873	145
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Manganese"
+<Kx> = 7.7000000000000002
+<Ky> = 7.7000000000000002
+<Kt> = 3.5590000000000002
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Molybdenum"
+<Kx> = 139
+<Ky> = 139
+<Kt> = 2.5649999999999999
+<qv> = 0
+    <TKPoints> = 6
+      273	139
+      473	131
+      673	123
+      873	116
+      1073	109
+      1273	103
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Nickel"
+<BeginBlock>
+<BlockName> = "Nickel, Pure"
+<Kx> = 94
+<Ky> = 94
+<Kt> = 3.9630000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	94
+      473	74
+      673	65
+      873	69
+      1073	73
+      1273	78
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Nichrome"
+<Kx> = 12
+<Ky> = 12
+<Kt> = 3.6960000000000002
+<qv> = 0
+    <TKPoints> = 4
+      273	12
+      473	15
+      673	18
+      873	23
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Inconel-X"
+<Kx> = 11
+<Ky> = 11
+<Kt> = 3.7610000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	11
+      473	14
+      673	18
+      873	22
+      1073	25
+      1273	29
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Platinum"
+<BeginBlock>
+<BlockName> = "Platnium, Pure"
+<Kx> = 72
+<Ky> = 72
+<Kt> = 2.8530000000000002
+<qv> = 0
+    <TKPoints> = 6
+      273	72
+      473	72
+      673	74
+      873	76
+      1073	80
+      1273	84
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "60% Pt, 40% Rh"
+<Kx> = 46
+<Ky> = 46
+<Kt> = 2.694
+<qv> = 0
+    <TKPoints> = 6
+      273	46
+      473	54
+      673	62
+      873	66
+      1073	70
+      1273	74
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Rhenium"
+<Kx> = 49
+<Ky> = 49
+<Kt> = 2.8980000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	49
+      473	45
+      673	44
+      873	44
+      1073	45
+      1273	46
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Rhodium"
+<Kx> = 151
+<Ky> = 151
+<Kt> = 3.0129999999999999
+<qv> = 0
+    <TKPoints> = 6
+      273	151
+      473	141
+      673	132
+      873	125
+      1073	119
+      1273	113
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Silicon"
+<Kx> = 168
+<Ky> = 168
+<Kt> = 1.6439999999999999
+<qv> = 0
+    <TKPoints> = 6
+      273	168
+      473	93
+      673	59
+      873	41
+      1073	30
+      1273	25
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Silver"
+<Kx> = 428
+<Ky> = 428
+<Kt> = 2.484
+<qv> = 0
+    <TKPoints> = 6
+      273	428
+      473	415
+      673	399
+      873	383
+      1073	368
+      1273	355
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Sodium"
+<Kx> = 135
+<Ky> = 135
+<Kt> = 1.177
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Tin"
+<Kx> = 68
+<Ky> = 68
+<Kt> = 1.659
+<qv> = 0
+    <TKPoints> = 2
+      273	68
+      473	60
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Titanium"
+<Kx> = 22
+<Ky> = 22
+<Kt> = 2.3740000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	22
+      473	20
+      673	19
+      873	20
+      1073	21
+      1273	23
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Tungsten"
+<Kx> = 182
+<Ky> = 182
+<Kt> = 2.5739999999999998
+<qv> = 0
+    <TKPoints> = 6
+      273	182
+      473	152
+      673	134
+      873	125
+      1073	118
+      1273	114
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Uranium"
+<Kx> = 27
+<Ky> = 27
+<Kt> = 2.169
+<qv> = 0
+    <TKPoints> = 5
+      273	27
+      473	30
+      673	35
+      873	39
+      1073	45
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Vanadium"
+<Kx> = 31
+<Ky> = 31
+<Kt> = 2.806
+<qv> = 0
+    <TKPoints> = 6
+      273	31
+      473	33
+      673	35
+      873	37
+      1073	40
+      1273	44
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Zinc"
+<Kx> = 122
+<Ky> = 122
+<Kt> = 2.7719999999999998
+<qv> = 0
+    <TKPoints> = 3
+      273	122
+      473	112
+      673	102
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Zirconium"
+<Kx> = 23
+<Ky> = 23
+<Kt> = 1.853
+<qv> = 0
+    <TKPoints> = 6
+      273	23
+      473	21
+      673	21
+      873	22
+      1073	24
+      1273	26
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Nonmetallic Solids"
+<BeginBlock>
+<BlockName> = "Aluminum Oxide"
+<Kx> = 40
+<Ky> = 40
+<Kt> = 3.0379999999999998
+<qv> = 0
+    <TKPoints> = 6
+      273	40
+      473	22
+      673	13
+      873	9.3000000000000007
+      1073	7.2999999999999998
+      1273	6.2000000000000002
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Asbestos"
+<Kx> = 0.11
+<Ky> = 0.11
+<Kt> = 0.313
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Beryllium Oxide"
+<Kx> = 302
+<Ky> = 302
+<Kt> = 3.090
+<qv> = 0
+    <TKPoints> = 6
+      273	302
+      473	159
+      673	93
+      873	60
+      1073	41
+      1273	30
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Bricks"
+<BeginBlock>
+<BlockName> = "Brick, Common"
+<Kx> = 0.69999999999999996
+<Ky> = 0.69999999999999996
+<Kt> = 1.3440000000000001
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Brick, Chrome"
+<Kx> = 2.2000000000000002
+<Ky> = 2.2000000000000002
+<Kt> = 2.52
+<qv> = 0
+    <TKPoints> = 5
+      273	2.2000000000000002
+      473	2.2999999999999998
+      673	2.3999999999999999
+      873	2.3999999999999999
+      1073	2.1000000000000001
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Brick, Fireclay"
+<Kx> = 1
+<Ky> = 1
+<Kt> = 1.4490000000000001
+<qv> = 0
+    <TKPoints> = 2
+      273	1
+      1273	1.1000000000000001
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Brick, Magnesite"
+<Kx> = 4
+<Ky> = 4
+<Kt> = 1.9199999999999999
+<qv> = 0
+    <TKPoints> = 6
+      273	4
+      473	3.6000000000000001
+      673	2.7999999999999998
+      873	2.3999999999999999
+      1073	2.1000000000000001
+      1273	1.8
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Brick, Masonry"
+<Kx> = 0.66000000000000003
+<Ky> = 0.66000000000000003
+<Kt> = 1.6739999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Brick, Silica"
+<Kx> = 1.1000000000000001
+<Ky> = 1.1000000000000001
+<Kt> = 1.355
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Carbon"
+<Kx> = 1.6000000000000001
+<Ky> = 1.6000000000000001
+<Kt> = 1.6020000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	1.6000000000000001
+      473	1.8999999999999999
+      673	2.2000000000000002
+      873	2.3999999999999999
+      1073	2.6000000000000001
+      1273	2.7999999999999998
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Cement Mortar"
+<Kx> = 0.90000000000000002
+<Ky> = 0.90000000000000002
+<Kt> = 1.451
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Concrete"
+<Kx> = 1
+<Ky> = 1
+<Kt> = 1.5109999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Coal"
+<Kx> = 0.23999999999999999
+<Ky> = 0.23999999999999999
+<Kt> = 0.0016249999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Diamonds"
+<BeginBlock>
+<BlockName> = "Diamond Type I"
+<Kx> = 1000
+<Ky> = 1000
+<Kt> = 1.776
+<qv> = 0
+    <TKPoints> = 2
+      273	1000
+      473	300
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Diamond Type IIa"
+<Kx> = 2650
+<Ky> = 2650
+<Kt> = 1.782
+<qv> = 0
+    <TKPoints> = 2
+      273	2650
+      473	1300
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Diamond Type IIb"
+<Kx> = 1510
+<Ky> = 1510
+<Kt> = 1.6579999999999999
+<qv> = 0
+    <TKPoints> = 2
+      273	1510
+      473	780
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Earths"
+<BeginBlock>
+<BlockName> = "Clay"
+<Kx> = 1.3999999999999999
+<Ky> = 1.3999999999999999
+<Kt> = 1.2849999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Diatomaceous Earth"
+<Kx> = 1.3
+<Ky> = 1.3
+<Kt> = 0.34999999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Sand"
+<Kx> = 0.29999999999999999
+<Ky> = 0.29999999999999999
+<Kt> = 1.2050000000000001
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Glasses"
+<BeginBlock>
+<BlockName> = "Corning Pyrex 7740"
+<Kx> = 1.1000000000000001
+<Ky> = 1.1000000000000001
+<Kt> = 1.616
+<qv> = 0
+    <TKPoints> = 4
+      273	1.1000000000000001
+      473	1.3
+      673	1.5
+      873	1.8999999999999999
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Pyroceram"
+<Kx> = 4.0999999999999996
+<Ky> = 4.0999999999999996
+<Kt> = 2.0329999999999999
+<qv> = 0
+    <TKPoints> = 6
+      273	4.0999999999999996
+      473	3.6000000000000001
+      673	3.2000000000000002
+      873	3
+      1073	2.8999999999999999
+      1273	2.7999999999999998
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Window"
+<Kx> = 0.83999999999999997
+<Ky> = 0.83999999999999997
+<Kt> = 2.2679999999999998
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Ice"
+<Kx> = 2.2000000000000002
+<Ky> = 2.2000000000000002
+<Kt> = 1.756
+<qv> = 0
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Insulations"
+<BeginBlock>
+<BlockName> = "Cork, granular"
+<Kx> = 0.044999999999999998
+<Ky> = 0.044999999999999998
+<Kt> = 0.30099999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Corkboard"
+<Kx> = 0.042999999999999997
+<Ky> = 0.042999999999999997
+<Kt> = 0.304
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Cellulose, loose"
+<Kx> = 0.037999999999999999
+<Ky> = 0.037999999999999999
+<Kt> = 0.093
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Feltboard"
+<Kx> = 0.1
+<Ky> = 0.1
+<Kt> = 0.179
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Glass Fiber"
+<Kx> = 0.035000000000000003
+<Ky> = 0.035000000000000003
+<Kt> = 0.026880000000000001
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Glass Wool"
+<Kx> = 0.037999999999999999
+<Ky> = 0.037999999999999999
+<Kt> = 0.016799999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Kapok"
+<Kx> = 0.035000000000000003
+<Ky> = 0.035000000000000003
+<Kt> = 0.207
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Magnesia, 85%"
+<Kx> = 0.065000000000000002
+<Ky> = 0.065000000000000002
+<Kt> = 0.179
+<qv> = 0
+    <TKPoints> = 2
+      273	0.065000000000000002
+      473	0.085000000000000006
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Polystyrene"
+<Kx> = 0.025000000000000001
+<Ky> = 0.025000000000000001
+<Kt> = 0.051979999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Rubber, Foam"
+<Kx> = 0.029999999999999999
+<Ky> = 0.029999999999999999
+<Kt> = 0.2092
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Rock Wool"
+<Kx> = 0.058999999999999997
+<Ky> = 0.058999999999999997
+<Kt> = 0.084
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Sawdust"
+<Kx> = 0.058999999999999997
+<Ky> = 0.058999999999999997
+<Kt> = 0.336
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Vermiculite, loose"
+<Kx> = 0.058000000000000003
+<Ky> = 0.058000000000000003
+<Kt> = 0.16566
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Magnesium Oxide"
+<Kx> = 53
+<Ky> = 53
+<Kt> = 3.1499999999999999
+<qv> = 0
+    <TKPoints> = 6
+      273	53
+      473	29
+      673	18
+      873	12
+      1073	8.8000000000000007
+      1273	7.2999999999999998
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Plaster"
+<Kx> = 0.5
+<Ky> = 0.5
+<Kt> = 1.3600000000000001
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Quartz, fused"
+<Kx> = 1.3
+<Ky> = 1.3
+<Kt> = 1.639
+<qv> = 0
+    <TKPoints> = 6
+      273	1.3
+      473	1.6000000000000001
+      673	1.8999999999999999
+      873	2.2999999999999998
+      1073	3.2000000000000002
+      1273	3.7999999999999998
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Rocks"
+<BeginBlock>
+<BlockName> = "Granite"
+<Kx> = 3
+<Ky> = 3
+<Kt> = 2.165
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Limestone"
+<Kx> = 2
+<Ky> = 2
+<Kt> = 2.0699999999999998
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Marble"
+<Kx> = 2.7000000000000002
+<Ky> = 2.7000000000000002
+<Kt> = 2.650
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Sandstone"
+<Kx> = 2.7999999999999998
+<Ky> = 2.7999999999999998
+<Kt> = 1.628
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Rubber, hard"
+<Kx> = 0.16
+<Ky> = 0.16
+<Kt> = 2.3999999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Skin, human"
+<Kx> = 0.37
+<Ky> = 0.37
+<Kt> = 2.666
+<qv> = 0
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Snow"
+<BeginBlock>
+<BlockName> = "Snow, loose"
+<Kx> = 0.050000000000000003
+<Ky> = 0.050000000000000003
+<Kt> = 0.2092
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Snow, packed"
+<Kx> = 0.19
+<Ky> = 0.19
+<Kt> = 1.151
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Teflon-min-heat-capacity"
+<Kx> = 0.34999999999999998
+<Ky> = 0.34999999999999998
+<Kt> = 2.5800000000000001
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Teflon-max-heat-capacity"
+<Kx> = 0.34999999999999998
+<Ky> = 0.34999999999999998
+<Kt> = 3.2200000000000002
+<qv> = 0
+<EndBlock>
+
+<BeginFolder>
+<FolderName> = "Woods"
+<BeginBlock>
+<BlockName> = "Balsa-min-heat-capacity"
+<Kx> = 0.055
+<Ky> = 0.055
+<Kt> = 0.29913000000000001
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Balsa-max-heat-capacity"
+<Kx> = 0.055
+<Ky> = 0.055
+<Kt> = 0.73631999999999997
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Fir"
+<Kx> = 0.11
+<Ky> = 0.11
+<Kt> = 1.6319999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Cypress"
+<Kx> = 0.097000000000000003
+<Ky> = 0.097000000000000003
+<Kt> = 1.0580000000000001
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Maple"
+<Kx> = 0.17000000000000001
+<Ky> = 0.17000000000000001
+<Kt> = 1.6339999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Oak"
+<Kx> = 0.17000000000000001
+<Ky> = 0.17000000000000001
+<Kt> = 1.4339999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Pine, yellow"
+<Kx> = 0.14999999999999999
+<Ky> = 0.14999999999999999
+<Kt> = 1.7949999999999999
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Pine, white"
+<Kx> = 0.11
+<Ky> = 0.11
+<Kt> = 1.22
+<qv> = 0
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Plywood"
+<Kx> = 0.12
+<Ky> = 0.12
+<Kt> = 0.66000000000000003
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginBlock>
+<BlockName> = "Wool"
+<Kx> = 0.037999999999999999
+<Ky> = 0.037999999999999999
+<Kt> = 0.041
+<qv> = 0
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Liquid Metals"
+<BeginBlock>
+<BlockName> = "Bismuth, liquid"
+<Kx> = 16.800000000000001
+<Ky> = 16.800000000000001
+<Kt> = 1.4199999999999999
+<qv> = 0
+    <TKPoints> = 6
+      545	16.800000000000001
+      600	16.399999999999999
+      700	15.6
+      800	15.6
+      900	15.6
+      1000	15.6
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Lead, liquid"
+<Kx> = 15.5
+<Ky> = 15.5
+<Kt> = 1.601
+<qv> = 0
+    <TKPoints> = 5
+      601	15.5
+      700	17.399999999999999
+      800	19
+      900	20.300000000000001
+      1000	21.5
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Mercury"
+<Kx> = 142
+<Ky> = 142
+<Kt> = 1.863
+<qv> = 0
+    <TKPoints> = 7
+      234	142
+      273	140
+      300	139
+      350	138
+      400	137
+      500	136
+      600	134
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Lithium, liquid"
+<Kx> = 43
+<Ky> = 43
+<Kt> = 2.1469999999999998
+<qv> = 0
+    <TKPoints> = 7
+      454	43
+      500	44
+      600	48
+      700	51
+      800	54
+      900	57
+      1000	60
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Potassium, liquid"
+<Kx> = 55
+<Ky> = 55
+<Kt> = 0.6724
+<qv> = 0
+    <TKPoints> = 8
+      337	55
+      400	52
+      500	48
+      600	44
+      700	40
+      800	37
+      900	34
+      1000	31
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Sodium, liquid"
+<Kx> = 88
+<Ky> = 88
+<Kt> = 1.284
+<qv> = 0
+    <TKPoints> = 8
+      371	88
+      400	87
+      500	82
+      600	76
+      700	72
+      800	67
+      900	63
+      1000	58
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Saturated Liquids"
+<BeginBlock>
+<BlockName> = "Ammonia"
+<Kx> = 0.54600000000000004
+<Ky> = 0.54600000000000004
+<Kt> = 2.8799999999999999
+<qv> = 0
+    <TKPoints> = 5
+      233	0.54600000000000004
+      253	0.54600000000000004
+      273	0.54000000000000004
+      293	0.52100000000000002
+      313	0.49299999999999999
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Ethyl Alcohol"
+<Kx> = 0.186
+<Ky> = 0.186
+<Kt> = 1.890
+<qv> = 0
+    <TKPoints> = 7
+      233	0.186
+      253	0.17899999999999999
+      273	0.17399999999999999
+      293	0.16800000000000001
+      313	0.16200000000000001
+      333	0.156
+      353	0.14999999999999999
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Ethylene Glycol"
+<Kx> = 0.254
+<Ky> = 0.254
+<Kt> = 2.6600000000000001
+<qv> = 0
+    <TKPoints> = 6
+      273	0.254
+      293	0.25700000000000001
+      313	0.25900000000000001
+      333	0.26200000000000001
+      353	0.26500000000000001
+      373	0.26700000000000002
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Freon-12"
+<Kx> = 0.069000000000000006
+<Ky> = 0.069000000000000006
+<Kt> = 1.296
+<qv> = 0
+    <TKPoints> = 5
+      233	0.069000000000000006
+      253	0.070999999999999994
+      273	0.072999999999999995
+      293	0.072999999999999995
+      313	0.069000000000000006
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Glycerin"
+<Kx> = 0.28199999999999997
+<Ky> = 0.28199999999999997
+<Kt> = 3.016
+<qv> = 0
+    <TKPoints> = 4
+      253	0.28199999999999997
+      273	0.28399999999999997
+      293	0.28699999999999998
+      313	0.28999999999999998
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Unused Engine Oil"
+<Kx> = 0.14699999999999999
+<Ky> = 0.14699999999999999
+<Kt> = 1.669
+<qv> = 0
+    <TKPoints> = 2
+      273	0.14699999999999999
+      433	0.13200000000000001
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Water"
+<Kx> = 0.56399999999999995
+<Ky> = 0.56399999999999995
+<Kt> = 4.1840000000000002
+<qv> = 0
+    <TKPoints> = 12
+      273.19999999999999	0.56399999999999995
+      280	0.58199999999999996
+      300	0.60799999999999998
+      320	0.63700000000000001
+      340	0.65900000000000003
+      360	0.67400000000000004
+      373.19999999999999	0.68100000000000005
+      400	0.68600000000000005
+      450	0.67300000000000004
+      500	0.63500000000000001
+      550	0.57099999999999995
+      600	0.48099999999999998
+<EndBlock>
+
+<EndFolder>
+<BeginFolder>
+<FolderName> = "Gases at 1 atm"
+<BeginBlock>
+<BlockName> = "Air"
+<Kx> = 0.018100000000000002
+<Ky> = 0.018100000000000002
+<Kt> = 0.0011850000000000001
+<qv> = 0
+    <TKPoints> = 18
+      200	0.018100000000000002
+      250	0.0223
+      300	0.026100000000000002
+      350	0.029700000000000001
+      400	0.033099999999999997
+      450	0.036299999999999999
+      500	0.0395
+      550	0.042599999999999999
+      600	0.045600000000000002
+      700	0.051299999999999998
+      800	0.056899999999999999
+      900	0.0625
+      1000	0.067199999999999996
+      1200	0.075899999999999995
+      1400	0.083500000000000005
+      1600	0.090399999999999994
+      1800	0.097000000000000003
+      2000	0.1032
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Ammonia"
+<Kx> = 0.015299999999999999
+<Ky> = 0.015299999999999999
+<Kt> = 0.0016827420000000001
+<qv> = 0
+    <TKPoints> = 9
+      200	0.015299999999999999
+      300	0.0246
+      400	0.036400000000000002
+      500	0.050599999999999999
+      600	0.065600000000000006
+      700	0.081100000000000005
+      800	0.097699999999999995
+      900	0.11459999999999999
+      1000	0.13170000000000001
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Argon"
+<Kx> = 0.0124
+<Ky> = 0.0124
+<Kt> = 0.00084699999999999999
+<qv> = 0
+    <TKPoints> = 14
+      200	0.0124
+      300	0.0177
+      400	0.0223
+      500	0.0264
+      600	0.030099999999999998
+      700	0.033599999999999998
+      800	0.036900000000000002
+      900	0.039800000000000002
+      1000	0.042700000000000002
+      1200	0.048099999999999997
+      1400	0.053499999999999999
+      1600	0.058799999999999998
+      1800	0.064100000000000004
+      2000	0.069199999999999998
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Carbon Dioxide"
+<Kx> = 0.0094999999999999998
+<Ky> = 0.0094999999999999998
+<Kt> = 0.0015330000000000001
+<qv> = 0
+    <TKPoints> = 7
+      200	0.0094999999999999998
+      500	0.032300000000000002
+      600	0.040300000000000002
+      800	0.056000000000000001
+      1000	0.068000000000000005
+      1200	0.078
+      1400	0.086699999999999999
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Carbon Monoxide"
+<Kx> = 0.017500000000000002
+<Ky> = 0.017500000000000002
+<Kt> = 0.0011839999999999999
+<qv> = 0
+    <TKPoints> = 6
+      200	0.017500000000000002
+      400	0.032300000000000002
+      600	0.044400000000000002
+      800	0.054899999999999997
+      1000	0.064399999999999999
+      1200	0.073800000000000004
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Helium"
+<Kx> = 0.115
+<Ky> = 0.115
+<Kt> = 0.00084400000000000002
+<qv> = 0
+    <TKPoints> = 6
+      200	0.115
+      400	0.17999999999999999
+      700	0.27800000000000002
+      1000	0.36299999999999999
+      1400	0.46899999999999997
+      2000	0.62
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Hydrogen"
+<Kx> = 0.128
+<Ky> = 0.128
+<Kt> = 0.0011720000000000001
+<qv> = 0
+    <TKPoints> = 6
+      200	0.128
+      400	0.221
+      600	0.29099999999999998
+      900	0.39400000000000002
+      1000	0.42799999999999999
+      1200	0.495
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Nitrogen"
+<Kx> = 0.0183
+<Ky> = 0.0183
+<Kt> = 0.0011846579999999999
+<qv> = 0
+    <TKPoints> = 7
+      200	0.0183
+      400	0.032500000000000001
+      600	0.0441
+      800	0.054100000000000002
+      1000	0.063100000000000003
+      1200	0.071300000000000002
+      1400	0.079699999999999993
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Oxygen"
+<Kx> = 0.018200000000000001
+<Ky> = 0.018200000000000001
+<Kt> = 0.0011969999999999999
+<qv> = 0
+    <TKPoints> = 7
+      200	0.018200000000000001
+      400	0.034200000000000001
+      600	0.048000000000000001
+      800	0.060299999999999999
+      1000	0.0717
+      1200	0.082100000000000006
+      1400	0.092100000000000001
+<EndBlock>
+
+<BeginBlock>
+<BlockName> = "Steam at 373.15 K"
+<Kx> = 0.0264
+<Ky> = 0.0264
+<Kt> = 0.0012430080000000001
+<qv> = 0
+    <TKPoints> = 7
+      400	0.0264
+      500	0.035700000000000003
+      600	0.046399999999999997
+      700	0.057200000000000001
+      800	0.068599999999999994
+      900	0.078
+      1000	0.086999999999999994
+<EndBlock>
+
+<EndFolder>

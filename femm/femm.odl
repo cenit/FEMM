@@ -1,0 +1,43 @@
+// femm.odl : type library source for femm.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (femm.tlb).
+
+[ uuid(04EF434A-1A91-495A-85AA-C625602B4AF4), version(1.0) ]
+library Femm
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for ActiveFEMM
+	
+	[ uuid(E08185B4-FEDF-4B1B-A88D-D40C97625060) ]
+	dispinterface IActiveFEMM
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(ActiveFEMM)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(ActiveFEMM)
+			[id(1)] BSTR call2femm(BSTR luacmd);
+			[id(2)] BSTR mlab2femm(BSTR luacmd);
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for ActiveFEMM
+
+	[ uuid(0A35D5BD-DCA9-4C39-9512-1D89A1A37047) ]
+	coclass ActiveFEMM
+	{
+		[default] dispinterface IActiveFEMM;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

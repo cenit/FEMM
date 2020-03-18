@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="LaTeX Files">
+      <UniqueIdentifier>{98f92d93-4b4b-42a6-99e6-4084e22e9b1f}</UniqueIdentifier>
+      <Extensions>*.tex</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="eleclua.tex">
+      <Filter>LaTeX Files</Filter>
+    </None>
+    <None Include="magnlua.tex">
+      <Filter>LaTeX Files</Filter>
+    </None>
+    <None Include="manual.tex">
+      <Filter>LaTeX Files</Filter>
+    </None>
+    <None Include="mathematica.tex">
+      <Filter>LaTeX Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

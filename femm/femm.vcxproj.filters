@@ -1,0 +1,1232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="femme">
+      <UniqueIdentifier>{36957811-dff3-4cb6-828d-e22dc534289e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="femme\Femme Source">
+      <UniqueIdentifier>{70c303c3-40c2-4041-857f-0f22310e3da0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="femme\Femme Header">
+      <UniqueIdentifier>{cabd48c1-a43b-464c-8136-064e0e868ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{8ba3a8a0-adc1-45a2-bf83-dc253a64a056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Common Source">
+      <UniqueIdentifier>{e88b0939-b073-4c96-b685-2c8a1eec45c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\Common Header">
+      <UniqueIdentifier>{cf9d355c-ec09-4020-9190-aad129e69827}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="femmview">
+      <UniqueIdentifier>{abc61a33-61c2-47a8-ae5f-f90f3abf580a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="femmview\Femmview Source">
+      <UniqueIdentifier>{03d0ff22-aa7d-492d-8408-98f9df552e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="femmview\Femmview Header">
+      <UniqueIdentifier>{733e9e8d-f371-4b86-b9c5-3aacd592cabc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MDI Shell">
+      <UniqueIdentifier>{777db0ab-d668-4bde-a008-2304c0c57173}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MDI Shell\Source Files">
+      <UniqueIdentifier>{f24ef84e-146b-458c-8a18-0c0535c2a8e9}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="MDI Shell\Header Files">
+      <UniqueIdentifier>{d6d11f11-4adb-42b8-95e3-fabc98bd82f6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="MDI Shell\Resource Files">
+      <UniqueIdentifier>{c53c6347-0b6b-41d9-a597-31e5d86c4ee8}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="beladraw">
+      <UniqueIdentifier>{2eb5d0ea-2d04-40b5-80ab-49e20afd79b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="beladraw\beladraw source">
+      <UniqueIdentifier>{c4783c5b-78c4-40dd-b9e8-56a53b067591}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="beladraw\beladraw header">
+      <UniqueIdentifier>{2d578b65-23f2-4f42-a6c5-5b64e36f8650}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="belaview">
+      <UniqueIdentifier>{d4093a48-d7aa-47b9-9179-8ea75ce87306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="belaview\belaview source">
+      <UniqueIdentifier>{9371bcb3-bb76-4632-83bb-39c2696ea19a}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="belaview\belaview header">
+      <UniqueIdentifier>{ac6e3183-7a39-4ed9-ad55-02839319ba0e}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="femmplot">
+      <UniqueIdentifier>{eb696be8-6996-46ea-8f35-88b9f8871508}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="femmplot\femmplot source">
+      <UniqueIdentifier>{7bd81fc8-dae3-4450-8641-3a82dc8dead7}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="femmplot\femmplot header">
+      <UniqueIdentifier>{2247f640-d7b3-4c0e-90db-a82f8fa40229}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="hdraw">
+      <UniqueIdentifier>{9a16cfda-3bdd-46ba-8bae-cc67de88d738}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hdraw\hdraw source">
+      <UniqueIdentifier>{60d1b5bb-2398-4957-9127-5b9a30694b3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hdraw\hdraw headers">
+      <UniqueIdentifier>{0c94ba9a-3bb5-49ce-ae52-8f4163108b94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hview">
+      <UniqueIdentifier>{de55fc02-080a-4729-9604-f1ac9ce6df24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hview\hview source">
+      <UniqueIdentifier>{d597bc8f-03f3-4c3e-8d8e-2cef14fc1188}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="hview\hview headers">
+      <UniqueIdentifier>{d44ea160-ea63-48f5-98f9-d804a34da1ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cdraw">
+      <UniqueIdentifier>{350b25af-0805-4055-beaa-c1666448f222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cdraw\cdraw source">
+      <UniqueIdentifier>{8279364d-e132-466a-b9a7-9ee7a66793b3}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="cdraw\cdraw headers">
+      <UniqueIdentifier>{46592c42-077b-4ab1-b780-8689452ccbee}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="cview">
+      <UniqueIdentifier>{a7c1c33f-f909-4acb-b67f-cf26233d1115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cview\cview source">
+      <UniqueIdentifier>{5e40fcf5-a4fd-4bf4-82ff-571044666755}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="cview\cview headers">
+      <UniqueIdentifier>{6f6428ee-8be6-4075-a0d7-9ba721f7c208}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BdryDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BHData.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BHDatafile.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CircProp.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DXFImport.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="fe_libdlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FemmeDoc.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="femmeLua.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FemmeView.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupNumber.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MatDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MirrorDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MOVECOPY.CPP">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeProp.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NOSEBL.CPP">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OpArcSegDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OpBlkDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OpGrp.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OpNodeDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OpSegDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Pref.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="probdlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PtProp.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleDlg.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="writepoly.cpp">
+      <Filter>femme\Femme Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcDlg.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="bhplot.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="EnterPt.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ExteriorProps.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="fullmatrix.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralPrefs.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GRIDDLG.CPP">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="KbdZoom.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaConsoleDlg.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaDDX.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaEdit.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyTabCtrl.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="OutBox.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PromptBox.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="spars.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Xyplot.cpp">
+      <Filter>common\Common Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BendContourDlg.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockInt.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CircDlg.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlotDlg.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CplotDlg2.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FemmviewDoc.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="femmviewLua.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FemmviewView.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GridMod.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LIntDlg.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="makemask.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MaskProgress.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MyMsgBox.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Problem.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="viewpref.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VPlotDlg.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="XYPlotDlg.cpp">
+      <Filter>femmview\Femmview Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ActiveFEMM.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChildFrm.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="femm.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LibFolderInfo.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MakeABCDlg.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MDITabs.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyCommandLineInfo.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyRecentFileList.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewDocDlg.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Preferences.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_BdryDlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_CircProp.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_libdlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_MatDlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_movecopy.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_NodeProp.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_nosebl.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_OpArcSegDlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_OpBlkDlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_OpNodeDlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_OpSegDlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_Pref.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_probdlg.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_PtProp.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="bd_writepoly.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="beladrawDoc.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="beladrawLua.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="beladrawView.cpp">
+      <Filter>beladraw\beladraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="belaviewDoc.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="belaviewLua.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="belaviewView.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_BlockInt.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_CircDlg.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_CplotDlg2.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_DPlotDlg2.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_LIntDlg.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_makemask.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_Pref.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_problem.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_VPlotDlg.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="bv_XYPlotDlg.cpp">
+      <Filter>belaview\belaview source</Filter>
+    </ClCompile>
+    <ClCompile Include="femmplotDoc.cpp">
+      <Filter>femmplot\femmplot source</Filter>
+    </ClCompile>
+    <ClCompile Include="femmplotView.cpp">
+      <Filter>femmplot\femmplot source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_BdryDlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_CircProp.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_libdlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_MatDlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_movecopy.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_NodeProp.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_nosebl.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_OpArcSegDlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_OpBlkDlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_OpNodeDlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_OpSegDlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="HD_PREF.CPP">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_probdlg.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_PtProp.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hd_writepoly.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="HDRAWDOC.CPP">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="HDRAWLUA.CPP">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hdrawView.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="KCurve.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="TKDatafile.cpp">
+      <Filter>hdraw\hdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_BlockInt.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_CircDlg.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_CplotDlg2.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_DPlotDlg2.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_LIntDlg.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="HV_PREF.CPP">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_problem.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_VPlotDlg.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hv_XYPlotDlg.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hviewDoc.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hviewLua.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="hviewView.cpp">
+      <Filter>hview\hview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_BdryDlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_CircProp.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_libdlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_MatDlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_movecopy.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_NodeProp.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_nosebl.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_OpArcSegDlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_OpBlkDlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_OpNodeDlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_OpSegDlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="CD_PREF.CPP">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_probdlg.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_PtProp.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cd_writepoly.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="CDRAWDOC.CPP">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="CDRAWLUA.CPP">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cdrawView.cpp">
+      <Filter>cdraw\cdraw source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_BlockInt.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_CircDlg.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_CplotDlg2.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_DPlotDlg2.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_LIntDlg.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_makemask.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="CV_PREF.CPP">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_problem.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_VPlotDlg.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cv_XYPlotDlg.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="CVIEWDOC.CPP">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="CVIEWLUA.CPP">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="cviewView.cpp">
+      <Filter>cview\cview source</Filter>
+    </ClCompile>
+    <ClCompile Include="GapIntegral.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GapPlotDlg.cpp">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BdryDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BHData.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BHDatafile.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CircProp.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CopyDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="fe_libdlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FemmeDoc.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FemmeView.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupNumber.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MatDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MirrorDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeProp.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="NOSEBL.H">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="OpArcSegDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="OpBlkDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="OpGrp.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="OpNodeDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="OpSegDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Pref.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="probdlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PtProp.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleDlg.h">
+      <Filter>femme\Femme Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcDlg.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="bhplot.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="EnterPt.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ExteriorProps.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="fullmatrix.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralPrefs.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GRIDDLG.H">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="KbdZoom.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaConsoleDlg.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="luaDDX.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaEdit.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MyTabCtrl.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="OutBox.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="PromptBox.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizableDialog.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizableGrip.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizableLayout.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizableMinMax.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ResizableState.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="spars.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Xyplot.h">
+      <Filter>common\Common Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BendContourDlg.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockInt.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CircDlg.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlotDlg.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CplotDlg2.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DPlotDlg1.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DPlotDlg2.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FemmviewDoc.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="FemmviewView.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GridMod.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LIntDlg.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MaskProgress.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="MyMsgBox.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Problem.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="viewpref.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="VPlotDlg.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="XYPlotDlg.h">
+      <Filter>femmview\Femmview Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ActiveFEMM.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChildFrm.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="COMPLEX.H">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DXFImport.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="femm.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LibFolderInfo.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MakeABCDlg.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MDITabs.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyCommandLineInfo.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyRecentFileList.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewDocDlg.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Preferences.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_BdryDlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_CircProp.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_libdlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_MatDlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_NodeProp.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_nosebl.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_OpArcSegDlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_OpBlkDlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_OpNodeDlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_OpSegDlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_Pref.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_probdlg.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="bd_PtProp.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="beladrawDoc.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="beladrawView.h">
+      <Filter>beladraw\beladraw header</Filter>
+    </ClInclude>
+    <ClInclude Include="belaviewDoc.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="belaviewView.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_BlockInt.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_CircDlg.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_CplotDlg2.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_DPlotDlg2.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_LIntDlg.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_Pref.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_problem.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_VPlotDlg.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="bv_XYPlotDlg.h">
+      <Filter>belaview\belaview header</Filter>
+    </ClInclude>
+    <ClInclude Include="femmplotDoc.h">
+      <Filter>femmplot\femmplot header</Filter>
+    </ClInclude>
+    <ClInclude Include="femmplotView.h">
+      <Filter>femmplot\femmplot header</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_BdryDlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_CircProp.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_libdlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_MatDlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_NodeProp.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_nosebl.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_OpArcSegDlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_OpBlkDlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_OpNodeDlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_OpSegDlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HD_PREF.H">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_probdlg.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hd_PtProp.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HDRAWDOC.H">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hdrawView.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="KCurve.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TKDatafile.h">
+      <Filter>hdraw\hdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_BlockInt.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_CircDlg.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_CplotDlg2.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_DPlotDlg2.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_LIntDlg.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HV_PREF.H">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_problem.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_VPlotDlg.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hv_XYPlotDlg.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hviewDoc.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="hviewView.h">
+      <Filter>hview\hview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_BdryDlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_CircProp.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_libdlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_MatDlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_NodeProp.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_nosebl.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_OpArcSegDlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_OpBlkDlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_OpNodeDlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_OpSegDlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CD_PREF.H">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_probdlg.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cd_PtProp.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CDRAWDOC.H">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cdrawView.h">
+      <Filter>cdraw\cdraw headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_BlockInt.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_CircDlg.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_CplotDlg2.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_DPlotDlg2.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_LIntDlg.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CV_PREF.H">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_problem.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_VPlotDlg.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cv_XYPlotDlg.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CVIEWDOC.H">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="cviewView.h">
+      <Filter>cview\cview headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GapIntegral.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GapPlotDlg.h">
+      <Filter>MDI Shell\Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="femm.odl">
+      <Filter>MDI Shell\Source Files</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="femm.rc">
+      <Filter>MDI Shell\Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00001.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00002.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00003.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00004.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00005.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00006.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00007.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00013.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\femmetyp.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\femmtype.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\femmview.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\hdrawtyp.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\hviewtyp.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_beladrawtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_belaviewtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_cdrawtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_cviewtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_femmetype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_femmplottype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_femmviewtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_hdra.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_hdrawtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_hvie.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_hviewtype.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\idr_mainframe.ico">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\left1.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\left2.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\main1.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\main2.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\toolbar1.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\tree.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+    <Image Include="res\viewtool.bmp">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\femm.rc2">
+      <Filter>MDI Shell\Resource Files</Filter>
+    </None>
+    <None Include="femm.reg" />
+    <None Include="res\femm.tlb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
