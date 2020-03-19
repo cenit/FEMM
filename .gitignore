@@ -1,0 +1,19 @@
+*.o
+*.out
+*.dll
+*.so
+*.a
+*.lib
+*.swp
+
+# OS Generated #
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+build/
+build_*/
+bin/
+.vs/
+.vscode/

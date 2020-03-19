@@ -40,7 +40,7 @@ IMPLEMENT_DYNCREATE(CFemmviewDoc, CDocument)
 BEGIN_MESSAGE_MAP(CFemmviewDoc, CDocument)
 	//{{AFX_MSG_MAP(CFemmviewDoc)
 	//}}AFX_MSG_MAP
-	
+
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ CFemmviewDoc::CFemmviewDoc()
 	LengthConv[4]=2.54e-05; //mils
 	LengthConv[5]=1.e-06;	//micrometers
 	Coords=FALSE;
-	
+
 	for(int i=0;i<9;i++)
 		d_PlotBounds[i][0]=d_PlotBounds[i][1]=
 		PlotBounds[i][0]=PlotBounds[i][1]=0;
@@ -117,7 +117,7 @@ CFemmviewDoc::~CFemmviewDoc()
 		if (agelist[i].bts!=NULL) free(agelist[i].bts);
 		if (agelist[i].brc!=NULL) free(agelist[i].brc);
 		if (agelist[i].brs!=NULL) free(agelist[i].brs);
-		if (agelist[i].nh!=NULL) free(agelist[i].nh);		
+		if (agelist[i].nh!=NULL) free(agelist[i].nh);
 		if (agelist[i].btcPrev!=NULL) free(agelist[i].btcPrev);
 		if (agelist[i].btsPrev!=NULL) free(agelist[i].btsPrev);
 		if (agelist[i].brcPrev!=NULL) free(agelist[i].brcPrev);
@@ -158,7 +158,7 @@ BOOL CFemmviewDoc::OnNewDocument()
 	meshnode.RemoveAll();
 	meshelem.RemoveAll();
 	contour.RemoveAll();
-	
+
 	for(i=0;i<agelist.GetSize();i++)
 	{
 		if (agelist[i].qp!=NULL) free(agelist[i].qp);		// list of nod
@@ -166,7 +166,7 @@ BOOL CFemmviewDoc::OnNewDocument()
 		if (agelist[i].bts!=NULL) free(agelist[i].bts);
 		if (agelist[i].brc!=NULL) free(agelist[i].brc);
 		if (agelist[i].brs!=NULL) free(agelist[i].brs);
-		if (agelist[i].nh!=NULL) free(agelist[i].nh);		
+		if (agelist[i].nh!=NULL) free(agelist[i].nh);
 		if (agelist[i].btcPrev!=NULL) free(agelist[i].btcPrev);
 		if (agelist[i].btsPrev!=NULL) free(agelist[i].btsPrev);
 		if (agelist[i].brcPrev!=NULL) free(agelist[i].brcPrev);
@@ -223,11 +223,11 @@ void CFemmviewDoc::Dump(CDumpContext& dc) const
 /////////////////////////////////////////////////////////////////////////////
 // CFemmviewDoc commands
 
-BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName) 
+BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 {
 	if (!CDocument::OnOpenDocument(lpszPathName))
 		return FALSE;
-		
+
 	FILE *fp;
 	int i,j,k,t;
 	char s[1024],q[1024];
@@ -254,7 +254,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		free(ConList); ConList=NULL;
 		free(NumList); NumList=NULL;
 	}
-	nodelist.RemoveAll();		
+	nodelist.RemoveAll();
 	linelist.RemoveAll();
 	blocklist.RemoveAll();
 	arclist.RemoveAll();
@@ -305,7 +305,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			Frequency=fabs(Frequency);
 			q[0]=NULL;
 		}
-	
+
 		// Frequency of the problem
 		if( _strnicmp(q,"[depth]",7)==0){
 			v=StripKey(s);
@@ -344,7 +344,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			if ( _strnicmp(q,"polar",5)==0) Coords=1;
 			q[0]=NULL;
 		}
-	
+
 		// Comments
 		if (_strnicmp(q,"[comment]",9)==0){
 			v=StripKey(s);
@@ -371,7 +371,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			ProblemNote=v;
 			q[0]=NULL;
 		}
-		
+
 		// properties for axisymmetric external region
 		if( _strnicmp(q,"[extzo]",7)==0){
 			v=StripKey(s);
@@ -429,7 +429,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		}
 
 		// Point Properties
-		if( _strnicmp(q,"<beginpoint>",11)==0){	
+		if( _strnicmp(q,"<beginpoint>",11)==0){
 			PProp.PointName="New Point Property";
 			PProp.Jr=0.;
 			PProp.Ji=0.;
@@ -461,19 +461,19 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&PProp.Ar);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<A_im>",6)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&PProp.Ai);
 		   q[0]=NULL;
 		}
-	
+
 		if( _strnicmp(q,"<I_re>",6)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&PProp.Jr);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<I_im>",6)==0){
 		   v=StripKey(s);
@@ -487,13 +487,13 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		}
 
 		// Boundary Properties;
-		if( _strnicmp(q,"<beginbdry>",11)==0){	
+		if( _strnicmp(q,"<beginbdry>",11)==0){
 			BProp.BdryName="New Boundary";
 			BProp.BdryFormat=0;
 			BProp.A0=0.;
 			BProp.A1=0.;
 			BProp.A2=0.;
-			BProp.phi=0.;	
+			BProp.phi=0.;
 			BProp.Mu=0.;
 			BProp.Sig=0.;
 			BProp.c0=0.;
@@ -525,66 +525,66 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		   sscanf(v,"%i",&BProp.BdryFormat);
 		   q[0]=NULL;
 		}
-		
+
 		if( _strnicmp(q,"<mu_ssd>",8)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.Mu);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<sigma_ssd>",11)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.Sig);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<A_0>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.A0);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<A_1>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.A1);
 		   q[0]=NULL;
-		}	
-		
+		}
+
 		if( _strnicmp(q,"<A_2>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.A2);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<phi>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.phi);
 		   q[0]=NULL;
-		}	
-		
+		}
+
 		if( _strnicmp(q,"<c0>",4)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.c0.re);
 		   q[0]=NULL;
-		}	
-		
+		}
+
 		if( _strnicmp(q,"<c1>",4)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.c1.re);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<c0i>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.c0.im);
 		   q[0]=NULL;
-		}	
-		
+		}
+
 		if( _strnicmp(q,"<c1i>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&BProp.c1.im);
 		   q[0]=NULL;
-		}	
+		}
 		if( _strnicmp(q,"<endbdry>",9)==0){
 			lineproplist.Add(BProp);
 			q[0]=NULL;
@@ -592,7 +592,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 
 
 		// Block Properties;
-		if( _strnicmp(q,"<beginblock>",12)==0){	
+		if( _strnicmp(q,"<beginblock>",12)==0){
 			MProp.BlockName="New Material";
 			MProp.mu_x=1.;
 			MProp.mu_y=1.;			// permeabilities, relative
@@ -606,7 +606,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			MProp.Theta_hy=0.;			// hysteresis angle, degrees
 			MProp.NStrands=0;
 			MProp.WireD=0;
-			MProp.LamFill=1.;			// lamination fill factor;	
+			MProp.LamFill=1.;			// lamination fill factor;
 			MProp.LamType=0;			// type of lamination;
 			MProp.BHpoints=0;
 			MProp.MuMax=0;
@@ -638,61 +638,61 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		   sscanf(v,"%lf",&MProp.mu_x);
 		   q[0]=NULL;
 		}
-		
+
 		if( _strnicmp(q,"<mu_y>",6)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.mu_y);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<H_c>",5)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.H_c);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<J_re>",6)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.Jr);
 		   q[0]=NULL;
-		}	
-		
+		}
+
 		if( _strnicmp(q,"<J_im>",6)==0){
 		   v=StripKey(s);
 		   if (Frequency!=0) sscanf(v,"%lf",&MProp.Ji);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<sigma>",7)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.Cduct);
 		   q[0]=NULL;
-		}	
-		
+		}
+
 		if( _strnicmp(q,"<phi_h>",7)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.Theta_hn);
 		   q[0]=NULL;
-		}	
-			
+		}
+
 		if( _strnicmp(q,"<phi_hx>",8)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.Theta_hx);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<phi_hy>",8)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.Theta_hy);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<d_lam>",7)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.Lam_d);
 		   q[0]=NULL;
-		}	
-	
+		}
+
 		if( _strnicmp(q,"<LamFill>",8)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.LamFill);
@@ -703,20 +703,20 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		   v=StripKey(s);
 		   sscanf(v,"%i",&MProp.LamType);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<NStrands>",10)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%i",&MProp.NStrands);
 		   q[0]=NULL;
-		}	
+		}
 
 		if( _strnicmp(q,"<WireD>",7)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%lf",&MProp.WireD);
 		   q[0]=NULL;
 		}
-		
+
 		if( _strnicmp(q,"<BHPoints>",10)==0){
 			v=StripKey(s);
 			sscanf(v,"%i",&MProp.BHpoints);
@@ -754,14 +754,14 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 					}
 					free(tmpHdata);
 					free(tmpBdata);
-					free(MProp.slope); 
-					MProp.slope=NULL;  
+					free(MProp.slope);
+					MProp.slope=NULL;
 
 					// set a flag for DC incremental permeability problems
 					if ((bIncremental == TRUE) && (Frequency==0)) MProp.MuMax = 1;
 
 					// second time through is to get the DC curve
-					MProp.GetSlopes(0);		
+					MProp.GetSlopes(0);
 				}
 				else{
 					MProp.GetSlopes(Frequency*2.*PI);
@@ -777,7 +777,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		}
 
 		// Circuit Properties
-		if( _strnicmp(q,"<begincircuit>",14)==0){	
+		if( _strnicmp(q,"<begincircuit>",14)==0){
 			CProp.CircName="New Circuit";
 			CProp.CircType=0;
 			CProp.Amps=0;
@@ -802,7 +802,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			CProp.CircName=v;
 			q[0]=NULL;
 		}
-		
+
 		if( _strnicmp(q,"<totalamps_re>",14)==0){
 			double inval;
 		   v=StripKey(s);
@@ -818,13 +818,13 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		   if (Frequency!=0) CProp.Amps+=(I*inval);
 		   q[0]=NULL;
 		}
-		
+
 		if( _strnicmp(q,"<circuittype>",13)==0){
 		   v=StripKey(s);
 		   sscanf(v,"%i",&CProp.CircType);
 		   q[0]=NULL;
 		}
-		
+
 		if( _strnicmp(q,"<endcircuit>",12)==0){
 			circproplist.Add(CProp);
 			q[0]=NULL;
@@ -863,7 +863,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			v=StripKey(s);
 			sscanf(v,"%i",&k);
 			for(i=0;i<k;i++)
-			{  
+			{
 				fgets(s,1024,fp);
 				sscanf(s,"%i	%i	%lf	%lf %i	%i	%i	%lf\n",&asegm.n0,&asegm.n1,
 					&asegm.ArcLength,&asegm.MaxSideLength,&t,&asegm.Hidden,&asegm.InGroup,&b);
@@ -884,7 +884,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				blk.BlockType=-1;
 				blk.MaxArea=0;
 				for(i=0;i<k;i++)
-				{	
+				{
 					fgets(s,1024,fp);
 					sscanf(s,"%lf	%lf\n",&blk.x,&blk.y);
 				//	blocklist.Add(blk);
@@ -919,7 +919,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				v=ParseDbl(v,&blk.y);
 				v=ParseInt(v,&blk.BlockType);
 				v=ParseDbl(v,&blk.MaxArea);
-				v=ParseInt(v,&blk.InCircuit);				
+				v=ParseInt(v,&blk.InCircuit);
 				v=ParseDbl(v,&blk.MagDir);
 				v=ParseInt(v,&blk.InGroup);
 				v=ParseInt(v,&blk.Turns);
@@ -933,7 +933,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				blk.BlockType-=1;
 				blk.InCircuit-=1;
 				blocklist.Add(blk);
-			}		
+			}
 			q[0]=NULL;
 		}
 
@@ -941,8 +941,8 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			flag=TRUE;
 			q[0]=NULL;
 		}
-	}	
-	
+	}
+
 	// read in meshnodes;
 	fscanf(fp,"%i\n",&k);
 	meshnode.SetSize(k);
@@ -953,7 +953,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		{
 			int bc;
 
-			if (!bIncremental) 
+			if (!bIncremental)
 				sscanf(s,"%lf	%lf	%lf	%lf",&mnode.x,&mnode.y,&mnode.A.re,&mnode.A.im);
 			else
 				sscanf(s,"%lf	%lf	%lf	%lf	%i	%lf",&mnode.x,&mnode.y,&mnode.A.re,&mnode.A.im,&bc,&mnode.Aprev);
@@ -978,7 +978,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		fgets(s,1024,fp);
 		if (!bIncremental)
 			sscanf(s,"%i	%i	%i	%i",&elm.p[0],&elm.p[1],&elm.p[2],&elm.lbl);
-		else 
+		else
 			sscanf(s,"%i	%i	%i	%i	%lf",&elm.p[0],&elm.p[1],&elm.p[2],&elm.lbl,&elm.Jp);
 		elm.blk=blocklist[elm.lbl].BlockType;
 		meshelem.SetAt(i,elm);
@@ -1037,7 +1037,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 
 		for(j=0;j<=age.totalArcElements;j++){
 			CQuadPoint q;
-			
+
 			fgets(s,1024,fp);
 			sscanf(s,"%i %lf %i %lf %i %lf %i %lf",
 				&q.n0, &q.w0,
@@ -1065,7 +1065,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		ro=agelist[i].ro/R;
 		dt=(PI/180.)*agelist[i].totalArcLength/((double) agelist[i].totalArcElements);
 
-		if (agelist[i].BdryFormat==0) 
+		if (agelist[i].BdryFormat==0)
 		{
 			agelist[i].nn=(agelist[i].totalArcElements/2)+1; // periodic AGE
 			m = (int) round(360./agelist[i].totalArcLength);
@@ -1077,13 +1077,13 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		}
 
 		// for present solution
-		agelist[i].brc=(CComplex *)calloc(agelist[i].nn,sizeof(CComplex));	
+		agelist[i].brc=(CComplex *)calloc(agelist[i].nn,sizeof(CComplex));
 		agelist[i].brs=(CComplex *)calloc(agelist[i].nn,sizeof(CComplex));
-		agelist[i].btc=(CComplex *)calloc(agelist[i].nn,sizeof(CComplex));	
+		agelist[i].btc=(CComplex *)calloc(agelist[i].nn,sizeof(CComplex));
 		agelist[i].bts=(CComplex *)calloc(agelist[i].nn,sizeof(CComplex));
 		agelist[i].br=(CComplex *)calloc(agelist[i].totalArcElements,sizeof(CComplex));
 		agelist[i].bt=(CComplex *)calloc(agelist[i].totalArcElements,sizeof(CComplex));
-		agelist[i].nh=(int *)calloc(agelist[i].nn,sizeof(int));		
+		agelist[i].nh=(int *)calloc(agelist[i].nn,sizeof(int));
 
 		// for previous solution;
 		if (!bIncremental)
@@ -1098,8 +1098,8 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		else{
 			agelist[i].brcPrev=(double *)calloc(agelist[i].nn,sizeof(double));
 			agelist[i].brsPrev=(double *)calloc(agelist[i].nn,sizeof(double));
-			agelist[i].btcPrev=(double *)calloc(agelist[i].nn,sizeof(double));	
-			agelist[i].btsPrev=(double *)calloc(agelist[i].nn,sizeof(double));	
+			agelist[i].btcPrev=(double *)calloc(agelist[i].nn,sizeof(double));
+			agelist[i].btsPrev=(double *)calloc(agelist[i].nn,sizeof(double));
 			agelist[i].brPrev=(double *)calloc(agelist[i].totalArcElements,sizeof(double));
 			agelist[i].btPrev=(double *)calloc(agelist[i].totalArcElements,sizeof(double));
 		}
@@ -1129,19 +1129,19 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			}
 
 			nn[1]=agelist[i].qp[k].n0;
-			nn[2]=agelist[i].qp[k].n1; 
-			nn[3]=agelist[i].qp[k+1].n1; 
+			nn[2]=agelist[i].qp[k].n1;
+			nn[3]=agelist[i].qp[k+1].n1;
 			ww[1]=agelist[i].qp[k].w0;
-			ww[2]=agelist[i].qp[k].w1; 
-			ww[3]=agelist[i].qp[k+1].w1; 
+			ww[2]=agelist[i].qp[k].w1;
+			ww[3]=agelist[i].qp[k+1].w1;
 
 			if((k+2)>agelist[i].totalArcElements){
 				nn[4]=agelist[i].qp[1].n1;
 				ww[4]=agelist[i].qp[1].w1;
 			}
 			else{
-				nn[4]=agelist[i].qp[k+2].n1; 
-				ww[4]=agelist[i].qp[k+2].w1; 
+				nn[4]=agelist[i].qp[k+2].n1;
+				ww[4]=agelist[i].qp[k+2].w1;
 			}
 
 			// outer nodes
@@ -1155,19 +1155,19 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			}
 
 			nn[6]=agelist[i].qp[k].n2;
-			nn[7]=agelist[i].qp[k].n3; 
-			nn[8]=agelist[i].qp[k+1].n3; 
+			nn[7]=agelist[i].qp[k].n3;
+			nn[8]=agelist[i].qp[k+1].n3;
 			ww[6]=agelist[i].qp[k].w2;
-			ww[7]=agelist[i].qp[k].w3; 
-			ww[8]=agelist[i].qp[k+1].w3; 
+			ww[7]=agelist[i].qp[k].w3;
+			ww[8]=agelist[i].qp[k+1].w3;
 
 			if((k+2)>agelist[i].totalArcElements){
 				nn[9]=agelist[i].qp[1].n3;
 				ww[9]=agelist[i].qp[1].w3;
 			}
 			else{
-				nn[9]=agelist[i].qp[k+2].n3; 
-				ww[9]=agelist[i].qp[k+2].w3; 
+				nn[9]=agelist[i].qp[k+2].n3;
+				ww[9]=agelist[i].qp[k+2].w3;
 			}
 
 			// fix antiperiodic weights...
@@ -1182,14 +1182,14 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				ww[9]=-ww[9];
 			}
 
-			for(kk=0;kk<10;kk++) 
+			for(kk=0;kk<10;kk++)
 				a[kk]=meshnode[nn[kk]].A*ww[kk];
 
 			// A at the center of the element
 			if (agelist[i].BdryFormat==0)
 			{
-				ac = (2*a[2]+2*a[3]+2*a[7]+2*a[8]+a[1]*ci+(a[2]-a[3]-a[4])*ci-(a[0]-3*a[1]+a[2]+3*a[3]-2*a[4])*pow(ci,2)+(a[0]-2*a[1]+2*a[3]-a[4])*pow(ci,3)+(a[6]+a[7]-a[8]-a[9])*co-
-					 (a[5]-3*a[6]+a[7]+3*a[8]-2*a[9])*pow(co,2)+(a[5]-2*a[6]+2*a[8]-a[9])*pow(co,3))/8.;
+				ac = (2*a[2]+2*a[3]+2*a[7]+2*a[8]+a[1]*ci+(a[2]-a[3]-a[4])*ci-(a[0]-3*a[1]+a[2]+3*a[3]-2*a[4])*ci*ci+(a[0]-2*a[1]+2*a[3]-a[4])*ci*ci*ci+(a[6]+a[7]-a[8]-a[9])*co-
+					 (a[5]-3*a[6]+a[7]+3*a[8]-2*a[9])*co*co+(a[5]-2*a[6]+2*a[8]-a[9])*co*co*co)/8.;
 				agelist[i].aco += ac /((double) agelist[i].totalArcElements);
 			}
 
@@ -1200,7 +1200,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				(-2+co)*(1+co)*a[7]-2*a[8]+co*(a[8]+co*(a[5]-3*a[6]+3*a[8]-2*a[9])+a[9]+co*co*(-a[5]+2*a[6]-2*a[8]+a[9])))/(4*dr);
 			if (bIncremental)
 			{
-				for(kk=0;kk<10;kk++) 
+				for(kk=0;kk<10;kk++)
 					a[kk]=meshnode[nn[kk]].Aprev*ww[kk];
 				agelist[i].brPrev[k]=Re((-(ci*a[1])-2*a[2]+2*a[3]+ci*(a[2]+a[3]-a[4])-ci*ci*ci*(a[0]-4*a[1]+6*a[2]-4*a[3]+a[4])+ci*ci*(a[0]-5*a[1]+9*a[2]-7*a[3]+2*a[4])-2*a[7]+
 					2*a[8]+co*(-a[6]+a[7]+a[8]-a[9])-co*co*co*(a[5]-4*a[6]+6*a[7]-4*a[8]+a[9])+co*co*(a[5]-5*a[6]+9*a[7]-7*a[8]+2*a[9]))/(4*dt*R));
@@ -1237,7 +1237,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				}
 			}
 
-			if ((agelist[i].nh[j] == 0) || 
+			if ((agelist[i].nh[j] == 0) ||
 				(((j==(agelist[i].nn-1)) && (agelist[i].BdryFormat==0)) && ((agelist[i].totalArcElements%2)==0)))
 			{
 				brc /= agelist[i].totalArcElements;
@@ -1261,23 +1261,23 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			}
 
 			agelist[i].brc[j]=brc;
-			agelist[i].brs[j]=brs; 
+			agelist[i].brs[j]=brs;
 			agelist[i].btc[j]=btc;
 			agelist[i].bts[j]=bts;
 
 			if (bIncremental)
 			{
 				agelist[i].brcPrev[j]=brcPrev;
-				agelist[i].brsPrev[j]=brsPrev; 
+				agelist[i].brsPrev[j]=brsPrev;
 				agelist[i].btcPrev[j]=btcPrev;
 				agelist[i].btsPrev[j]=btsPrev;
 			}
-		} 
+		}
 	}
 
 	// scale depth to meters for internal computations;
-	if(Depth==-1) Depth=1; else Depth*=LengthConv[LengthUnits]; 
-	
+	if(Depth==-1) Depth=1; else Depth*=LengthConv[LengthUnits];
+
 	// element centroids and radii;
 	for(i=0;i<meshelem.GetSize();i++)
 	{
@@ -1314,14 +1314,14 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 
 	// Find flux density in each element;
 	for(i=0;i<meshelem.GetSize();i++) GetElementB(meshelem[i]);
-	
+
 	// Find extreme values of A;
 	A_Low=meshnode[0].A.re; A_High=meshnode[0].A.re;
 	for(i=1;i<meshnode.GetSize();i++)
 	{
 		if (meshnode[i].A.re>A_High) A_High=meshnode[i].A.re;
 		if (meshnode[i].A.re<A_Low)  A_Low =meshnode[i].A.re;
-		
+
 		if(Frequency!=0)
 		{
 			if (meshnode[i].A.im<A_Low)  A_Low =meshnode[i].A.im;
@@ -1333,7 +1333,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	A_ub=A_High;
 
 	if(Frequency!=0){ // compute frequency-dependent permeabilities for linear blocks;
-		
+
 		CComplex deg45; deg45=1+I;
 		CComplex K,halflag;
 		double ds;
@@ -1345,7 +1345,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 									  exp(-I*blockproplist[k].Theta_hx*PI/180.);
 			blockproplist[k].mu_fdy = blockproplist[k].mu_y*
 									  exp(-I*blockproplist[k].Theta_hy*PI/180.);
-			
+
 			if(blockproplist[k].Lam_d!=0){
 				halflag=exp(-I*blockproplist[k].Theta_hx*PI/360.);
 				ds=sqrt(2./(0.4*PI*w*blockproplist[k].Cduct*blockproplist[k].mu_x));
@@ -1359,7 +1359,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 					blockproplist[k].mu_fdx=(blockproplist[k].mu_fdx)*
 					blockproplist[k].LamFill+(1.-blockproplist[k].LamFill);
 				}
-				
+
 				halflag=exp(-I*blockproplist[k].Theta_hy*PI/360.);
 				ds=sqrt(2./(0.4*PI*w*blockproplist[k].Cduct*blockproplist[k].mu_y));
 				K=halflag*deg45*blockproplist[k].Lam_d*0.001/(2.*ds);
@@ -1374,7 +1374,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				}
 			}
 		}
-		
+
 	}}
 
 	// compute fill factor associated with each block label
@@ -1410,7 +1410,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		double J_Low, J_High;
 		double Jr_Low, Jr_High;
 		double Ji_Low, Ji_High;
-		
+
 		GetJA(0,Jelm,Aelm);
 		Jr_Low=fabs(Jelm[0].re);
 		Jr_High=Jr_Low;
@@ -1425,7 +1425,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				br=fabs(Jelm[j].re);
 				bi=fabs(Jelm[j].im);
 				b=abs(Jelm[j]);
-				
+
 				if(b>J_High) J_High=b; if(b<J_Low) J_Low=b;
 				if(br>Jr_High) Jr_High=br; if(br<Jr_Low) Jr_Low=br;
 				if(bi>Ji_High) Ji_High=bi; if(bi<Ji_Low) Ji_Low=bi;
@@ -1479,7 +1479,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 					}
 				}
 			}
-			
+
 		}
 
 		for(i=0;i<meshelem.GetSize();i++) if (isExt[i]==FALSE) break;
@@ -1492,7 +1492,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		B_Low=sqrt(Br_Low*Br_Low + Bi_Low*Bi_Low);
 		B_High=B_Low;
 		a0=sqrt(meshelem[i].rsqr)*B_High*B_High;
-		
+
 		if (Frequency!=0)
 			GetH(meshelem[i].B1,meshelem[i].B2,h1,h2,0);
 		else{
@@ -1511,14 +1511,14 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		{
 			GetNodalB(meshelem[i].b1,meshelem[i].b2,meshelem[i]);
 			for(j=0;j<3;j++){
-				br=sqrt(sqr(meshelem[i].b1[j].re) + 
+				br=sqrt(sqr(meshelem[i].b1[j].re) +
 						sqr(meshelem[i].b2[j].re));
 				bi=sqrt(sqr(meshelem[i].b1[j].im) +
 						sqr(meshelem[i].b2[j].im));
 				b=sqrt(br*br+bi*bi);
-				
-				// used to be: if(b>B_High)   B_High=b; 
-				// new form is a heuristic that discounts really small elements 
+
+				// used to be: if(b>B_High)   B_High=b;
+				// new form is a heuristic that discounts really small elements
 				// with really high flux density, which sometimes happens in corners.
 				a1=sqrt(meshelem[i].rsqr)*b*b;
 				if ((a1>a0) && (!isExt[i]))
@@ -1526,7 +1526,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 					B_High=b;
 					a0=a1;
 				}
-				
+
 				if (!isExt[i]){
 					if(b<B_Low)   B_Low=b;
 					if(br>Br_High) Br_High=br; if(br<Br_Low) Br_Low=br;
@@ -1580,7 +1580,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
     POSITION pos = GetFirstViewPosition();
     CFemmviewView *theView=(CFemmviewView *)GetNextView(pos);
 
-	if(Frequency==0) 
+	if(Frequency==0)
 	{
 		if (theView->DensityPlot==2) theView->DensityPlot=1;
 		if (theView->DensityPlot>1)  theView->DensityPlot=0;
@@ -1592,7 +1592,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	{
 		CComplex Jelm[3],Aelm[3];
 		double a;
-		
+
 		if(circproplist[i].CircType>1)
 		for(j=0,circproplist[i].Amps=0.;j<meshelem.GetSize();j++)
 		{
@@ -1607,7 +1607,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 
 	// Build adjacency information for each element.
 	FindBoundaryEdges();
-	
+
 	// Check to see if any regions are multiply defined
 	// (i.e. tagged by more than one block label). If so,
 	// display an error message and mark the problem blocks.
@@ -1618,7 +1618,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 			if(meshelem[i].lbl!=k)
 			{
 				blocklist[meshelem[i].lbl].IsSelected=TRUE;
-				if (!bMultiplyDefinedLabels) 
+				if (!bMultiplyDefinedLabels)
 				{
 					CString msg;
 					msg ="Some regions in the problem have been defined\n";
@@ -1632,21 +1632,21 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		}
 	}
 
-	
+
 	// Get some information needed to compute energy stored in
 	// permanent magnets with a nonlinear demagnetization curve
 	if (Frequency==0)
 	{
 		for(k=0;k<blockproplist.GetSize();k++)
 		{
-			if ((blockproplist[k].H_c>0) && (blockproplist[k].BHpoints>0)) 
+			if ((blockproplist[k].H_c>0) && (blockproplist[k].BHpoints>0))
 			{
 				blockproplist[k].Nrg = blockproplist[k].GetCoEnergy(blockproplist[k].GetB(blockproplist[k].H_c));
 			}
 		}
 	}
 
-	FirstDraw=TRUE; 
+	FirstDraw=TRUE;
 	return TRUE;
 }
 
@@ -1664,7 +1664,7 @@ int CFemmviewDoc::InTriangle(double x, double y)
 	// for is nearby the last one we found.  Since the elements
 	// are ordered in a banded structure, we want to check the
 	// elements nearby the last one selected first.
-	if (InTriangleTest(x,y,k)) return k; 
+	if (InTriangleTest(x,y,k)) return k;
 
 	hi=k;lo=k;
 
@@ -1675,7 +1675,7 @@ int CFemmviewDoc::InTriangle(double x, double y)
 
 		z=(meshelem[hi].ctr.re-x)*(meshelem[hi].ctr.re-x) +
 		  (meshelem[hi].ctr.im-y)*(meshelem[hi].ctr.im-y);
-		if(z<=meshelem[hi].rsqr) 
+		if(z<=meshelem[hi].rsqr)
 		{
 			if(InTriangleTest(x,y,hi))
 			{
@@ -1686,7 +1686,7 @@ int CFemmviewDoc::InTriangle(double x, double y)
 
 		z=(meshelem[lo].ctr.re-x)*(meshelem[lo].ctr.re-x) +
 		  (meshelem[lo].ctr.im-y)*(meshelem[lo].ctr.im-y);
-		if(z<=meshelem[lo].rsqr) 
+		if(z<=meshelem[lo].rsqr)
 		{
 			if(InTriangleTest(x,y,lo))
 			{
@@ -1713,21 +1713,21 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 {
 	int i,j,n[3],lbl;
 	double a[3],b[3],c[3],da,ravg;
-	
+
 	for(i=0;i<3;i++) n[i]=meshelem[k].p[i];
 	a[0]=meshnode[n[1]].x * meshnode[n[2]].y - meshnode[n[2]].x * meshnode[n[1]].y;
 	a[1]=meshnode[n[2]].x * meshnode[n[0]].y - meshnode[n[0]].x * meshnode[n[2]].y;
 	a[2]=meshnode[n[0]].x * meshnode[n[1]].y - meshnode[n[1]].x * meshnode[n[0]].y;
 	b[0]=meshnode[n[1]].y - meshnode[n[2]].y;
 	b[1]=meshnode[n[2]].y - meshnode[n[0]].y;
-	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;	
+	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;
 	c[0]=meshnode[n[2]].x - meshnode[n[1]].x;
 	c[1]=meshnode[n[0]].x - meshnode[n[2]].x;
 	c[2]=meshnode[n[1]].x - meshnode[n[0]].x;
 	da=(b[0]*c[1]-b[1]*c[0]);
 	ravg=LengthConv[LengthUnits]*
 		(meshnode[n[0]].x + meshnode[n[1]].x + meshnode[n[2]].x)/3.;
-	
+
 	GetPointB(x,y,u.B1,u.B2,meshelem[k]);
 
 	u.Hc=0;
@@ -1760,7 +1760,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 			u.A.re*=rp;
 		*/
 
-			
+
 			// a ``smarter'' interpolation.  One based on A can't
 			// represent constant flux density very well.
 			// This works, but I should re-write it in a more
@@ -1808,9 +1808,9 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 
 			// now, interpolate to get potential...
 			u.A.re = v[0] - p*(3.*v[0] - 4.*v[1] + v[2]) +
-				     2.*p*p*(v[0] - 2.*v[1] + v[2]) - 
-				     q*(3.*v[0] + v[4] - 4.*v[5]) + 
-					 2.*q*q*(v[0] + v[4] - 2.*v[5]) + 
+				     2.*p*p*(v[0] - 2.*v[1] + v[2]) -
+				     q*(3.*v[0] + v[4] - 4.*v[5]) +
+					 2.*q*q*(v[0] + v[4] - 2.*v[5]) +
 			         4.*p*q*(v[0] - v[1] + v[3] - v[5]);
 
 	/*		// "simple" way to do it...
@@ -1883,7 +1883,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 
 					int tn;
 					double R[3];
-					for(tn=0;tn<3;tn++) 
+					for(tn=0;tn<3;tn++)
 					{
 						R[tn]=meshnode[n[tn]].x;
 						if (R[tn]<1.e-6) R[tn]=ravg;
@@ -1896,10 +1896,10 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 				}
 			}
 			else u.Js+=blocklist[lbl].J;
-		}			
+		}
 		u.c=Re(blocklist[meshelem[k].lbl].o);
 		u.E=blockproplist[meshelem[k].blk].DoEnergy(u.B1.re,u.B2.re);
-		
+
 		// correct H and energy stored in magnet for second-quadrant
 		// representation of a PM.
 		if (blockproplist[meshelem[k].blk].H_c!=0)
@@ -1914,10 +1914,10 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 			if (blockproplist[bk].BHpoints==0)
 				u.E = 0.5*muo*(u.mu1.re*u.H1.re*u.H1.re + u.mu2.re*u.H2.re*u.H2.re);
 			else{
-				u.E = u.E + blockproplist[bk].Nrg 
+				u.E = u.E + blockproplist[bk].Nrg
 					  - blockproplist[bk].H_c*Re((u.B1.re+I*u.B2.re)/exp(I*PI*meshelem[k].magdir/180.));
 			}
-			
+
 			// If considering the magnet as an equivalent coil, add Hc to the demagnetizing field
 			if (!d_ShiftH)
 			{
@@ -1941,7 +1941,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 		u.Pe=0;
 		return TRUE;
 	}
-		
+
 	if(Frequency!=0){
 		u.A=0;
 		if(ProblemType==0)
@@ -1991,12 +1991,12 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 
 			// now, interpolate to get potential...
 			u.A = v[0] - p*(3.*v[0] - 4.*v[1] + v[2]) +
-				     2.*p*p*(v[0] - 2.*v[1] + v[2]) - 
-				     q*(3.*v[0] + v[4] - 4.*v[5]) + 
-					 2.*q*q*(v[0] + v[4] - 2.*v[5]) + 
+				     2.*p*p*(v[0] - 2.*v[1] + v[2]) -
+				     q*(3.*v[0] + v[4] - 4.*v[5]) +
+					 2.*q*q*(v[0] + v[4] - 2.*v[5]) +
 			         4.*p*q*(v[0] - v[1] + v[3] - v[5]);
 		}
-	
+
 		// if bIncremental, need to get permeability about the DC
 		// operating point, rather than usual DC permeability.
 		if (!bIncremental){
@@ -2025,12 +2025,12 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 				u.mu12 = (B1p*B2p*(muinc - murel))/(B*B);
 				u.mu2  = (B2p*B2p*muinc + B1p*B1p*murel)/(B*B);
 			}
-			
+
 			u.H1 = (u.B2*u.mu12 - u.B1*u.mu2)/(u.mu12*u.mu12 - u.mu1*u.mu2);
 			u.H2 = (u.B2*u.mu1 - u.B1*u.mu12)/(u.mu1*u.mu2 - u.mu12*u.mu12);
 		}
 
-		u.Js=blockproplist[meshelem[k].blk].Jr + 
+		u.Js=blockproplist[meshelem[k].blk].Jr +
 			 I*blockproplist[meshelem[k].blk].Ji;
 		lbl=meshelem[k].lbl;
 		j=blocklist[lbl].InCircuit;
@@ -2043,7 +2043,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 
 					int tn;
 					double R[3];
-					for(tn=0;tn<3;tn++) 
+					for(tn=0;tn<3;tn++)
 					{
 						R[tn]=meshnode[n[tn]].x;
 						if (R[tn]<1.e-6) R[tn]=ravg;
@@ -2056,16 +2056,16 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 				}
 			}
 			else u.Js+=blocklist[lbl].J;
-		}	
+		}
 
 		// report just loss-related part of conductivity.
 		if (blockproplist[meshelem[k].blk].Cduct!=0)
 			u.c=1./Re(1./(blocklist[meshelem[k].lbl].o));
 		else u.c=0;
-		
+
 		if (blockproplist[meshelem[k].blk].Lam_d!=0) u.c=0;
 
-		// only add in eddy currents if the region is solid 
+		// only add in eddy currents if the region is solid
 		if (blocklist[meshelem[k].lbl].FillFactor<0)
 			u.Je=-I*Frequency*2.*PI*u.c*u.A;
 
@@ -2078,7 +2078,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 		CComplex z;
 		z=(u.H1*u.B1.Conj()) + (u.H2*u.B2.Conj());
 		u.E=0.25*z.re;
-		
+
 		// add in "local" stored energy for wound that would be subject to
 		// prox and skin effect for nonzero frequency cases.
 		if (blockproplist[meshelem[k].blk].LamType>2)
@@ -2097,7 +2097,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals &u)
 		}
 
 		return TRUE;
-	}	
+	}
 
 	return FALSE;
 }
@@ -2121,7 +2121,7 @@ void CFemmviewDoc::GetPointB(double x, double y, CComplex &B1, CComplex &B2,
 	a[2]=meshnode[n[0]].x * meshnode[n[1]].y - meshnode[n[1]].x * meshnode[n[0]].y;
 	b[0]=meshnode[n[1]].y - meshnode[n[2]].y;
 	b[1]=meshnode[n[2]].y - meshnode[n[0]].y;
-	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;	
+	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;
 	c[0]=meshnode[n[2]].x - meshnode[n[1]].x;
 	c[1]=meshnode[n[0]].x - meshnode[n[2]].x;
 	c[2]=meshnode[n[1]].x - meshnode[n[0]].x;
@@ -2171,7 +2171,7 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 						 (blockproplist[elm.blk].mu_fdy==
 						  blockproplist[meshelem[ConList[k][j]].blk].mu_fdy)) m++;
 			}
-		
+
 		if(m==NumList[k]) // normal smoothing method for points
 		{                 // away from any boundaries
 			for(j=0,R=0;j<NumList[k];j++)
@@ -2188,7 +2188,7 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 
 		else{
 			R=0; v1=0; v2=0;
-			
+
 			//scan ccw for an interface...
 			e=&elm;
 			for(q=0;q<NumList[k];q++)
@@ -2217,7 +2217,7 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 				}
 				else if(elm.lbl!=meshelem[nxt].lbl){
 					// we have found two elements on either side of the interface
-					// now, we take contribution from B at the center of the 
+					// now, we take contribution from B at the center of the
 					// interface side
 					tn.Set(meshnode[pt].x-meshnode[k].x,
 						  meshnode[pt].y-meshnode[k].y);
@@ -2232,7 +2232,7 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 
 					// for the moment, kludge with bt...
 					bt=e->B1*tn.re + e->B2*tn.im;
-										
+
 					R+=z;
 					b1[i]+=(z*tn.re*bt);
 					b2[i]+=(z*tn.im*bt);
@@ -2273,7 +2273,7 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 				}
 				else if(elm.lbl!=meshelem[nxt].lbl){
 					// we have found two elements on either side of the interface
-					// now, we take contribution from B at the center of the 
+					// now, we take contribution from B at the center of the
 					// interface side
 					tn.Set(meshnode[pt].x-meshnode[k].x,
 						  meshnode[pt].y-meshnode[k].y);
@@ -2285,16 +2285,16 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 					}
 					z=0.5/abs(tn);
 					tn/=abs(tn);
-				
+
 					// for the moment, kludge with bt...
 					bt=e->B1*tn.re + e->B2*tn.im;
-						
+
 					R+=z;
 					b1[i]+=(z*tn.re*bt);
 					b2[i]+=(z*tn.im*bt);
 					b1[i]+=(z*tn.im*bn);
 					b2[i]+=(-z*tn.re*bn);
-					v2=tn;	
+					v2=tn;
 					q=NumList[k];
 				}
 				else e=&meshelem[nxt];
@@ -2305,12 +2305,12 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 
 			// check to see if angle of corner is too sharp to apply
 			// this rule; really only does right if the interface is flat;
-			flag=FALSE;	
+			flag=FALSE;
 			// if there is only one edge, approx is ok;
 			if ((abs(v1)<0.9) || (abs(v2)<0.9)) flag=TRUE;
 			// if the interfaces make less than a 10 degree angle, things are ok;
 			if ( (-v1.re*v2.re-v1.im*v2.im) > 0.985) flag=TRUE;
-			
+
 			// Otherwise, punt...
 			if(flag==FALSE){
 				bn=0;
@@ -2327,7 +2327,7 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 						if(bt.im>bn.im) bn.im=bt.im;
 					}
 				}
-			
+
 				R=sqrt(elm.B1.re*elm.B1.re + elm.B2.re*elm.B2.re);
 				if(R!=0)
 				{
@@ -2359,16 +2359,16 @@ void CFemmviewDoc::GetNodalB(CComplex *b1, CComplex *b2,CElement &elm)
 		{
 			if (abs(p-(nodelist[j].x+nodelist[j].y*I))<1.e-08)
 			if(nodelist[j].BoundaryMarker>=0)
-			{	
+			{
 				if ((nodeproplist[nodelist[j].BoundaryMarker].Jr!=0) ||
 					(nodeproplist[nodelist[j].BoundaryMarker].Ji!=0))
 				{
 					b1[i]=elm.B1;
-					b2[i]=elm.B2;	
+					b2[i]=elm.B2;
 				}
 			}
 		}
-		
+
 
 		//check for special case of node on r=0 axisymmetric; set Br=0;
 		if ((fabs(p.re)<1.e-06) && (ProblemType==1)) b1[i].Set(0.,0);
@@ -2384,7 +2384,7 @@ void CFemmviewDoc::GetElementB(CElement &elm)
 
 	b[0]=meshnode[n[1]].y - meshnode[n[2]].y;
 	b[1]=meshnode[n[2]].y - meshnode[n[0]].y;
-	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;	
+	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;
 	c[0]=meshnode[n[2]].x - meshnode[n[1]].x;
 	c[1]=meshnode[n[0]].x - meshnode[n[2]].x;
 	c[2]=meshnode[n[1]].x - meshnode[n[0]].x;
@@ -2488,7 +2488,7 @@ void CFemmviewDoc::GetElementB(CElement &elm)
 }
 
 
-void CFemmviewDoc::OnReload() 
+void CFemmviewDoc::OnReload()
 {
 	// TODO: Add your command handler code here
 	CString pname = GetPathName();
@@ -2527,7 +2527,7 @@ void CFemmviewDoc::GetLineValues(CXYPlot &p,int PlotType,int NumPlotPoints)
 	int i,j,k,m,elm;
 	CPointVals v;
 	BOOL flag;
-	
+
 	q=(double *)calloc(contour.GetSize(),sizeof(double));
 	for(i=1,z=0.;i<contour.GetSize();i++)
 	{
@@ -2535,7 +2535,7 @@ void CFemmviewDoc::GetLineValues(CXYPlot &p,int PlotType,int NumPlotPoints)
 		q[i]=z;
 	}
 	dz=z/(NumPlotPoints-1);
-	
+
 	/*
 		m_XYPlotType.AddString("Potential");
 		m_XYPlotType.AddString("|B|        (Magnitude of flux density)");
@@ -2544,7 +2544,7 @@ void CFemmviewDoc::GetLineValues(CXYPlot &p,int PlotType,int NumPlotPoints)
 		m_XYPlotType.AddString("|H|        (Magnitude of field intensity)");
 		m_XYPlotType.AddString("H . n      (Normal field intensity)");
 		m_XYPlotType.AddString("H . t      (Tangential field intensity)");
-		m_XYPlotType.AddString("J_eddy     
+		m_XYPlotType.AddString("J_eddy
 	*/
 
 	if(Frequency==0){
@@ -2651,7 +2651,7 @@ void CFemmviewDoc::GetLineValues(CXYPlot &p,int PlotType,int NumPlotPoints)
 				break;
 		}
 	}
-	
+
 	switch(LengthUnits){
 		case 1:
 			strcpy(p.lbls[0],"Length, mm");
@@ -2682,7 +2682,7 @@ void CFemmviewDoc::GetLineValues(CXYPlot &p,int PlotType,int NumPlotPoints)
 		t/=abs(t);
 		n = I*t;
 		pt+=(n*1.e-06);
-		
+
 		if (elm<0) elm=InTriangle(pt.re,pt.im);
 		else if (InTriangleTest(pt.re,pt.im,elm)==FALSE)
 		{
@@ -2786,14 +2786,14 @@ void CFemmviewDoc::GetLineValues(CXYPlot &p,int PlotType,int NumPlotPoints)
 			}
 		}
 	}
-		
+
 	free(q);
 }
 
 BOOL CFemmviewDoc::InTriangleTest(double x, double y, int i)
 {
 	if ((i<0) || (i>=meshelem.GetSize())) return FALSE;
-	
+
 	int j,k;
 	double z;
 
@@ -2840,7 +2840,7 @@ CComplex CFemmviewDoc::Ctr(int i)
 {
 	CComplex p,c;
 	int j;
-	
+
 	for(j=0,c=0;j<3;j++){
 		p.Set(meshnode[meshelem[i].p[j]].x/3.,meshnode[meshelem[i].p[j]].y/3.);
 		c+=p;
@@ -2910,17 +2910,17 @@ CComplex CFemmviewDoc::GetJA(int k,CComplex *J,CComplex *A)
 
 	c=blockproplist[blk].Cduct;
 	if ((blockproplist[blk].Lam_d!=0) && (blockproplist[blk].LamType==0)) c=0;
-	if (blocklist[lbl].FillFactor>0) c=0; 
-	
+	if (blocklist[lbl].FillFactor>0) c=0;
+
 
 	// contribution from eddy currents;
-	if(Frequency!=0) 
+	if(Frequency!=0)
 		for(i=0;i<3;i++)
 		{
 			J[i]-=I*Frequency*2.*PI*c*A[i];
 			Javg-=I*Frequency*2.*PI*c*A[i]/3.;
 		}
-	
+
 
 	// contribution from circuit currents //
 	if(crc>=0)
@@ -2936,24 +2936,24 @@ CComplex CFemmviewDoc::GetJA(int k,CComplex *J,CComplex *A)
 					rn=meshnode[meshelem[k].p[i]].x;
 					if(fabs(rn/LengthConv[LengthUnits])<1.e-06)
 						J[i]-=c*blocklist[lbl].dVolts/r;
-					else 
+					else
 						J[i]-=c*blocklist[lbl].dVolts/(rn*LengthConv[LengthUnits]);
 
 				}
 				Javg-=c*blocklist[lbl].dVolts/r;
 			}
 		}
-		else 
+		else
 		{
 			for(i=0;i<3;i++) J[i]+=blocklist[lbl].J; // specified current
 			Javg+=blocklist[lbl].J;
 		}
-		
+
 	}
-		
+
 	// convert results to A/m^2
 	for(i=0;i<3;i++) J[i]*=1.e06;
-	
+
 	return (Javg*1.e06);
 }
 
@@ -2961,7 +2961,7 @@ CComplex CFemmviewDoc::PlnInt(double a, CComplex *u, CComplex *v)
 {
 	int i;
 	CComplex z[3],x;
-	
+
 	z[0]=2.*u[0]+u[1]+u[2];
 	z[1]=u[0]+2.*u[1]+u[2];
 	z[2]=u[0]+u[1]+2.*u[2];
@@ -2985,7 +2985,7 @@ CComplex CFemmviewDoc::AxiInt(double a, CComplex *u, CComplex *v,double *r)
 	M[1][0]=M[0][1];
 	M[2][0]=M[0][2];
 	M[2][1]=M[1][2];
-	
+
 	for(i=0;i<3;i++) z[i]=M[i][0]*u[0]+M[i][1]*u[1]+M[i][2]*u[2];
 	for(i=0,x=0;i<3;i++) x+=v[i]*z[i];
 	return PI*a*x/30.;
@@ -3001,7 +3001,7 @@ CComplex CFemmviewDoc::HenrotteVector(int k)
 
 	b[0]=meshnode[n[1]].y - meshnode[n[2]].y;
 	b[1]=meshnode[n[2]].y - meshnode[n[0]].y;
-	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;	
+	b[2]=meshnode[n[0]].y - meshnode[n[1]].y;
 	c[0]=meshnode[n[2]].x - meshnode[n[1]].x;
 	c[1]=meshnode[n[0]].x - meshnode[n[2]].x;
 	c[2]=meshnode[n[1]].x - meshnode[n[0]].x;
@@ -3025,7 +3025,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 #define WEIGHTED_INTEGRALS 9
 	int mm[WEIGHTED_INTEGRALS] = {18,19,20,21,22,23,25,26,27};
 	BOOL bMaskIntegral=FALSE;
-	for (k=0;k<WEIGHTED_INTEGRALS;k++) 
+	for (k=0;k<WEIGHTED_INTEGRALS;k++)
 	{
 		if (mm[k]==inttype)
 		{
@@ -3065,7 +3065,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 				else
 					y=AxiInt(a,A,V,r);
 				z+=y;
-				
+
 				break;
 
 			case 11: // x (or r) direction Lorentz force, SS part.
@@ -3143,9 +3143,9 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 			case 2: // stored energy
 				if(ProblemType==1) a*=(2.*PI*R); else a*=Depth;
 				B1=meshelem[i].B1;
-				B2=meshelem[i].B2;	
+				B2=meshelem[i].B2;
 				if(Frequency!=0){
-					// have to compute the energy stored in a special way for 
+					// have to compute the energy stored in a special way for
 					// wound regions subject to prox and skin effects
 					if (blockproplist[meshelem[i].blk].LamType>2)
 					{
@@ -3180,7 +3180,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 						}
 						else{ // the material is nonlinear
 							y=blockproplist[bk].DoEnergy(B1.re,B2.re);
-							y = y + blockproplist[bk].Nrg 
+							y = y + blockproplist[bk].Nrg
 								  - blockproplist[bk].H_c*Re((B1.re+I*B2.re)/exp(I*PI*meshelem[i].magdir/180.));
 							y*=a;
 						}
@@ -3205,7 +3205,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					if(ProblemType==1) a*=(2.*PI*R); else a*=Depth;
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
-					GetMu(B1,B2,mu1,mu2,i);			
+					GetMu(B1,B2,mu1,mu2,i);
 					H1=B1/(mu1*muo);
 					H2=B2/(mu2*muo);
 
@@ -3213,31 +3213,31 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					z+=y;
 				}
 				break;
-			
+
 			case 4: // Resistive Losses
 				if (abs(blocklist[meshelem[i].lbl].o)==0) sig=0;
 				else sig=1.e06/Re(1./blocklist[meshelem[i].lbl].o);
 				if((blockproplist[meshelem[i].blk].Lam_d!=0) &&
 					(blockproplist[meshelem[i].blk].LamType==0)) sig=0;
 				if(sig!=0){
-					
+
 					if (ProblemType==0){
-						for(k=0;k<3;k++) V[k]=Jn[k].Conj()/sig;	
+						for(k=0;k<3;k++) V[k]=Jn[k].Conj()/sig;
 						y=PlnInt(a,Jn,V)*Depth;
 					}
 
-					if(ProblemType==1) 
+					if(ProblemType==1)
 						y=2.*PI*R*a*J*conj(J)/sig;
-				
+
 					if(Frequency!=0) y/=2.;
 					z+=y;
 				}
 				break;
-			
+
 			case 5: // cross-section area
 				z+=a;
 				break;
-			
+
             case 10: // volume
 				if(ProblemType==1) a*=(2.*PI*R); else a*=Depth;
 				z+=a;
@@ -3252,18 +3252,18 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 				if(ProblemType==1) a*=(2.*PI*R); else a*=Depth;
 				z+=(a*meshelem[i].B1);
 				break;
-			
+
 			case 9: // integrate y or z part of b over the block
 				if(ProblemType==1) a*=(2.*PI*R); else a*=Depth;
-				z+=(a*meshelem[i].B2); 
+				z+=(a*meshelem[i].B2);
 				break;
 
 			case 17: // Coenergy
 				if(ProblemType==1) a*=(2.*PI*R); else a*=Depth;
 				B1=meshelem[i].B1;
-				B2=meshelem[i].B2;	
+				B2=meshelem[i].B2;
 				if(Frequency!=0){
-					// have to compute the energy stored in a special way for 
+					// have to compute the energy stored in a special way for
 					// wound regions subject to prox and skin effects
 					if (blockproplist[meshelem[i].blk].LamType>2)
 					{
@@ -3286,7 +3286,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 						double u=blocklist[meshelem[i].lbl].LocalEnergy;
 						y+=a*Re(J*J)*u/2.;
 					}
-				}				
+				}
 				y*=AECF(i); // correction for axisymmetric external region;
 
 				z+=y;
@@ -3332,7 +3332,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 				B1=meshelem[i].B1;
 				B1p=meshelem[i].B1p;
 				Jp=meshelem[i].Jp;
-				for(k=0;k<3;k++) 
+				for(k=0;k<3;k++)
 				{
 					U[k] = 1;
 					V[k] = (B1p*J + B1*Jp);
@@ -3341,7 +3341,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					y=PlnInt(a,U,V)*Depth;
 				else
 					y=AxiInt(-a,U,V,r);
-			
+
 				z+=y;
 
 				break;
@@ -3361,10 +3361,10 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 				break;
 			default:
 				break;
-		}	
+		}
       }
 
-	  // integrals that need to be evaluated over all elements, 
+	  // integrals that need to be evaluated over all elements,
 	  // regardless of which elements are actually selected.
 	  if(bMaskIntegral)
 	  {
@@ -3376,29 +3376,29 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 				a*=(2.*PI*R);
 			}
 			else a*=Depth;
-		  
+
 			switch(inttype){
 
 				case 18: // x (or r) direction Henrotte force, SS part.
 					if(ProblemType!=0) break;
-					
+
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
 					c=HenrotteVector(i);
 					y=(((B1*conj(B1)) - (B2*conj(B2)))*Re(c) + 2.*Re(B1*conj(B2))*Im(c))/(2.*muo);
 					if(Frequency!=0) y/=2.;
-					
+
 					y*=AECF(i); // correction for axisymmetric external region;
 
 					z+=(a*y);
 					break;
-			
+
 				case 19: // y (or z) direction Henrotte force, SS part.
-				
+
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
 					c=HenrotteVector(i);
-					
+
 					y=(((B2*conj(B2)) - (B1*conj(B1)))*Im(c) + 2.*Re(B1*conj(B2))*Re(c))/(2.*muo);
 
 					y*=AECF(i); // correction for axisymmetric external region;
@@ -3409,7 +3409,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					break;
 
 				case 20: // x (or r) direction Henrotte force, 2x part.
-				
+
 					if(ProblemType!=0) break;
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
@@ -3417,9 +3417,9 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					z+=a*((((B1*B1) - (B2*B2))*Re(c) + 2.*B1*B2*Im(c))/(4.*muo)) * AECF(i);
 
 					break;
-			
+
 				case 21: // y (or z) direction Henrotte force, 2x part.
-					
+
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
 					c=HenrotteVector(i);
@@ -3433,23 +3433,23 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					B2=meshelem[i].B2;
 					c=HenrotteVector(i);
 
-					F1 = (((B1*conj(B1)) - (B2*conj(B2)))*Re(c) + 
+					F1 = (((B1*conj(B1)) - (B2*conj(B2)))*Re(c) +
 						 2.*Re(B1*conj(B2))*Im(c))/(2.*muo);
-					F2 = (((B2*conj(B2)) - (B1*conj(B1)))*Im(c) + 
+					F2 = (((B2*conj(B2)) - (B1*conj(B1)))*Im(c) +
 						 2.*Re(B1*conj(B2))*Re(c))/(2.*muo);
-					
+
 					for(c=0,k=0;k<3;k++)
 						c+=meshnode[meshelem[i].p[k]].CC()*LengthConv[LengthUnits]/3.;
-					
+
 					y=Re(c)*F2 -Im(c)*F1;
 					if(Frequency!=0) y/=2.;
 					y*=AECF(i);
 					z+=(a*y);
 
 					break;
-			
+
 				case 23: // Henrotte torque, 2x part.
-				
+
 					if(ProblemType!=0) break;
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
@@ -3463,9 +3463,9 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					z+=a*(Re(c)*F2 -Im(c)*F1)*AECF(i);
 
 					break;
-				
+
 				case 25: // x (or r) direction Henrotte force, 1x part for incremental AC problems
-				
+
 					if(ProblemType!=0) break;
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
@@ -3475,9 +3475,9 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					z+=a*((B1*B1p - B2*B2p)*Re(c) + (B1p*B2 + B1*B2p)*Im(c))/muo * AECF(i);
 
 					break;
-			
+
 				case 26: // y (or z) direction Henrotte force, 1x part for incremental AC problems
-					
+
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
 					B1p=meshelem[i].B1p;
@@ -3488,7 +3488,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 					break;
 
 				case 27: // Henrotte torque, 1x part for incremental AC problems
-				
+
 					if(ProblemType!=0) break;
 					B1=meshelem[i].B1;
 					B2=meshelem[i].B2;
@@ -3517,15 +3517,15 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
 void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 {
 // inttype	Integral
-//		0	B.n 
-//		1	H.t 
-//		2	Contour length 
-//		3	Stress Tensor Force 
-//		4	Stress Tensor Torque 
-//		5	(B.n)^2 
+//		0	B.n
+//		1	H.t
+//		2	Contour length
+//		3	Stress Tensor Force
+//		4	Stress Tensor Torque
+//		5	(B.n)^2
 
-	// inttype==0 => B.n 
-	if(inttype==0){ 
+	// inttype==0 => B.n
+	if(inttype==0){
 		CComplex a0,a1;
 		CPointVals u;
 		double l;
@@ -3574,7 +3574,7 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 				t/=abs(t);
 				n=I*t;
 				pt+=n*1.e-06;
-			
+
 				if (elm<0) elm=InTriangle(pt.re,pt.im);
 				else if (InTriangleTest(pt.re,pt.im,elm)==FALSE)
 				{
@@ -3651,7 +3651,7 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 				t/=abs(t);
 				n=I*t;
 				pt+=n*1.e-06;
-			
+
 				if (elm<0) elm=InTriangle(pt.re,pt.im);
 				else if (InTriangleTest(pt.re,pt.im,elm)==FALSE)
 				{
@@ -3680,14 +3680,14 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 					BH= v.B1*v.H1 + v.B2*v.H2;
 					dF1=v.H1*Bn + v.B1*Hn - n.re*BH;
 					dF2=v.H2*Bn + v.B2*Hn - n.im*BH;
-					
+
 					dza=dz*LengthConv[LengthUnits];
 					if(ProblemType==1){
 						dza*=2.*PI*pt.re*LengthConv[LengthUnits];
 						dF1=0;
 					}
 					else dza*=Depth;
-					
+
 					z[0]+=(dF1*dza/2.);
 					z[1]+=(dF2*dza/2.);
 				}
@@ -3697,29 +3697,29 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 					BH = v.B1*v.H1 + v.B2*v.H2;
 					dF1 = v.H1*Bn + v.B1*Hn - n.re*BH;
 					dF2 = v.H2*Bn + v.B2*Hn - n.im*BH;
-					
+
 					dza=dz*LengthConv[LengthUnits];
 					if(ProblemType==1){
 						dza*=2.*PI*pt.re*LengthConv[LengthUnits];
 						dF1=0;
 					}
 					else dza*=Depth;
-					
+
 					z[0]+=(dF1*dza/4.);
 					z[1]+=(dF2*dza/4.);
-				
+
 					BH  = v.B1*v.H1.Conj() +v.B2*v.H2.Conj();
-					
+
 					if (ProblemType!=1)
 						dF1 = v.H1*Bn.Conj() + v.B1*Hn.Conj() - n.re*BH;
 					dF2=  v.H2*Bn.Conj() + v.B2*Hn.Conj() - n.im*BH;
 
-					
+
 					z[2]+=(dF1*dza/4.);
 					z[3]+=(dF2*dza/4.);
 				}
 			}
-			
+
 		}
 	}
 
@@ -3745,7 +3745,7 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 				t/=abs(t);
 				n=I*t;
 				pt+=n*1.e-6;
-			
+
 				if (elm<0) elm=InTriangle(pt.re,pt.im);
 				else if (InTriangleTest(pt.re,pt.im,elm)==FALSE)
 				{
@@ -3774,9 +3774,9 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 					BH= v.B1*v.H1 + v.B2*v.H2;
 					dF1=v.H1*Bn + v.B1*Hn - n.re*BH;
 					dF2=v.H2*Bn + v.B2*Hn - n.im*BH;
-					dT= pt.re*dF2 - dF1*pt.im;				
+					dT= pt.re*dF2 - dF1*pt.im;
 					dza=dz*LengthConv[LengthUnits]*LengthConv[LengthUnits];
-							
+
 					z[0]+=(dT*dza*Depth/2.);
 				}
 				else{
@@ -3785,22 +3785,22 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 					BH = v.B1*v.H1 + v.B2*v.H2;
 					dF1 = v.H1*Bn + v.B1*Hn - n.re*BH;
 					dF2 = v.H2*Bn + v.B2*Hn - n.im*BH;
-					dT=pt.re*dF2 - dF1*pt.im;	
+					dT=pt.re*dF2 - dF1*pt.im;
 					dza=dz*LengthConv[LengthUnits]*LengthConv[LengthUnits];
-									
+
 					z[0]+=(dT*dza*Depth/4.);
-				
+
 					BH  = v.B1*v.H1.Conj() +v.B2*v.H2.Conj();
 					dF1 = v.H1*Bn.Conj() + v.B1*Hn.Conj() - n.re*BH;
 					dF2=  v.H2*Bn.Conj() + v.B2*Hn.Conj() - n.im*BH;
-					dT= pt.re*dF2 - dF1*pt.im ;	
+					dT= pt.re*dF2 - dF1*pt.im ;
 
 					z[1]+=(dT*dza*Depth/4.);
-				
+
 				}
 			}
 		}
-	
+
 	}
 
 	// inttype==5 => (B.n)^2
@@ -3824,7 +3824,7 @@ void CFemmviewDoc::LineIntegral(int inttype, CComplex *z)
 				t/=abs(t);
 				n=I*t;
 				pt+=n*1.e-06;
-			
+
 				if (elm<0) elm=InTriangle(pt.re,pt.im);
 				else if (InTriangleTest(pt.re,pt.im,elm)==FALSE)
 				{
@@ -3910,14 +3910,14 @@ double CFemmviewDoc::ShortestDistanceFromArc(CComplex p, CArcSegment &arc)
 	a1.Set(nodelist[arc.n1].x,nodelist[arc.n1].y);
 	GetCircle(arc,c,R);
 	d=abs(p-c);
-	
+
 	if(d==0) return R;
-	
+
 	t=(p-c)/d;
 	l=abs(p-c-R*t);
 	z=arg(t/(a0-c))*180/PI;
 	if ((z>0) && (z<arc.ArcLength)) return l;
-	
+
 	z=abs(p-a0);
 	l=abs(p-a1);
 	if(z<l) return z;
@@ -3927,7 +3927,7 @@ double CFemmviewDoc::ShortestDistanceFromArc(CComplex p, CArcSegment &arc)
 double CFemmviewDoc::ShortestDistanceFromSegment(double p, double q, int segm)
 {
 	double t,x[3],y[3];
-	
+
 	x[0]=nodelist[linelist[segm].n0].x;
 	y[0]=nodelist[linelist[segm].n0].y;
 	x[1]=nodelist[linelist[segm].n1].x;
@@ -3959,7 +3959,7 @@ BOOL CFemmviewDoc::ScanPreferences()
 		char s[1024];
 		char q[1024];
 		char *v;
-	
+
 		// parse the file
 		while (fgets(s,1024,fp)!=NULL)
 		{
@@ -4028,7 +4028,7 @@ void CFemmviewDoc::BendContour(double angle, double anglestep)
 	// compute location of arc center;
 	// and radius of the circle that the
 	// arc lives on.
-	d=abs(a1-a0);			
+	d=abs(a1-a0);
 	R=d/(2.*sin(fabs(tta/2.)));
 	if(tta>0) c=a0 + (R/d)*(a1-a0)*exp(I*(PI-tta)/2.);
 	else c=a0+(R/d)*(a1-a0)*exp(-I*(PI+tta)/2.);
@@ -4038,7 +4038,7 @@ void CFemmviewDoc::BendContour(double angle, double anglestep)
 }
 
 
-BOOL CFemmviewDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) 
+BOOL CFemmviewDoc::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
 {
 	// TODO: Add your specialized code here and/or call the base class
 	if (bLinehook!=FALSE) return TRUE;
@@ -4092,7 +4092,7 @@ void CFemmviewDoc::GetFillFactor(int lbl)
 	// current-carrying region.  For AC problems, also compute
 	// the apparent conductivity and permeability for use in
 	// post-processing the voltage.
-	
+
 	CMaterialProp* bp= &blockproplist[blocklist[lbl].BlockType];
 	CBlockLabel* bl= &blocklist[lbl];
 	double lc=LengthConv[LengthUnits]*LengthConv[LengthUnits];
@@ -4101,11 +4101,11 @@ void CFemmviewDoc::GetFillFactor(int lbl)
 	CComplex ufd,ueff,ofd;
 
 	// default values
-	if (abs(bl->Turns)>1) 
+	if (abs(bl->Turns)>1)
 		bl->FillFactor=1;
-	else 
+	else
 		bl->FillFactor=-1;
-	bl->o=bp->Cduct;	
+	bl->o=bp->Cduct;
 	bl->mu=0.;
 
 	if (blockproplist[blocklist[lbl].BlockType].LamType<3) return;
@@ -4131,7 +4131,7 @@ void CFemmviewDoc::GetFillFactor(int lbl)
 		dd=d/sqrt(bl->FillFactor);	// foil pitch
 		fill=d/dd;					// fill for purposes of equivalent foil analysis
 		o=bp->Cduct*fill*1.e6;	// effective foil conductivity in S/m
-		W=w*o*muo*d*d*fill/4.;	
+		W=w*o*muo*d*d*fill/4.;
 		if((Frequency==0) || (bp->Cduct==0))
 		{
 			bl->o = bp->Cduct*bl->FillFactor;
@@ -4151,7 +4151,7 @@ void CFemmviewDoc::GetFillFactor(int lbl)
 		// Treat local stored energy separately because it becomes ill-posed as frequency goes to zero.
 		// use an approximate expression at low frequency.
 
-		if (W > 0.1) 
+		if (W > 0.1)
 		{
 			// normal higher-frequency regime
 			bl->LocalEnergy = (1.e-6)*Im(1/bl->o)/w;
@@ -4230,18 +4230,18 @@ void CFemmviewDoc::GetFillFactor(int lbl)
 	bl->mu=ufd;
 	ofd=o*fill/(I*c4*W+sqrt(I*c3*W)*(1./tanh(sqrt(I*c3*W))));	// fit to curves in Skin4.nb
 	ofd=1./(1./ofd-I*w*ufd*muo*dd*dd/12.);						// don't double-book local stored energy;
-	bl->o=ofd*1.e-6;											// return frequency-dependent conductivity in MS/m 
+	bl->o=ofd*1.e-6;											// return frequency-dependent conductivity in MS/m
 
 	// Treat local stored energy separately because it becomes ill-posed as frequency goes to zero.
 	// use an approximate expression at low frequency.
-	if (W > 0.1) 
+	if (W > 0.1)
 	{
 		// normal higher-frequency regime
 		bl->LocalEnergy = (1.e-6)*Im(1/bl->o)/w;
 	}
 	else{
 		// low-frequency asymptotic expression from Mathematica series expansion
-		bl->LocalEnergy =(muo*(21*dd*dd*fill*(-15 + 2*c1*c1*c2*W*W) + 
+		bl->LocalEnergy =(muo*(21*dd*dd*fill*(-15 + 2*c1*c1*c2*W*W) +
 						 2*R*R*(315*(c3 + 3*c4) - 2*c3*c3*c3*W*W)))/(3780.*fill);
 	}
 }
@@ -4284,8 +4284,8 @@ CComplex CFemmviewDoc::GetStrandedLinkage(int lbl)
 CComplex CFemmviewDoc::GetSolidAxisymmetricLinkage(int lbl)
 {
 	// This is a routine for the special case of determining
-	// the flux linkage of a solid and axisymmetric conductor 
-	// t zero frequency when the conductor is carrying zero 
+	// the flux linkage of a solid and axisymmetric conductor
+	// t zero frequency when the conductor is carrying zero
 	// current.  The trick here is to take account of the distribution
 	// of the current that would be there, if there was any current.
 	// In solid axisymmetric regions, the inner radius of the
@@ -4318,7 +4318,7 @@ CComplex CFemmviewDoc::GetSolidAxisymmetricLinkage(int lbl)
 		  }
 	}
 	FluxLinkage*=( ((double) blocklist[lbl].Turns) / atot);
-	
+
 	return FluxLinkage;
 }
 
@@ -4365,7 +4365,7 @@ CComplex CFemmviewDoc::GetParallelLinkage(int numcirc)
 		  }
 	}
 	FluxLinkage/=atot;
-	
+
 	return FluxLinkage;
 }
 
@@ -4408,7 +4408,7 @@ CComplex CFemmviewDoc::GetParallelLinkageAlt(int numcirc)
 		  }
 	}
 	FluxLinkage/=atot;
-	
+
 	return FluxLinkage;
 }
 
@@ -4485,7 +4485,7 @@ CComplex CFemmviewDoc::GetVoltageDrop(int circnum)
 							for(k=0;k<3;k++)
 								r[k]=meshnode[meshelem[i].p[k]].x*LengthConv[LengthUnits];
 						}
-						if(ProblemType==PLANAR) 
+						if(ProblemType==PLANAR)
 							FluxLinkage+=PlnInt(a,A,U)*Depth;
 						else FluxLinkage+=AxiInt(a,A,U,r);
 				  }
@@ -4534,13 +4534,13 @@ CComplex CFemmviewDoc::GetFluxLinkage(int circnum)
 	else{
 		// Rats!  The circuit of interest is not carrying any current.
 		// However, the circuit can still have a non-zero flux linkage.
-		// due to mutual inductance. Now, we have to go through 
+		// due to mutual inductance. Now, we have to go through
 		// some annoying manipulations to back out the flux linkage.
 
 		// For a non-zero frequency, things aren't too bad.  Any
 		// voltage that we have must be solely due to flux linkage.
 		// To get the flux linkage, just divide the voltage by the frequency.
-		if (Frequency!=0) 
+		if (Frequency!=0)
 			FluxLinkage=GetVoltageDrop(circnum)/(2.*I*PI*Frequency);
 
 		// The zero frequency case is the interesting one, because
@@ -4576,7 +4576,7 @@ CComplex CFemmviewDoc::GetFluxLinkage(int circnum)
 				// the GetParallelLinkage routine, which is more or less driving
 				// all the blocks with a ficticious voltage gradient.
 				if (flag) FluxLinkage=GetParallelLinkage(i);
-				// otherwise, treat the "punt" case, where every part of the 
+				// otherwise, treat the "punt" case, where every part of the
 				// parallel "circuit" is just assumed to have the same applied
 				// current density;
 				else FluxLinkage=GetParallelLinkageAlt(i);
@@ -4602,8 +4602,8 @@ void CFemmviewDoc::GetMagnetization(int n, CComplex &M1, CComplex &M2)
 	Hc=0; mu1=0; mu2=0;
 
 	if(Frequency==0){
-		GetMu(Re(b1),Re(b2),mu1.re,mu2.re,n);	
-		Hc=blockproplist[meshelem[n].blk].H_c*exp(I*meshelem[n].magdir*PI/180.);	
+		GetMu(Re(b1),Re(b2),mu1.re,mu2.re,n);
+		Hc=blockproplist[meshelem[n].blk].H_c*exp(I*meshelem[n].magdir*PI/180.);
 	}
 	else GetMu(b1,b2,mu1,mu2,n);
 
@@ -4616,7 +4616,7 @@ double CFemmviewDoc::AECF(int k)
 	// Computes the permeability correction factor for axisymmetric
 	// external regions.  This is sort of a kludge, but it's the best
 	// way I could fit it in.  The structure of the code wasn't really
-	// designed to have a permeability that varies with position in a 
+	// designed to have a permeability that varies with position in a
 	// continuous way.
 
 	if (!ProblemType) return 1.; // no correction for planar problems
@@ -4683,7 +4683,7 @@ void CFemmviewDoc::FindBoundaryEdges()
     for(j = 0; j < 3; j ++)
 	  meshelem[i].n[j] = 0;
   }
-  
+
   int orgi, desti;
   int ei, ni;
   BOOL done;
@@ -4692,13 +4692,13 @@ void CFemmviewDoc::FindBoundaryEdges()
   for(i = 0; i < meshelem.GetSize(); i ++) {
     for(j = 0; j < 3; j ++) {
       if(meshelem[i].n[j] == 0) {
-        // Get this edge's org and dest node index, 
+        // Get this edge's org and dest node index,
         orgi = meshelem[i].p[plus1mod3[j]];
         desti = meshelem[i].p[minus1mod3[j]];
         done = FALSE;
         // Find this edge's neigh from the org node's list
         for(ni = 0; ni < NumList[orgi]; ni ++) {
-          // Find a Element around org node contained dest node of this edge. 
+          // Find a Element around org node contained dest node of this edge.
           ei = ConList[orgi][ni];
           if(ei == i) continue; // Skip myself.
           // Check this Element's 3 vert to see if there exist dest node.
@@ -4711,13 +4711,13 @@ void CFemmviewDoc::FindBoundaryEdges()
           } else if(meshelem[ei].p[2] == desti) {
             done = TRUE;
             break;
-          } 
+          }
         }
         if(!done) {
           // This edge must be a Boundary Edge.
           meshelem[i].n[j] = 1;
         }
-      } // Finish One Edge        
+      } // Finish One Edge
     } // End of One Element Loop
   } // End of Main Loop
 
@@ -4726,7 +4726,7 @@ void CFemmviewDoc::FindBoundaryEdges()
 double CFemmviewDoc::ShortestDistance(double p, double q, int segm)
 {
 	double t,x[3],y[3];
-	
+
 	x[0]=nodelist[linelist[segm].n0].x;
 	y[0]=nodelist[linelist[segm].n0].y;
 	x[1]=nodelist[linelist[segm].n1].x;
@@ -4856,7 +4856,7 @@ void CFemmviewDoc::GetGapValues(CXYPlot &p,int PlotType,int NumPlotPoints, int j
 				break;
 		}
 	}
-	
+
 	strcpy(p.lbls[0],"Angle, Degrees");
 	dz = 360./((double) (NumPlotPoints-1));
 	R = (agelist[j].ri + agelist[j].ro)/2.;
@@ -4950,6 +4950,6 @@ void CFemmviewDoc::GetGapValues(CXYPlot &p,int PlotType,int NumPlotPoints, int j
 					p.M[i][1]=0;
 					break;
 			}
-		} 
+		}
 	}
 }

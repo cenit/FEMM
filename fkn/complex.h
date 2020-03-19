@@ -1,6 +1,6 @@
-#ifndef CCOMPLEX
-#define CCOMPLEX
+#pragma once
 
+#include<afx.h> // just needs afx.h to define BOOL, TRUE, and FALSE
 #define PI 3.141592653589793238462643383
 #define SmallNo 1.e-14
 #define DEG 0.01745329251994329576923690768
@@ -25,8 +25,7 @@ class CComplex
 		double Re();
 		double Im();
 		char* ToString(char *s);
-		char* ToStringAlt(char *s);
-		
+
 	//operator redefinition
 		//Addition
 		CComplex operator+( const CComplex& z );
@@ -79,30 +78,12 @@ class CComplex
 		void operator=(int z);
 
 		//Tests
-		bool operator==( const CComplex& z);
-		bool operator==(double z);
-		bool operator==(int z);
-		
-		bool operator!=( const CComplex& z);
-		bool operator!=(double z);
-		bool operator!=(int z);
-
-		bool operator<( const CComplex& z);
-		bool operator<( double z);
-		bool operator<( int z);
-
-		bool operator<=( const CComplex& z);
-		bool operator<=( double z);
-		bool operator<=( int z);
-
-		bool operator>( const CComplex& z);
-		bool operator>( double z);
-		bool operator>( int z);
-
-		bool operator>=( const CComplex& z);
-		bool operator>=( double z);
-		bool operator>=( int z);
-
+		BOOL operator==( const CComplex& z);
+		BOOL operator==(double z);
+		BOOL operator==(int z);
+		BOOL operator!=( const CComplex& z);
+		BOOL operator!=(double z);
+		BOOL operator!=(int z);
 
 	private:
 
@@ -113,7 +94,6 @@ class CComplex
 double Re( const CComplex& a);
 double Im( const CComplex& a);
 double abs( const CComplex& x );
-double absq( const CComplex& x );
 double arg( const CComplex& x );
 CComplex conj( const CComplex& x);
 CComplex exp( const CComplex& x );
@@ -127,14 +107,7 @@ CComplex sin( const CComplex& x );
 CComplex asin( const CComplex& x );
 CComplex tan( const CComplex& x );
 CComplex atan( const CComplex& x );
-CComplex atan2( const CComplex& y, const CComplex& x);
 CComplex log( const CComplex& x );
 CComplex pow( const CComplex& x, int y);
 CComplex pow( const CComplex& x, double y);
 CComplex pow( const CComplex& x,  const CComplex& y);
-CComplex Chop( const CComplex& a, double tol=1.e-12);
-
-
-
-
-#endif // CCOMPLEX check
