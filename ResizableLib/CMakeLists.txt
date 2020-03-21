@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(ResizableLib C CXX)
 
+find_package(MFC REQUIRED)
+set(CMAKE_MFC_FLAG 2)
+add_definitions(-D_WIN32_WINNT=0x0501)
+
 set(ResizableLib_SOURCES
   ResizableDialog.h
   ResizableFormView.h

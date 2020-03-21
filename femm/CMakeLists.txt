@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(femm C CXX)
 
+find_package(MFC REQUIRED)
+set(CMAKE_MFC_FLAG 2)
+add_definitions(-D_WIN32_WINNT=0x0501)
+
 if(MSVC)
   set(ADDITIONAL_CXX_FLAGS "/wd4311 /wd4312 /wd4477")
   set(ADDITIONAL_C_FLAGS "/wd4311 /wd4312 /wd4477")
@@ -353,5 +357,6 @@ set(femm_SOURCES
   femm.rc
 )
 
-add_library(femm ${femm_SOURCES})
+add_executable(femm WIN32 ${femm_SOURCES})
 target_include_directories(femm PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(femm liblua ResizableLib)

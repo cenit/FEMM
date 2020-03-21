@@ -59,7 +59,7 @@ that all entity types are to be selected.
 \item{\tt hi\_selectrectangle(x1,y1,x2,y2,editmode)} selects objects within a rectangle
 defined by points (x1,y1) and (x2,y2). If no editmode parameter is supplied,
 the current edit mode is used.  If the editmode parameter is used, 0 denotes
-nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 
+nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4
 specifies that all entity types are to be selected.
 \end{itemize}
 
@@ -215,7 +215,7 @@ objects.
 \texttt{editaction} 0 --nodes, 1 -- lines (segments), 2 --block labels, 3 --
 arc segments, 4- group
 
-\item{\tt�mi\_createradius(x,�y,�r)}�turns�a�corner�located�at�{\tt�(x,y)}�into�a�curve�of�radius�{\tt�r}.
+\item{\tt mi\_createradius(x, y, r)} turns a corner located at {\tt (x,y)} into a curve of radius {\tt r}.
 
 \item \texttt{hi\_moverotate(bx,by,shiftangle (editaction))}
 
@@ -313,7 +313,7 @@ parameter is set to \texttt{"cart"} for Cartesian coordinates or
 \subsection{Object Properties}
 
 \begin{itemize}
-\item \texttt{hi\_getmaterial("materialname")} fetches the material specified by \texttt{materialname} 
+\item \texttt{hi\_getmaterial("materialname")} fetches the material specified by \texttt{materialname}
 from the materials library.
 
 \item \texttt{hi\_addmaterial("materialname", kx, ky, qv, kt)} adds a new material with
@@ -340,7 +340,7 @@ desired temperature and all other parameters to zero.
 {\tt BdryFormat} to 1. Set all other parameters to zero.
 \item To obtain a convection boundary condition, set {\tt h} to the desired heat transfer coefficient and
 {\tt Tinf} to the desired external temperature and set {\tt BdryFormat} to 2.
-\item For a Radiation boundary condition, set {\tt beta} equal to the desired emissivity and {\tt Tinf} to the 
+\item For a Radiation boundary condition, set {\tt beta} equal to the desired emissivity and {\tt Tinf} to the
 desired external temperature and set {\tt BdryFormat} to 3.
 \item For a ``Periodic'' boundary condition, set {\tt BdryFormat} to 4 and set all other
 parameters to zero.
@@ -381,7 +381,7 @@ propnum & Symbol &  Description \\ \hline
  1 & \texttt{kx} & x (or r) direction thermal conductivity \\
  2 & \texttt{ky} & y (or z) direction thermal conductivity \\
  3 & \texttt{qs} & Volume heat generation \\
- 4 & \texttt{kt} & Volumetric heat capacity 
+ 4 & \texttt{kt} & Volumetric heat capacity
 \end{tabular}
 
 
@@ -393,7 +393,7 @@ The various properties that can be modified are listed below:
 
 \begin{tabular}{lll}
  \texttt{propnum} & Symbol & Description \\ \hline
- 0 & \texttt{BdryName} & Name of boundary property \\ 
+ 0 & \texttt{BdryName} & Name of boundary property \\
  1 & \texttt{BdryFormat} & Type of boundary condition:\\
    &   &
    \begin{tabular}{lll}

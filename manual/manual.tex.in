@@ -136,7 +136,7 @@ along user-defined contours.
 region into a large number of triangles, a vital part of the finite
 element process.  This program was written by
 \href{http://www.cs.cmu.edu/~quake/triangle.html}{Jonathan Shewchuk}
-%Jonathan Shewchuk 
+%Jonathan Shewchuk
 and is available at \href{http://www.cs.cmu.edu/~quake/triangle.html}{www.cs.cmu.edu/~quake/triangle.html}
 \item Solvers ({\tt fkern.exe} for magnetics; {\tt belasolv} for
 electrostatics); {\tt hsolv} for heat flow problems; and
@@ -187,10 +187,10 @@ Computer-aided analysis and design of electromagnetic devices}
 \cite{Hoole}.  For an advanced treatment, the reader has no
 recourse but to refer to Jackson's {\em Classical electrodynamics}
 \cite{Jackson}.  For thermal problems, the author has found
-White's {\em Heat and mass tranfer} \cite{FrankWhite} and 
+White's {\em Heat and mass tranfer} \cite{FrankWhite} and
 Haberman's {\em Elementary applied partial differential equations}
 \cite{Haberman} to be useful in understanding the derivation and solution of
-steady-state temperature problems.  
+steady-state temperature problems.
 
 \section{Relevant Partial Differential Equations}
 
@@ -427,7 +427,7 @@ domain with user-defined heat sources and boundary conditions.
 
 \subsection{Current Flow Problems}
 
-The current flow problems solved by FEMM are essentially quasi-electrostatic 
+The current flow problems solved by FEMM are essentially quasi-electrostatic
 problems in which the magnetic field terms in Maxwell's equations can be neglected
 but in which the displacement current terms (neglected in magnetostatic and eddy
 current problems) are relevant.
@@ -439,7 +439,7 @@ Again restating Maxwell's Equations, the electric and magnetic fields must obey:
 \end{equation}
 \begin{equation}
 \label{quasielectrostatic3}
-\nabla \cdot B = 0 
+\nabla \cdot B = 0
 \end{equation}
 \begin{equation}
 \label{quasielectrostatic4}
@@ -460,7 +460,7 @@ The divergence of~(\ref{quasielectrostatic1}) can be taken to yield:
 \begin{equation} \label{quasielectrostatic2}
 \nabla \cdot \left( \nabla \times H \right) = \nabla \cdot J + \nabla \cdot \dot{D}
 \end{equation}
-By application of a standard vector identity, the left-hand side 
+By application of a standard vector identity, the left-hand side
 of~(\ref{quasielectrostatic2})
 is zero, leading to:
 \begin{equation} \label{quasielectrostatic5}
@@ -502,7 +502,7 @@ in a consistent fashion.
 
 Some discussion of boundary conditions is necessary so that the
 user will be sure to define an adequate number of boundary
-conditions to guarantee a unique solution.  
+conditions to guarantee a unique solution.
 
 \subsection{Magnetic and Electrostatic BCs}
 
@@ -534,12 +534,12 @@ This boundary condition is most often in FEMM to define ``impedance
 boundary conditions'' that allow a bounded domain to mimic the
 behavior of an unbounded region.  In the context of heat flow problems,
 this boundary condition can be interpreted as a convection boundary condition.
-In heat flow problems, radiation boundary conditions are linearized about 
+In heat flow problems, radiation boundary conditions are linearized about
 the solution from the last iteration. The linearized form of the radiation
 boundary condition is also a Robin boundary condition.
 \item {\em Periodic}
 A periodic boundary conditions joins two boundaries together.  In this
-type of boundary condition, the boundary values on 
+type of boundary condition, the boundary values on
 corresponding points of the two boundaries are set equal to one another.
 \item {\em Antiperiodic}
 The antiperiodic boundary condition also joins to gether two boundaries.
@@ -582,7 +582,7 @@ where $beta$ is the emissivity of the surface (a dimensionless value between 0 a
 and $k_{sb}$ is the Stefan-Boltzmann constant.
 \item {\em Periodic}
 A periodic boundary conditions joins two boundaries together.  In this
-type of boundary condition, the boundary values on 
+type of boundary condition, the boundary values on
 corresponding points of the two boundaries are set equal to one another.
 \item {\em Antiperiodic}
 The antiperiodic boundary condition also joins to gether two boundaries.
@@ -607,7 +607,7 @@ simple geometry ({\em e.g.} triangles).  For example,
 Figure~{\ref{mass}} shows a map of the Massachusetts broken down
 into triangles.
 \begin{figure}
-\centerline{\includegraphics{mass.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/mass.ps}}
 \caption{Triangulation of Massachusetts}
 \label{mass}
 \end{figure}
@@ -732,7 +732,7 @@ One can switch between drawing modes by clicking the appropriate
 button on the Drawing Mode potion of the toolbar. This section of
 the toolbar is pictured in Figure~\ref{modebuttons}.
 \begin{figure}[ht]
-\centerline{\includegraphics{modebtn.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/modebtn.ps}}
 \caption{Drawing Mode toolbar buttons.}
 \label{modebuttons}
 \end{figure}
@@ -855,7 +855,7 @@ Manipulation Keys' listed in Table~\ref{hotkeys}.  The View
 Manipulation toolbar buttons are pictured in
 Figure~\ref{viewbuttons}.
 \begin{figure}[ht]
-\centerline{\includegraphics{belaman3.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman3.ps}}
 \caption{View Manipulation toolbar buttons.}
 \label{viewbuttons}
 \end{figure}
@@ -923,7 +923,7 @@ The easiest way to manipulate the grid is through the used of the
 Grid Manipulation toolbar buttons.  These buttons are pictured in
 Figure~\ref{gridbuttons}.
 \begin{figure}[ht]
-\centerline{\includegraphics{gridbtn.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/gridbtn.ps}}
 \caption{Grid Manipulation toolbar buttons.}
 \label{gridbuttons}
 \end{figure}
@@ -936,7 +936,7 @@ nearest grid point location.  By default, the ``snap to grid''
 button is not pressed.  The right-most button brings up the Grid
 Properties dialog. This dialog is shown in Figure~\ref{griddialog}.
 \begin{figure}[ht]
-\centerline{\includegraphics{griddlg.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/griddlg.ps}}
 \caption{Grid Properties dialog.}
 \label{griddialog}
 \end{figure}
@@ -984,7 +984,7 @@ Problem} selection off of the main menu.  Selecting this option
 brings up the Problem Definition dialog, shown in
 Figure~\ref{problemdefinition}
 \begin{figure}[ht]
-\centerline{\includegraphics{probdef.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/probdef.ps}}
 \caption{Problem Definition dialog.}
 \label{problemdefinition}
 \end{figure}
@@ -1061,7 +1061,7 @@ that has selections for Materials, Boundary, Point, and Circuits.
 When any one of these selections is chosen, the dialog pictured in
 Figure~\ref{propertydef} appears.
 \begin{figure}[ht]
-\centerline{\includegraphics{propdef.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/propdef.ps}}
 \caption{Property Definition dialog box}
 \label{propertydef}
 \end{figure}
@@ -1103,7 +1103,7 @@ If a new point property is added or an existing point property
 modified, the {\tt Nodal Property} dialog box appears.  This dialog
 box is pictured in Figure~\ref{nodalprop}
 \begin{figure}[ht]
-\centerline{\includegraphics{nodeprop.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/nodeprop.ps}}
 \caption{Nodal Property dialog.}
 \label{nodalprop}
 \end{figure}
@@ -1139,7 +1139,7 @@ boundaries of the solution domain.  When a new boundary property is
 added or an existing property modified, the {\tt Boundary Property}
 dialog pictured in Figure~\ref{boundaryprop} appears.
 \begin{figure}[ht]
-\centerline{\includegraphics{bdryprop.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/bdryprop.ps}}
 \caption{Boundary Property dialog.}
 \label{boundaryprop}
 \end{figure}
@@ -1253,7 +1253,7 @@ material is put together (laminated). When a new material property
 is added or an existing property modified, the {\tt Block Property}
 dialog pictured in Figure~\ref{blockpropdlg} appears.
 \begin{figure}
-\centerline{\includegraphics{blockprop.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/blockprop.ps}}
 \caption{Block Property dialog.}
 \label{blockpropdlg}
 \end{figure}
@@ -1297,7 +1297,7 @@ enter in points on your B-H curve, hit the {\tt Edit B-H Curve} button.  When
 the button is pushed a dialog appears that allows you to enter in
 B-H data (see Figure~\ref{bhdatadlg}.
 \begin{figure}[ht]
-\centerline{\includegraphics{bhdata.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/bhdata.ps}}
 \caption{B-H data entry dialog.}
 \label{bhdatadlg}
 \end{figure}
@@ -1315,7 +1315,7 @@ button or the {\tt Log Plot B-H Curve} button on the B-H data dialog.
 You should see a B-H curve that
 looks something like the curve pictured in Figure~\ref{bhcurveplt}.
 \begin{figure}[ht]
-\centerline{\includegraphics{bhcurve.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/bhcurve.ps}}
 \caption{Sample B-H curve plot.}
 \label{bhcurveplt}
 \end{figure} The boxes in the plot represent the locations of the entered
@@ -1384,7 +1384,7 @@ list specifies the sort of wire from which the coil is constructed.
 The various selections in this list are illustrated
 in Figure~\ref{lamdir}
 \begin{figure}[ht]
-\centerline{\includegraphics{lamscheme.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/lamscheme.ps}}
 \caption{Different lamination orientation options.}
 \label{lamdir}
 \end{figure}
@@ -1441,7 +1441,7 @@ Properties | Materials Library} selection off of the main menu.
 When this option is selected, the {\tt Materials Library} dialog
 pictured in Figure~\ref{matlibdlg} appears.
 \begin{figure}[ht]
-\centerline{\includegraphics{fe_matlib.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/fe_matlib.ps}}
 \caption{Materials Library dialog.}
 \label{matlibdlg}
 \end{figure}
@@ -1510,7 +1510,7 @@ conserved inside the part of interest.
 The dialog for entering circuit properties is pictured in
 Figure~\ref{circprop}.
 \begin{figure}[ht]
-\centerline{\includegraphics{circprop.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/circprop.ps}}
 \caption{Circuit Property dialog}
 \label{circprop}
 \end{figure}
@@ -1560,7 +1560,7 @@ Meshing the model, analyzing the model, and viewing the results are
 most easily performed by the toolbar buttons pictured in
 Figure~\ref{runnybutts}
 \begin{figure}[ht]
-\centerline{\includegraphics{spawnbtn.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/spawnbtn.ps}}
 \caption{Toolbar buttons for starting analysis tasks.}
 \label{runnybutts}
 \end{figure}
@@ -1651,7 +1651,7 @@ various kinds of losses, total current in the block, and so on.
 The current postprocessor mode is controlled via the Analysis Mode
 toolbar buttons, shown in Figure~\ref{anal_mode}.
 \begin{figure}[ht]
-\centerline{\includegraphics{analmode.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/analmode.ps}}
 \caption{Analysis Mode toolbar buttons}
 \label{anal_mode}
 \end{figure}
@@ -1666,13 +1666,13 @@ The aspects of the current view and of the current grid are
 regulated via the use of toolbar buttons.  The view is manipulated
 by the following toolbar buttons:
 \begin{figure}[ht]
-\centerline{\includegraphics{belaman3.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman3.ps}}
 \caption{View Manipulation toolbar buttons.}
 \end{figure}
 and the grid settings are manipulated by these grid manipulation
 toolbar buttons:
 \begin{figure}[ht]
-\centerline{\includegraphics{gridbtn.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/gridbtn.ps}}
 \caption{Grid Manipulation toolbar buttons.}
 \end{figure}
 The grid and view manipulation work in exactly the same fashion as
@@ -1788,7 +1788,7 @@ lines to be plotted can be altered using the Contours Plot icon in
 the Graph Mode section of the toolbar (see Figure~\ref{graph_mode}.
 The Contour Plot icon is the icon with the black contours.
 \begin{figure}
-\centerline{\includegraphics{hplotbar.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hplotbar.ps}}
 \caption{Graph Mode toolbar buttons.}
 \label{graph_mode}
 \end{figure}
@@ -1833,7 +1833,7 @@ field value defined contour is performed by pressing the ``graphed
 function'' icon in the Plot, Integration, and Circuit Results group of toolbar
 buttons, shown in Figure~\ref{choadbar}.
 \begin{figure}
-\centerline{\includegraphics{intplot.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/intplot.ps}}
 \caption{Line Plot, Integration, and Circuit Results toolbar buttons}
 \label{choadbar}
 \end{figure}
@@ -1842,7 +1842,7 @@ Figure~\ref{plot_dlg}) appears with a drop list containing the
 types of line plots available. Choose the desired type of plot and
 press ``OK.''
 \begin{figure}[ht]
-\centerline{\includegraphics{pltdlg.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/pltdlg.ps}}
 \caption{X-Y Plot dialog.}
 \label{plot_dlg}
 \end{figure}
@@ -1873,7 +1873,7 @@ In all of these plots, the direction of the normal is understood to
 be as shown in Figure~\ref{this_side}.  The tangential direction is
 understood to be the direction in which the contour was defined.
 \begin{figure}[ht]
-\centerline{\includegraphics{thisside.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/thisside.ps}}
 \caption{When in doubt plots and integrals taken on this side of a contour.}
 \label{this_side}
 \end{figure}
@@ -2187,7 +2187,7 @@ boundaries.
 As an example of a properly defined contour, consider
 Figure~\ref{mcont1}.
 \begin{figure}
-\centerline{\includegraphics{mcontour1.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/mcontour1.ps}}
 \caption{Properly defined contour for integration of Maxwell's
 Stress Tensor}
 \label{mcont1}
@@ -2241,7 +2241,7 @@ Figure~\ref{circuitresults} will appear. There is a drop list on
 the dialog, from which the user selects the circuit for which
 results are desired.
 \begin{figure}
-\centerline{\includegraphics{circuitrslt.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/circuitrslt.ps}}
 \caption{Circuit results dialog.}
 \label{circuitresults}
 \end{figure}
@@ -2266,7 +2266,7 @@ option brings up the Problem Definition dialog, shown in
 Figure~\ref{fig6}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman6.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman6.eps}}
 \caption{Problem Definition dialog.}
 \label{fig6}
 \end{figure}
@@ -2342,7 +2342,7 @@ Conductors. When any one of these selections is chosen, the dialog
 pictured in Figure~\ref{fig7} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman7.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman7.eps}}
 \caption{Property Definition dialog box.}
 \label{fig7}
 \end{figure}
@@ -2370,7 +2370,7 @@ If a new point property is added or an existing point property modified, the
 Figure~\ref{fig8}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman8.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman8.eps}}
 \caption{Nodal Property dialog.}
 \label{fig8}
 \end{figure}
@@ -2404,7 +2404,7 @@ added or an existing property modified, the \texttt{Boundary
 Property} dialog pictured in Figure~\ref{fig9} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman9.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman9.eps}}
 \caption{Boundary Property dialog.}
 \label{fig9}
 \end{figure}
@@ -2415,7 +2415,7 @@ change this name to something more descriptive of the boundary that
 is being defined.
 
 The next selection is the \texttt{BC Type} drop list. This
-specifies the boundary condition type. Currently, FEMM electrostatics problems 
+specifies the boundary condition type. Currently, FEMM electrostatics problems
 support the following types of boundaries:
 
 \texttt{Fixed Voltage} With this type of boundary condition, potential $V$ is
@@ -2474,7 +2474,7 @@ existing property modified, the
 \texttt{Block Property} dialog pictured in Figure~\ref{fig10} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman10.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman10.eps}}
 \caption{Block Property dialog.}
 \label{fig10}
 \end{figure}
@@ -2502,7 +2502,7 @@ main menu. When this option is selected, the
 \texttt{Materials Library} dialog pictured in Figure~\ref{fig11} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{bd_matlib.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/bd_matlib.ps}}
 \caption{Materials Library dialog}
 \label{fig11}
 \end{figure}
@@ -2550,7 +2550,7 @@ The dialog for entering conductor properties is pictured in
 Figure~\ref{fig12}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman12.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman12.eps}}
 \caption{Conductor Property dialog.}
 \label{fig12}
 \end{figure}
@@ -2562,7 +2562,7 @@ most easily performed by the toolbar buttons pictured in
 Figure~\ref{fig13}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman13.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman13.eps}}
 \caption{Toolbar buttons for starting analysis tasks.}
 \label{fig13}
 \end{figure}
@@ -2631,7 +2631,7 @@ the Graph Mode section of the toolbar (see Figure~\ref{fig17}). The
 Contour Plot icon is the icon with the black contours.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{hplotbar.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hplotbar.ps}}
 \caption{Graph Mode toolbar buttons.}
 \label{fig17}
 \end{figure}
@@ -2685,7 +2685,7 @@ function'' icon in the Plot, Integration and Conductor Results group of toolbar
 buttons, shown in Figure~\ref{fig18}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman18.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman18.eps}}
 \caption{Line Plot, Integration, and Conductor Results toolbar buttons.}
 \label{fig18}
 \end{figure}
@@ -2697,7 +2697,7 @@ of line plots available. Choose the desired type of plot and press
 ``OK.''
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman19.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman19.eps}}
 \caption{X-Y Plot dialog.}
 \label{fig19}
 \end{figure}
@@ -2740,7 +2740,7 @@ be as shown in Figure~\ref{fig20}. The tangential direction is
 understood to be the direction in which the contour was defined.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman20.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman20.eps}}
 \caption{When in doubt plots and integrals taken on this side of a contour.}
 \label{fig20}
 \end{figure}
@@ -2955,7 +2955,7 @@ are desired. When a conductor is selected, the voltage and charge
 associated with that conductor are displayed.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman21.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman21.eps}}
 \caption{Conductor results dialog.}
 \label{fig21}
 \end{figure}
@@ -2964,12 +2964,12 @@ associated with that conductor are displayed.
 %-----------------------------------------------------------------------------------
 % Heat Flow Stuff
 
-\input{heatflow.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/heatflow.tex}
 
 %-----------------------------------------------------------------------------------
 % Current Flow Stuff
 
-\input{cflow.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/cflow.tex}
 
 %-----------------------------------------------------------------------------------
 
@@ -3016,15 +3016,15 @@ postscript figure to the specified file name.
 %
 %-----------------------------------------------------------------------------------
 
-\input{magnlua.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/magnlua.tex}
 
-\input{eleclua.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/eleclua.tex}
 
-\input{heatlua.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/heatlua.tex}
 
-\input{cflowlua.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/cflowlua.tex}
 
-\input{mathematica.tex}
+\input{@CMAKE_CURRENT_SOURCE_DIR@/mathematica.tex}
 
 %-----------------------------------------------------------------------------------
 
@@ -3268,7 +3268,7 @@ The manufacturer provides information about their material in the
 form of a demagnetization curve.  A sample curve for Alnico 5 is
 pictured in Figure~\ref{al5}.
 \begin{figure}
-\centerline{\includegraphics{manf.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/manf.ps}}
 \caption{Sample demagnetization curve for Alnico 5}
 \label{al5}
 \end{figure}
@@ -3281,7 +3281,7 @@ most useful model is to think of the magnet as a volume of
 ferromagnetic material surrounded by a thin sheet of current, as
 shown in Figure~\ref{currentsheet}.
 \begin{figure}
-\centerline{\includegraphics{eqmag.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/eqmag.ps}}
 \caption{Magnet as an equivalent current sheet.}
 \label{currentsheet}
 \end{figure}
@@ -3306,7 +3306,7 @@ that the $B=0$ point lines up with the origin.  For example, the
 shifted demagnetization curve corresponding to Alnico 5 is pictured
 in Figure~\ref{magshift}.
 \begin{figure}
-\centerline{\includegraphics{manfshft.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/manfshft.ps}}
 \caption{Shifting the B-H curve of a permanent magnet}
 \label{magshift}
 \end{figure}
@@ -3336,7 +3336,7 @@ the flux level does not recover to the previous magnitude when the
 opposing MMF is removed.  This hysteresis is illustrated in
 Figure~\ref{recoiling}.
 \begin{figure}
-\centerline{\includegraphics{recoil.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/recoil.ps}}
 \caption{Recoil in partially demagnetized Alnico 5.}
 \label{recoiling}
 \end{figure}
@@ -3385,7 +3385,7 @@ Armed with this assumption, a circuit model can be produced for
 each direction of flux travel.  For the easy direction, the circuit
 model is pictured in Figure~\ref{easydirection}.
 \begin{figure}
-\centerline{\includegraphics{ezlam.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/ezlam.ps}}
 \caption{Equivalent circuit for flux in the ``easy'' direction}
 \label{easydirection}
 \end{figure}
@@ -3414,7 +3414,7 @@ about 0.01\%.
 For the hard direction, a different equivalent circuit, pictured in
 Figure~\ref{harddirection} can be drawn.
 \begin{figure}
-\centerline{\includegraphics{hardlam.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hardlam.ps}}
 \caption{Equivalent circuit for flux in the ``hard'' direction.}
 \label{harddirection}
 \end{figure}
@@ -3603,7 +3603,7 @@ thought on the part of the user, the results can be quite good.
 Figure~\ref{ax1_fig}, corresponding to the {\tt axi1} example,
 represents the field produced by an air-cored coil in free space.
 \begin{figure}
-\centerline{\includegraphics{ax1.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/ax1.ps}}
 \caption{Air-cored coil with ``open'' boundary condition}
 \label{ax1_fig}
 \end{figure}
@@ -3733,7 +3733,7 @@ relative permeability of 2500.  The coil carries a bulk current
 density of 2 MA/m$^2$.  The input geometry is picture in
 Figure~\ref{ex1prob}.
 \begin{figure}
-\centerline{\includegraphics[width=6in]{open1.ps}}
+\centerline{\includegraphics[width=6in]{@CMAKE_CURRENT_SOURCE_DIR@/open1.ps}}
 \caption{Example input geometry.}
 \label{ex1prob}
 \end{figure}
@@ -3771,7 +3771,7 @@ boundary.  The flux lines reappear in the domain representing the
 exterior region, completing their flux paths through the exterior
 region.
 \begin{figure}
-\centerline{\includegraphics[width=6in]{open1b.ps}}
+\centerline{\includegraphics[width=6in]{@CMAKE_CURRENT_SOURCE_DIR@/open1b.ps}}
 \caption{Solved problem.}
 \label{ex1soln}
 \end{figure}

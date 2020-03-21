@@ -15,5 +15,5 @@ set(triangle_SOURCES
   triangle.rc
 )
 
-add_library(triangle ${triangle_SOURCES})
+add_executable(triangle ${triangle_SOURCES})
 target_include_directories(triangle PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

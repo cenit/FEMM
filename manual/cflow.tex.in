@@ -16,7 +16,7 @@ option brings up the Problem Definition dialog, shown in
 Figure~\ref{cfig5}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd1.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd1.ps}}
 \caption{Problem Definition dialog.}
 \label{cfig5}
 \end{figure}
@@ -31,8 +31,8 @@ what unit is associated with the dimensions prescribed in the
 model's geometry. Currently, the program supports inches,
 millimeters, centimeters, meters, mils, and $\mu $meters.
 
-The first edit box, {\tt Frequency, Hz}, denotes the frequency at 
-which the problem is to be analyzed. 
+The first edit box, {\tt Frequency, Hz}, denotes the frequency at
+which the problem is to be analyzed.
 
 The second edit box is the \texttt{Depth} specification. If a Planar
 problem is selected, this edit box becomes enabled. This value is
@@ -87,7 +87,7 @@ Conductors. When any one of these selections is chosen, the dialog
 pictured in Figure~\ref{cfig7} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{hpropdef.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hpropdef.ps}}
 \caption{Property Definition dialog box.}
 \label{cfig7}
 \end{figure}
@@ -112,7 +112,7 @@ If a new point property is added or an existing point property modified, the
 Figure~\ref{cfig8}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd2.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd2.ps}}
 \caption{Nodal Property dialog.}
 \label{cfig8}
 \end{figure}
@@ -135,7 +135,7 @@ added or an existing property modified, the \texttt{Boundary
 Property} dialog pictured in Figure~\ref{cfig9} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd3.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd3.ps}}
 \caption{Boundary Property dialog.}
 \label{cfig9}
 \end{figure}
@@ -161,7 +161,7 @@ existing property modified, the
 \texttt{Block Property} dialog pictured in Figure~\ref{cfig10} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd4.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd4.ps}}
 \caption{Block Property dialog.}
 \label{cfig10}
 \end{figure}
@@ -239,14 +239,14 @@ solution process.
 For fixed voltages, one could alternatively apply a \texttt{Fixed
 Voltage} boundary condition. However, applying a fixed voltage
 as a conductor allows the user to group together several physically
-disjoint surfaces into one conductor upon which the total current flow 
+disjoint surfaces into one conductor upon which the total current flow
 is automatically computed.
 
 The dialog for entering conductor properties is pictured in
 Figure~\ref{cfig12}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd5.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd5.ps}}
 \caption{Conductor Property dialog.}
 \label{cfig12}
 \end{figure}
@@ -258,7 +258,7 @@ most easily performed by the toolbar buttons pictured in
 Figure~\ref{cfig13}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{belaman13.eps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman13.eps}}
 \caption{Toolbar buttons for starting analysis tasks.}
 \label{cfig13}
 \end{figure}
@@ -324,7 +324,7 @@ the Graph Mode section of the toolbar (see Figure~\ref{cfig17}). The
 Contour Plot icon is the icon with the black contours.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{hplotbar.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hplotbar.ps}}
 \caption{Graph Mode toolbar buttons.}
 \label{cfig17}
 \end{figure}
@@ -367,7 +367,7 @@ function'' icon in the Plot, Integration and Conductor Results group of toolbar
 buttons, shown in Figure~\ref{cfig18}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd8.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd8.ps}}
 \caption{Line Plot, Integration, and Conductor Results toolbar buttons.}
 \label{cfig18}
 \end{figure}
@@ -378,7 +378,7 @@ of line plots available. Choose the desired type of plot and press
 ``OK.''
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd6.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd6.ps}}
 \caption{X-Y Plot dialog.}
 \label{cfig19}
 \end{figure}
@@ -394,7 +394,7 @@ will appear and prompt for a filename to which to write the data.
 The data is written in two-column text format. If \texttt{Write
 data to text file} is selected, a plot window will not appear.
 
-Currently, the type of line plots supported are: 
+Currently, the type of line plots supported are:
 \begin{itemize}
     \item {\tt V}      Voltage
 	\item {\tt |J|   } Magnitude of current density
@@ -429,7 +429,7 @@ the screen in a pop-up box.
 The line integrals currently supported are:
 
 \begin{itemize}
-\item \texttt{Voltage Difference (E.t)}. This integral returns the 
+\item \texttt{Voltage Difference (E.t)}. This integral returns the
 voltage difference between the ends of the contour
 
 \item \texttt{Current Flow (J.n)}. This integral returns the total current passing through
@@ -481,8 +481,7 @@ are desired. When a conductor is selected, the voltage and current
 associated with that conductor are displayed.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{cd7.ps}}
+\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd7.ps}}
 \caption{Conductor results dialog.}
 \label{cfig21}
 \end{figure}
-

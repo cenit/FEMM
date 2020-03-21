@@ -1,6 +1,5 @@
 #pragma once
 
-#include<afx.h> // just needs afx.h to define BOOL, TRUE, and FALSE
 #define PI 3.141592653589793238462643383
 #define SmallNo 1.e-14
 #define DEG 0.01745329251994329576923690768
@@ -78,12 +77,12 @@ class CComplex
 		void operator=(int z);
 
 		//Tests
-		BOOL operator==( const CComplex& z);
-		BOOL operator==(double z);
-		BOOL operator==(int z);
-		BOOL operator!=( const CComplex& z);
-		BOOL operator!=(double z);
-		BOOL operator!=(int z);
+		bool operator==( const CComplex& z);
+		bool operator==(double z);
+		bool operator==(int z);
+		bool operator!=( const CComplex& z);
+		bool operator!=(double z);
+		bool operator!=(int z);
 
 	private:
 

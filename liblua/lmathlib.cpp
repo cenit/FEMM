@@ -4,8 +4,8 @@
 ** See Copyright Notice in lua.h
 */
 
-#include <afx.h>
-//#include <stdlib.h>
+//#include <afx.h>
+#include <stdlib.h>
 #include <math.h>
 
 #include "lua.h"
@@ -89,7 +89,7 @@ static int math_mod (lua_State *L) {
 }
 
 static int math_sqrt (lua_State *L) {
-	
+
   lua_pushnumber(L, sqrt(luaL_check_number(L, 1)));
   return 1;
 
@@ -284,4 +284,3 @@ LUALIB_API void lua_mathlibopen (lua_State *L) {
   lua_pushnumber(L, I);
   lua_setglobal(L, "I");
 }
-

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(csolv C CXX)
 
+find_package(MFC REQUIRED)
+set(CMAKE_MFC_FLAG 2)
+add_definitions(-D_WIN32_WINNT=0x0501)
+
 set(csolv_SOURCES
   complex.h
   CSOLV.H
@@ -22,5 +26,5 @@ set(csolv_SOURCES
   CSOLV.RC
 )
 
-add_library(csolv ${csolv_SOURCES})
+add_executable(csolv WIN32 ${csolv_SOURCES})
 target_include_directories(csolv PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

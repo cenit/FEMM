@@ -1,18 +1,22 @@
 cmake_minimum_required(VERSION 3.10)
 project(fkn C CXX)
 
+find_package(MFC REQUIRED)
+set(CMAKE_MFC_FLAG 2)
+add_definitions(-D_WIN32_WINNT=0x0501)
+
 set(fkn_SOURCES
   complex.h
   femmedoccore.h
   fkn.h
   fknDlg.h
   fullmatrix.h
-  lua.h
+  #lua.h
   mesh.h
   resource.h
   spars.h
   StdAfx.h
-  complex.cpp
+  #complex.cpp
   cspars.cpp
   cuthill.cpp
   femmedoccore.cpp
@@ -31,5 +35,6 @@ set(fkn_SOURCES
   fkn.rc
 )
 
-add_library(fkn ${fkn_SOURCES})
+add_executable(fkn WIN32 ${fkn_SOURCES})
 target_include_directories(fkn PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(fkn liblua)

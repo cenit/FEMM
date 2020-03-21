@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(femmplot C CXX)
 
+find_package(MFC REQUIRED)
+set(CMAKE_MFC_FLAG 2)
+add_definitions(-D_WIN32_WINNT=0x0501)
+
 set(femmplot_SOURCES
   femmplot.h
   femmplotDoc.h
@@ -16,5 +20,5 @@ set(femmplot_SOURCES
   femmplot.rc
 )
 
-add_library(femmplot ${femmplot_SOURCES})
+add_executable(femmplot WIN32 ${femmplot_SOURCES})
 target_include_directories(femmplot PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

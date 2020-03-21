@@ -1,0 +1,44 @@
+image: Visual Studio 2017
+clone_folder: c:\projects\FEMM
+cache: C:\Tools\vcpkg\installed\
+
+environment:
+    WORKSPACE: C:\projects
+    matrix:
+    - platform: Win64
+      COMPILER: vs
+      configuration: Release
+      VCPKG_ROOT: C:\Tools\vcpkg
+      VCPKG_DEFAULT_TRIPLET: x64-windows
+
+install:
+  - if [%COMPILER%]==[vs] cinst cmake ninja
+  - if [%COMPILER%]==[vs] SET "PATH=C:\Program Files\CMake\bin;%PATH%"
+  - if [%COMPILER%]==[vs] call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+  - if [%COMPILER%]==[cygwin] SET "PATH=C:\cygwin64\usr\local\bin;C:\cygwin64\bin;C:\cygwin64\usr\bin;%PATH%"
+  - if [%COMPILER%]==[cygwin] SET PATH=%PATH:C:\Program Files\Git\usr\bin;=%
+  - git submodule -q update --init --recursive
+  - cd %WORKSPACE%\
+  - mkdir cygwin-downloads
+  - ps: if($env:COMPILER -eq "cygwin") { Invoke-WebRequest https://cygwin.com/setup-x86_64.exe -OutFile $env:WORKSPACE\cygwin-setup.exe }
+  - if [%COMPILER%]==[cygwin] %WORKSPACE%\cygwin-setup.exe --quiet-mode --no-shortcuts --no-startmenu --no-desktop --upgrade-also --root C:\cygwin64 --local-package-dir %WORKSPACE%\cygwin-downloads --packages gcc-g++,cmake
+  - if [%COMPILER%]==[cygwin] cd %WORKSPACE%
+  - if [%COMPILER%]==[vs] cd %VCPKG_ROOT%
+  - if [%COMPILER%]==[vs] git checkout .
+  - if [%COMPILER%]==[vs] git pull
+  - if [%COMPILER%]==[vs] .\bootstrap-vcpkg.bat
+  - if [%COMPILER%]==[vs] echo set(VCPKG_BUILD_TYPE release) >> triplets\%VCPKG_DEFAULT_TRIPLET%.cmake
+  - if [%COMPILER%]==[vs] rmdir "buildtrees" /S /Q
+  - cd %WORKSPACE%\FEMM\
+  - if [%COMPILER%]==[cygwin] mkdir build_debug && cd build_debug
+  - if [%COMPILER%]==[cygwin] %CYGSH% 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Debug"'
+  - if [%COMPILER%]==[cygwin] cd ..
+  - mkdir build_release && cd build_release
+  - if [%COMPILER%]==[cygwin] %CYGSH% 'cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE="Release"'
+  - if [%COMPILER%]==[vs] if [%configuration%]==[Release] cmake -G "Visual Studio 15 2017" -T "host=x64" -A "x64" "-DCMAKE_TOOLCHAIN_FILE=%VCPKG_ROOT%\scripts\buildsystems\vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=%VCPKG_DEFAULT_TRIPLET%" -DCMAKE_BUILD_TYPE="Release" ..
+  - cd ..
+
+build_script:
+  - if [%COMPILER%]==[cygwin]                                  cd build_debug   && %CYGSH% 'cmake --build . -- -j8'              && cd ..
+  - if [%COMPILER%]==[cygwin]                                  cd build_release && %CYGSH% 'cmake --build . -- -j8'              && cd ..
+  - if [%COMPILER%]==[vs]      if [%configuration%]==[Release] cd build_release && cmake --build . --config Release --parallel 8 && cd ..
