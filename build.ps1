@@ -155,5 +155,5 @@ else {
 New-Item -Path .\build_win_release -ItemType directory -Force
 Set-Location build_win_release
 cmake -G "$generator" -T "host=x64" -A "x64" "-DCMAKE_TOOLCHAIN_FILE=$vcpkg_path\scripts\buildsystems\vcpkg.cmake" "-DVCPKG_TARGET_TRIPLET=$vcpkg_triplet" "-DCMAKE_BUILD_TYPE=Release" $additional_build_setup $latexFOUND ${install_prefix} ..
-cmake --build . --config Release --parallel ${number_of_build_workers}
+cmake --build . --config Release --parallel ${number_of_build_workers} --target install
 Set-Location ..

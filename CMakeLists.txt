@@ -3,6 +3,8 @@ project(FEMM C CXX)
 
 option(BUILD_MANUAL "Build the manual" OFF)
 
+set(INSTALL_BIN_DIR  "${CMAKE_SOURCE_DIR}/bin" CACHE PATH "Path where exe will be installed")
+
 if(BUILD_MANUAL)
   add_subdirectory(manual)
 endif()

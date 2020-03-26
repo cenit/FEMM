@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(triangle C CXX)
 
+set(INSTALL_BIN_DIR  "${CMAKE_SOURCE_DIR}" CACHE PATH "Path where exe will be installed")
+
 if(MSVC)
   set(ADDITIONAL_CXX_FLAGS "/wd4311 /wd4312 /wd4477")
   set(ADDITIONAL_C_FLAGS "/wd4311 /wd4312 /wd4477")
@@ -17,3 +19,4 @@ set(triangle_SOURCES
 
 add_executable(triangle ${triangle_SOURCES})
 target_include_directories(triangle PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+install(TARGETS triangle DESTINATION "${INSTALL_BIN_DIR}")

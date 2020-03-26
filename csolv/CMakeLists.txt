@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(csolv C CXX)
 
+set(INSTALL_BIN_DIR  "${CMAKE_SOURCE_DIR}" CACHE PATH "Path where exe will be installed")
+
 find_package(MFC REQUIRED)
 set(CMAKE_MFC_FLAG 2)
 add_definitions(-D_WIN32_WINNT=0x0501)
@@ -28,3 +30,4 @@ set(csolv_SOURCES
 
 add_executable(csolv WIN32 ${csolv_SOURCES})
 target_include_directories(csolv PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+install(TARGETS csolv DESTINATION "${INSTALL_BIN_DIR}")
