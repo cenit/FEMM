@@ -36,3 +36,9 @@ debug/
 release/
 liblua/x86/
 liblua/x64/
+bin/condlib.dat
+bin/heatlib.dat
+bin/init.lua
+bin/license.txt
+bin/matlib.dat
+bin/statlib.dat
