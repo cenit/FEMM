@@ -1,6 +1,9 @@
-﻿FEMM 4.2 21Apr2019
+# FEMM 4.2 21Apr2019
+
 David Meeker
 dmeeker@ieee.org
+
+[![Build status](https://ci.appveyor.com/api/projects/status/x6px9khoi2jidwgq?svg=true)](https://ci.appveyor.com/project/cenit/femm)
 
 21Apr2019: (Test Build)
 
