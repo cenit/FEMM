@@ -13,7 +13,7 @@
 // (http://www.geocities.com/ppescher - ppescher@yahoo.com)
 //
 // The contents of this file are subject to the Artistic License (the "License").
-// You may not use this file except in compliance with the License. 
+// You may not use this file except in compliance with the License.
 // You may obtain a copy of the License at:
 // http://www.opensource.org/licenses/artistic-license.html
 //
@@ -29,67 +29,63 @@
 /////////////////////////////////////////////////////////////////////////////
 // CResizableDialog window
 
-class CResizableDialog : public CDialog, public CResizableLayout,
-						 public CResizableGrip, public CResizableMinMax,
-						 public CResizableState
-{
+class CResizableDialog : public CDialog, public CResizableLayout, public CResizableGrip, public CResizableMinMax, public CResizableState {
 
-// Construction
-public:
-	CResizableDialog();
-	CResizableDialog(UINT nIDTemplate, CWnd* pParentWnd = NULL);
-	CResizableDialog(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
+  // Construction
+  public:
+  CResizableDialog();
+  CResizableDialog(UINT nIDTemplate, CWnd* pParentWnd = NULL);
+  CResizableDialog(LPCTSTR lpszTemplateName, CWnd* pParentWnd = NULL);
 
-// Attributes
-private:
-	// support for temporarily hiding the grip
-	DWORD m_dwGripTempState;
+  // Attributes
+  private:
+  // support for temporarily hiding the grip
+  DWORD m_dwGripTempState;
 
-	// flags
-	BOOL m_bEnableSaveRestore;
-	BOOL m_bRectOnly;
+  // flags
+  BOOL m_bEnableSaveRestore;
+  BOOL m_bRectOnly;
 
-	// internal status
-	CString m_sSection;			// section name (identifies a parent window)
+  // internal status
+  CString m_sSection; // section name (identifies a parent window)
 
-// Operations
-public:
+  // Operations
+  public:
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CResizableDialog)
+  protected:
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CResizableDialog)
-	protected:
-	//}}AFX_VIRTUAL
+  // Implementation
+  public:
+  virtual ~CResizableDialog();
 
-// Implementation
-public:
-	virtual ~CResizableDialog();
+  // used internally
+  private:
+  void PrivateConstruct();
 
-// used internally
-private:
-	void PrivateConstruct();
+  // callable from derived classes
+  protected:
+  // section to use in app's profile
+  void EnableSaveRestore(LPCTSTR pszSection, BOOL bRectOnly = FALSE);
 
-// callable from derived classes
-protected:
-	// section to use in app's profile
-	void EnableSaveRestore(LPCTSTR pszSection, BOOL bRectOnly = FALSE);
+  virtual CWnd* GetResizableWnd()
+  {
+    // make the layout know its parent window
+    return this;
+  };
 
-	virtual CWnd* GetResizableWnd()
-	{
-		// make the layout know its parent window
-		return this;
-	};
-
-// Generated message map functions
-protected:
-	//{{AFX_MSG(CResizableDialog)
-	afx_msg void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
-	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnDestroy();
-	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
-	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Generated message map functions
+  protected:
+  //{{AFX_MSG(CResizableDialog)
+  afx_msg void OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI);
+  afx_msg void OnSize(UINT nType, int cx, int cy);
+  afx_msg void OnDestroy();
+  afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+  afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

@@ -1,42 +1,38 @@
 
-class CFullMatrix{
+class CFullMatrix {
 
-	public:
+  public:
+  // data members
+  double** M; // Matrix on LHS
+  double* b; // vector on RHS
+  long n; // dimension of the matrix
 
-		// data members
-		double **M;			// Matrix on LHS
-		double *b;			// vector on RHS
-		long n;				// dimension of the matrix
+  // member functions
+  CFullMatrix();
+  CFullMatrix(int d);
+  ~CFullMatrix();
+  void Wipe();
+  BOOL Create(int d);
+  BOOL GaussSolve();
 
-		// member functions
-		CFullMatrix();
-		CFullMatrix(int d);
-		~CFullMatrix();
-		void Wipe();
-		BOOL Create(int d);
-		BOOL GaussSolve();
-
-	private:
-
+  private:
 };
 
-class CComplexFullMatrix{
+class CComplexFullMatrix {
 
-    public:
+  public:
+  // data members
+  CComplex** M; // Matrix on LHS
+  CComplex* b; // vector on RHS
+  int n; // dimension of the matrix
 
-        // data members
-        CComplex **M;           // Matrix on LHS
-        CComplex *b;            // vector on RHS
-        int n;              // dimension of the matrix
+  // member functions
+  CComplexFullMatrix();
+  CComplexFullMatrix(int d);
+  ~CComplexFullMatrix();
+  void Wipe();
+  BOOL Create(int d);
+  BOOL GaussSolve();
 
-        // member functions
-        CComplexFullMatrix();
-        CComplexFullMatrix(int d);
-        ~CComplexFullMatrix();
-        void Wipe();
-        BOOL Create(int d);
-        BOOL GaussSolve();
-
-    private:
-
+  private:
 };

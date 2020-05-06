@@ -10,39 +10,36 @@
 /////////////////////////////////////////////////////////////////////////////
 // hvCVPlotDlg dialog
 
-class hvCVPlotDlg : public CDialog
-{
-// Construction
-public:
-	hvCVPlotDlg(CWnd* pParent = NULL);   // standard constructor
+class hvCVPlotDlg : public CDialog {
+  // Construction
+  public:
+  hvCVPlotDlg(CWnd* pParent = NULL); // standard constructor
 
-	int m_plottype;
-	CLuaEdit m_IDC_vectorscalefactor;
+  int m_plottype;
+  CLuaEdit m_IDC_vectorscalefactor;
 
-// Dialog Data
-	//{{AFX_DATA(hvCVPlotDlg)
-	enum { IDD = IDD_HV_VPLOTDLG };
-	CComboBox	m_vplottype;
-	double	m_vectorscalefactor;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(hvCVPlotDlg)
+  enum { IDD = IDD_HV_VPLOTDLG };
+  CComboBox m_vplottype;
+  double m_vectorscalefactor;
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(hvCVPlotDlg)
+  protected:
+  virtual void DoDataExchange(CDataExchange* pDX); // DDX/DDV support
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(hvCVPlotDlg)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
-protected:
-
-	// Generated message map functions
-	//{{AFX_MSG(hvCVPlotDlg)
-	virtual void OnOK();
-	virtual BOOL OnInitDialog();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+  protected:
+  // Generated message map functions
+  //{{AFX_MSG(hvCVPlotDlg)
+  virtual void OnOK();
+  virtual BOOL OnInitDialog();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

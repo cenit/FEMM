@@ -15,66 +15,63 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // hdCOpNodeDlg dialog
 
-
 hdCOpNodeDlg::hdCOpNodeDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(hdCOpNodeDlg::IDD, pParent)
+    : CDialog(hdCOpNodeDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(hdCOpNodeDlg)
-	m_ingroup = 0;
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(hdCOpNodeDlg)
+  m_ingroup = 0;
+  //}}AFX_DATA_INIT
 }
-
 
 void hdCOpNodeDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(hdCOpNodeDlg)
-	DDX_Control(pDX, IDC_HD_NODE_COND, m_nodecond);
-	DDX_Control(pDX, IDC_HD_ACKNODE, m_acknode);
-	DDX_Text(pDX, IDC_HD_PTGRP, m_ingroup);
-	//}}AFX_DATA_MAP
-	DDX_Control(pDX, IDC_HD_PTGRP, m_IDC_ingroup);
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(hdCOpNodeDlg)
+  DDX_Control(pDX, IDC_HD_NODE_COND, m_nodecond);
+  DDX_Control(pDX, IDC_HD_ACKNODE, m_acknode);
+  DDX_Text(pDX, IDC_HD_PTGRP, m_ingroup);
+  //}}AFX_DATA_MAP
+  DDX_Control(pDX, IDC_HD_PTGRP, m_IDC_ingroup);
 }
 
-
 BEGIN_MESSAGE_MAP(hdCOpNodeDlg, CDialog)
-	//{{AFX_MSG_MAP(hdCOpNodeDlg)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(hdCOpNodeDlg)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // hdCOpNodeDlg message handlers
 
-BOOL hdCOpNodeDlg::OnInitDialog() 
+BOOL hdCOpNodeDlg::OnInitDialog()
 {
-	CDialog::OnInitDialog();
-	
-	// TODO: Add extra initialization here
-	CArray<CPointProp,CPointProp&> &nodeproplist=*pnodeproplist;
+  CDialog::OnInitDialog();
 
-	int i;
+  // TODO: Add extra initialization here
+  CArray<CPointProp, CPointProp&>& nodeproplist = *pnodeproplist;
 
-	// TODO: Add extra initialization here
-	m_acknode.AddString("<None>");
-	for(i=0;i<nodeproplist.GetSize();i++)
-		m_acknode.AddString(nodeproplist[i].PointName);
-	m_acknode.SetCurSel(cursel);
+  int i;
 
-	CArray<CCircuit,CCircuit&> &circproplist=*pcircproplist;
-	m_nodecond.AddString("<None>");
-	for(i=0;i<circproplist.GetSize();i++)
-		m_nodecond.AddString(circproplist[i].CircName);
-	m_nodecond.SetCurSel(condsel);
+  // TODO: Add extra initialization here
+  m_acknode.AddString("<None>");
+  for (i = 0; i < nodeproplist.GetSize(); i++)
+    m_acknode.AddString(nodeproplist[i].PointName);
+  m_acknode.SetCurSel(cursel);
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+  CArray<CCircuit, CCircuit&>& circproplist = *pcircproplist;
+  m_nodecond.AddString("<None>");
+  for (i = 0; i < circproplist.GetSize(); i++)
+    m_nodecond.AddString(circproplist[i].CircName);
+  m_nodecond.SetCurSel(condsel);
+
+  return TRUE; // return TRUE unless you set the focus to a control
+      // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void hdCOpNodeDlg::OnOK() 
+void hdCOpNodeDlg::OnOK()
 {
-	// TODO: Add extra validation here
-	cursel=m_acknode.GetCurSel();
-	condsel=m_nodecond.GetCurSel();
+  // TODO: Add extra validation here
+  cursel = m_acknode.GetCurSel();
+  condsel = m_nodecond.GetCurSel();
 
-	CDialog::OnOK();
+  CDialog::OnOK();
 }

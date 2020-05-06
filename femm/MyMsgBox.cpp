@@ -14,29 +14,26 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CMyMsgBox dialog
 
-
 CMyMsgBox::CMyMsgBox(CWnd* pParent /*=NULL*/)
-	: CDialog(CMyMsgBox::IDD, pParent)
+    : CDialog(CMyMsgBox::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CMyMsgBox)
-	m_mymsg = _T("");
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(CMyMsgBox)
+  m_mymsg = _T("");
+  //}}AFX_DATA_INIT
 }
-
 
 void CMyMsgBox::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CMyMsgBox)
-	DDX_Text(pDX, IDC_MYMSGBOXOUTPUT, m_mymsg);
-	//}}AFX_DATA_MAP
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CMyMsgBox)
+  DDX_Text(pDX, IDC_MYMSGBOXOUTPUT, m_mymsg);
+  //}}AFX_DATA_MAP
 }
 
-
 BEGIN_MESSAGE_MAP(CMyMsgBox, CDialog)
-	//{{AFX_MSG_MAP(CMyMsgBox)
-		// NOTE: the ClassWizard will add message map macros here
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CMyMsgBox)
+// NOTE: the ClassWizard will add message map macros here
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////

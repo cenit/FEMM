@@ -10,40 +10,38 @@
 /////////////////////////////////////////////////////////////////////////////
 // CMyTabCtrl window
 
-class CMyTabCtrl : public CTabCtrl
-{
-// Construction
-public:
-	CMyTabCtrl();
-	CDialog *m_tabPages[12];
-	int m_tabCurrent;
-	int m_nNumberOfPages;
+class CMyTabCtrl : public CTabCtrl {
+  // Construction
+  public:
+  CMyTabCtrl();
+  CDialog* m_tabPages[12];
+  int m_tabCurrent;
+  int m_nNumberOfPages;
 
-// Attributes
-public:
+  // Attributes
+  public:
+  // Operations
+  public:
+  void Init();
+  void SetRectangle();
+  void WritePrefs();
 
-// Operations
-public:
-	void Init();
-	void SetRectangle();
-	void WritePrefs();
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CMyTabCtrl)
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CMyTabCtrl)
-	//}}AFX_VIRTUAL
+  // Implementation
+  public:
+  virtual ~CMyTabCtrl();
 
-// Implementation
-public:
-	virtual ~CMyTabCtrl();
+  // Generated message map functions
+  protected:
+  //{{AFX_MSG(CMyTabCtrl)
+  afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+  //}}AFX_MSG
 
-	// Generated message map functions
-protected:
-	//{{AFX_MSG(CMyTabCtrl)
-	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
-	//}}AFX_MSG
-
-	DECLARE_MESSAGE_MAP()
+  DECLARE_MESSAGE_MAP()
 };
 
 /////////////////////////////////////////////////////////////////////////////

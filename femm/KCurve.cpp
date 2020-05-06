@@ -18,37 +18,34 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CTKData dialog
 
-
 CTKData::CTKData(CWnd* pParent /*=NULL*/)
-	: CDialog(CTKData::IDD, pParent)
+    : CDialog(CTKData::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CTKData)
-	m_Bdata = _T("");
-	m_Hdata = _T("");
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(CTKData)
+  m_Bdata = _T("");
+  m_Hdata = _T("");
+  //}}AFX_DATA_INIT
 
-	logplot=FALSE;
+  logplot = FALSE;
 }
-
 
 void CTKData::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CTKData)
-	DDX_Text(pDX, IDC_BDATA, m_Bdata);
-	DDX_Text(pDX, IDC_HDATA, m_Hdata);
-	//}}AFX_DATA_MAP
-	DDX_Control(pDX, IDC_BDATA, m_IDC_BDATA);
-	DDX_Control(pDX, IDC_HDATA, m_IDC_HDATA);
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CTKData)
+  DDX_Text(pDX, IDC_BDATA, m_Bdata);
+  DDX_Text(pDX, IDC_HDATA, m_Hdata);
+  //}}AFX_DATA_MAP
+  DDX_Control(pDX, IDC_BDATA, m_IDC_BDATA);
+  DDX_Control(pDX, IDC_HDATA, m_IDC_HDATA);
 }
 
-
 BEGIN_MESSAGE_MAP(CTKData, CDialog)
-	//{{AFX_MSG_MAP(CTKData)
-	ON_BN_CLICKED(IDC_PLOT_BHCURVE, OnPlotBHcurve)
-	ON_BN_CLICKED(IDC_LOGPLOT_BHCURVE, OnLogPlotBHcurve)
-	ON_BN_CLICKED(IDC_READ_BHCURVE, OnReadBhcurve)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CTKData)
+ON_BN_CLICKED(IDC_PLOT_BHCURVE, OnPlotBHcurve)
+ON_BN_CLICKED(IDC_LOGPLOT_BHCURVE, OnLogPlotBHcurve)
+ON_BN_CLICKED(IDC_READ_BHCURVE, OnReadBhcurve)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -56,274 +53,288 @@ END_MESSAGE_MAP()
 
 void CTKData::StripTKData()
 {
-	int k;
-	char *buff,*nptr,*endptr;
-	double z;
-	
-	T.RemoveAll();
-	K.RemoveAll();
-	npts=0;
+  int k;
+  char *buff, *nptr, *endptr;
+  double z;
 
-	if((m_Bdata.GetLength()==0) || (m_Hdata.GetLength()==0)) return;
+  T.RemoveAll();
+  K.RemoveAll();
+  npts = 0;
 
-	k=m_Bdata.GetLength()*2;
-	buff=(char *)calloc(k,sizeof(char));
-	strcpy(buff,m_Bdata);
-	nptr=buff;
-	while (sscanf(nptr,"%lf",&z)!=EOF){
-		z=strtod(nptr,&endptr );
-		if(nptr==endptr) nptr++; //catch special case
-		else nptr=endptr;
-		T.Add(z);
-	}
-	free(buff);
+  if ((m_Bdata.GetLength() == 0) || (m_Hdata.GetLength() == 0))
+    return;
 
-	k=m_Hdata.GetLength()*2;
-	buff=(char *)calloc(k,sizeof(char));
-	strcpy(buff,m_Hdata);
-	nptr=buff;
-	while (sscanf(nptr,"%lf",&z)!=EOF){
-		z=strtod(nptr,&endptr );
-		if(nptr==endptr) nptr++;
-		else nptr=endptr;
-		K.Add(z);
-	}
+  k = m_Bdata.GetLength() * 2;
+  buff = (char*)calloc(k, sizeof(char));
+  strcpy(buff, m_Bdata);
+  nptr = buff;
+  while (sscanf(nptr, "%lf", &z) != EOF) {
+    z = strtod(nptr, &endptr);
+    if (nptr == endptr)
+      nptr++; //catch special case
+    else
+      nptr = endptr;
+    T.Add(z);
+  }
+  free(buff);
 
-	npts=(int) T.GetSize();
-	if ((int) K.GetSize()<npts) npts=(int) K.GetSize();
+  k = m_Hdata.GetLength() * 2;
+  buff = (char*)calloc(k, sizeof(char));
+  strcpy(buff, m_Hdata);
+  nptr = buff;
+  while (sscanf(nptr, "%lf", &z) != EOF) {
+    z = strtod(nptr, &endptr);
+    if (nptr == endptr)
+      nptr++;
+    else
+      nptr = endptr;
+    K.Add(z);
+  }
 
-	SortCurve();
+  npts = (int)T.GetSize();
+  if ((int)K.GetSize() < npts)
+    npts = (int)K.GetSize();
 
-	free(buff);
+  SortCurve();
 
+  free(buff);
 }
 
-void CTKData::OnLogPlotBHcurve() 
+void CTKData::OnLogPlotBHcurve()
 {
-	logplot=TRUE;
-	OnPlotBHcurve();
+  logplot = TRUE;
+  OnPlotBHcurve();
 }
 
 void CTKData::SortCurve()
 {
-	int j;
-	double x;
-	BOOL bDone=FALSE;
+  int j;
+  double x;
+  BOOL bDone = FALSE;
 
-	if (npts<2) return;
+  if (npts < 2)
+    return;
 
-	while(bDone==FALSE)
-	{
-		for(j=1,bDone=TRUE;j<npts;j++)
-		{
-			if(T[j]<T[j-1])
-			{
-				bDone=FALSE;
-				x=T[j]; T[j]=T[j-1]; T[j-1]=x;
-				x=K[j]; K[j]=K[j-1]; K[j-1]=x;
-			}
-		}
-	}
+  while (bDone == FALSE) {
+    for (j = 1, bDone = TRUE; j < npts; j++) {
+      if (T[j] < T[j - 1]) {
+        bDone = FALSE;
+        x = T[j];
+        T[j] = T[j - 1];
+        T[j - 1] = x;
+        x = K[j];
+        K[j] = K[j - 1];
+        K[j - 1] = x;
+      }
+    }
+  }
 }
 
 double CTKData::GetK(double t)
 {
-	int i,j;
+  int i, j;
 
-	if (npts==0) return 0;
-	if (npts==1) return K[0];
-	if (t<=T[0]) return K[0];
-	if (t>=T[npts-1]) return K[npts-1];
+  if (npts == 0)
+    return 0;
+  if (npts == 1)
+    return K[0];
+  if (t <= T[0])
+    return K[0];
+  if (t >= T[npts - 1])
+    return K[npts - 1];
 
-	for(i=0,j=1;j<npts;i++,j++)
-	{
-		if((t>=T[i]) && (t<=T[j]))
-		{
-			return (K[i]+(K[j]-K[i])*(t-T[i])/(T[j]-T[i]));
-		}
-	}
+  for (i = 0, j = 1; j < npts; i++, j++) {
+    if ((t >= T[i]) && (t <= T[j])) {
+      return (K[i] + (K[j] - K[i]) * (t - T[i]) / (T[j] - T[i]));
+    }
+  }
 
-	return 0;
+  return 0;
 }
 
-void CTKData::OnPlotBHcurve() 
+void CTKData::OnPlotBHcurve()
 {
-	CBHPlot xyplot;
-	int i;
-	double t,dt;
-	BOOL logscale=logplot;
-	logplot=FALSE;
-	
-	UpdateData();
-	StripTKData();
+  CBHPlot xyplot;
+  int i;
+  double t, dt;
+  BOOL logscale = logplot;
+  logplot = FALSE;
 
-	if (npts<2){
-		MsgBox("Must have at least 2 pairs of data points");
-		return;
-	}
+  UpdateData();
+  StripTKData();
 
-	// copy raw B-H data for plotting in comparison to interpolated curve
-	xyplot.NumPts=npts;
-	xyplot.Pts=(CComplex *)calloc(npts,sizeof(CComplex));
-	for(i=0;i<npts;i++) xyplot.Pts[i]=T[i]+I*K[i];
+  if (npts < 2) {
+    MsgBox("Must have at least 2 pairs of data points");
+    return;
+  }
 
-	// get path to femmplot that we will need to display
-	// the plot of the B-H curve...
-	CString comline=((CFemmApp *)AfxGetApp())->GetExecutablePath();
+  // copy raw B-H data for plotting in comparison to interpolated curve
+  xyplot.NumPts = npts;
+  xyplot.Pts = (CComplex*)calloc(npts, sizeof(CComplex));
+  for (i = 0; i < npts; i++)
+    xyplot.Pts[i] = T[i] + I * K[i];
 
-	// Actually evaluate all the points on the line...
-	if(xyplot.Create(101,2)==FALSE) return;
+  // get path to femmplot that we will need to display
+  // the plot of the B-H curve...
+  CString comline = ((CFemmApp*)AfxGetApp())->GetExecutablePath();
 
-	dt=(T[npts-1]-T[0])/100.;
+  // Actually evaluate all the points on the line...
+  if (xyplot.Create(101, 2) == FALSE)
+    return;
 
-	for(i=0,t=T[0];i<=100;i++,t+=dt)
-	{
-		xyplot.M[i][0]=t;
-		xyplot.M[i][1]=GetK(t);
-	}
+  dt = (T[npts - 1] - T[0]) / 100.;
 
-	sprintf(xyplot.lbls[0],"T, K");
-	sprintf(xyplot.lbls[1],"k, W/(m*K)");
-	
-	// Create the plot, send it to the clipboard, spawn viewer...
-	CMetaFileDC Meta;	
-	Meta.CreateEnhanced(NULL,NULL,NULL,NULL);
-	xyplot.MakePlot(&Meta,logscale);
-	HENHMETAFILE hMeta=Meta.CloseEnhanced();
-	if (hMeta==NULL) MsgBox("No Handle...");
-	if (OpenClipboard()==FALSE)
-		MsgBox("Cannot access the Clipboard");
-	else{
-		EmptyClipboard();
-		if(SetClipboardData(CF_ENHMETAFILE,hMeta)==NULL)
-		{
-			MsgBox("Couldn't SetClipboardData");
-		}
-		CloseClipboard();
-		
-		// fire up plot viewer;
-//		((CFemmApp *)AfxGetApp())->CreateNewDocument(8);
+  for (i = 0, t = T[0]; i <= 100; i++, t += dt) {
+    xyplot.M[i][0] = t;
+    xyplot.M[i][1] = GetK(t);
+  }
 
-		// in this case call the external program rather than
-		// displaying in the window.  Since dialog is running modal,
-		// it obscures the plotted BH curve--this is an annoying kludge.
-		char CommandLine[MAX_PATH];
-		sprintf(CommandLine,"%sfemmplot.exe", (const char *) ((CFemmApp *)AfxGetApp())->GetExecutablePath());
-		STARTUPINFO StartupInfo2 = {0};
-		PROCESS_INFORMATION ProcessInfo2;
-		StartupInfo2.cb = sizeof(STARTUPINFO);
-		CreateProcess(NULL,CommandLine, NULL, NULL, FALSE,0, NULL, NULL, &StartupInfo2, &ProcessInfo2);
-		CloseHandle(ProcessInfo2.hProcess);
-		CloseHandle(ProcessInfo2.hThread);
-	} 
+  sprintf(xyplot.lbls[0], "T, K");
+  sprintf(xyplot.lbls[1], "k, W/(m*K)");
+
+  // Create the plot, send it to the clipboard, spawn viewer...
+  CMetaFileDC Meta;
+  Meta.CreateEnhanced(NULL, NULL, NULL, NULL);
+  xyplot.MakePlot(&Meta, logscale);
+  HENHMETAFILE hMeta = Meta.CloseEnhanced();
+  if (hMeta == NULL)
+    MsgBox("No Handle...");
+  if (OpenClipboard() == FALSE)
+    MsgBox("Cannot access the Clipboard");
+  else {
+    EmptyClipboard();
+    if (SetClipboardData(CF_ENHMETAFILE, hMeta) == NULL) {
+      MsgBox("Couldn't SetClipboardData");
+    }
+    CloseClipboard();
+
+    // fire up plot viewer;
+    //		((CFemmApp *)AfxGetApp())->CreateNewDocument(8);
+
+    // in this case call the external program rather than
+    // displaying in the window.  Since dialog is running modal,
+    // it obscures the plotted BH curve--this is an annoying kludge.
+    char CommandLine[MAX_PATH];
+    sprintf(CommandLine, "%sfemmplot.exe", (const char*)((CFemmApp*)AfxGetApp())->GetExecutablePath());
+    STARTUPINFO StartupInfo2 = { 0 };
+    PROCESS_INFORMATION ProcessInfo2;
+    StartupInfo2.cb = sizeof(STARTUPINFO);
+    CreateProcess(NULL, CommandLine, NULL, NULL, FALSE, 0, NULL, NULL, &StartupInfo2, &ProcessInfo2);
+    CloseHandle(ProcessInfo2.hProcess);
+    CloseHandle(ProcessInfo2.hThread);
+  }
 }
 
-void CTKData::OnReadBhcurve() 
+void CTKData::OnReadBhcurve()
 {
-	// TODO: Add your control notification handler code here
-	
-	CFileDialog *fname_dia;
-	CString infile;
+  // TODO: Add your control notification handler code here
 
-	fname_dia=new CFileDialog(
-		TRUE,
-		"dat | * ",
-		infile,
-		OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
-		"Two column text data file (*.dat) | *.dat; *.DAT | All Files (*.*) | *.*||",
-		NULL);
+  CFileDialog* fname_dia;
+  CString infile;
 
-	if(fname_dia->DoModal()==IDCANCEL){
-		delete[] fname_dia;
-		return;
-	}
-	infile=fname_dia->GetPathName();
-	delete[] fname_dia;
+  fname_dia = new CFileDialog(
+      TRUE,
+      "dat | * ",
+      infile,
+      OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT,
+      "Two column text data file (*.dat) | *.dat; *.DAT | All Files (*.*) | *.*||",
+      NULL);
 
-	CTKDatafile dlg;
-	if(dlg.DoModal()==IDCANCEL) return;
+  if (fname_dia->DoModal() == IDCANCEL) {
+    delete[] fname_dia;
+    return;
+  }
+  infile = fname_dia->GetPathName();
+  delete[] fname_dia;
 
-	// read in data from text file;
-	m_Bdata.Empty();
-	m_Hdata.Empty();
+  CTKDatafile dlg;
+  if (dlg.DoModal() == IDCANCEL)
+    return;
 
-	char s[1024];
-	double t,k;
+  // read in data from text file;
+  m_Bdata.Empty();
+  m_Hdata.Empty();
 
-	FILE *fp=fopen(infile,"rt");
-	if (fp==NULL){
-		MsgBox("problem opening data file");
-		return;
-	}
-	while(fgets(s,1024,fp)!=NULL)
-	{
-		if(dlg.TKOrder==0) sscanf(s,"%lf %lf",&t,&k);
-		else sscanf(s,"%lf %lf",&k,&t);
-		
-		switch (dlg.TUnits)
-		{
-			case 1: // Celcius to Kelvin
-				t+=273.15;
-				break;
-			case 2: // Fahrenheit to Kelvin
-				t=5.*(t+459.67)/9.;
-				break;
-			case 3: // Rankine to Kelvin
-				t=5.*t/9.;
-				break;
-			default: // Kelvin
-				t*=1.;
-				break;
-		}
+  char s[1024];
+  double t, k;
 
-		switch (dlg.KUnits)
-		{
-			case 1: // Btu/(ft*hr*F) to W/(m*K) 
-				k*=1.73073466637139;
-				break;
-			case 2: // kcal/(m*hr*K) to W/(m*K)
-				k*=1.163;
-				break;
-			default: // W/(m*K)
-				k*=1.;
-				break;
-		}
+  FILE* fp = fopen(infile, "rt");
+  if (fp == NULL) {
+    MsgBox("problem opening data file");
+    return;
+  }
+  while (fgets(s, 1024, fp) != NULL) {
+    if (dlg.TKOrder == 0)
+      sscanf(s, "%lf %lf", &t, &k);
+    else
+      sscanf(s, "%lf %lf", &k, &t);
 
-		sprintf(s,"%f\r\n",t); m_Bdata += s;
-		sprintf(s,"%f\r\n",k); m_Hdata += s;
-	}
+    switch (dlg.TUnits) {
+    case 1: // Celcius to Kelvin
+      t += 273.15;
+      break;
+    case 2: // Fahrenheit to Kelvin
+      t = 5. * (t + 459.67) / 9.;
+      break;
+    case 3: // Rankine to Kelvin
+      t = 5. * t / 9.;
+      break;
+    default: // Kelvin
+      t *= 1.;
+      break;
+    }
 
-	SetDlgItemText(IDC_BDATA,m_Bdata);
-	SetDlgItemText(IDC_HDATA,m_Hdata);
+    switch (dlg.KUnits) {
+    case 1: // Btu/(ft*hr*F) to W/(m*K)
+      k *= 1.73073466637139;
+      break;
+    case 2: // kcal/(m*hr*K) to W/(m*K)
+      k *= 1.163;
+      break;
+    default: // W/(m*K)
+      k *= 1.;
+      break;
+    }
 
-	fclose(fp);
+    sprintf(s, "%f\r\n", t);
+    m_Bdata += s;
+    sprintf(s, "%f\r\n", k);
+    m_Hdata += s;
+  }
+
+  SetDlgItemText(IDC_BDATA, m_Bdata);
+  SetDlgItemText(IDC_HDATA, m_Hdata);
+
+  fclose(fp);
 }
 
-BOOL CTKData::OnInitDialog() 
+BOOL CTKData::OnInitDialog()
 {
-	CDialog::OnInitDialog();
-	
-	// build string representation of the data out of numerical data
-	int i;
-	CString c;
+  CDialog::OnInitDialog();
 
-	m_Bdata.Empty();
-	m_Hdata.Empty();
+  // build string representation of the data out of numerical data
+  int i;
+  CString c;
 
-	for(i=0;i<npts;i++){
-		c.Format("%f\r\n",T[i]); m_Bdata+=c;
-		c.Format("%f\r\n",K[i]); m_Hdata+=c;
-	}
+  m_Bdata.Empty();
+  m_Hdata.Empty();
 
-	UpdateData(FALSE);
+  for (i = 0; i < npts; i++) {
+    c.Format("%f\r\n", T[i]);
+    m_Bdata += c;
+    c.Format("%f\r\n", K[i]);
+    m_Hdata += c;
+  }
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+  UpdateData(FALSE);
+
+  return TRUE; // return TRUE unless you set the focus to a control
+      // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void CTKData::OnOK() 
+void CTKData::OnOK()
 {
-	StripTKData();
-	
-	CDialog::OnOK();
+  StripTKData();
+
+  CDialog::OnOK();
 }

@@ -14,48 +14,45 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // cvCVPlotDlg dialog
 
-
 cvCVPlotDlg::cvCVPlotDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(cvCVPlotDlg::IDD, pParent)
+    : CDialog(cvCVPlotDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(cvCVPlotDlg)
-	m_vectorscalefactor = 0.0;
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(cvCVPlotDlg)
+  m_vectorscalefactor = 0.0;
+  //}}AFX_DATA_INIT
 }
-
 
 void cvCVPlotDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(cvCVPlotDlg)
-	DDX_Control(pDX, IDC_CV_VPLOTTYPE, m_vplottype);
-	DDX_Text(pDX, IDC_CV_SCALEFACTOR, m_vectorscalefactor);
-	//}}AFX_DATA_MAP
-	DDX_Control(pDX, IDC_CV_SCALEFACTOR, m_IDC_vectorscalefactor);
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(cvCVPlotDlg)
+  DDX_Control(pDX, IDC_CV_VPLOTTYPE, m_vplottype);
+  DDX_Text(pDX, IDC_CV_SCALEFACTOR, m_vectorscalefactor);
+  //}}AFX_DATA_MAP
+  DDX_Control(pDX, IDC_CV_SCALEFACTOR, m_IDC_vectorscalefactor);
 }
 
-
 BEGIN_MESSAGE_MAP(cvCVPlotDlg, CDialog)
-	//{{AFX_MSG_MAP(cvCVPlotDlg)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(cvCVPlotDlg)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // cvCVPlotDlg message handlers
 
-void cvCVPlotDlg::OnOK() 
+void cvCVPlotDlg::OnOK()
 {
-	m_plottype=m_vplottype.GetCurSel();
-	
-	CDialog::OnOK();
+  m_plottype = m_vplottype.GetCurSel();
+
+  CDialog::OnOK();
 }
 
-BOOL cvCVPlotDlg::OnInitDialog() 
+BOOL cvCVPlotDlg::OnInitDialog()
 {
-	CDialog::OnInitDialog();
-	
-	m_vplottype.SetCurSel(m_plottype);
+  CDialog::OnInitDialog();
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+  m_vplottype.SetCurSel(m_plottype);
+
+  return TRUE; // return TRUE unless you set the focus to a control
+      // EXCEPTION: OCX Property Pages should return FALSE
 }

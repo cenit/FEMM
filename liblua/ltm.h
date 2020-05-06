@@ -7,7 +7,6 @@
 #ifndef ltm_h
 #define ltm_h
 
-
 #include "lobject.h"
 #include "lstate.h"
 
@@ -31,29 +30,24 @@ typedef enum {
   TM_CONCAT,
   TM_GC,
   TM_FUNCTION,
-  TM_N		/* number of elements in the enum */
+  TM_N /* number of elements in the enum */
 } TMS;
 
-
 struct TM {
-  Closure *method[TM_N];
-  TString *collected;  /* list of garbage-collected udata with this tag */
+  Closure* method[TM_N];
+  TString* collected; /* list of garbage-collected udata with this tag */
 };
 
-
-#define luaT_gettm(L,tag,event) (L->TMtable[tag].method[event])
-#define luaT_gettmbyObj(L,o,e)  (luaT_gettm((L),luaT_tag(o),(e)))
-
+#define luaT_gettm(L, tag, event) (L->TMtable[tag].method[event])
+#define luaT_gettmbyObj(L, o, e) (luaT_gettm((L), luaT_tag(o), (e)))
 
 #define validtag(t) (NUM_TAGS <= (t) && (t) <= L->last_tag)
 
-extern const char *const luaT_eventname[];
+extern const char* const luaT_eventname[];
 
-
-void luaT_init (lua_State *L);
-void luaT_realtag (lua_State *L, int tag);
-int luaT_tag (const TObject *o);
-int luaT_validevent (int t, int e);  /* used by compatibility module */
-
+void luaT_init(lua_State* L);
+void luaT_realtag(lua_State* L, int tag);
+int luaT_tag(const TObject* o);
+int luaT_validevent(int t, int e); /* used by compatibility module */
 
 #endif

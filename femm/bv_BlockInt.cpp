@@ -14,49 +14,46 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // bvCBlockInt dialog
 
-
 bvCBlockInt::bvCBlockInt(CWnd* pParent /*=NULL*/)
-	: CDialog(bvCBlockInt::IDD, pParent)
+    : CDialog(bvCBlockInt::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(bvCBlockInt)
-		// NOTE: the ClassWizard will add member initialization here
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(bvCBlockInt)
+  // NOTE: the ClassWizard will add member initialization here
+  //}}AFX_DATA_INIT
 }
-
 
 void bvCBlockInt::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(bvCBlockInt)
-	DDX_Control(pDX, IDC_BV_BINTTYPE, m_binttype);
-	//}}AFX_DATA_MAP
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(bvCBlockInt)
+  DDX_Control(pDX, IDC_BV_BINTTYPE, m_binttype);
+  //}}AFX_DATA_MAP
 }
 
-
 BEGIN_MESSAGE_MAP(bvCBlockInt, CDialog)
-	//{{AFX_MSG_MAP(bvCBlockInt)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(bvCBlockInt)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // bvCBlockInt message handlers
 
-BOOL bvCBlockInt::OnInitDialog() 
+BOOL bvCBlockInt::OnInitDialog()
 {
-	CDialog::OnInitDialog();
-	
-	// TODO: Add extra initialization here
-	binttype=0;
-	m_binttype.SetCurSel(0);
+  CDialog::OnInitDialog();
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+  // TODO: Add extra initialization here
+  binttype = 0;
+  m_binttype.SetCurSel(0);
+
+  return TRUE; // return TRUE unless you set the focus to a control
+      // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void bvCBlockInt::OnOK() 
+void bvCBlockInt::OnOK()
 {
-	// TODO: Add extra validation here
-	binttype=m_binttype.GetCurSel();
-	
-	CDialog::OnOK();
+  // TODO: Add extra validation here
+  binttype = m_binttype.GetCurSel();
+
+  CDialog::OnOK();
 }

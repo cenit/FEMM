@@ -3,98 +3,82 @@
 #define AXISYMMETRIC 1
 #define PLANAR 0
 
-class CNode
-{
-	public:
-		
-		double x,y;
-		int bc;
-		int InConductor;
+class CNode {
+  public:
+  double x, y;
+  int bc;
+  int InConductor;
 
-	private:
-
+  private:
 };
 
-class CElement
-{
-	public:
+class CElement {
+  public:
+  int p[3]; // nodes at the corners of the element
+  int e[3]; // boundary condition applied to each edge of the element
+  int blk; // block property applied to the element
+  int lbl; // block label associated with the element
 
-		int p[3];		// nodes at the corners of the element
-		int e[3];		// boundary condition applied to each edge of the element
-		int blk;		// block property applied to the element
-		int lbl;		// block label associated with the element
-
-	private:
+  private:
 };
 
-class CBlockLabel
-{
-	public:
+class CBlockLabel {
+  public:
+  double x, y;
+  double MaxArea;
+  int BlockType, InGroup;
+  BOOL IsExternal;
+  BOOL IsDefault;
 
-		double x,y;
-		double MaxArea;
-		int BlockType,InGroup;
-		BOOL IsExternal;
-		BOOL IsDefault;
-	private:
-
+  private:
 };
 
-class CCommonPoint
-{
-	public:
-		int x,y,t;
+class CCommonPoint {
+  public:
+  int x, y, t;
 
-	private:
+  private:
 };
 
 /////////////////////////////////////////////////////////////////////////////
 // Classes that hold property data:  CMaterialProp, CBoundaryProp, CPointProp
 
-class CMaterialProp
-{
-	public:
+class CMaterialProp {
+  public:
+  double ex, ey; // permittivity, relative
+  double qv; // charge density, C/m^3
 
-		double ex,ey;		// permittivity, relative
-		double qv;			// charge density, C/m^3
-
-	private:
+  private:
 };
 
-class CBoundaryProp
-{
-	public:
-	
-		int BdryFormat;			// type of boundary condition we are applying
-								// 0 = fixed voltage
-								// 1 = mixed BC
-								// 2 = surface charge
-								// 3 = periodic
-								// 4 = antiperiodic
+class CBoundaryProp {
+  public:
+  int BdryFormat; // type of boundary condition we are applying
+      // 0 = fixed voltage
+      // 1 = mixed BC
+      // 2 = surface charge
+      // 3 = periodic
+      // 4 = antiperiodic
 
-		double V;				// set value of V for BdryFormat=0;
-		double qs;				// surface charge density
-		double c0,c1;			// coefficients for mixed BC
+  double V; // set value of V for BdryFormat=0;
+  double qs; // surface charge density
+  double c0, c1; // coefficients for mixed BC
 
-	private:
+  private:
 };
 
-class CPointProp
-{
-	public:
+class CPointProp {
+  public:
+  double V; // fixed nodal voltage
+  double qp; // point current density;
 
-		double V;			// fixed nodal voltage 
-		double qp;		// point current density;
-
-	private:
+  private:
 };
 
-class CCircuit
-{
-	public:
+class CCircuit {
+  public:
+  double V, q;
+  int CircType;
 
-		double V,q;
-		int CircType;
-
-	private:
+  private:
 };

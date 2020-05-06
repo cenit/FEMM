@@ -4,66 +4,62 @@
 /////////////////////////////////////////////////////////////////////////////
 // cvCPref dialog
 
-class cvCPref : public CDialog
-{
-// Construction
-public:
-	cvCPref(CWnd* pParent = NULL);   // standard constructor
-	~cvCPref();
+class cvCPref : public CDialog {
+  // Construction
+  public:
+  cvCPref(CWnd* pParent = NULL); // standard constructor
+  ~cvCPref();
 
-	COLORREF *clist;
-	int m_d_EditAction;
-	int m_d_DensityPlot;
-	int m_d_VectorPlot;
+  COLORREF* clist;
+  int m_d_EditAction;
+  int m_d_DensityPlot;
+  int m_d_VectorPlot;
 
-	void ScanPrefs();
-	void WritePrefs();
+  void ScanPrefs();
+  void WritePrefs();
 
-// Dialog Data
-	//{{AFX_DATA(cvCPref)
-	enum { IDD = IDD_CV_PREF };
-	CComboBox	m_d_vplotlist;
-	CComboBox	m_d_dplotlist;
-	CComboBox	m_d_editlist;
-	CComboBox	m_d_color;
-	BOOL	m_d_GreyContours;
-	BOOL	m_d_LegendFlag;
-	int		m_d_NumContours;
-	BOOL	m_d_ResetOnReload;
-	BOOL	m_d_GridFlag;
-	BOOL	m_d_ShowAr;
-	BOOL	m_d_ShowAi;
-	BOOL	m_d_PtsFlag;
-	BOOL	m_d_MeshFlag;
-	BOOL	m_d_SnapFlag;
-	BOOL	m_d_Smooth;
-	int		m_d_LineIntegralPoints;
-	int		m_d_PlotPoints;
-	BOOL	m_d_ShowMask;
-	BOOL	m_d_shownames;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(cvCPref)
+  enum { IDD = IDD_CV_PREF };
+  CComboBox m_d_vplotlist;
+  CComboBox m_d_dplotlist;
+  CComboBox m_d_editlist;
+  CComboBox m_d_color;
+  BOOL m_d_GreyContours;
+  BOOL m_d_LegendFlag;
+  int m_d_NumContours;
+  BOOL m_d_ResetOnReload;
+  BOOL m_d_GridFlag;
+  BOOL m_d_ShowAr;
+  BOOL m_d_ShowAi;
+  BOOL m_d_PtsFlag;
+  BOOL m_d_MeshFlag;
+  BOOL m_d_SnapFlag;
+  BOOL m_d_Smooth;
+  int m_d_LineIntegralPoints;
+  int m_d_PlotPoints;
+  BOOL m_d_ShowMask;
+  BOOL m_d_shownames;
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(cvCPref)
+  protected:
+  virtual void DoDataExchange(CDataExchange* pDX); // DDX/DDV support
+  virtual BOOL PreTranslateMessage(MSG* pMsg);
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(cvCPref)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
-	//}}AFX_VIRTUAL
-
-// Implementation
-protected:
-
-	// Generated message map functions
-	//{{AFX_MSG(cvCPref)
-	afx_msg void OnModBtn();
-	virtual BOOL OnInitDialog();
-	afx_msg void OnResetColors();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
-public:
-	CLuaEdit m_IDC_d_NumContours, m_IDC_d_LineIntegralPoints;
-	CLuaEdit m_IDC_d_PlotPoints;
-
+  // Implementation
+  protected:
+  // Generated message map functions
+  //{{AFX_MSG(cvCPref)
+  afx_msg void OnModBtn();
+  virtual BOOL OnInitDialog();
+  afx_msg void OnResetColors();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
+  public:
+  CLuaEdit m_IDC_d_NumContours, m_IDC_d_LineIntegralPoints;
+  CLuaEdit m_IDC_d_PlotPoints;
 };

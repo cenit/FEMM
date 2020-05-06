@@ -14,33 +14,30 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CLibFolderInfo dialog
 
-
 CLibFolderInfo::CLibFolderInfo(CWnd* pParent /*=NULL*/)
-	: CDialog(CLibFolderInfo::IDD, pParent)
+    : CDialog(CLibFolderInfo::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CLibFolderInfo)
-	m_foldername = _T("");
-	m_folderurl = _T("");
-	m_foldervendor = _T("");
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(CLibFolderInfo)
+  m_foldername = _T("");
+  m_folderurl = _T("");
+  m_foldervendor = _T("");
+  //}}AFX_DATA_INIT
 }
-
 
 void CLibFolderInfo::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CLibFolderInfo)
-	DDX_Text(pDX, IDC_FOLDERNAME, m_foldername);
-	DDX_Text(pDX, IDC_FOLDERURL, m_folderurl);
-	DDX_Text(pDX, IDC_FOLDERVENDOR, m_foldervendor);
-	//}}AFX_DATA_MAP
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CLibFolderInfo)
+  DDX_Text(pDX, IDC_FOLDERNAME, m_foldername);
+  DDX_Text(pDX, IDC_FOLDERURL, m_folderurl);
+  DDX_Text(pDX, IDC_FOLDERVENDOR, m_foldervendor);
+  //}}AFX_DATA_MAP
 }
 
-
 BEGIN_MESSAGE_MAP(CLibFolderInfo, CDialog)
-	//{{AFX_MSG_MAP(CLibFolderInfo)
-		// NOTE: the ClassWizard will add message map macros here
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CLibFolderInfo)
+// NOTE: the ClassWizard will add message map macros here
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////

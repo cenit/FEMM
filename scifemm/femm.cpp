@@ -9,8 +9,6 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-
-
 /////////////////////////////////////////////////////////////////////////////
 // IActiveFEMM properties
 
@@ -19,20 +17,18 @@ static char THIS_FILE[] = __FILE__;
 
 CString IActiveFEMM::call2femm(LPCTSTR luacmd)
 {
-	CString result;
-	static BYTE parms[] =
-		VTS_BSTR;
-	InvokeHelper(0x1, DISPATCH_METHOD, VT_BSTR, (void*)&result, parms,
-		luacmd);
-	return result;
+  CString result;
+  static BYTE parms[] = VTS_BSTR;
+  InvokeHelper(0x1, DISPATCH_METHOD, VT_BSTR, (void*)&result, parms,
+      luacmd);
+  return result;
 }
 
 CString IActiveFEMM::mlab2femm(LPCTSTR luacmd)
 {
-	CString result;
-	static BYTE parms[] =
-		VTS_BSTR;
-	InvokeHelper(0x2, DISPATCH_METHOD, VT_BSTR, (void*)&result, parms,
-		luacmd);
-	return result;
+  CString result;
+  static BYTE parms[] = VTS_BSTR;
+  InvokeHelper(0x2, DISPATCH_METHOD, VT_BSTR, (void*)&result, parms,
+      luacmd);
+  return result;
 }

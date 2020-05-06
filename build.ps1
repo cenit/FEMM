@@ -3,6 +3,7 @@
 $number_of_build_workers=8
 $vcpkg_fork=""
 #$install_prefix="-DCMAKE_INSTALL_PREFIX=.."
+$disableLatex=$true
 
 function getProgramFiles32bit() {
   $out = ${env:PROGRAMFILES(X86)}
@@ -144,7 +145,7 @@ if (Test-Path env:CUDA_PATH) {
   }
 }
 
-if ($null -eq (Get-Command "latex" -ErrorAction SilentlyContinue)) {
+if (($null -eq (Get-Command "latex" -ErrorAction SilentlyContinue)) -or $disableLatex) {
   Write-Host "LaTeX has not been found!" -ForegroundColor Yellow
 }
 else {

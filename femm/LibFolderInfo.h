@@ -10,36 +10,33 @@
 /////////////////////////////////////////////////////////////////////////////
 // CLibFolderInfo dialog
 
-class CLibFolderInfo : public CDialog
-{
-// Construction
-public:
-	CLibFolderInfo(CWnd* pParent = NULL);   // standard constructor
+class CLibFolderInfo : public CDialog {
+  // Construction
+  public:
+  CLibFolderInfo(CWnd* pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CLibFolderInfo)
-	enum { IDD = IDD_LIBFOLDERINFO };
-	CString	m_foldername;
-	CString	m_folderurl;
-	CString	m_foldervendor;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CLibFolderInfo)
+  enum { IDD = IDD_LIBFOLDERINFO };
+  CString m_foldername;
+  CString m_folderurl;
+  CString m_foldervendor;
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CLibFolderInfo)
+  protected:
+  virtual void DoDataExchange(CDataExchange* pDX); // DDX/DDV support
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CLibFolderInfo)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
-protected:
-
-	// Generated message map functions
-	//{{AFX_MSG(CLibFolderInfo)
-		// NOTE: the ClassWizard will add member functions here
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+  protected:
+  // Generated message map functions
+  //{{AFX_MSG(CLibFolderInfo)
+  // NOTE: the ClassWizard will add member functions here
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

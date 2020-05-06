@@ -2,39 +2,37 @@
 //
 
 #ifndef __AFXWIN_H__
-	#error include 'stdafx.h' before including this file for PCH
+#error include 'stdafx.h' before including this file for PCH
 #endif
 
-#include "resource.h"		// main symbols
+#include "resource.h" // main symbols
 
-void old_main(void *inptr);
+void old_main(void* inptr);
 
 /////////////////////////////////////////////////////////////////////////////
 // CbelasolvApp:
 // See belasolv.cpp for the implementation of this class
 //
 
-class CbelasolvApp : public CWinApp
-{
-public:
-	CbelasolvApp();
-	~CbelasolvApp();
+class CbelasolvApp : public CWinApp {
+  public:
+  CbelasolvApp();
+  ~CbelasolvApp();
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CbelasolvApp)
-	public:
-	virtual BOOL InitInstance();
-	//}}AFX_VIRTUAL
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CbelasolvApp)
+  public:
+  virtual BOOL InitInstance();
+  //}}AFX_VIRTUAL
 
-// Implementation
+  // Implementation
 
-	//{{AFX_MSG(CbelasolvApp)
-		// NOTE - the ClassWizard will add and remove member functions here.
-		//    DO NOT EDIT what you see in these blocks of generated code !
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  //{{AFX_MSG(CbelasolvApp)
+  // NOTE - the ClassWizard will add and remove member functions here.
+  //    DO NOT EDIT what you see in these blocks of generated code !
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
-
 
 /////////////////////////////////////////////////////////////////////////////

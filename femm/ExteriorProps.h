@@ -10,39 +10,36 @@
 /////////////////////////////////////////////////////////////////////////////
 // CExteriorProps dialog
 
-class CExteriorProps : public CDialog
-{
-// Construction
-public:
-	CExteriorProps(CWnd* pParent = NULL);   // standard constructor
+class CExteriorProps : public CDialog {
+  // Construction
+  public:
+  CExteriorProps(CWnd* pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CExteriorProps)
-	enum { IDD = IDD_EXTERIORPROPS };
-	double	m_Ri;
-	double	m_Ro;
-	double	m_Zo;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CExteriorProps)
+  enum { IDD = IDD_EXTERIORPROPS };
+  double m_Ri;
+  double m_Ro;
+  double m_Zo;
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CExteriorProps)
+  protected:
+  virtual void DoDataExchange(CDataExchange* pDX); // DDX/DDV support
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CExteriorProps)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
+  // Implementation
+  protected:
+  // Generated message map functions
+  //{{AFX_MSG(CExteriorProps)
+  // NOTE: the ClassWizard will add member functions here
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 
-// Implementation
-protected:
-
-	// Generated message map functions
-	//{{AFX_MSG(CExteriorProps)
-		// NOTE: the ClassWizard will add member functions here
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
-
-public:
-	CLuaEdit m_IDC_RO, m_IDC_RI, m_IDC_ZO;
+  public:
+  CLuaEdit m_IDC_RO, m_IDC_RI, m_IDC_ZO;
 };
 
 //{{AFX_INSERT_LOCATION}}

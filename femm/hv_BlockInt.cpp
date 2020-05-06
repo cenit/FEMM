@@ -14,49 +14,46 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // hvCBlockInt dialog
 
-
 hvCBlockInt::hvCBlockInt(CWnd* pParent /*=NULL*/)
-	: CDialog(hvCBlockInt::IDD, pParent)
+    : CDialog(hvCBlockInt::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(hvCBlockInt)
-		// NOTE: the ClassWizard will add member initialization here
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(hvCBlockInt)
+  // NOTE: the ClassWizard will add member initialization here
+  //}}AFX_DATA_INIT
 }
-
 
 void hvCBlockInt::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(hvCBlockInt)
-	DDX_Control(pDX, IDC_HV_BINTTYPE, m_binttype);
-	//}}AFX_DATA_MAP
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(hvCBlockInt)
+  DDX_Control(pDX, IDC_HV_BINTTYPE, m_binttype);
+  //}}AFX_DATA_MAP
 }
 
-
 BEGIN_MESSAGE_MAP(hvCBlockInt, CDialog)
-	//{{AFX_MSG_MAP(hvCBlockInt)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(hvCBlockInt)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // hvCBlockInt message handlers
 
-BOOL hvCBlockInt::OnInitDialog() 
+BOOL hvCBlockInt::OnInitDialog()
 {
-	CDialog::OnInitDialog();
-	
-	// TODO: Add extra initialization here
-	binttype=0;
-	m_binttype.SetCurSel(0);
+  CDialog::OnInitDialog();
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+  // TODO: Add extra initialization here
+  binttype = 0;
+  m_binttype.SetCurSel(0);
+
+  return TRUE; // return TRUE unless you set the focus to a control
+      // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void hvCBlockInt::OnOK() 
+void hvCBlockInt::OnOK()
 {
-	// TODO: Add extra validation here
-	binttype=m_binttype.GetCurSel();
-	
-	CDialog::OnOK();
+  // TODO: Add extra validation here
+  binttype = m_binttype.GetCurSel();
+
+  CDialog::OnOK();
 }

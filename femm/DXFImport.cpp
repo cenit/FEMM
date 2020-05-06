@@ -14,30 +14,27 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CDXFImport dialog
 
-
 CDXFImport::CDXFImport(CWnd* pParent /*=NULL*/)
-	: CDialog(CDXFImport::IDD, pParent)
+    : CDialog(CDXFImport::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CDXFImport)
-	m_dxftol = 0.0;
-	//}}AFX_DATA_INIT
+  //{{AFX_DATA_INIT(CDXFImport)
+  m_dxftol = 0.0;
+  //}}AFX_DATA_INIT
 }
-
 
 void CDXFImport::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CDXFImport)
-	DDX_Text(pDX, IDC_DXFTOL, m_dxftol);
-	//}}AFX_DATA_MAP
-	DDX_Control(pDX, IDC_DXFTOL, m_IDC_dxftol);
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(CDXFImport)
+  DDX_Text(pDX, IDC_DXFTOL, m_dxftol);
+  //}}AFX_DATA_MAP
+  DDX_Control(pDX, IDC_DXFTOL, m_IDC_dxftol);
 }
 
-
 BEGIN_MESSAGE_MAP(CDXFImport, CDialog)
-	//{{AFX_MSG_MAP(CDXFImport)
-		// NOTE: the ClassWizard will add message map macros here
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CDXFImport)
+// NOTE: the ClassWizard will add message map macros here
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,7 @@
+---
+Language: Cpp
+BasedOnStyle: WebKit
+IndentWidth: 2
+TabWidth: 2
+SortIncludes: false
+...

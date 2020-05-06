@@ -18,10 +18,10 @@ static char THIS_FILE[] = __FILE__;
 IMPLEMENT_DYNCREATE(CFemmDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CFemmDoc, CDocument)
-	//{{AFX_MSG_MAP(CFemmDoc)
-		// NOTE - the ClassWizard will add and remove mapping macros here.
-		//    DO NOT EDIT what you see in these blocks of generated code!
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(CFemmDoc)
+// NOTE - the ClassWizard will add and remove mapping macros here.
+//    DO NOT EDIT what you see in these blocks of generated code!
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
@@ -29,8 +29,7 @@ END_MESSAGE_MAP()
 
 CFemmDoc::CFemmDoc()
 {
-	// TODO: add one-time construction code here
-
+  // TODO: add one-time construction code here
 }
 
 CFemmDoc::~CFemmDoc()
@@ -39,30 +38,25 @@ CFemmDoc::~CFemmDoc()
 
 BOOL CFemmDoc::OnNewDocument()
 {
-	if (!CDocument::OnNewDocument())
-		return FALSE;
+  if (!CDocument::OnNewDocument())
+    return FALSE;
 
-	// TODO: add reinitialization code here
-	// (SDI documents will reuse this document)
+  // TODO: add reinitialization code here
+  // (SDI documents will reuse this document)
 
-	return TRUE;
+  return TRUE;
 }
-
-
 
 /////////////////////////////////////////////////////////////////////////////
 // CFemmDoc serialization
 
 void CFemmDoc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
-	{
-		// TODO: add storing code here
-	}
-	else
-	{
-		// TODO: add loading code here
-	}
+  if (ar.IsStoring()) {
+    // TODO: add storing code here
+  } else {
+    // TODO: add loading code here
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -71,12 +65,12 @@ void CFemmDoc::Serialize(CArchive& ar)
 #ifdef _DEBUG
 void CFemmDoc::AssertValid() const
 {
-	CDocument::AssertValid();
+  CDocument::AssertValid();
 }
 
 void CFemmDoc::Dump(CDumpContext& dc) const
 {
-	CDocument::Dump(dc);
+  CDocument::Dump(dc);
 }
 #endif //_DEBUG
 

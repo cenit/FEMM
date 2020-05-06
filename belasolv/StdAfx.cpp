@@ -6,18 +6,20 @@
 
 int MsgBox(CString s)
 {
-	if (__argc<3)
-	return AfxMessageBox(s);
-	else return IDOK;
+  if (__argc < 3)
+    return AfxMessageBox(s);
+  else
+    return IDOK;
 }
 
-int MsgBox(PSTR sz,...)
-{ 
-    CString ach;
-	va_list args; 
-	va_start(args, sz); 
-    ach.FormatV(sz, args);
-	if (__argc<3)
+int MsgBox(PSTR sz, ...)
+{
+  CString ach;
+  va_list args;
+  va_start(args, sz);
+  ach.FormatV(sz, args);
+  if (__argc < 3)
     return AfxMessageBox(ach);
-	else return IDOK;
+  else
+    return IDOK;
 }

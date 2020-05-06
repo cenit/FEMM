@@ -24,78 +24,74 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // cvCXYPlotDlg dialog
 
-
 cvCXYPlotDlg::cvCXYPlotDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(cvCXYPlotDlg::IDD, pParent)
+    : CDialog(cvCXYPlotDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(cvCXYPlotDlg)
-	m_ToFile = FALSE;
-	m_npoints = 150;
-	//}}AFX_DATA_INIT
-	ListType=0;
-	XYPlotType=0;
-	FileFormat=0;
+  //{{AFX_DATA_INIT(cvCXYPlotDlg)
+  m_ToFile = FALSE;
+  m_npoints = 150;
+  //}}AFX_DATA_INIT
+  ListType = 0;
+  XYPlotType = 0;
+  FileFormat = 0;
 }
-
 
 void cvCXYPlotDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(cvCXYPlotDlg)
-	DDX_Control(pDX, IDC_CV_FILEFORMAT, m_fileformat);
-	DDX_Control(pDX, IDC_CV_XYPLOTTYPE, m_XYPlotType);
-	DDX_Check(pDX, IDC_CV_TOFILE, m_ToFile);
-	DDX_Text(pDX, IDC_CV_NPOINTS, m_npoints);
-	DDV_MinMaxInt(pDX, m_npoints, 10, 100000);
-	//}}AFX_DATA_MAP
-	DDX_Control(pDX, IDC_CV_NPOINTS, m_IDC_npoints);
+  CDialog::DoDataExchange(pDX);
+  //{{AFX_DATA_MAP(cvCXYPlotDlg)
+  DDX_Control(pDX, IDC_CV_FILEFORMAT, m_fileformat);
+  DDX_Control(pDX, IDC_CV_XYPLOTTYPE, m_XYPlotType);
+  DDX_Check(pDX, IDC_CV_TOFILE, m_ToFile);
+  DDX_Text(pDX, IDC_CV_NPOINTS, m_npoints);
+  DDV_MinMaxInt(pDX, m_npoints, 10, 100000);
+  //}}AFX_DATA_MAP
+  DDX_Control(pDX, IDC_CV_NPOINTS, m_IDC_npoints);
 }
 
-
 BEGIN_MESSAGE_MAP(cvCXYPlotDlg, CDialog)
-	//{{AFX_MSG_MAP(cvCXYPlotDlg)
-	ON_BN_CLICKED(IDC_CV_TOFILE, OnToFileClicked)
-	//}}AFX_MSG_MAP
+//{{AFX_MSG_MAP(cvCXYPlotDlg)
+ON_BN_CLICKED(IDC_CV_TOFILE, OnToFileClicked)
+//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
 // cvCXYPlotDlg message handlers
 
-BOOL cvCXYPlotDlg::OnInitDialog() 
+BOOL cvCXYPlotDlg::OnInitDialog()
 {
-	CDialog::OnInitDialog();
+  CDialog::OnInitDialog();
 
-	m_XYPlotType.AddString("V     (Voltage)");
-	m_XYPlotType.AddString("|J|   (Magnitude of current density)");
-	m_XYPlotType.AddString("J . n (Normal current density)");
-	m_XYPlotType.AddString("J . t (Tangential current density)");
-	m_XYPlotType.AddString("|E|   (Magnitude of electric field intensity)");
-	m_XYPlotType.AddString("E . n (Normal electric field intensity)");
-	m_XYPlotType.AddString("E . t (Tangential electric field intensity)");
-	m_XYPlotType.AddString("|Jc|   (Magnitude of conduction current density)");
-	m_XYPlotType.AddString("Jc . n (Normal conduction current density)");
-	m_XYPlotType.AddString("Jc . t (Tangential conduction current density)");
-	m_XYPlotType.AddString("|Jd|   (Magnitude of displacment current density)");
-	m_XYPlotType.AddString("Jd . n (Normal displacement current density)");
-	m_XYPlotType.AddString("Jd . t (Tangential displacement current density)");
-	m_XYPlotType.SetCurSel(0);
-	
-	m_fileformat.SetCurSel(0);
+  m_XYPlotType.AddString("V     (Voltage)");
+  m_XYPlotType.AddString("|J|   (Magnitude of current density)");
+  m_XYPlotType.AddString("J . n (Normal current density)");
+  m_XYPlotType.AddString("J . t (Tangential current density)");
+  m_XYPlotType.AddString("|E|   (Magnitude of electric field intensity)");
+  m_XYPlotType.AddString("E . n (Normal electric field intensity)");
+  m_XYPlotType.AddString("E . t (Tangential electric field intensity)");
+  m_XYPlotType.AddString("|Jc|   (Magnitude of conduction current density)");
+  m_XYPlotType.AddString("Jc . n (Normal conduction current density)");
+  m_XYPlotType.AddString("Jc . t (Tangential conduction current density)");
+  m_XYPlotType.AddString("|Jd|   (Magnitude of displacment current density)");
+  m_XYPlotType.AddString("Jd . n (Normal displacement current density)");
+  m_XYPlotType.AddString("Jd . t (Tangential displacement current density)");
+  m_XYPlotType.SetCurSel(0);
 
-	return TRUE;  // return TRUE unless you set the focus to a control
-	              // EXCEPTION: OCX Property Pages should return FALSE
+  m_fileformat.SetCurSel(0);
+
+  return TRUE; // return TRUE unless you set the focus to a control
+      // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-void cvCXYPlotDlg::OnOK() 
+void cvCXYPlotDlg::OnOK()
 {
-	// TODO: Add extra validation here
-	XYPlotType=m_XYPlotType.GetCurSel();
-	FileFormat=m_fileformat.GetCurSel();
-	CDialog::OnOK();
+  // TODO: Add extra validation here
+  XYPlotType = m_XYPlotType.GetCurSel();
+  FileFormat = m_fileformat.GetCurSel();
+  CDialog::OnOK();
 }
 
-void cvCXYPlotDlg::OnToFileClicked() 
+void cvCXYPlotDlg::OnToFileClicked()
 {
-	UpdateData();
+  UpdateData();
 }
-

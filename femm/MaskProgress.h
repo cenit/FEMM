@@ -10,34 +10,31 @@
 /////////////////////////////////////////////////////////////////////////////
 // CMaskProgress dialog
 
-class CMaskProgress : public CDialog
-{
-// Construction
-public:
-	CMaskProgress(CWnd* pParent = NULL);   // standard constructor
+class CMaskProgress : public CDialog {
+  // Construction
+  public:
+  CMaskProgress(CWnd* pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CMaskProgress)
-	enum { IDD = IDD_MASKPROGRESS };
-	CProgressCtrl	m_mask_progress_status;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CMaskProgress)
+  enum { IDD = IDD_MASKPROGRESS };
+  CProgressCtrl m_mask_progress_status;
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CMaskProgress)
+  protected:
+  virtual void DoDataExchange(CDataExchange* pDX); // DDX/DDV support
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CMaskProgress)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
-protected:
-
-	// Generated message map functions
-	//{{AFX_MSG(CMaskProgress)
-		// NOTE: the ClassWizard will add member functions here
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+  protected:
+  // Generated message map functions
+  //{{AFX_MSG(CMaskProgress)
+  // NOTE: the ClassWizard will add member functions here
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}

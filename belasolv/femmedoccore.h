@@ -4,68 +4,61 @@
 #define muo 1.2566370614359173e-6
 #define Golden 0.3819660112501051517954131656
 
-class CFemmeDocCore
-{
+class CFemmeDocCore {
 
-	
+  // Attributes
+  public:
+  CFemmeDocCore();
+  ~CFemmeDocCore();
 
-// Attributes
-public:
+  // General problem attributes
+  double Precision;
+  double Depth;
+  int LengthUnits;
+  BOOL ProblemType;
+  BOOL Coords;
 
-	CFemmeDocCore();
-	~CFemmeDocCore();
+  // Axisymmetric external region parameters
+  double extRo, extRi, extZo;
 
-	// General problem attributes
-	double  Precision;
-	double  Depth;
-	int		LengthUnits;
-	BOOL    ProblemType;
-	BOOL	Coords;
+  CbelasolvDlg* TheView;
 
-	// Axisymmetric external region parameters
-	double extRo,extRi,extZo;
-	
-	CbelasolvDlg *TheView;
-	
-	// CArrays containing the mesh information
-	int	BandWidth;
-	CNode *meshnode;
-	CElement	*meshele;
+  // CArrays containing the mesh information
+  int BandWidth;
+  CNode* meshnode;
+  CElement* meshele;
 
-	int NumNodes;
-	int NumEls;
-	
-	// lists of properties
-	int NumBlockProps;
-	int NumPBCs;
-	int NumLineProps;
-	int NumPointProps;
-	int NumCircProps;
-	int NumBlockLabels;
+  int NumNodes;
+  int NumEls;
 
-	CMaterialProp	*blockproplist;
-	CBoundaryProp	*lineproplist;
-	CPointProp		*nodeproplist;
-	CCircuit		*circproplist;
-	CBlockLabel		*labellist;
-	CCommonPoint	*pbclist;
+  // lists of properties
+  int NumBlockProps;
+  int NumPBCs;
+  int NumLineProps;
+  int NumPointProps;
+  int NumCircProps;
+  int NumBlockLabels;
 
-	// stuff usually kept track of by CDocument
-	char *PathName;
-	
+  CMaterialProp* blockproplist;
+  CBoundaryProp* lineproplist;
+  CPointProp* nodeproplist;
+  CCircuit* circproplist;
+  CBlockLabel* labellist;
+  CCommonPoint* pbclist;
 
-// Operations
-public:
+  // stuff usually kept track of by CDocument
+  char* PathName;
 
-	BOOL LoadMesh();
-	BOOL OnOpenDocument();
-	BOOL Cuthill();
-	BOOL SortElements();
-	BOOL AnalyzeProblem(CBigLinProb &L);
-	double ChargeOnConductor(int OnConductor, CBigLinProb &L);
-	BOOL WriteResults(CBigLinProb &L);
-	void CleanUp();
-
+  // Operations
+  public:
+  BOOL LoadMesh();
+  BOOL OnOpenDocument();
+  BOOL Cuthill();
+  BOOL SortElements();
+  BOOL AnalyzeProblem(CBigLinProb& L);
+  double ChargeOnConductor(int OnConductor, CBigLinProb& L);
+  BOOL WriteResults(CBigLinProb& L);
+  void CleanUp();
 };
 
 /////////////////////////////////////////////////////////////////////////////

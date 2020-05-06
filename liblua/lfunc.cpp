@@ -4,7 +4,6 @@
 ** See Copyright Notice in lua.h
 */
 
-
 #include <stdlib.h>
 
 #include "lua.h"
@@ -13,13 +12,12 @@
 #include "lmem.h"
 #include "lstate.h"
 
+#define sizeclosure(n) ((int)sizeof(Closure) + (int)sizeof(TObject) * ((n)-1))
 
-#define sizeclosure(n)	((int)sizeof(Closure) + (int)sizeof(TObject)*((n)-1))
-
-
-Closure *luaF_newclosure (lua_State *L, int nelems) {
+Closure* luaF_newclosure(lua_State* L, int nelems)
+{
   int size = sizeclosure(nelems);
-  Closure *c = (Closure *)luaM_malloc(L, size);
+  Closure* c = (Closure*)luaM_malloc(L, size);
   c->next = L->rootcl;
   L->rootcl = c;
   c->mark = c;
@@ -28,9 +26,9 @@ Closure *luaF_newclosure (lua_State *L, int nelems) {
   return c;
 }
 
-
-Proto *luaF_newproto (lua_State *L) {
-  Proto *f = luaM_new(L, Proto);
+Proto* luaF_newproto(lua_State* L)
+{
+  Proto* f = luaM_new(L, Proto);
   f->knum = NULL;
   f->nknum = 0;
   f->kstr = NULL;
@@ -49,31 +47,31 @@ Proto *luaF_newproto (lua_State *L) {
   f->locvars = NULL;
   f->lineDefined = 0;
   f->source = NULL;
-  f->next = L->rootproto;  /* chain in list of protos */
+  f->next = L->rootproto; /* chain in list of protos */
   L->rootproto = f;
   return f;
 }
 
-
-static size_t protosize (Proto *f) {
+static size_t protosize(Proto* f)
+{
   return sizeof(Proto)
-       + f->nknum*sizeof(Number)
-       + f->nkstr*sizeof(TString *)
-       + f->nkproto*sizeof(Proto *)
-       + f->ncode*sizeof(Instruction)
-       + f->nlocvars*sizeof(struct LocVar)
-       + f->nlineinfo*sizeof(int);
+      + f->nknum * sizeof(Number)
+      + f->nkstr * sizeof(TString*)
+      + f->nkproto * sizeof(Proto*)
+      + f->ncode * sizeof(Instruction)
+      + f->nlocvars * sizeof(struct LocVar)
+      + f->nlineinfo * sizeof(int);
 }
 
-
-void luaF_protook (lua_State *L, Proto *f, int pc) {
-  f->ncode = pc;  /* signal that proto was properly created */
+void luaF_protook(lua_State* L, Proto* f, int pc)
+{
+  f->ncode = pc; /* signal that proto was properly created */
   L->nblocks += protosize(f);
 }
 
-
-void luaF_freeproto (lua_State *L, Proto *f) {
-  if (f->ncode > 0)  /* function was properly created? */
+void luaF_freeproto(lua_State* L, Proto* f)
+{
+  if (f->ncode > 0) /* function was properly created? */
     L->nblocks -= protosize(f);
   luaM_free(L, f->code);
   luaM_free(L, f->locvars);
@@ -84,26 +82,25 @@ void luaF_freeproto (lua_State *L, Proto *f) {
   luaM_free(L, f);
 }
 
-
-void luaF_freeclosure (lua_State *L, Closure *c) {
+void luaF_freeclosure(lua_State* L, Closure* c)
+{
   L->nblocks -= sizeclosure(c->nupvalues);
   luaM_free(L, c);
 }
-
 
 /*
 ** Look for n-th local variable at line `line' in function `func'.
 ** Returns NULL if not found.
 */
-const char *luaF_getlocalname (const Proto *f, int local_number, int pc) {
+const char* luaF_getlocalname(const Proto* f, int local_number, int pc)
+{
   int i;
-  for (i = 0; i<f->nlocvars && f->locvars[i].startpc <= pc; i++) {
-    if (pc < f->locvars[i].endpc) {  /* is variable active? */
+  for (i = 0; i < f->nlocvars && f->locvars[i].startpc <= pc; i++) {
+    if (pc < f->locvars[i].endpc) { /* is variable active? */
       local_number--;
       if (local_number == 0)
         return f->locvars[i].varname->str;
     }
   }
-  return NULL;  /* not found */
+  return NULL; /* not found */
 }
-

@@ -1,191 +1,167 @@
-namespace belaviewtype
-{
+namespace belaviewtype {
 
 /////////////////////////////////////////////////////////////////////////////
 // CNode -- structure that holds information about each control point.
 
-class CNode
-{
-	public:
-		CNode();
-			
-		double x,y;
-		int xs,ys;
-		BOOL IsSelected;
-		int BoundaryMarker;
-		int InGroup,InConductor;
+class CNode {
+  public:
+  CNode();
 
-		double GetDistance(double xo, double yo);
-		CComplex CC();
-		void ToggleSelect();
+  double x, y;
+  int xs, ys;
+  BOOL IsSelected;
+  int BoundaryMarker;
+  int InGroup, InConductor;
 
-	private:
+  double GetDistance(double xo, double yo);
+  CComplex CC();
+  void ToggleSelect();
 
+  private:
 };
 
-class CMeshNode
-{
-	public:
-		CMeshNode();
-			
-		double x,y,V;
-		double msk;
-		int xs,ys;
-		BOOL Q,IsSelected;
+class CMeshNode {
+  public:
+  CMeshNode();
 
-		double GetDistance(double xo, double yo);
-		CComplex CC();
+  double x, y, V;
+  double msk;
+  int xs, ys;
+  BOOL Q, IsSelected;
 
-	private:
+  double GetDistance(double xo, double yo);
+  CComplex CC();
 
+  private:
 };
 /////////////////////////////////////////////////////////////////////////////
 // CSegment -- structure that holds information about lines joining control pts
 
-class CSegment
-{
-	public:
-		CSegment();
-			
-		int n0,n1;
-		double MaxSideLength;
-		BOOL IsSelected;
-		BOOL Hidden;
-		int BoundaryMarker;
-		int InGroup,InConductor;
+class CSegment {
+  public:
+  CSegment();
 
-		void ToggleSelect();
+  int n0, n1;
+  double MaxSideLength;
+  BOOL IsSelected;
+  BOOL Hidden;
+  int BoundaryMarker;
+  int InGroup, InConductor;
 
-	private:
+  void ToggleSelect();
 
+  private:
 };
 
-class CArcSegment
-{
-	public:
-		CArcSegment();
-			
-		int n0,n1;
-		BOOL IsSelected;
-		BOOL Hidden;
-		double MaxSideLength,ArcLength;
-		int BoundaryMarker;
-		int InGroup, InConductor;
+class CArcSegment {
+  public:
+  CArcSegment();
 
-		void ToggleSelect();
+  int n0, n1;
+  BOOL IsSelected;
+  BOOL Hidden;
+  double MaxSideLength, ArcLength;
+  int BoundaryMarker;
+  int InGroup, InConductor;
 
-	private:
+  void ToggleSelect();
 
+  private:
 };
 /////////////////////////////////////////////////////////////////////////////
 // CBlockLabel -- structure that holds block label information
 
-class CBlockLabel
-{
-	public:
-		CBlockLabel();
-				
-		double x,y;
-		double MaxArea;
-		double MagDir;
-		BOOL IsSelected;
-		int BlockType;
-		int InGroup;
-		BOOL IsExternal;
-		BOOL IsDefault;
+class CBlockLabel {
+  public:
+  CBlockLabel();
 
-		void ToggleSelect();
-		double GetDistance(double xo, double yo);
+  double x, y;
+  double MaxArea;
+  double MagDir;
+  BOOL IsSelected;
+  int BlockType;
+  int InGroup;
+  BOOL IsExternal;
+  BOOL IsDefault;
 
-	private:
+  void ToggleSelect();
+  double GetDistance(double xo, double yo);
 
+  private:
 };
 
-class CMaterialProp
-{
-	public:
+class CMaterialProp {
+  public:
+  CString BlockName;
+  double ex, ey; // permittivity, relative
+  double qv; // volume charge density
 
-		CString BlockName;
-		double ex,ey;		// permittivity, relative
-		double qv;			// volume charge density
-		
-		CMaterialProp();
+  CMaterialProp();
 
-	private:
+  private:
 };
 
-class CBoundaryProp
-{
-	public:
-	
-		CBoundaryProp();
+class CBoundaryProp {
+  public:
+  CBoundaryProp();
 
-		CString BdryName;
-		CString InConductor;
-		int BdryFormat;		
-		double V,qs;	
-		double c0,c1;
+  CString BdryName;
+  CString InConductor;
+  int BdryFormat;
+  double V, qs;
+  double c0, c1;
 
-	private:
+  private:
 };
 
-class CPointProp
-{
-	public:
+class CPointProp {
+  public:
+  CPointProp();
 
-		CPointProp();
+  CString PointName;
+  CString InConductor;
+  double V, qp;
 
-		CString PointName;
-		CString InConductor;
-		double V,qp;
-
-	private:
+  private:
 };
 
-class CCircuit
-{
-	public:
+class CCircuit {
+  public:
+  CCircuit();
 
-		CCircuit();
+  CString CircName;
+  double V, q;
+  int CircType;
 
-		CString CircName;
-		double V,q;
-		int		CircType;
-
-	private:
-
+  private:
 };
 
-class CElement
-{
-	public:
+class CElement {
+  public:
+  int p[3];
+  int blk, lbl;
+  CComplex D; // elemental flux density
+  CComplex d[3]; // smoothed flux density at corners
+  CComplex ctr;
+  double rsqr;
+  int n[3]; // Add 3 ints to store elem's neigh.
 
-		int p[3];
-		int blk,lbl;
-		CComplex D;		// elemental flux density
-		CComplex d[3];  // smoothed flux density at corners
-		CComplex ctr;
-		double rsqr;
-		int n[3];  // Add 3 ints to store elem's neigh. 
+  CComplex E();
 
-		CComplex E();
-
-	private:
+  private:
 };
 
-class CPointVals
-{
-	public:
+class CPointVals {
+  public:
+  double V; // vector potential
+  CComplex D; // flux density
+  CComplex e; // permeability
+  CComplex E; // field intensity
+  double nrg; // energy stored in the field
 
-		double V;		// vector potential
-		CComplex D;		// flux density
-		CComplex e;		// permeability
-		CComplex E;		// field intensity
-		double nrg;		// energy stored in the field
-		
-		CPointVals();
+  CPointVals();
 
-	private:
+  private:
 };
 
 }

@@ -10,35 +10,32 @@
 /////////////////////////////////////////////////////////////////////////////
 // CPreferences dialog
 
-class CPreferences : public CDialog
-{
-// Construction
-public:
-	CPreferences(CWnd* pParent = NULL);   // standard constructor
+class CPreferences : public CDialog {
+  // Construction
+  public:
+  CPreferences(CWnd* pParent = NULL); // standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CPreferences)
-	enum { IDD = IDD_PREFERENCES };
-	CMyTabCtrl	m_tab1;
-	//}}AFX_DATA
+  // Dialog Data
+  //{{AFX_DATA(CPreferences)
+  enum { IDD = IDD_PREFERENCES };
+  CMyTabCtrl m_tab1;
+  //}}AFX_DATA
 
+  // Overrides
+  // ClassWizard generated virtual function overrides
+  //{{AFX_VIRTUAL(CPreferences)
+  protected:
+  virtual void DoDataExchange(CDataExchange* pDX); // DDX/DDV support
+  //}}AFX_VIRTUAL
 
-// Overrides
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CPreferences)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
-protected:
-
-	// Generated message map functions
-	//{{AFX_MSG(CPreferences)
-	virtual BOOL OnInitDialog();
-	virtual void OnOK();
-	//}}AFX_MSG
-	DECLARE_MESSAGE_MAP()
+  // Implementation
+  protected:
+  // Generated message map functions
+  //{{AFX_MSG(CPreferences)
+  virtual BOOL OnInitDialog();
+  virtual void OnOK();
+  //}}AFX_MSG
+  DECLARE_MESSAGE_MAP()
 };
 
 //{{AFX_INSERT_LOCATION}}
