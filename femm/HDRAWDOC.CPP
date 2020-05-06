@@ -1981,8 +1981,15 @@ BOOL ChdrawDoc::OnSaveDocument(LPCTSTR lpszPathName)
   // check to see if we are ready to write a datafile;
 
   if ((fp = fopen(lpszPathName, "wt")) == NULL) {
-    MsgBox("Couldn't write to specified file\nPerhaps the file is write-protected?");
-    return FALSE;
+    for (k = 0; k < 10; k++) {
+      Sleep(10 + k * 20);
+      if ((fp = fopen(lpszPathName, "wt")) != NULL)
+        break;
+    }
+    if (k == 10) {
+      MsgBox("Couldn't write to specified file.\nPerhaps the file is write-protected?");
+      return FALSE;
+    }
   }
 
   fprintf(fp, "[Format]      =  1\n");

@@ -425,9 +425,9 @@ void CBHData::OnReadBhcurve()
     if ((h_off == 0) && (h_in < 0))
       h_off = fabs(h_in);
     h_in += h_off;
-    sprintf(s, "%f\r\n", b_in);
+    sprintf(s, "%.15g\r\n", b_in);
     m_Bdata += s;
-    sprintf(s, "%f\r\n", h_in);
+    sprintf(s, "%.15g\r\n", h_in);
     m_Hdata += s;
   } while (1 > 0);
 

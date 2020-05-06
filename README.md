@@ -1,11 +1,20 @@
-# FEMM 4.2 21Apr2019
+# FEMM 4.2 30Apr2020
 
 David Meeker
 dmeeker@ieee.org
 
 [![Build status](https://ci.appveyor.com/api/projects/status/x6px9khoi2jidwgq?svg=true)](https://ci.appveyor.com/project/cenit/femm)
 
-21Apr2019: (Test Build)
+30Apr2020:
+
+* Fixed SciFEMM to work with Scilab 6.1.0. SciFEMM bug with mi_getmaterial,
+  ci_getmaterial, ei_getmaterial, and hi_getmaterial fixed.
+* Added retries to various "fopen" instances that could occasionally fail
+  in long batch runs.
+* Changed formatting string for B-H points dialog to %.15g instead of %f so
+  that precision of B-H curve points is not truncated.
+
+21Apr2019: 
 
 * Start from previous solution for magnetics problems. To use this, specify a 
   file name in "Previous Solution" edit box in the Problem Definition dialog.

@@ -214,9 +214,9 @@ void CMaterialProp::BHDataToCString(CString& b, CString& h)
   h.Empty();
 
   for (i = 0; i < BHpoints; i++) {
-    sprintf(c, "%f%c%c", BHdata[i].re, 0x0D, 0x0A);
+    sprintf(c, "%.15g\r\n", BHdata[i].re);
     b += c;
-    sprintf(c, "%f%c%c", BHdata[i].im, 0x0D, 0x0A);
+    sprintf(c, "%.15g\r\n", BHdata[i].im);
     h += c;
   }
 

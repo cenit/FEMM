@@ -296,9 +296,9 @@ void CTKData::OnReadBhcurve()
       break;
     }
 
-    sprintf(s, "%f\r\n", t);
+    sprintf(s, "%.15g\r\n", t);
     m_Bdata += s;
-    sprintf(s, "%f\r\n", k);
+    sprintf(s, "%.15g\r\n", k);
     m_Hdata += s;
   }
 
@@ -320,9 +320,9 @@ BOOL CTKData::OnInitDialog()
   m_Hdata.Empty();
 
   for (i = 0; i < npts; i++) {
-    c.Format("%f\r\n", T[i]);
+    c.Format("%.15g\r\n", T[i]);
     m_Bdata += c;
-    c.Format("%f\r\n", K[i]);
+    c.Format("%.15g\r\n", K[i]);
     m_Hdata += c;
   }
 
