@@ -17,6 +17,12 @@ set(triangle_SOURCES
   triangle.rc
 )
 
+#set(CMAKE_EXE_LINKER_FLAGS "/ENTRY:mainCRTStartup")
+#add_executable(triangle WIN32 ${triangle_SOURCES})
+
 add_executable(triangle ${triangle_SOURCES})
 target_include_directories(triangle PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+#target_link_options(triangle PRIVATE /OPT:ICF)
+
 install(TARGETS triangle DESTINATION "${INSTALL_BIN_DIR}")
