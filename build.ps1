@@ -2,7 +2,7 @@
 
 $number_of_build_workers = 8
 $disableLatex = $true
-$build_arch = 32
+$build_arch = 64
 
 if (($null -eq (Get-Command "latex" -ErrorAction SilentlyContinue)) -or $disableLatex) {
   Write-Host "LaTeX has not been found!" -ForegroundColor Yellow
@@ -13,16 +13,23 @@ else {
 }
 
 if ($build_arch -eq "64") {
+  Write-Host "Triangle will be built as a 32 bit executable anyway!" -ForegroundColor Yellow
   New-Item -Path .\build_win_release64 -ItemType directory -Force
   Set-Location build_win_release64
-  cmake -A "x64" $latexFOUND ${install_prefix} ..
+  cmake -A "x64" $latexFOUND ${install_prefix} -DSKIP_triangle:BOOL=ON ..
+  cmake --build . --config Release --parallel ${number_of_build_workers} --target install
+  Set-Location ..
+  New-Item -Path .\build_win_release32_triangle -ItemType directory -Force
+  Set-Location build_win_release32_triangle
+  cmake -A "Win32" $latexFOUND ${install_prefix} -DSKIP_belasolv:BOOL=ON -DSKIP_csolv:BOOL=ON -DSKIP_liblua:BOOL=ON -DSKIP_ResizableLib:BOOL=ON -DSKIP_femm:BOOL=ON -DSKIP_femmplot:BOOL=ON -DSKIP_fkn:BOOL=ON -DSKIP_hsolv:BOOL=ON -DSKIP_scifemm:BOOL=ON ..
+  cmake --build . --config Release --parallel ${number_of_build_workers} --target install
+  Set-Location ..
 }
 
 if ($build_arch -eq "32") {
   New-Item -Path .\build_win_release32 -ItemType directory -Force
   Set-Location build_win_release32
   cmake -A "Win32" $latexFOUND ${install_prefix} ..
+  cmake --build . --config Release --parallel ${number_of_build_workers} --target install
+  Set-Location ..
 }
-
-cmake --build . --config Release --parallel ${number_of_build_workers} --target install
-Set-Location ..
