@@ -42,3 +42,5 @@ bin/init.lua
 bin/license.txt
 bin/matlib.dat
 bin/statlib.dat
+
+*.patch
