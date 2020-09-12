@@ -3,7 +3,7 @@
 $number_of_build_workers = 8
 $disableLatex = $true
 $build_arch = 64
-$force_triangle_64 = $true
+$force_triangle_32 = $false
 
 if (($null -eq (Get-Command "latex" -ErrorAction SilentlyContinue)) -or $disableLatex) {
   Write-Host "LaTeX has not been found!" -ForegroundColor Yellow
@@ -14,7 +14,7 @@ else {
 }
 
 if ($build_arch -eq "64") {
-  if(-Not $force_triangle_64) {
+  if($force_triangle_32) {
     Write-Host "Triangle will be built as a 32 bit executable!" -ForegroundColor Yellow
     New-Item -Path .\build_win_release64 -ItemType directory -Force
     Set-Location build_win_release64_notriangle
