@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)
 project(FEMM C CXX)
 
 option(BUILD_MANUAL "Build the manual" OFF)
