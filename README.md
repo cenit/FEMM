@@ -1,10 +1,5 @@
 # FEMM 4.2 30Apr2020
 
-David Meeker
-dmeeker@ieee.org
-
-[![Build status](https://ci.appveyor.com/api/projects/status/x6px9khoi2jidwgq?svg=true)](https://ci.appveyor.com/project/cenit/femm)
-
 30Apr2020:
 
 * Fixed SciFEMM to work with Scilab 6.1.0. SciFEMM bug with mi_getmaterial,
