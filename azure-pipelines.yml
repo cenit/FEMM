@@ -8,23 +8,8 @@ jobs:
     pool:
       vmImage: 'windows-latest'
     variables:
-      #VCPKG_DEFAULT_TRIPLET: "x64-windows"
       GIT_REDIRECT_STDERR: "2>&1"
-      #vcpkgGitRef: 0e477d784323ad91919a18da27b5f9f31d3a0c5a
-      #vcpkgRootFolder: '$(Build.SourcesDirectory)/vcpkg'
-      #vcpkgTriplet: 'x64-windows'
     steps:
-      #- task: Cache@2
-      #  displayName: 'Cache vcpkg artifacts'
-      #  inputs:
-      #    key: $(Build.SourcesDirectory)/cmake/vcpkg_windows.diff | "$(vcpkgGitRef)" | "$(Agent.OS)"
-      #    path: '$(Build.BinariesDirectory)/vcpkg'
-      #- task: run-vcpkg@0
-      #  displayName: 'Run vcpkg'
-      #  inputs:
-      #    vcpkgArguments: $(Build.SourcesDirectory)/cmake/vcpkg_windows.diff
-      #    vcpkgGitCommitId: $(vcpkgGitRef)
-      #    vcpkgDirectory: $(vcpkgRootFolder)
       - task: PowerShell@2
         inputs:
           filePath: '$(System.DefaultWorkingDirectory)/build.ps1'
@@ -35,4 +20,4 @@ jobs:
       - task: PublishBuildArtifacts@1
         inputs:
           pathToPublish: $(Build.ArtifactStagingDirectory)
-          artifactName: 3Dprofile-Windows
+          artifactName: FEMM-IPI
