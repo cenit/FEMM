@@ -1,23 +1,27 @@
 trigger:
-  branches:
-    include:
-      - "*"       # We trigger on all branches
+- master
+- dev/*
 
 jobs:
-  - job: 'Build_Windows'
+  - job: 'Windows'
+    timeoutInMinutes: 300 # how long to run the job before automatically cancelling
+    cancelTimeoutInMinutes: 10 # how much time to give 'run always even if cancelled tasks' before stopping them
     pool:
       vmImage: 'windows-latest'
     variables:
-      GIT_REDIRECT_STDERR: "2>&1"
+      VCPKG_DEFAULT_TRIPLET: "x64-windows"
     steps:
-      - task: PowerShell@2
-        inputs:
-          filePath: '$(System.DefaultWorkingDirectory)/build.ps1'
-      - task: CopyFiles@2
-        inputs:
-          contents: '$(System.DefaultWorkingDirectory)/bin/**'
-          targetFolder: $(Build.ArtifactStagingDirectory)
-      - task: PublishBuildArtifacts@1
-        inputs:
-          pathToPublish: $(Build.ArtifactStagingDirectory)
-          artifactName: FEMM-IPI
+    - task: PowerShell@2
+      inputs:
+        filePath: '$(System.DefaultWorkingDirectory)/build.ps1'
+        arguments: '-DoNotUpdateTOOL -DisableInteractive -DisableLaTeX'
+      displayName: 'Build FEMM'
+    - task: CopyFiles@2
+      inputs:
+        contents: '$(System.DefaultWorkingDirectory)/bin/**'
+        targetFolder: $(Build.ArtifactStagingDirectory)
+      displayName: 'Copy binary files to artifact staging'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathToPublish: $(Build.ArtifactStagingDirectory)
+        artifactName: FEMM-Windows
