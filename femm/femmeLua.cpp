@@ -411,18 +411,15 @@ int CFemmeDoc::lua_prob_def(lua_State* L)
       return 0;
   }
 
+  // Changed to correct the precision rather than throwing a cryptic error
   Precision = lua_todouble(L, 4);
-  if (Precision < 1.e-16 || Precision > 1.e-8) {
-    CString msg;
-    msg.Format("Invalid Precision %lf", Precision);
-    lua_error(L, msg.GetBuffer(1));
+  if ((Precision == 0) || (Precision > 1.e-8))
+    Precision = 1.e-8;
+  if (Precision < 1.e-16)
+    Precision = 1.e-16;
+  thisDoc->Precision = Precision;
+  if (n == 4)
     return 0;
-
-  } else {
-    thisDoc->Precision = Precision;
-    if (n == 4)
-      return 0;
-  }
 
   thisDoc->Depth = fabs(lua_todouble(L, 5));
   if (thisDoc->Depth <= 0)
@@ -1972,6 +1969,16 @@ int CFemmeDoc::lua_addcircuitprop(lua_State* L)
     m.Amps = lua_tonumber(L, 2);
   if (n > 2)
     m.CircType = (int)lua_todouble(L, 3);
+
+  // there shouldn't be duplicate circuit names.
+  for (int k = 0; k < ((CFemmeDoc*)pFemmeDoc)->circproplist.GetSize(); k++) {
+    if (m.CircName == ((CFemmeDoc*)pFemmeDoc)->circproplist[k].CircName) {
+      CString msg;
+      msg.Format("Duplicate circuit name (%s) not allowed", m.CircName);
+      lua_error(L, msg.GetBuffer(1));
+      return NULL;
+    }
+  }
 
   ((CFemmeDoc*)pFemmeDoc)->circproplist.Add(m);
 

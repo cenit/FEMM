@@ -332,7 +332,7 @@ BOOL CFemmeDoc::OnWritePoly()
 
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
   char CommandLine[512];
-  sprintf(CommandLine, "\"%striangle.exe\" -p -P -q%f -e -A -a -z -Q -I %s",
+  sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I %s",
       (const char*)BinDir, __min(MinAngle + MINANGLE_BUMP, MINANGLE_MAX), (const char*)rootname);
 
   STARTUPINFO StartupInfo = { 0 };
@@ -627,7 +627,7 @@ BOOL CFemmeDoc::FunnyOnWritePoly()
   //call triangle
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
   char CommandLine[512];
-  sprintf(CommandLine, "\"%striangle.exe\" -p -P -q%f -e -A -a -z -Q -I %s",
+  sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I %s",
       (const char*)BinDir, __min(MinAngle + MINANGLE_BUMP, MINANGLE_MAX), (const char*)rootname);
 
   STARTUPINFO StartupInfo = { 0 };
@@ -1641,7 +1641,7 @@ BOOL CFemmeDoc::FunnyOnWritePoly()
     }
 
     // print out AGE definition
-    fprintf(fp, "\"%s\"\n", agelst[k].BdryName);
+    fprintf(fp, "\"%s\"\n", agelst[k].BdryName.GetString());
     fprintf(fp, "%i %.17g %.17g %.17g %.17g %.17g %.17g %.17g %i %.17g %.17g\n",
         agelst[k].BdryFormat, agelst[k].InnerAngle, agelst[k].OuterAngle,
         agelst[k].ri, agelst[k].ro, agelst[k].totalArcLength,
@@ -1682,7 +1682,7 @@ BOOL CFemmeDoc::FunnyOnWritePoly()
   // call triangle with -Y flag.
 
   rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
-  sprintf(CommandLine, "\"%striangle.exe\" -p -P -q%f -e -A -a -z -Q -I -Y %s",
+  sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I -Y %s",
       (const char*)BinDir, __min(MinAngle + MINANGLE_BUMP, MINANGLE_MAX), (const char*)rootname);
 
   StartupInfo.cb = sizeof(STARTUPINFO);

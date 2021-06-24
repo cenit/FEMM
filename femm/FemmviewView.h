@@ -57,7 +57,7 @@ class CFemmviewView : public CView {
   CString BinDir; // pathname for triangle.exe
 
   int NumContours;
-  BOOL ShowAr, ShowAi, ShowMask;
+  BOOL ShowAr, ShowAi, ShowMask, bOnDraw;
   int DensityPlot;
   CString OutputWindowText;
 
@@ -143,6 +143,8 @@ class CFemmviewView : public CView {
 
   void MyMoveTo(CDC* pDC, int x, int y);
   void MyLineTo(CDC* pDC, int x, int y);
+
+  BOOL Pump();
 
   // Overrides
   // ClassWizard generated virtual function overrides

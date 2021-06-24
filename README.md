@@ -1,13 +1,30 @@
-# FEMM 4.2 30Apr2020
+# FEMM 4.2 28Mar2021
 
-30Apr2020:
+28Mar2021 (Test Build):
 
+* Fixed broken magnetic materials library entries for legacy NdFeB 40, 
+  M47 silicon steel.
+* Changed lua implementation of mi_probdef and friends so that an out-of-range
+  Precision is clipped to the allowable range rather than throwing a cryptic
+  error message.
 * Fixed SciFEMM to work with Scilab 6.1.0. SciFEMM bug with mi_getmaterial,
   ci_getmaterial, ei_getmaterial, and hi_getmaterial fixed.
 * Added retries to various "fopen" instances that could occasionally fail
   in long batch runs.
 * Changed formatting string for B-H points dialog to %.15g instead of %f so
   that precision of B-H curve points is not truncated.
+* Updated to compile with Visual Studio 2019.  Improves solution speed on
+  most problems.
+* Fixed OnDraw functions so that the operating system does not think that the
+  program is non-responsive during the drawing of density plots for solutions
+  with lots of elements.
+* Added log(|B|) density plot for magnetics problems.
+* Fixed vector plot problem in 22Jul2020 build inadvertently introduced by
+  log(|B|) density plot
+* Changed all calls to Triangle to use the -j flag to "jettison vertices that
+  are not part of the final triangulation from the output .node file". This
+  gets rid of the spurious "singlarity flag tripped" and "can't solve the
+  problem" messages that popped up due to orphaned nodes in the solution domain.
 
 21Apr2019: 
 

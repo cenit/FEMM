@@ -256,9 +256,12 @@ BOOL CcdrawDoc::OnWritePoly()
         t = j + 2;
 
     // include conductor number;
-    for (j = 0; j < circproplist.GetSize(); j++)
-      if (circproplist[j].CircName == nodelst[i].InConductor)
+    for (j = 0; j < circproplist.GetSize(); j++) {
+      if (circproplist[j].CircName == nodelst[i].InConductor) {
         t += ((j + 1) * 0x10000);
+        break;
+      }
+    }
 
     fprintf(fp, "%i	%.17g	%.17g	%i\n", i, nodelst[i].x, nodelst[i].y, t);
   }
@@ -272,9 +275,12 @@ BOOL CcdrawDoc::OnWritePoly()
         t = -(j + 2);
 
     // include conductor number;
-    for (j = 0; j < circproplist.GetSize(); j++)
-      if (circproplist[j].CircName == linelst[i].InConductor)
+    for (j = 0; j < circproplist.GetSize(); j++) {
+      if (circproplist[j].CircName == linelst[i].InConductor) {
         t -= ((j + 1) * 0x10000);
+        break;
+      }
+    }
 
     fprintf(fp, "%i	%i	%i	%i\n", i, linelst[i].n0, linelst[i].n1, t);
   }
@@ -340,7 +346,7 @@ BOOL CcdrawDoc::OnWritePoly()
 
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
   char CommandLine[512];
-  sprintf(CommandLine, "\"%striangle.exe\" -p -P -q%f -e -A -a -z -Q -I %s",
+  sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I %s",
       (const char*)BinDir, __min(MinAngle + MINANGLE_BUMP, MINANGLE_MAX), (const char*)rootname);
 
   STARTUPINFO StartupInfo = { 0 };
@@ -628,7 +634,7 @@ BOOL CcdrawDoc::FunnyOnWritePoly()
   //call triangle
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
   char CommandLine[512];
-  sprintf(CommandLine, "\"%striangle.exe\" -p -P -q%f -e -A -a -z -Q -I %s",
+  sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I %s",
       (const char*)BinDir, __min(MinAngle + MINANGLE_BUMP, MINANGLE_MAX), (const char*)rootname);
 
   STARTUPINFO StartupInfo = { 0 };
@@ -1336,9 +1342,12 @@ BOOL CcdrawDoc::FunnyOnWritePoly()
         t = j + 2;
 
     // include conductor number;
-    for (j = 0; j < circproplist.GetSize(); j++)
-      if (circproplist[j].CircName == nodelst[i].InConductor)
+    for (j = 0; j < circproplist.GetSize(); j++) {
+      if (circproplist[j].CircName == nodelst[i].InConductor) {
         t += ((j + 1) * 0x10000);
+        break;
+      }
+    }
 
     fprintf(fp, "%i	%.17g	%.17g	%i\n", i, nodelst[i].x, nodelst[i].y, t);
   }
@@ -1352,9 +1361,12 @@ BOOL CcdrawDoc::FunnyOnWritePoly()
         t = -(j + 2);
 
     // include conductor number;
-    for (j = 0; j < circproplist.GetSize(); j++)
-      if (circproplist[j].CircName == linelst[i].InConductor)
+    for (j = 0; j < circproplist.GetSize(); j++) {
+      if (circproplist[j].CircName == linelst[i].InConductor) {
         t -= ((j + 1) * 0x10000);
+        break;
+      }
+    }
 
     fprintf(fp, "%i	%i	%i	%i\n", i, linelst[i].n0, linelst[i].n1, t);
   }
@@ -1443,7 +1455,7 @@ BOOL CcdrawDoc::FunnyOnWritePoly()
   // call triangle with -Y flag.
 
   rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
-  sprintf(CommandLine, "\"%striangle.exe\" -p -P -q%f -e -A -a -z -Q -I -Y %s",
+  sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I -Y %s",
       (const char*)BinDir, __min(MinAngle + MINANGLE_BUMP, MINANGLE_MAX), (const char*)rootname);
 
   StartupInfo.cb = sizeof(STARTUPINFO);

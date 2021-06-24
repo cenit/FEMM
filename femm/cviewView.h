@@ -56,7 +56,7 @@ class CcviewView : public CView {
   CString BinDir; // pathname for triangle.exe
 
   int NumContours;
-  BOOL ShowAr, ShowAi, ShowMask;
+  BOOL ShowAr, ShowAi, ShowMask, bOnDraw;
   int DensityPlot;
   int VectorPlot;
   CString OutputWindowText;
@@ -144,6 +144,7 @@ class CcviewView : public CView {
   BOOL WritePreferences();
   void CheckIt();
   void LuaViewInfo();
+  BOOL Pump();
 
   // Overrides
   // ClassWizard generated virtual function overrides

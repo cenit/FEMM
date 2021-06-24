@@ -4,7 +4,7 @@ scifemm_path=get_absolute_file_path('scifemm.sci');
 function openfemm(n)
 
     link(scifemm_path + "scilink.dll",["openfemm","call2femm","closefemm"],"c");
-    call("openfemm","out",[80,1],1,"c");
+    u=call("openfemm","",2,"c","out",[512,1],1,"c");
     callfemm([ 'setcurrentdirectory(' , quote(pwd()) , ')' ]);
 	if (argn(2)==1)
 		if (n==0)
@@ -46,7 +46,7 @@ function z=callfemm_noeval(x)
 endfunction
 
 function closefemm()
-	call("closefemm","out",[80,1],1,"c");
+	u=call("closefemm","",2,"c","out",[512,1],1,"c");
 	ulink();
 endfunction
 
@@ -427,7 +427,7 @@ ci_drawpolygon([x1,y1;x1,y2;x2,y2;x2,y1]);
 
 endfunction
 
-function z=ci_getmaterial(matname)
+function ci_getmaterial(matname)
 callfemm(['ci_getmaterial(' , quote(matname) , ')' ]);
 
 
@@ -1363,7 +1363,7 @@ ei_drawpolygon([x1,y1;x1,y2;x2,y2;x2,y1]);
 
 endfunction
 
-function z=ei_getmaterial(matname)
+function ei_getmaterial(matname)
 callfemm(['ei_getmaterial(' , quote(matname) , ')' ]);
 
 endfunction
@@ -2364,7 +2364,7 @@ hi_drawpolygon([x1,y1;x1,y2;x2,y2;x2,y1]);
 
 endfunction
 
-function z=hi_getmaterial(matname)
+function hi_getmaterial(matname)
 callfemm(['hi_getmaterial(' , quote(matname) , ')' ]);
 
 endfunction
@@ -3407,7 +3407,7 @@ mi_drawpolygon([x1,y1;x1,y2;x2,y2;x2,y1]);
 
 endfunction
 
-function z=mi_getmaterial(matname)
+function mi_getmaterial(matname)
 callfemm(['mi_getmaterial(' , quote(matname) , ')' ]);
 
 endfunction
@@ -3659,7 +3659,7 @@ endfunction
 
 function mi_setblockprop(blockname,automesh,meshsize,incirc,magdir,group,turns)
 try
-	bStr=isa(magdir,'numeric');
+	bStr=or(type(magdir)==[1,5,8]);
 catch
 	bStr=isreal(magdir);
 end

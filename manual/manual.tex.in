@@ -39,6 +39,9 @@
 \usepackage{pslatex}
 \usepackage[dvips]{graphicx}
 \usepackage[dvips]{hyperref}
+
+\UseRawInputEncoding
+
 \begin{document}
 
 % ------------------------------------------------------------------------

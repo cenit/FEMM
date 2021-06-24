@@ -37,8 +37,8 @@ class CFemmviewDoc : public CDocument {
   double A_High, A_Low;
   double A_lb, A_ub;
 
-  double PlotBounds[9][2];
-  double d_PlotBounds[9][2];
+  double PlotBounds[10][2];
+  double d_PlotBounds[10][2];
   //	double  Br_High,Br_Low;
   //	double  Bi_High,Bi_Low;
   double B_High, B_Low;

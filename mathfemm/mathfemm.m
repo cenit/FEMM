@@ -3155,7 +3155,7 @@ MLGet[]:=Module[{z},
 			While[LinkReadyQ[mlink] == False];
 			z=Chop[LinkRead[mlink],10^(-14)];
 			If[Length[z]==1,z[[1]],z],
-			Chop[mlinkResult]
+			Chop[mlinkResult,10^(-14)]
 		]
 ]
 

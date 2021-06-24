@@ -235,6 +235,7 @@ CFemmviewView::CFemmviewView()
   VectorScaleFactor = 1;
   PtsFlag = d_PtsFlag;
   ShowNames = d_ShowNames;
+  bOnDraw = FALSE;
 }
 
 CFemmviewView::~CFemmviewView()
@@ -568,6 +569,25 @@ void CFemmviewView::PlotFluxDensity(CDC* pDC, int elmnum, int flag)
       for (i = 0; i < 3; i++)
         bn[i] = fabs(J[i].im) * 1.e-6;
       break;
+
+    case 10: // log(|B|)
+      for (i = 0; i < 3; i++) {
+        if (pDoc->Smooth == TRUE) {
+          b1 = elm.b1[i];
+          b2 = elm.b2[i];
+        } else {
+          b1 = elm.B1;
+          b2 = elm.B2;
+        }
+        bn[i] = sqrt(b1.re * b1.re + b1.im * b1.im + b2.re * b2.re + b2.im * b2.im);
+        if (bn[i] != 0)
+          bn[i] = log10(bn[i]);
+        else
+          bn[i] = -12.;
+        if (bn[i] < -12.)
+          bn[i] = -12.;
+      }
+      break;
     }
   else
     switch (flag) {
@@ -605,6 +625,25 @@ void CFemmviewView::PlotFluxDensity(CDC* pDC, int elmnum, int flag)
       pDoc->GetJA(elmnum, J, A);
       for (i = 0; i < 3; i++)
         bn[i] = abs(J[i]) * 1.e-6;
+      break;
+
+    case 4: // log(|B|)
+      for (i = 0; i < 3; i++) {
+        if (pDoc->Smooth == TRUE) {
+          b1 = elm.b1[i];
+          b2 = elm.b2[i];
+        } else {
+          b1 = elm.B1;
+          b2 = elm.B2;
+        }
+        bn[i] = sqrt(b1.re * b1.re + b1.im * b1.im + b2.re * b2.re + b2.im * b2.im);
+        if (bn[i] != 0)
+          bn[i] = log10(bn[i]);
+        else
+          bn[i] = -12.;
+        if (bn[i] < -12.)
+          bn[i] = -12.;
+      }
       break;
     }
 
@@ -819,10 +858,33 @@ void CFemmviewView::EraseUserContour(BOOL flag)
   ReleaseDC(pDC);
 }
 
+BOOL CFemmviewView::Pump()
+{
+  // Idea here is to service the message pump during redraws that take a long time.
+  // We don't actually have to check the messages every time Pump is called, because that
+  // slows things down.  Just check every once in a while when Pump is called.
+
+  static int k = 0;
+
+  if (k++ < 1000)
+    return FALSE;
+  k = 0;
+
+  MSG msg;
+
+  while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE | PM_QS_INPUT | PM_QS_PAINT | PM_QS_SENDMESSAGE)) {
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
+  }
+
+  return FALSE;
+}
+
 void CFemmviewView::OnDraw(CDC* pDC)
 {
   CFemmviewDoc* pDoc = GetDocument();
   ASSERT_VALID(pDoc);
+  bOnDraw = TRUE;
 
   RECT r;
   static RECT oldr;
@@ -1018,6 +1080,7 @@ void CFemmviewView::OnDraw(CDC* pDC)
         rt = abs(CComplex(xss, yss) - pDoc->meshelem[i].ctr);
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss)) {
           PlotFluxDensity(pDC, i, DensityPlot);
+          Pump();
         }
       }
     }
@@ -1080,6 +1143,7 @@ void CFemmviewView::OnDraw(CDC* pDC)
                 pDoc->meshnode[po].ys);
           }
         }
+        Pump();
       }
     }
     pDC->SelectObject(pOldPen);
@@ -1094,6 +1158,7 @@ void CFemmviewView::OnDraw(CDC* pDC)
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss))
           for (j = 0; j < 3; j++)
             DoContours(pDC, pDoc->meshelem[i].p, j, 0);
+        Pump();
       }
     }
 
@@ -1105,6 +1170,7 @@ void CFemmviewView::OnDraw(CDC* pDC)
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss))
           for (j = 0; j < 3; j++)
             DoContours(pDC, pDoc->meshelem[i].p, j, 1);
+        Pump();
       }
     }
 
@@ -1116,6 +1182,7 @@ void CFemmviewView::OnDraw(CDC* pDC)
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss))
           for (j = 0; j < 3; j++)
             DoContours(pDC, pDoc->meshelem[i].p, j, 2);
+        Pump();
       }
     }
 
@@ -1304,6 +1371,7 @@ void CFemmviewView::OnDraw(CDC* pDC)
                   }
                   pDC->SelectObject(pOldPen);
                 }
+                Pump();
               }
             }
           }
@@ -1405,6 +1473,8 @@ void CFemmviewView::OnDraw(CDC* pDC)
         sprintf(cc, "Density Plot: |J_re|, MA/m^2");
       if (DensityPlot == 9)
         sprintf(cc, "Density Plot: |J_im|, MA/m^2");
+      if (DensityPlot == 10)
+        sprintf(cc, "Density Plot: log10(|B|), log(Tesla)");
     } else {
       if (DensityPlot == 1)
         sprintf(cc, "Density Plot: |B|, Tesla");
@@ -1412,6 +1482,8 @@ void CFemmviewView::OnDraw(CDC* pDC)
         sprintf(cc, "Density Plot: |H|, A/m");
       if (DensityPlot == 3)
         sprintf(cc, "Density Plot: |J|, MA/m^2");
+      if (DensityPlot == 4)
+        sprintf(cc, "Density Plot: log10(|B|), log(Tesla)");
     }
 
     pDC->TextOut(r.right - 212, r.top + 16 * 20 + 16, cc, (int)strlen(cc));
@@ -1451,6 +1523,8 @@ void CFemmviewView::OnDraw(CDC* pDC)
 
   pDC->SelectObject(pOldFont);
   fntArial.DeleteObject();
+
+  bOnDraw = FALSE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1892,14 +1966,14 @@ void CFemmviewView::OnDplot()
 
   if (pDoc->Frequency == 0) {
     dlg.listtype = 1;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < 4; i++)
       for (k = 0; k < 2; k++) {
         dlg.PlotBounds[i][k] = pDoc->PlotBounds[i][k];
         dlg.d_PlotBounds[i][k] = pDoc->d_PlotBounds[i][k];
       }
   } else {
     dlg.listtype = 2;
-    for (i = 0; i < 9; i++)
+    for (i = 0; i < 10; i++)
       for (k = 0; k < 2; k++) {
         dlg.PlotBounds[i][k] = pDoc->PlotBounds[i][k];
         dlg.d_PlotBounds[i][k] = pDoc->d_PlotBounds[i][k];
@@ -1913,7 +1987,7 @@ void CFemmviewView::OnDplot()
       DensityPlot = 0;
     LegendFlag = dlg.m_showlegend;
     GreyContours = dlg.m_gscale;
-    for (i = 0; i < 9; i++)
+    for (i = 0; i < 10; i++)
       for (k = 0; k < 2; k++)
         pDoc->PlotBounds[i][k] = dlg.PlotBounds[i][k];
     RedrawView();
@@ -2109,7 +2183,7 @@ void CFemmviewView::DisplayPointProperties(double px, double py)
 
 void CFemmviewView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-  if (bLinehook != FALSE) {
+  if ((bLinehook != FALSE) || (bOnDraw != FALSE)) {
     CView::OnLButtonDown(nFlags, point);
     return;
   }

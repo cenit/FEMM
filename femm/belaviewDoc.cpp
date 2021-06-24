@@ -755,7 +755,7 @@ BOOL CbelaviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
   // Find extreme values of D and E;
   short* isExt = (short*)calloc(meshelem.GetSize(), sizeof(short));
   CString myBlockName;
-  for (i = 0; i < meshelem.GetSize(); i++) {
+  for (i = 0, j = 0; i < meshelem.GetSize(); i++) {
     if (blocklist[meshelem[i].lbl].IsExternal == TRUE)
       isExt[i] = TRUE;
     myBlockName = blockproplist[meshelem[i].blk].BlockName;
@@ -767,7 +767,15 @@ BOOL CbelaviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
         }
       }
     }
+    if (isExt[i] == TRUE)
+      j++;
   }
+
+  // catch the special case where _every_ element seems to be in an external region...
+  if (j == meshelem.GetSize())
+    for (i = 0; i < meshelem.GetSize(); i++)
+      isExt[i] = FALSE;
+
   i = 0;
   while (isExt[i])
     i++;

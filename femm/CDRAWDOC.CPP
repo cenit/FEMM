@@ -1990,7 +1990,6 @@ BOOL CcdrawDoc::OnSaveDocument(LPCTSTR lpszPathName)
   CString s;
 
   // check to see if we are ready to write a datafile;
-
   if ((fp = fopen(lpszPathName, "wt")) == NULL) {
     for (k = 0; k < 10; k++) {
       Sleep(10 + k * 20);

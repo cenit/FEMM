@@ -85,7 +85,7 @@ CFemmviewDoc::CFemmviewDoc()
   LengthConv[5] = 1.e-06; //micrometers
   Coords = FALSE;
 
-  for (int i = 0; i < 9; i++)
+  for (int i = 0; i < 10; i++)
     d_PlotBounds[i][0] = d_PlotBounds[i][1] = PlotBounds[i][0] = PlotBounds[i][1] = 0;
 
   // determine path to bin directory
@@ -1481,6 +1481,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
     double H_Low;
     double Hr_Low, Hr_High;
     double Hi_Low, Hi_High;
+    double logB_Low, logB_High;
     double a0, a1;
     CComplex h1, h2;
 
@@ -1488,7 +1489,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
     // Otherwise, flux in the external regions can give a spurious indication of limits
     short* isExt = (short*)calloc(meshelem.GetSize(), sizeof(short));
     CString myBlockName;
-    for (i = 0; i < meshelem.GetSize(); i++) {
+    for (i = 0, j = 0; i < meshelem.GetSize(); i++) {
       if (blocklist[meshelem[i].lbl].IsExternal == TRUE)
         isExt[i] = TRUE;
       myBlockName = blockproplist[meshelem[i].blk].BlockName;
@@ -1500,14 +1501,18 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
           }
         }
       }
+      if (isExt[i] == TRUE)
+        j++;
     }
 
-    for (i = 0; i < meshelem.GetSize(); i++)
-      if (isExt[i] == FALSE)
-        break;
-    if (i == meshelem.GetSize())
-      i = 0;
+    // catch the special case where _every_ element seems to be in an external region...
+    if (j == meshelem.GetSize())
+      for (i = 0; i < meshelem.GetSize(); i++)
+        isExt[i] = FALSE;
 
+    i = 0;
+    while (isExt[i])
+      i++;
     Br_Low = sqrt(sqr(meshelem[i].B1.re) + sqr(meshelem[i].B2.re));
     Br_High = Br_Low;
     Bi_Low = sqrt(sqr(meshelem[i].B1.im) + sqr(meshelem[i].B2.im));
@@ -1592,6 +1597,26 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
       d_PlotBounds[0][1] = PlotBounds[0][1] = B_High;
       d_PlotBounds[1][0] = PlotBounds[1][0] = H_Low;
       d_PlotBounds[1][1] = PlotBounds[1][1] = H_High;
+
+      // Do log(|B|) bounds...
+      if (B_Low != 0)
+        logB_Low = log10(B_Low);
+      else
+        logB_Low = -12.;
+      if (logB_Low < -12.)
+        logB_Low = -12.;
+      logB_Low = floor(logB_Low * 10.) / 10.;
+
+      if (B_High != 0)
+        logB_High = log10(B_High);
+      else
+        logB_High = -12.;
+      if (logB_High < -12.)
+        logB_High = -12.;
+      logB_High = ceil(logB_High * 10.) / 10.;
+
+      d_PlotBounds[3][0] = PlotBounds[3][0] = logB_Low;
+      d_PlotBounds[3][1] = PlotBounds[3][1] = logB_High;
     } else {
       d_PlotBounds[0][0] = PlotBounds[0][0] = B_Low;
       d_PlotBounds[0][1] = PlotBounds[0][1] = B_High;
@@ -1605,6 +1630,26 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
       d_PlotBounds[4][1] = PlotBounds[4][1] = Hr_High;
       d_PlotBounds[5][0] = PlotBounds[5][0] = Hi_Low;
       d_PlotBounds[5][1] = PlotBounds[5][1] = Hi_High;
+
+      // Do log(|B|) bounds...
+      if (B_Low != 0)
+        logB_Low = log10(B_Low);
+      else
+        logB_Low = -12.;
+      if (logB_Low < -12.)
+        logB_Low = -12.;
+      logB_Low = floor(logB_Low * 10.) / 10.;
+
+      if (B_High != 0)
+        logB_High = log10(B_High);
+      else
+        logB_High = -12.;
+      if (logB_High < -12.)
+        logB_High = -12.;
+      logB_High = ceil(logB_High * 10.) / 10.;
+
+      d_PlotBounds[9][0] = PlotBounds[9][0] = logB_Low;
+      d_PlotBounds[9][1] = PlotBounds[9][1] = logB_High;
     }
   }
 
@@ -2520,7 +2565,7 @@ void CFemmviewDoc::GetLineValues(CXYPlot& p, int PlotType, int NumPlotPoints)
 		m_XYPlotType.AddString("|H|        (Magnitude of field intensity)");
 		m_XYPlotType.AddString("H . n      (Normal field intensity)");
 		m_XYPlotType.AddString("H . t      (Tangential field intensity)");
-		m_XYPlotType.AddString("J_eddy
+		m_XYPlotType.AddString("J_eddy     
 	*/
 
   if (Frequency == 0) {

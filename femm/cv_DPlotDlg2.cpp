@@ -80,6 +80,7 @@ BOOL cvCDPlotDlg2::OnInitDialog()
     m_dplottype.AddString("Flux Density (T)");
     m_dplottype.AddString("Field Intensity (A/m)");
     m_dplottype.AddString("Current Density (MA/m^2)");
+    m_dplottype.AddString("log10(|Flux Density|) Log(T)");
   }
 
   if (listtype == 2) {
@@ -92,6 +93,7 @@ BOOL cvCDPlotDlg2::OnInitDialog()
     m_dplottype.AddString("|Current Density| (MA/m^2)");
     m_dplottype.AddString("Re(Current Density) (MA/m^2)");
     m_dplottype.AddString("Im(Current Density) (MA/m^2)");
+    m_dplottype.AddString("log10(|Flux Density|) Log(T)");
   }
 
   DensityPlot--;

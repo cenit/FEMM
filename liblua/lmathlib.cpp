@@ -4,8 +4,8 @@
 ** See Copyright Notice in lua.h
 */
 
-//#include <afx.h>
-#include <stdlib.h>
+#include <afx.h>
+//#include <stdlib.h>
 #include <math.h>
 
 #include "lua.h"

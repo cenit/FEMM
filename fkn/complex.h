@@ -81,6 +81,7 @@ class CComplex {
   bool operator==(const CComplex& z);
   bool operator==(double z);
   bool operator==(int z);
+
   bool operator!=(const CComplex& z);
   bool operator!=(double z);
   bool operator!=(int z);

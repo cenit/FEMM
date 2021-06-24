@@ -877,6 +877,8 @@ int CFemmviewDoc::lua_showdensity(lua_State* L)
       btnState = 3;
     if (type == "jimag")
       btnState = 3;
+    if (type == "logb")
+      btnState = 4;
   } else {
     if ((type == "mag") || (type == "bmag"))
       btnState = 1;
@@ -896,6 +898,8 @@ int CFemmviewDoc::lua_showdensity(lua_State* L)
       btnState = 8;
     if (type == "jimag")
       btnState = 9;
+    if (type == "logb")
+      btnState = 10;
   }
 
   if (showlegend == -1) {

@@ -387,15 +387,12 @@ int ChdrawDoc::lua_prob_def(lua_State* L)
     thisDoc->ProblemType = ProblemType;
   }
 
-  if (Precision < 1.e-16 || Precision > 1.e-8) {
-    CString msg;
-    msg.Format("Invalid Precision %lf", Precision);
-    lua_error(L, msg.GetBuffer(1));
-    return 0;
-
-  } else {
-    thisDoc->Precision = Precision;
-  }
+  // Changed to correct the precision rather than throwing a cryptic error
+  if ((Precision == 0) || (Precision > 1.e-8))
+    Precision = 1.e-8;
+  if (Precision < 1.e-16)
+    Precision = 1.e-16;
+  thisDoc->Precision = Precision;
 
   if ((MinAngle <= MINANGLE_MAX) && (MinAngle >= 1.)) {
     thisDoc->MinAngle = MinAngle;
@@ -1747,6 +1744,16 @@ int ChdrawDoc::lua_addcircuitprop(lua_State* L)
     m.q = lua_todouble(L, 3);
   if (n > 3)
     m.CircType = (int)lua_todouble(L, 4);
+
+  // there shouldn't be duplicate conductor names.
+  for (int k = 0; k < ((ChdrawDoc*)phdrawDoc)->circproplist.GetSize(); k++) {
+    if (m.CircName == ((ChdrawDoc*)phdrawDoc)->circproplist[k].CircName) {
+      CString msg;
+      msg.Format("Duplicate conductor name (%s) not allowed", m.CircName);
+      lua_error(L, msg.GetBuffer(1));
+      return NULL;
+    }
+  }
 
   ((ChdrawDoc*)phdrawDoc)->circproplist.Add(m);
 

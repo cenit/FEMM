@@ -59,7 +59,7 @@ that all entity types are to be selected.
 \item{\tt ci\_selectrectangle(x1,y1,x2,y2,editmode)} selects objects within a rectangle
 defined by points (x1,y1) and (x2,y2). If no editmode parameter is supplied,
 the current edit mode is used.  If the editmode parameter is used, 0 denotes
-nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4
+nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 
 specifies that all entity types are to be selected.
 
 \end{itemize}
@@ -313,7 +313,7 @@ parameter is set to \texttt{"cart"} for Cartesian coordinates or
 \subsection{Object Properties}
 
 \begin{itemize}
-\item \texttt{ci\_getmaterial("materialname")} fetches the material specified by \texttt{materialname}
+\item \texttt{ci\_getmaterial("materialname")} fetches the material specified by \texttt{materialname} 
 from the materials library.
 
 \item \texttt{ci\_addmaterial("materialname", ox, oy, ex, ey, ltx, lty)} adds a new material with
@@ -534,7 +534,7 @@ no-underscore naming convention.
 
 \item \texttt{co\_lineintegral(type)} Calculate the line integral for the defined contour
 
-% inttype==0 => E.t
+% inttype==0 => E.t 
 % inttype==1 => J.n
 % inttype==2 => Contour Length
 % inttype==3 => Average Voltage
@@ -647,13 +647,13 @@ the form:\texttt{ } \newline
 \texttt{co\_makeplot(0,200,"c:temp.txt",0)} \newline
 
 
-\item \texttt{co\_getprobleminfo() }
+\item \texttt{co\_getprobleminfo() } 
 Returns info on problem description. Returns four values:
 
 \begin{tabular}{ll} \hline
-Return value & Definition \\ \hline
-1 &  problem type  \\
-2 &  frequency in Hz \\
+Return value & Definition \\ \hline 
+1 &  problem type  \\ 
+2 &  frequency in Hz \\ 
 3 &  depth assumed for planar problems in meters.\\
 4 &  length unit used to draw the problem, represented in meters
 \end{tabular}
@@ -798,7 +798,7 @@ $V$ contour plot with options:
 
 \texttt{upper{\_}V} Upper limit for contours;
 
-\texttt{lower{\_}V} Lower limit for contours;
+\texttt{lower{\_}V} Lower limit for contours; 
 
 \texttt{type} the type of contour plot to be rendered.
 
@@ -888,3 +888,5 @@ should be set to 1.
     \end{enumerate}
 
 \end{itemize}
+
+

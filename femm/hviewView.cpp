@@ -208,6 +208,7 @@ ChviewView::ChviewView()
   VectorPlot = d_VectorPlot;
   VectorScaleFactor = 1;
   PtsFlag = d_PtsFlag;
+  bOnDraw = FALSE;
 }
 
 ChviewView::~ChviewView()
@@ -625,10 +626,33 @@ void ChviewView::EraseUserContour(BOOL flag)
   ReleaseDC(pDC);
 }
 
+BOOL ChviewView::Pump()
+{
+  // Idea here is to service the message pump during redraws that take a long time.
+  // We don't actually have to check the messages every time Pump is called, because that
+  // slows things down.  Just check every once in a while when Pump is called.
+
+  static int k = 0;
+
+  if (k++ < 1000)
+    return FALSE;
+  k = 0;
+
+  MSG msg;
+
+  while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE | PM_QS_INPUT | PM_QS_PAINT | PM_QS_SENDMESSAGE)) {
+    TranslateMessage(&msg);
+    DispatchMessage(&msg);
+  }
+
+  return FALSE;
+}
+
 void ChviewView::OnDraw(CDC* pDC)
 {
   ChviewDoc* pDoc = GetDocument();
   ASSERT_VALID(pDoc);
+  bOnDraw = TRUE;
 
   RECT r;
   static RECT oldr;
@@ -790,6 +814,7 @@ void ChviewView::OnDraw(CDC* pDC)
         rt = abs(CComplex(xss, yss) - pDoc->meshelem[i].ctr);
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss)) {
           PlotFluxDensity(pDC, i, DensityPlot);
+          Pump();
         }
       }
     }
@@ -851,6 +876,7 @@ void ChviewView::OnDraw(CDC* pDC)
                 pDoc->meshnode[po].ys);
           }
         }
+        Pump();
       }
     }
     pDC->SelectObject(pOldPen);
@@ -865,6 +891,7 @@ void ChviewView::OnDraw(CDC* pDC)
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss))
           for (j = 0; j < 3; j++)
             DoContours(pDC, pDoc->meshelem[i].p, j, 0);
+        Pump();
       }
     }
 
@@ -876,6 +903,7 @@ void ChviewView::OnDraw(CDC* pDC)
         if (rt < (sqrt(pDoc->meshelem[i].rsqr) + rss))
           for (j = 0; j < 3; j++)
             DoContours(pDC, pDoc->meshelem[i].p, j, 2);
+        Pump();
       }
     }
 
@@ -1009,6 +1037,7 @@ void ChviewView::OnDraw(CDC* pDC)
               }
             }
           }
+          Pump();
         } // end of if(rt<...
       }
       pDC->SelectObject(pOldPen);
@@ -1100,6 +1129,7 @@ void ChviewView::OnDraw(CDC* pDC)
 
   pDC->SelectObject(pOldFont);
   fntArial.DeleteObject();
+  bOnDraw = FALSE;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -1617,7 +1647,7 @@ void ChviewView::DisplayPointProperties(double px, double py)
 
 void ChviewView::OnLButtonDown(UINT nFlags, CPoint point)
 {
-  if (bLinehook != FALSE) {
+  if ((bLinehook != FALSE) || (bOnDraw != FALSE)) {
     CView::OnLButtonDown(nFlags, point);
     return;
   }
