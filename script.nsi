@@ -1,11 +1,16 @@
+Unicode True
+!include MUI2.nsh
+!include LogicLib.nsh
 !define PROJECT_NAME "FEMM"
 !define PROJECT_REG_UNINSTALL_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PROJECT_NAME}"
 !define PROJECT_UNINSTALL_EXE "uninstall.exe"
-!include LogicLib.nsh
 
-Unicode True
-Page Directory
-Page InstFiles
+LicenseData "license.txt"
+Page license
+Page directory
+Page instFiles
+UninstPage uninstConfirm
+UninstPage instfiles
 
 # define name of installer
 OutFile "${PROJECT_NAME}_installer.exe"
