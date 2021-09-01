@@ -5,6 +5,7 @@
 *.a
 *.lib
 *.swp
+*.exe
 
 # OS Generated #
 .DS_Store*

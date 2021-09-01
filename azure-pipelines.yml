@@ -16,12 +16,14 @@ jobs:
         filePath: '$(System.DefaultWorkingDirectory)/build.ps1'
         arguments: '-DoNotUpdateTOOL -DisableInteractive -DisableLaTeX'
       displayName: 'Build FEMM'
+    - powershell: |
+        makensis.exe $(System.DefaultWorkingDirectory)/script.nsi
+      displayName: Build Installer
     - task: CopyFiles@2
       inputs:
-        contents: '$(System.DefaultWorkingDirectory)/bin/**'
+        contents: '$(System.DefaultWorkingDirectory)/FEMM_installer.exe'
         targetFolder: $(Build.ArtifactStagingDirectory)
-      displayName: 'Copy binary files to artifact staging'
     - task: PublishBuildArtifacts@1
       inputs:
-        pathToPublish: $(Build.ArtifactStagingDirectory)
-        artifactName: FEMM-Windows
+        pathToPublish: $(Build.ArtifactStagingDirectory)/FEMM_installer.exe
+        artifactName: FEMM_installer
