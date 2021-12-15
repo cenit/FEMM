@@ -3400,7 +3400,7 @@ void CFemmviewView::OnMenuIntegrate()
         if ((pDoc->ProblemType == 0) && (pDoc->Frequency == 0))
           sprintf(s, "Torque about (0,0): %g N*m", z1.re);
         if ((pDoc->ProblemType == 0) && (pDoc->Frequency != 0))
-          sprintf(s, "Torque about (0,0):\nSteady State: %g N*m\n2x Frequency: %s",
+          sprintf(s, "Torque about (0,0):\nSteady State: %g N*m\n2x Frequency: %s N*m",
               z1.re, z2.ToStringAlt(d));
 
         if (pDoc->ProblemType == 1)
@@ -3550,12 +3550,11 @@ void CFemmviewView::OnMenuIntegrate()
         lua_pushstring(lua, dlg.BdryName);
         lua_pushnumber(lua, 3); //2X part of torque
         pDoc->lua_gapintegral(lua);
-        z1 = lua_tonumber(lua, -2);
-        z2 = lua_tonumber(lua, -1);
+        z1 = lua_tonumber(lua, -1);
         n = lua_gettop(lua);
         lua_pop(lua, n);
 
-        s.Format("DC Torque = %g Nm\n2X Torque = %s", y1, z1.ToStringAlt(c));
+        s.Format("DC Torque = %g N*m\n2X Torque = %s N*m", y1, z1.ToStringAlt(c));
       }
       MyMessageBox(s);
       break;
@@ -3587,7 +3586,7 @@ void CFemmviewView::OnMenuIntegrate()
         n = lua_gettop(lua);
         lua_pop(lua, n);
 
-        s.Format("DC Fx = %g Nm\nDC Fy = %g\n2X Fx = %s\n2X Fy = %s", y1, y2, z1.ToStringAlt(c), z2.ToString(d));
+        s.Format("DC Fx = %g N\nDC Fy = %g N\n2X Fx = %s N\n2X Fy = %s N", y1, y2, z1.ToStringAlt(c), z2.ToStringAlt(d));
       }
       MyMessageBox(s);
       break;

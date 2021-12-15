@@ -6,6 +6,7 @@ param (
   [switch]$UseVCPKG = $false,
   [switch]$DoNotUpdateVCPKG = $false,
   [switch]$DoNotUpdateTOOL = $false,
+  [switch]$DoNotDeleteBuildFolder = $false,
   [switch]$DoNotSetupVS = $false,
   [switch]$DoNotUseNinja = $false,
   [switch]$ForceStaticLib = $false,
@@ -21,7 +22,7 @@ param (
   [string]$AdditionalBuildSetup = ""  # "-DCMAKE_CUDA_ARCHITECTURES=30"
 )
 
-$build_ps1_version = "1.9.5"
+$build_ps1_version = "1.9.6"
 
 Write-Host "Forcing VS Solution and disabling Ninja"
 $DoNotUseNinja = $true
@@ -286,6 +287,14 @@ function getLatestVisualStudioWithDesktopWorkloadPath() {
       }
     }
     if (!$installationPath) {
+      Write-Host "Warning: no full Visual Studio setup has been found, extending search to include also pre-release installations" -ForegroundColor Yellow
+      $output = & $vswhereExe -prerelease -products * -latest -format xml
+      [xml]$asXml = $output
+      foreach ($instance in $asXml.instances.instance) {
+        $installationPath = $instance.InstallationPath -replace "\\$" # Remove potential trailing backslash
+      }
+    }
+    if (!$installationPath) {
       MyThrow("Could not locate any installation of Visual Studio")
     }
   }
@@ -308,6 +317,14 @@ function getLatestVisualStudioWithDesktopWorkloadVersion() {
     if (!$installationVersion) {
       Write-Host "Warning: no full Visual Studio setup has been found, extending search to include also partial installations" -ForegroundColor Yellow
       $output = & $vswhereExe -products * -latest -format xml
+      [xml]$asXml = $output
+      foreach ($instance in $asXml.instances.instance) {
+        $installationVersion = $instance.installationVersion
+      }
+    }
+    if (!$installationVersion) {
+      Write-Host "Warning: no full Visual Studio setup has been found, extending search to include also pre-release installations" -ForegroundColor Yellow
+      $output = & $vswhereExe -prerelease -products * -latest -format xml
       [xml]$asXml = $output
       foreach ($instance in $asXml.instances.instance) {
         $installationVersion = $instance.installationVersion
@@ -452,6 +469,10 @@ if (-Not $DoNotSetupVS) {
       $generator = "Visual Studio 16 2019"
       $AdditionalBuildSetup = $AdditionalBuildSetup + " -T `"host=x64`" -A `"x64`""
     }
+    elseif ($tokens[0] -eq "17") {
+      $generator = "Visual Studio 17 2022"
+      $AdditionalBuildSetup = $AdditionalBuildSetup + " -T `"host=x64`" -A `"x64`""
+    }
     else {
       MyThrow("Unknown Visual Studio version, unsupported configuration")
     }
@@ -488,6 +509,13 @@ if (-Not $IsMacOS -and $EnableCUDA) {
       Write-Host "Added missing env variable CUDACXX" -ForegroundColor Yellow
     }
   }
+}
+
+if (-Not $DoNotDeleteBuildFolder) {
+  Write-Host "Removing build folders" -ForegroundColor Yellow
+  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue .\build_win_release64
+  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue .\build_win_release32_triangle
+  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue .\build_win_release32
 }
 
 if (($null -eq (Get-Command "latex" -ErrorAction SilentlyContinue)) -or $DisableLaTeX) {
@@ -598,6 +626,13 @@ if ($BuildArch -eq "32") {
 }
 
 Set-Location ..
+
+if (-Not $DoNotDeleteBuildFolder) {
+  Write-Host "Removing build folders" -ForegroundColor Yellow
+  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue .\build_win_release64
+  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue .\build_win_release32_triangle
+  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue .\build_win_release32
+}
 
 Write-Host "Build complete!" -ForegroundColor Green
 Pop-Location

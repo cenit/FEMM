@@ -2572,9 +2572,9 @@ int CFemmviewDoc::lua_gapintegral(lua_State* L)
       n = thisDoc->agelist[i].nh[k];
 
       if (n != 0)
-        W += (thisDoc->agelist[i].brs[k] * thisDoc->agelist[i].brs[k] + thisDoc->agelist[i].brc[k] * thisDoc->agelist[i].brc[k] + thisDoc->agelist[i].bts[k] * thisDoc->agelist[i].bts[k] + thisDoc->agelist[i].btc[k] * thisDoc->agelist[i].btc[k]) * dr;
+        W += (thisDoc->agelist[i].brs[k] * thisDoc->agelist[i].brs[k].Conj() + thisDoc->agelist[i].brc[k] * thisDoc->agelist[i].brc[k].Conj() + thisDoc->agelist[i].bts[k] * thisDoc->agelist[i].bts[k].Conj() + thisDoc->agelist[i].btc[k] * thisDoc->agelist[i].btc[k].Conj()) * dr;
       else
-        W += 2 * dr * thisDoc->agelist[i].btc[k] * thisDoc->agelist[i].btc[k];
+        W += 2 * dr * thisDoc->agelist[i].btc[k] * thisDoc->agelist[i].btc[k].Conj();
     }
     W = Re(W) * (PI * R * thisDoc->Depth) / (2. * muo);
     if (thisDoc->Frequency != 0)

@@ -1,7 +1,9 @@
-# FEMM 4.2 28Mar2021
+﻿# FEMM 4.2 26Jun2021
 
-28Mar2021 (Test Build):
+26Jun2021:
 
+* Fixed energy integral for airgap boundary conditions.  It didn't work
+  correctly for time-harmonic problems (thanks Nicola Bianchi)
 * Fixed broken magnetic materials library entries for legacy NdFeB 40, 
   M47 silicon steel.
 * Changed lua implementation of mi_probdef and friends so that an out-of-range

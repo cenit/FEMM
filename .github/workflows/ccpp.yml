@@ -1,0 +1,26 @@
+name: FEMM Continuous Integration
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  win-vcpkg:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: lukka/get-cmake@latest
+
+    - name: 'Build FEMM'
+      shell: pwsh
+      run: ${{ github.workspace }}/build.ps1 -DoNotUpdateTOOL -DisableInteractive -DisableLaTeX
+    - name: 'Build Installer'
+      shell: pwsh
+      run: makensis.exe ${{ github.workspace }}/script.nsi
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: FEMM-windows
+        path: ${{ github.workspace }}/FEMM_installer.exe
