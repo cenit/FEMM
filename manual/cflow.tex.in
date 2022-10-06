@@ -406,7 +406,7 @@ Currently, the type of line plots supported are:
 	\item {\tt |Jc|   } Magnitude of conduction current density
 	\item {\tt Jc.n } Normal conduction current density
 	\item {\tt Jc.t } Tangential conduction current density
-	\item {\tt |Jd|   } Magnitude of displacment current density
+	\item {\tt |Jd|   } Magnitude of displacement current density
 	\item {\tt Jd.n } Normal displacement current density
 	\item {\tt Jd.t } Tangential displacement current density
 \end{itemize}

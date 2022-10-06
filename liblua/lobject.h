@@ -158,7 +158,7 @@ typedef struct Hash {
 #define ismarked(x) ((x)->mark != (x))
 
 /*
-** informations about a call (for debugging)
+** information about a call (for debugging)
 */
 typedef struct CallInfo {
   struct Closure* func; /* function being called */

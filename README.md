@@ -111,8 +111,8 @@
   robust and usually does not hang / crash if there are small angles
   in the input geometry.
 * In cases where Triangle previously hung (displaying an error message)
-  when an error occured, the program now terminates and indicates that
-  an error has occured.  This is especially useful for Matlab/Octave
+  when an error occurred, the program now terminates and indicates that
+  an error has occurred.  This is especially useful for Matlab/Octave
   scripts, which now get passed the error indication rather than having
   the script hang on the meshing error. 
 * Fixed a number of additional instances of focus-stealing during script
@@ -209,7 +209,7 @@
 * Changed .dxf import so that objects assigned layers are imported as
   grouped being in the same group.
 * Added new "Improvised Asymptotic Boundary Condition" button and mi_makeABC
-  and friends Lua funtions as an alternate way of solving unbounded
+  and friends Lua functions as an alternate way of solving unbounded
   problems.
 
 11Apr2012:

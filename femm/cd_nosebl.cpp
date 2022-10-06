@@ -115,7 +115,7 @@ CMaterialProp::CMaterialProp()
   BlockName = "New Material";
   ox = oy = 0.; // electrical conductivity, MS/m
   ex = ey = 1.; // electrical permittivity, relative
-  ltx = lty = 0; // loss tangent of electrial permittivity
+  ltx = lty = 0; // loss tangent of electrical permittivity
 }
 
 CMaterialProp::~CMaterialProp()

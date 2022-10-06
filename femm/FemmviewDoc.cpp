@@ -1904,7 +1904,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals& u)
         u.mu2 = muinc;
         u.mu12 = 0;
       } else if (bIncremental == 1) {
-        // For "incremental" problem, permeability is linearized about the prevous soluiton.
+        // For "incremental" problem, permeability is linearized about the previous soluiton.
         u.mu1 = (B1p * B1p * muinc + B2p * B2p * murel) / (B * B);
         u.mu12 = (B1p * B2p * (muinc - murel)) / (B * B);
         u.mu2 = (B2p * B2p * muinc + B1p * B1p * murel) / (B * B);
@@ -4598,7 +4598,7 @@ CComplex CFemmviewDoc::GetFluxLinkage(int circnum)
 
         // if there is at least one nonzero conductivity block, we can use
         // the GetParallelLinkage routine, which is more or less driving
-        // all the blocks with a ficticious voltage gradient.
+        // all the blocks with a fictitious voltage gradient.
         if (flag)
           FluxLinkage = GetParallelLinkage(i);
         // otherwise, treat the "punt" case, where every part of the

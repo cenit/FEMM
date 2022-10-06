@@ -42,7 +42,7 @@ MathFEMM can find the FEMM executable:
 <<c:\\progra~1\\femm42\\mathfemm\\mathfemm.m
 3) Run the SetPathToFEMM command to specify the path to the FEMM executable:
 SetPathToFEMM[\"c:\\\\progra~1\\\\femm42\\\\bin\\\\femm.exe\"]
-where you'd replace the above path withe the one to femm.exe in your \
+where you'd replace the above path with the one to femm.exe in your \
 installation.Be sure to use double backslashes in the path specification
 
 USE:To start an MathFEMM session,first load up the MathFEMM package using the \
@@ -109,7 +109,7 @@ with the message \\\"string\\\"\"\>"], "Print",
 
 Cell[BoxData["\<\"Prompt[\\\"string\\\"] displays a pop-up dialog with the \
 message \\\"string\\\" displayed on it with an edit box.  The return value of \
-the funciton is the contents of the edit box.\"\>"], "Print",
+the function is the contents of the edit box.\"\>"], "Print",
  CellTags->"Info3347223940-7924268"],
 
 Cell[BoxData["\<\"MLPut[\\\"string\\\"] sends \\\"string\\\" to FEMM's Lua \
@@ -437,7 +437,7 @@ segments and arc segments.\"\>"], "Print",
  CellTags->"Info3347223941-8020983"],
 
 Cell[BoxData["\<\"EIDefineOuterSpace[Zo,Ro,Ri] defines an axisymmetric \
-external region to be used in conjuction with the Kelvin Transformation \
+external region to be used in conjunction with the Kelvin Transformation \
 method of modeling unbounded problems.  The Zo parameter is the z-location of \
 the origin of the outer region, the Ro parameter is the radius of the outer \
 region, and the Ri parameter is the radius of the inner region (i.e. the \
@@ -662,7 +662,7 @@ parameter.\"\>"], "Print",
 Cell[BoxData["\<\"EISetFocus[\\\"documentname\\\"] switches the \
 electrostatics input file upon which scripting commands are to act. If more \
 than one electrostatics input file is being edited at a time, this command \
-can be used to switch between files so that the mutiple files can be operated \
+can be used to switch between files so that the multiple files can be operated \
 upon programmatically . \\\"documentname\\\" should contain the name of the \
 desired document as it appears on the window\[CloseCurlyQuote]s title \
 bar.\"\>"], "Print",
@@ -953,7 +953,7 @@ segments and arc segments.\"\>"], "Print",
  CellTags->"Info3347223941-2948475"],
 
 Cell[BoxData["\<\"HIDefineOuterSpace[Zo,Ro,Ri] defines an axisymmetric \
-external region to be used in conjuction with the Kelvin Transformation \
+external region to be used in conjunction with the Kelvin Transformation \
 method of modeling unbounded problems.  The Zo parameter is the z-location of \
 the origin of the outer region, the Ro parameter is the radius of the outer \
 region, and the Ri parameter is the radius of the inner region (i.e. the \
@@ -1178,7 +1178,7 @@ parameter.\"\>"], "Print",
 Cell[BoxData["\<\"HISetFocus[\\\"documentname\\\"] switches the heat flow \
 input file upon which scripting commands are to act. If more than one heat \
 flow input file is being edited at a time, this command can be used to switch \
-between files so that the mutiple files can be operated upon programmatically \
+between files so that the multiple files can be operated upon programmatically \
 . \\\"documentname\\\" should contain the name of the desired document as it \
 appears on the window\[CloseCurlyQuote]s title bar.\"\>"], "Print",
  CellTags->"Info3347223941-7628927"]
@@ -1470,7 +1470,7 @@ segments and arc segments.\"\>"], "Print",
  CellTags->"Info3347223942-3777925"],
 
 Cell[BoxData["\<\"CIDefineOuterSpace[Zo,Ro,Ri] defines an axisymmetric \
-external region to be used in conjuction with the Kelvin Transformation \
+external region to be used in conjunction with the Kelvin Transformation \
 method of modeling unbounded problems.  The Zo parameter is the z-location of \
 the origin of the outer region, the Ro parameter is the radius of the outer \
 region, and the Ri parameter is the radius of the inner region (i.e. the \
@@ -1696,7 +1696,7 @@ parameter.\"\>"], "Print",
 Cell[BoxData["\<\"CISetFocus[\\\"documentname\\\"] switches the current input \
 file upon which scripting commands are to act. If more than one current input \
 file is being edited at a time, this command can be used to switch between \
-files so that the mutiple files can be operated upon programmatically . \
+files so that the multiple files can be operated upon programmatically . \
 \\\"documentname\\\" should contain the name of the desired document as it \
 appears on the window\[CloseCurlyQuote]s title bar.\"\>"], "Print",
  CellTags->"Info3347223942-2698508"]
@@ -1722,7 +1722,7 @@ Cell[BoxData["\<\"MIAddBoundProp[\\\"propname\\\",A0,A1,A2,Phi,Mu,Sig,c0,c1,\
 BdryFormat] adds a new boundary property with name \\\"propname\\\" \\n \
 \[Dash] For a \\\"Prescribed A\\\" type boundary condition, set the A0, A1, \
 A2  and Phi parameters as required. Set all other parameters to zero.\\n \
-\[Dash] For a \\\"Small Skin Depth\\\" type boundary condtion, set the Mu to \
+\[Dash] For a \\\"Small Skin Depth\\\" type boundary condition, set the Mu to \
 the desired relative permeability and Sig to the desired conductivity in \
 MS/m. Set BdryFormat to 1 and all other parameters to zero. \\n \[Dash] To \
 obtain a \\\"Mixed\\\" type boundary condition, set C1 and C0 as required and \
@@ -2027,7 +2027,7 @@ segments and arc segments.\"\>"], "Print",
  CellTags->"Info3347223942-3630767"],
 
 Cell[BoxData["\<\"MIDefineOuterSpace[Zo,Ro,Ri] defines an axisymmetric \
-external region to be used in conjuction with the Kelvin Transformation \
+external region to be used in conjunction with the Kelvin Transformation \
 method of modeling unbounded problems.  The Zo parameter is the z-location of \
 the origin of the outer region, the Ro parameter is the radius of the outer \
 region, and the Ri parameter is the radius of the inner region (i.e. the \
@@ -2253,7 +2253,7 @@ parameter.\"\>"], "Print",
 Cell[BoxData["\<\"MISetFocus[\\\"documentname\\\"] switches the \
 electrostatics input file upon which scripting commands are to act. If more \
 than one electrostatics input file is being edited at a time, this command \
-can be used to switch between files so that the mutiple files can be operated \
+can be used to switch between files so that the multiple files can be operated \
 upon programmatically . \\\"documentname\\\" should contain the name of the \
 desired document as it appears on the window\[CloseCurlyQuote]s title \
 bar.\"\>"], "Print",
@@ -2338,7 +2338,7 @@ interpreted as a request to plot the requested plot type to the screen. If, \
 in addition, the Filename parameter is specified, the plot is instead written \
 to disk to the specified file name as an extended metafile. If the FileFormat \
 parameter is also, the command is instead interpreted as a command to write \
-the data to disk to the specfied file name, rather than display it to make a \
+the data to disk to the specified file name, rather than display it to make a \
 graphical plot. Valid entries for PlotType are: \\n 0 - V (Voltage)\\n 1 - \
 |D| (Magnitude of flux density)\\n 2 - D . n (Normal flux density)\\n 3 - D . \
 t (Tangential flux density)\\n 4 - |E| (Magnitude of field intensity)\\n 5 - \
@@ -2627,7 +2627,7 @@ interpreted as a request to plot the requested plot type to the screen. If, \
 in addition, the Filename parameter is specified, the plot is instead written \
 to disk to the specified file name as an extended metafile. If the FileFormat \
 parameter is also, the command is instead interpreted as a command to write \
-the data to disk to the specfied file name, rather than display it to make a \
+the data to disk to the specified file name, rather than display it to make a \
 graphical plot. Valid entries for PlotType are: \\n 0 - T (temperature)\\n 1 \
 - |F| (Magnitude of heat flux density)\\n 2 - F . n (Normal heat flux \
 density)\\n 3 - F . t (Tangential heat flux density)\\n 4 - |G| (Magnitude of \
@@ -2918,7 +2918,7 @@ interpreted as a request to plot the requested plot type to the screen. If, \
 in addition, the Filename parameter is specified, the plot is instead written \
 to disk to the specified file name as an extended metafile. If the FileFormat \
 parameter is also, the command is instead interpreted as a command to write \
-the data to disk to the specfied file name, rather than display it to make a \
+the data to disk to the specified file name, rather than display it to make a \
 graphical plot. Valid entries for PlotType are: \\n  0   V (Voltage) \\n  1   \
 |J| (Magnitude of current density) \\n  2   J.n (Normal current density) \\n  \
 3   J.t (Tangential current density) \\n  4   |E (Magnitude of field \
@@ -3227,7 +3227,7 @@ interpreted as a request to plot the requested plot type to the screen. If, \
 in addition, the Filename parameter is specified, the plot is instead written \
 to disk to the specified file name as an extended metafile. If the FileFormat \
 parameter is also, the command is instead interpreted as a command to write \
-the data to disk to the specfied file name, rather than display it to make a \
+the data to disk to the specified file name, rather than display it to make a \
 graphical plot. Valid entries for PlotType are: \\n 0 - Potential \\n 1 - |B| \
 \\n 2 B\[CenterDot]n \\n 3 - B\[CenterDot]t \\n 4 - |H| \\n 5 - H \
 \[CenterDot]n \\n 6 - H \[CenterDot]t \\n 7 - Jeddy \\n 8 - \
@@ -3268,7 +3268,7 @@ hysteresis\\n ff - Winding fill factor\"\>"], "Print",
 
 Cell[BoxData["\<\"MOGetA[x,y] returns the vector potential, A, for 2D planar \
 problems, and it returns flux, 2*Pi*r*A, for axisymmetric problems.  The \
-return value is possbly complex-valued. An equivalent form is:\\n \
+return value is possibly complex-valued. An equivalent form is:\\n \
 MOGetA[{x,y}]\"\>"], "Print",
  CellTags->"Info3347223944-4082389"],
 

@@ -334,7 +334,7 @@
 
 #define PI 3.141592653589793238462643383279502884197169399375105820974944592308
 
-/* Another fave.                                                             */
+/* Another save.                                                             */
 
 #define SQUAREROOTTWO 1.4142135623730950488016887242096980785696718753769480732
 
@@ -891,7 +891,7 @@ struct behavior {
 /*  org:  Origin          dest:  Destination          apex:  Apex            */
 /*  org(abc) -> a         dest(abc) -> b              apex(abc) -> c         */
 /*                                                                           */
-/*  bond:  Bond two triangles together at the resepective handles.           */
+/*  bond:  Bond two triangles together at the respective handles.           */
 /*  bond(abc, bad)                                                           */
 /*                                                                           */
 /*                                                                           */

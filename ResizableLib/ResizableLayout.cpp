@@ -253,7 +253,7 @@ void CResizableLayout::EraseBackground(CDC* pDC)
   HBRUSH hBrush = NULL;
 
   // is this a dialog box?
-  // (using class atom is quickier than using the class name)
+  // (using class atom is quicker than using the class name)
   ATOM atomWndClass = (ATOM)::GetClassLong(hWnd, GCW_ATOM);
   if (atomWndClass == (ATOM)0x8002) {
     // send a message to the dialog box

@@ -190,7 +190,7 @@ Computer-aided analysis and design of electromagnetic devices}
 \cite{Hoole}.  For an advanced treatment, the reader has no
 recourse but to refer to Jackson's {\em Classical electrodynamics}
 \cite{Jackson}.  For thermal problems, the author has found
-White's {\em Heat and mass tranfer} \cite{FrankWhite} and
+White's {\em Heat and mass transfer} \cite{FrankWhite} and
 Haberman's {\em Elementary applied partial differential equations}
 \cite{Haberman} to be useful in understanding the derivation and solution of
 steady-state temperature problems.
@@ -199,7 +199,7 @@ steady-state temperature problems.
 
 FEMM addresses some limiting cases of Maxwell's equations.  The
 magnetics problems addressed are those that can be consided as
-``low frequency problems,'' in which displacment currents can be
+``low frequency problems,'' in which displacement currents can be
 ignored. Displacement currents are typically relevant to magnetics
 problems only at radio frequencies.  In a similar vein, the
 electrostatics solver considers the converse case in which only the
@@ -371,7 +371,7 @@ domain with user-defined sources and boundary conditions.
 \subsection{Heat Flow Problems}
 
 The heat flow problems address by FEMM are essentially steady-state
-heat conduction problems. These probelms are represented by a
+heat conduction problems. These problems are represented by a
 temperature gradient, $G$(analogous to the field intensity, $E$ for
 electrostatic problems), and heat flux density, $F$(analogous to
 electric flux density, $D$, for electrostatic problems).
@@ -497,7 +497,7 @@ At zero frequency, the term associated with electrical permittivity vanishes, le
 \label{quasielectrostatic7}
 - \sigma \nabla^2 V = 0
 \end{equation}
-By simply specifing a zero frequency, this formulation solves DC current flow problems
+By simply specifying a zero frequency, this formulation solves DC current flow problems
 in a consistent fashion.
 
 
@@ -660,7 +660,7 @@ revision 13 standards. Only 2D dxf files can be imported in a
 meaningful way.
 
 To import a dxf file, select \texttt{Import DXF} off of the
-\texttt{File} menu. A dialog will appear after the file is seleted
+\texttt{File} menu. A dialog will appear after the file is selected
 asking for a tolerance. This tolerance is the maximum distance
 between two points at which the program considers two points to be
 the same. The default value is usually sufficient. For some files,
@@ -1414,7 +1414,7 @@ insulation) in this edit box in units of millimeters.
 Associated with the lamination thickness edit box is the {\tt Lam
 fill factor} edit box.  This is the fraction of the core that is
 filled with iron.  For example, if you had a lamination in which
-the iron was 12.8 mils thick, and the insulation bewteen
+the iron was 12.8 mils thick, and the insulation between
 laminations was 1.2 mils thick, the fill factor would be:
 \begin{displaymath}
 \mbox{Fill Factor} = \frac{12.8}{1.2+12.8} = 0.914
@@ -1542,7 +1542,7 @@ grading required in the external region.  This is where the ``External Region'' 
 come in--these are the parameters that the program needs to define the permeabilities of
 elements in the external region for ``unbounded'' axisymmetric problems.
 
-Specifically, there are three parametes that are collected in the dialog that appears when
+Specifically, there are three parameters that are collected in the dialog that appears when
 the user selects the External Region properties.  These are:
 
 \begin{itemize}
@@ -2991,7 +2991,7 @@ Metafile (\texttt{.emf} format), respectively. The clipboard data
 can then be pasted directly into most applications (e.g. Word, MS
 Paint, etc).
 
-L$_{A}$T$_{E}$X afficionados typically find PostScript to be the
+L$_{A}$T$_{E}$X aficionados typically find PostScript to be the
 most useful type of graphics output. FEMM does not support
 postscript output directly, but it is still relatively easy to
 create postcript figures with FEMM. To obtain a postscript version
@@ -3405,7 +3405,7 @@ Since L and W are arbitrarily chosen, the bulk permeability of the
 section is:
 \be \label{ez1} \mu_{ez}= ((1-c) + c \mu_r) \mu_o \ee
 For the solution of nonlinear problems, the derivation of the
-changes to Newton's method to accomodate the bulk lamination model
+changes to Newton's method to accommodate the bulk lamination model
 are greatly simplified if it is assumed that $(1-c) << c
 \mu_r$. In this case, $\mu_{ez}$ can be approximated as:
 \be \label{ez2} \mu_{ez} \approx c \mu_r \mu_o \ee

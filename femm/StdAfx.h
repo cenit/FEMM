@@ -51,7 +51,7 @@
 // uncomment the following if you want to compile with MathLink support.
 // #define MATHLINK
 
-// commend the following line if you don't want a tabbed MDI interface.
+// comment the following line if you don't want a tabbed MDI interface.
 #define MDITAB
 
 #include "complex.h"
