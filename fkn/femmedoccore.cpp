@@ -50,6 +50,8 @@ CFemmeDocCore::CFemmeDocCore()
   PrevType = 0;
   extRo = extRi = extZo = NULL;
   agelist = NULL;
+
+  bDump = FALSE;
 }
 
 CFemmeDocCore::~CFemmeDocCore()
@@ -585,6 +587,15 @@ BOOL CFemmeDocCore::OnOpenDocument()
         }
 
       PrevSoln = v;
+      q[0] = NULL;
+    }
+
+    // Mis-use the comment field to indicate that files should be
+    if (_strnicmp(q, "[comment]", 9) == 0) {
+      v = StripKey(s);
+      sscanf(v, "%s", q);
+      if (_strnicmp(q, "\"dump\"", 6) == 0)
+        bDump = TRUE;
       q[0] = NULL;
     }
 

@@ -1230,7 +1230,7 @@ CAPTION "About femm"
 FONT 8, "Tahoma", 0, 0, 0x0
 BEGIN
     LTEXT           "femm 4.2",IDC_STATIC,55,10,119,10,SS_NOPREFIX
-    LTEXT           "Copyright (C) 1998-2021",IDC_STATIC,55,60,119,8
+    LTEXT           "Copyright (C) 1998-2022",IDC_STATIC,55,60,119,8
     DEFPUSHBUTTON   "OK",IDOK,144,70,50,14,WS_GROUP
     LTEXT           "David Meeker",IDC_STATIC,55,40,119,8
     LTEXT           "dmeeker@ieee.org",IDC_STATIC,55,50,119,8

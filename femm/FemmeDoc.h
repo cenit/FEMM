@@ -253,6 +253,7 @@ class CFemmeDoc : public CDocument {
   static int lua_selectcircle(lua_State* L);
   static int lua_selectrectangle(lua_State* L);
   static int lua_previous(lua_State* L);
+  static int lua_comment(lua_State* L);
   static int old_lua_addmatprop(lua_State* L);
   static int old_lua_modmatprop(lua_State* L);
   static int old_lua_addpointprop(lua_State* L);

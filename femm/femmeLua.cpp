@@ -117,6 +117,7 @@ void CFemmeDoc::initalise_lua()
   lua_register(lua, "mi_selectcircle", lua_selectcircle);
   lua_register(lua, "mi_selectrectangle", lua_selectrectangle);
   lua_register(lua, "mi_setprevious", lua_previous);
+  lua_register(lua, "mi_setcomment", lua_comment);
 
   // compatibility lua function names
   lua_register(lua, "mi_select_rectangle", lua_selectrectangle);
@@ -338,6 +339,23 @@ int CFemmeDoc::lua_previous(lua_State* L)
     thisDoc->PrevType = (int)lua_todouble(L, 2);
   else
     thisDoc->PrevType = 0;
+
+  return 0;
+}
+
+int CFemmeDoc::lua_comment(lua_State* L)
+{
+  CatchNullDocument();
+  CFemmeDoc* thisDoc;
+  thisDoc = (CFemmeDoc*)pFemmeDoc;
+  int n;
+  n = lua_gettop(L);
+
+  if (n > 0) {
+    CString myComment;
+    myComment.Format("%s", lua_tostring(L, 1));
+    thisDoc->ProblemNote = myComment;
+  }
 
   return 0;
 }
@@ -1757,7 +1775,7 @@ int CFemmeDoc::lua_modmatprop(lua_State* L)
     thisDoc->blockproplist[k].NStrands = (int)lua_todouble(L, 3);
     break;
   case 13:
-    thisDoc->blockproplist[k].WireD = lua_todouble(L, 4);
+    thisDoc->blockproplist[k].WireD = lua_todouble(L, 3);
   default:
     break;
   }

@@ -460,3 +460,35 @@ void CBigLinProb::ComputeBandwidth()
 
   MsgBox("Assumed Bandwidth = %i\nActual Bandwidth = %i", bdw, maxbw);
 }
+
+// Function to write the matrix and rhs to a text file the Matlab can read.
+// Although the matrix is symmetric, both sides are written out because Matlab
+// doesn't really understand symmetric matrices. See:
+// https://www.mathworks.com/help/matlab/ref/spconvert.html
+// myFile should have a name like stiffness.dat
+// load myFile in Matlab with the line 'load stiffness.dat;'
+// convert it into a sparse matrix with 'A=spconvert(stiffness);'
+int CBigLinProb::SaveMe(CString myFile)
+{
+  int i;
+  CEntry* e;
+  FILE* fp;
+
+  if ((fp = fopen(myFile, "wt")) == NULL) {
+    // couldn't open file
+    return 0;
+  }
+
+  for (i = 0; i < n; i++) {
+    e = M[i];
+    do {
+      fprintf(fp, "%i %i %.15g\n", i + 1, e->c + 1, e->x);
+      fprintf(fp, "%i %i %.15g\n", e->c + 1, i + 1, e->x);
+      e = e->next;
+    } while (e != NULL);
+  }
+
+  fclose(fp);
+
+  return 1;
+}

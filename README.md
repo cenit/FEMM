@@ -1,4 +1,26 @@
-﻿# FEMM 4.2 26Jun2021
+﻿FEMM 4.2 25Jul2022
+25Jul2022
+
+* Fixed a bug where imaginary part of a conductor voltage in a current flow
+  problems was ignored.
+
+01Apr2022
+
+* Fixed bug where rotation of magnetic material is incorrect if the material
+  is defined more than once.
+
+01Mar2022
+
+* Changed installer for better silent operation
+
+23Jan2022:
+
+* Fixed magnetic material property definitions for some SVG wire sizes
+
+26Jun2021:
+
+*  mi_setcomment and related ei_, hi_, and ci_ functions added to set the
+   comment text in the problem definition.
 
 26Jun2021:
 

@@ -117,6 +117,7 @@ void ChdrawDoc::initalise_lua()
   lua_register(lua, "hi_getboundingbox", lua_getboundingbox);
   lua_register(lua, "hi_selectcircle", lua_selectcircle);
   lua_register(lua, "hi_selectrectangle", lua_selectrectangle);
+  lua_register(lua, "hi_setcomment", lua_comment);
 
   // compatibility lua function names
   lua_register(lua, "hi_select_rectangle", lua_selectrectangle);
@@ -316,6 +317,23 @@ int ChdrawDoc::lua_savedxf(lua_State* L)
     theView->InvalidateRect(NULL);
 
   return result;
+}
+
+int ChdrawDoc::lua_comment(lua_State* L)
+{
+  CatchNullDocument();
+  ChdrawDoc* thisDoc;
+  thisDoc = (ChdrawDoc*)phdrawDoc;
+  int n;
+  n = lua_gettop(L);
+
+  if (n > 0) {
+    CString myComment;
+    myComment.Format("%s", lua_tostring(L, 1));
+    thisDoc->ProblemNote = myComment;
+  }
+
+  return 0;
 }
 
 int ChdrawDoc::lua_prob_def(lua_State* L)

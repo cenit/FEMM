@@ -43,7 +43,7 @@ class CBigLinProb {
   void Wipe();
   double Dot(double* X, double* Y);
   void ComputeBandwidth();
-
+  int SaveMe(CString myFile);
   CFknDlg* TheView;
 
   private:

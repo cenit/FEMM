@@ -3025,6 +3025,11 @@ EISetGroup::usage = "EISetGroup[n] sets the group of the selected entities to n"
 HISetGroup::usage = "HISetGroup[n] sets the group of the selected entities to n"
 CISetGroup::usage = "CISetGroup[n] sets the group of the selected entities to n"
 
+MISetComment::usage = "MISetComment[n] sets the comment field in the problem definition to n"
+EISetComment::usage = "EISetComment[n] sets the comment field in the problem definition to n"
+HISetComment::usage = "HISetComment[n] sets the comment field in the problem definition to n"
+CISetComment::usage = "CISetComment[n] sets the comment field in the problem definition to n"
+
 (****************************************************)
 (****** Beginning of actual function definitions ****)
 (****************************************************)
@@ -5471,6 +5476,14 @@ HIGetMaterial[fn_]:=MLPut["hi_getmaterial(" <> Quote[fn] <> ")"];
 
 CIGetMaterial[fn_]:=MLPut["ci_getmaterial(" <> Quote[fn] <> ")"];
 
+MISetComment[fn_]:=MLPut["mi_setcomment(" <> Quote[fn] <> ")"];
+
+EISetComment[fn_]:=MLPut["ei_setcomment(" <> Quote[fn] <> ")"];
+
+HISetComment[fn_]:=MLPut["hi_setcomment(" <> Quote[fn] <> ")"];
+
+CISetComment[fn_]:=MLPut["ci_setcomment(" <> Quote[fn] <> ")"];
+
 AWG[awg_]:=8.2514694*Exp[-0.115943*awg]
 
 IEC[iec_]:=7.959159641581004*Exp[-0.11519673572274754*iec]
@@ -6132,4 +6145,8 @@ SetAttributes[MOGetGapB,{Locked,Protected,ReadProtected}];
 SetAttributes[MOGetGapA,{Locked,Protected,ReadProtected}];
 SetAttributes[MOGetGapHarmonics,{Locked,Protected,ReadProtected}];
 SetAttributes[MOGapIntegral,{Locked,Protected,ReadProtected}];
+SetAttributes[MISetComment,{Locked,Protected,ReadProtected}];
+SetAttributes[EISetComment,{Locked,Protected,ReadProtected}];
+SetAttributes[HISetComment,{Locked,Protected,ReadProtected}];
+SetAttributes[CISetComment,{Locked,Protected,ReadProtected}];
 EndPackage[]

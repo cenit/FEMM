@@ -679,6 +679,10 @@ BOOL CFemmeDocCore::Static2D(CBigLinProb& L)
         L.AntiPeriodicity(pbclist[k].x, pbclist[k].y);
     }
 
+    // Dump problem info to Matlab, if that was commanded
+    if ((Iter == 0) && (bDump == TRUE))
+      MatlabDumpStatic2D(L);
+
     // solve the problem;
     for (j = 0; j < NumNodes; j++)
       V_old[j] = L.V[j];
@@ -853,5 +857,34 @@ BOOL CFemmeDocCore::WriteStatic2D(CBigLinProb& L)
   }
 
   fclose(fp);
+  return TRUE;
+}
+
+BOOL CFemmeDocCore::MatlabDumpStatic2D(CBigLinProb& L)
+{
+  FILE* fp;
+  int k;
+
+  CString path = PathName;
+  if ((fp = fopen(path + ".m", "wt")) == NULL) {
+    // couldn't open file
+    return 0;
+  }
+
+  // rhs of problem
+  fprintf(fp, "b = [");
+  for (k = 0; k < L.n; k++) {
+    fprintf(fp, "%.15g", L.b[k]);
+    if ((k + 1) == L.n)
+      fprintf(fp, "]");
+    fprintf(fp, ";\n");
+  }
+  CString MatrixFileName = path.Mid(path.ReverseFind('\\') + 1);
+  fprintf(fp, "load %s.dat;\n", MatrixFileName);
+  fprintf(fp, "M = spconvert(%s);\n", MatrixFileName);
+
+  // "stiffness" matrix
+  L.SaveMe(path + ".dat");
+
   return TRUE;
 }

@@ -421,7 +421,7 @@ BOOL CFemmeDocCore::OnOpenDocument()
       q[0] = NULL;
     }
 
-    if (_strnicmp(q, "<vcr>", 5) == 0) {
+    if (_strnicmp(q, "<vci>", 5) == 0) {
       v = StripKey(s);
       sscanf(v, "%lf", &CProp.V.im);
       q[0] = NULL;

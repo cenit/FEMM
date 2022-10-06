@@ -3615,7 +3615,7 @@
 <EndBlock>
 
 <BeginBlock>
-<BlockName> = "26 AWG"
+<BlockName> = "26 SWG"
 <Mu_x> = 1
 <Mu_y> = 1
 <H_c> = 0
@@ -3635,7 +3635,7 @@
 <EndBlock>
 
 <BeginBlock>
-<BlockName> = "28 AWG"
+<BlockName> = "28 SWG"
 <Mu_x> = 1
 <Mu_y> = 1
 <H_c> = 0

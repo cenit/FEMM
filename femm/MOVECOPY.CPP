@@ -733,8 +733,10 @@ void CFemmeDoc::RotateMove(CComplex c, double t, int EditAction)
 
         for (j = 0; j < blockproplist.GetSize(); j++)
           if (blockproplist[j].BlockName == blocklist[i].BlockType)
-            if (blockproplist[j].H_c != 0)
+            if (blockproplist[j].H_c != 0) {
               blocklist[i].MagDir += t;
+              break;
+            }
       }
     }
     EnforcePSLG();
@@ -786,8 +788,10 @@ void CFemmeDoc::RotateMove(CComplex c, double t, int EditAction)
 
         for (j = 0; j < blockproplist.GetSize(); j++)
           if (blockproplist[j].BlockName == blocklist[i].BlockType)
-            if (blockproplist[j].H_c != 0)
+            if (blockproplist[j].H_c != 0) {
               blocklist[i].MagDir += t;
+              break;
+            }
       }
     }
 
@@ -949,8 +953,10 @@ void CFemmeDoc::RotateCopy(CComplex c, double dt, int ncopies, int EditAction)
           lbl.IsSelected = FALSE;
           for (j = 0; j < blockproplist.GetSize(); j++)
             if (blockproplist[j].BlockName == blocklist[i].BlockType)
-              if (blockproplist[j].H_c != 0)
+              if (blockproplist[j].H_c != 0) {
                 lbl.MagDir += t;
+                break;
+              }
 
           blocklist.Add(lbl);
         }
@@ -1081,8 +1087,10 @@ void CFemmeDoc::RotateCopy(CComplex c, double dt, int ncopies, int EditAction)
           lbl.IsSelected = FALSE;
           for (j = 0; j < blockproplist.GetSize(); j++)
             if (blockproplist[j].BlockName == blocklist[i].BlockType)
-              if (blockproplist[j].H_c != 0)
+              if (blockproplist[j].H_c != 0) {
                 lbl.MagDir += t;
+                break;
+              }
 
           blocklist.Add(lbl);
         }

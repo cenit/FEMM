@@ -4378,3 +4378,19 @@ function z=mo_getgapharmonics(bdryname,n)
 		z=callfemm(['mo_gapintegral(' , quotec(bdryname) , num(n) , ')'])
 	end
 endfunction
+
+function mi_setcomment(c)
+	callfemm(['mi_setcomment(' , quote(c), ')']);
+endfunction
+
+function ei_setcomment(c)
+	callfemm(['ei_setcomment(' , quote(c), ')']);
+endfunction
+
+function hi_setcomment(c)
+	callfemm(['hi_setcomment(' , quote(c), ')']);
+endfunction
+
+function ci_setcomment(c)
+	callfemm(['ci_setcomment(' , quote(c), ')']);
+endfunction

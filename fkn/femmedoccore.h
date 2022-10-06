@@ -58,6 +58,8 @@ class CFemmeDocCore {
   // stuff usually kept track of by CDocument
   char* PathName;
 
+  BOOL bDump; // set to dump stiffness matrix in a matlab-readable formatdir
+
   // Operations
   public:
   BOOL LoadPrev();
@@ -77,6 +79,7 @@ class CFemmeDocCore {
   void GetFillFactor(int lbl);
   double ElmArea(int i);
   void CleanUp();
+  BOOL MatlabDumpStatic2D(CBigLinProb& L);
 };
 
 /////////////////////////////////////////////////////////////////////////////

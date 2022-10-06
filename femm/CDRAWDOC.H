@@ -227,6 +227,7 @@ class CcdrawDoc : public CDocument {
   static int lua_getprobleminfo(lua_State* L);
   static int lua_selectcircle(lua_State* L);
   static int lua_selectrectangle(lua_State* L);
+  static int lua_comment(lua_State* L);
   virtual ~CcdrawDoc();
 #ifdef _DEBUG
   virtual void AssertValid() const;
