@@ -1,19 +1,10 @@
 #!/usr/bin/env pwsh
 
-
 param (
   [switch]$DisableInteractive = $false,
-  [switch]$UseVCPKG = $false,
-  [switch]$DoNotUpdateVCPKG = $false,
   [switch]$DoNotUpdateTOOL = $false,
   [switch]$DoNotDeleteBuildFolder = $false,
-  [switch]$DoNotSetupVS = $false,
-  [switch]$DoNotUseNinja = $false,
   [switch]$ForceStaticLib = $false,
-  [switch]$ForceVCPKGCacheRemoval = $false,
-  [switch]$ForceVCPKGBuildtreesRemoval = $false,
-  [switch]$ForceVCPKGPackagesRemoval = $false,
-  [switch]$ForceSetupVS = $false,
   [switch]$ForceTriangle32bit = $false,
   [switch]$DisableLaTeX = $false,
   [Int32]$ForceGCCVersion = 0,
@@ -22,10 +13,7 @@ param (
   [string]$AdditionalBuildSetup = ""  # "-DCMAKE_CUDA_ARCHITECTURES=30"
 )
 
-$build_ps1_version = "1.9.6"
-
-Write-Host "Forcing VS Solution and disabling Ninja"
-$DoNotUseNinja = $true
+$build_ps1_version = "2.0.0"
 
 $ErrorActionPreference = "SilentlyContinue"
 Stop-Transcript | out-null
@@ -86,36 +74,10 @@ Function MyThrow ($Message) {
   }
 }
 
-Function DownloadNinja() {
-  Write-Host "Unable to find Ninja, downloading a portable version on-the-fly" -ForegroundColor Yellow
-  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue ninja
-  Remove-Item -Force -ErrorAction SilentlyContinue ninja.zip
-  if ($IsWindows -or $IsWindowsPowerShell) {
-    $url = "https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-win.zip"
-  }
-  elseif ($IsLinux) {
-    $url = "https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip"
-  }
-  elseif ($IsMacOS) {
-    $url = "https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-mac.zip"
-  }
-  else {
-    MyThrow("Unknown OS, unsupported")
-  }
-  Invoke-RestMethod -Uri $url -Method Get -ContentType application/zip -OutFile "ninja.zip"
-  Expand-Archive -Path ninja.zip
-  Remove-Item -Force -ErrorAction SilentlyContinue ninja.zip
-}
-
-
 Write-Host "Build script version ${build_ps1_version}"
 
-if ((-Not $DisableInteractive) -and (-Not $UseVCPKG)) {
-  $Result = Read-Host "Enable vcpkg to install dependencies (yes/no)"
-  if (($Result -eq 'Yes') -or ($Result -eq 'Y') -or ($Result -eq 'yes') -or ($Result -eq 'y')) {
-    $UseVCPKG = $true
-  }
-}
+Write-Host "Setting parallelism to $env:NUMBER_OF_PROCESSORS"
+$env:CMAKE_BUILD_PARALLEL_LEVEL = $env:NUMBER_OF_PROCESSORS
 
 Write-Host -NoNewLine "PowerShell version:"
 $PSVersionTable.PSVersion
@@ -129,60 +91,9 @@ if ($PSVersionTable.PSVersion.Major -lt 5) {
 }
 
 
-if ($IsLinux -or $IsMacOS) {
-  $bootstrap_ext = ".sh"
-}
-elseif ($IsWindows -or $IsWindowsPowerShell) {
-  $bootstrap_ext = ".bat"
-}
-if ($UseVCPKG) {
-  Write-Host "vcpkg bootstrap script: bootstrap-vcpkg${bootstrap_ext}"
-}
-
-if ((-Not $IsWindows) -and (-Not $IsWindowsPowerShell) -and (-Not $ForceSetupVS)) {
-  $DoNotSetupVS = $true
-}
-
 if ($ForceStaticLib) {
   Write-Host "Forced CMake to produce a static library"
   $AdditionalBuildSetup = $AdditionalBuildSetup + " -DBUILD_SHARED_LIBS=OFF "
-}
-
-if (($IsLinux -or $IsMacOS) -and ($ForceGCCVersion -gt 0)) {
-  Write-Host "Manually setting CC and CXX variables to gcc version $ForceGCCVersion"
-  $env:CC = "gcc-$ForceGCCVersion"
-  $env:CXX = "g++-$ForceGCCVersion"
-}
-
-if (($IsWindows -or $IsWindowsPowerShell) -and (-Not $env:VCPKG_DEFAULT_TRIPLET)) {
-  $env:VCPKG_DEFAULT_TRIPLET = "x64-windows"
-}
-
-if ($UseVCPKG) {
-  Write-Host "VCPKG is enabled"
-  if ($DoNotUpdateVCPKG) {
-    Write-Host "VCPKG will not be updated to latest version if found" -ForegroundColor Yellow
-  }
-  else {
-    Write-Host "VCPKG will be updated to latest version if found"
-  }
-}
-else {
-  Write-Host "VCPKG is disabled, please pass -UseVCPKG to the script to enable"
-}
-
-if ($DoNotSetupVS) {
-  Write-Host "VisualStudio integration is disabled"
-}
-else {
-  Write-Host "VisualStudio integration is enabled, please pass -DoNotSetupVS to the script to disable"
-}
-
-if ($DoNotUseNinja) {
-  Write-Host "Ninja is disabled"
-}
-else {
-  Write-Host "Ninja is enabled, please pass -DoNotUseNinja to the script to disable"
 }
 
 Push-Location $PSScriptRoot
@@ -224,35 +135,6 @@ else {
   $exitCode = $proc.ExitCode
   if (-Not ($exitCode -eq 0)) {
     MyThrow("CMake version check failed! Exited with error code $exitCode.")
-  }
-}
-
-if (-Not $DoNotUseNinja) {
-  $NINJA_EXE = Get-Command "ninja" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
-  if (-Not $NINJA_EXE) {
-    DownloadNinja
-    $env:PATH += ";${PSScriptRoot}/ninja"
-    $NINJA_EXE = Get-Command "ninja" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
-    if (-Not $NINJA_EXE) {
-      $DoNotUseNinja = $true
-      Write-Host "Could not find Ninja, unable to download a portable ninja, using msbuild or make backends as a fallback" -ForegroundColor Yellow
-    }
-  }
-  if ($NINJA_EXE) {
-    Write-Host "Using Ninja from ${NINJA_EXE}"
-    Write-Host -NoNewLine "Ninja version "
-    $proc = Start-Process -NoNewWindow -PassThru -FilePath ${NINJA_EXE} -ArgumentList "--version"
-    $handle = $proc.Handle
-    $proc.WaitForExit()
-    $exitCode = $proc.ExitCode
-    if (-Not ($exitCode -eq 0)) {
-      $DoNotUseNinja = $true
-      Write-Host "Unable to run Ninja previously found, using msbuild or make backends as a fallback" -ForegroundColor Yellow
-    }
-    else {
-      $generator = "Ninja"
-      $AdditionalBuildSetup = $AdditionalBuildSetup + " -DCMAKE_BUILD_TYPE=Release"
-    }
   }
 }
 
@@ -340,102 +222,6 @@ function getLatestVisualStudioWithDesktopWorkloadVersion() {
   return $installationVersion
 }
 
-$vcpkg_root_set_by_this_script = $false
-
-if ((Test-Path env:VCPKG_ROOT) -and $UseVCPKG) {
-  $vcpkg_path = "$env:VCPKG_ROOT"
-  Write-Host "Found vcpkg in VCPKG_ROOT: $vcpkg_path"
-  $AdditionalBuildSetup = $AdditionalBuildSetup + " -DENABLE_VCPKG_INTEGRATION:BOOL=ON"
-}
-elseif ((Test-Path "${env:WORKSPACE}/vcpkg") -and $UseVCPKG) {
-  $vcpkg_path = "${env:WORKSPACE}/vcpkg"
-  $env:VCPKG_ROOT = "${env:WORKSPACE}/vcpkg"
-  $vcpkg_root_set_by_this_script = $true
-  Write-Host "Found vcpkg in WORKSPACE/vcpkg: $vcpkg_path"
-  $AdditionalBuildSetup = $AdditionalBuildSetup + " -DENABLE_VCPKG_INTEGRATION:BOOL=ON"
-}
-elseif (-not($null -eq ${RUNVCPKG_VCPKG_ROOT_OUT})) {
-  if((Test-Path "${RUNVCPKG_VCPKG_ROOT_OUT}") -and $UseVCPKG) {
-    $vcpkg_path = "${RUNVCPKG_VCPKG_ROOT_OUT}"
-    $env:VCPKG_ROOT = "${RUNVCPKG_VCPKG_ROOT_OUT}"
-    $vcpkg_root_set_by_this_script = $true
-    Write-Host "Found vcpkg in RUNVCPKG_VCPKG_ROOT_OUT: ${vcpkg_path}"
-    $AdditionalBuildSetup = $AdditionalBuildSetup + " -DENABLE_VCPKG_INTEGRATION:BOOL=ON"
-  }
-}
-elseif ($UseVCPKG) {
-  if (-Not (Test-Path "$PWD/vcpkg")) {
-    $proc = Start-Process -NoNewWindow -PassThru -FilePath $GIT_EXE -ArgumentList "clone https://github.com/microsoft/vcpkg"
-    $handle = $proc.Handle
-    $proc.WaitForExit()
-    $exitCode = $proc.ExitCode
-    if (-not ($exitCode -eq 0)) {
-      MyThrow("Cloning vcpkg sources failed! Exited with error code $exitCode.")
-    }
-  }
-  $vcpkg_path = "$PWD/vcpkg"
-  $env:VCPKG_ROOT = "$PWD/vcpkg"
-  $vcpkg_root_set_by_this_script = $true
-  Write-Host "Found vcpkg in $PWD/vcpkg: $PWD/vcpkg"
-  $AdditionalBuildSetup = $AdditionalBuildSetup + " -DENABLE_VCPKG_INTEGRATION:BOOL=ON"
-}
-else {
-  Write-Host "Skipping vcpkg integration`n" -ForegroundColor Yellow
-  $AdditionalBuildSetup = $AdditionalBuildSetup + " -DENABLE_VCPKG_INTEGRATION:BOOL=OFF"
-}
-
-if ($UseVCPKG -and (Test-Path "$vcpkg_path/.git") -and (-Not $DoNotUpdateVCPKG)) {
-  Push-Location $vcpkg_path
-  $proc = Start-Process -NoNewWindow -PassThru -FilePath $GIT_EXE -ArgumentList "pull"
-  $handle = $proc.Handle
-  $proc.WaitForExit()
-  $exitCode = $proc.ExitCode
-  if (-Not ($exitCode -eq 0)) {
-    MyThrow("Updating vcpkg sources failed! Exited with error code $exitCode.")
-  }
-  $proc = Start-Process -NoNewWindow -PassThru -FilePath $PWD/bootstrap-vcpkg${bootstrap_ext} -ArgumentList "-disableMetrics"
-  $handle = $proc.Handle
-  $proc.WaitForExit()
-  $exitCode = $proc.ExitCode
-  if (-Not ($exitCode -eq 0)) {
-    MyThrow("Bootstrapping vcpkg failed! Exited with error code $exitCode.")
-  }
-  Pop-Location
-}
-
-if ($UseVCPKG -and ($vcpkg_path.length -gt 40) -and ($IsWindows -or $IsWindowsPowerShell)) {
-  Write-Host "vcpkg path is very long and might fail. Please move it or" -ForegroundColor Yellow
-  Write-Host "the entire tool folder to a shorter path, like C:\src" -ForegroundColor Yellow
-  Write-Host "You can use the subst command to ease the process if necessary" -ForegroundColor Yellow
-  if (-Not $DisableInteractive) {
-    $Result = Read-Host "Do you still want to continue? (yes/no)"
-    if (($Result -eq 'No') -or ($Result -eq 'N') -or ($Result -eq 'no') -or ($Result -eq 'n')) {
-      MyThrow("Build aborted")
-    }
-  }
-}
-
-if ($ForceVCPKGCacheRemoval -and (-Not $UseVCPKG)) {
-  Write-Host "VCPKG is not enabled, so local vcpkg binary cache will not be deleted even if requested" -ForegroundColor Yellow
-}
-
-if ($UseVCPKG -and $ForceVCPKGCacheRemoval) {
-  if ($IsWindows -or $IsWindowsPowerShell) {
-    $vcpkgbinarycachepath = "$env:LOCALAPPDATA/vcpkg/archive"
-  }
-  elseif ($IsLinux) {
-    $vcpkgbinarycachepath = "$env:HOME/.cache/vcpkg/archive"
-  }
-  elseif ($IsMacOS) {
-    $vcpkgbinarycachepath = "$env:HOME/.cache/vcpkg/archive"
-  }
-  else {
-    MyThrow("Unknown OS, unsupported")
-  }
-  Write-Host "Removing local vcpkg binary cache from $vcpkgbinarycachepath" -ForegroundColor Yellow
-  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue $vcpkgbinarycachepath
-}
-
 if (-Not $DoNotSetupVS) {
   $CL_EXE = Get-Command "cl" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
   if ((-Not $CL_EXE) -or ($CL_EXE -match "HostX86\\x86") -or ($CL_EXE -match "HostX64\\x86")) {
@@ -481,35 +267,7 @@ if (-Not $DoNotSetupVS) {
     $dllfolder = ""
   }
 }
-if ($DoNotSetupVS -and $DoNotUseNinja) {
-  $generator = "Unix Makefiles"
-  $AdditionalBuildSetup = $AdditionalBuildSetup + " -DCMAKE_BUILD_TYPE=Release"
-}
 Write-Host "Setting up environment to use CMake generator: $generator"
-
-if (-Not $IsMacOS -and $EnableCUDA) {
-  $NVCC_EXE = Get-Command "nvcc" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Definition
-  if (-Not $NVCC_EXE) {
-    if (Test-Path env:CUDA_PATH) {
-      $env:PATH += ";${env:CUDA_PATH}/bin"
-      Write-Host "Found cuda in ${env:CUDA_PATH}"
-    }
-    else {
-      Write-Host "Unable to find CUDA, if necessary please install it or define a CUDA_PATH env variable pointing to the install folder" -ForegroundColor Yellow
-    }
-  }
-
-  if (Test-Path env:CUDA_PATH) {
-    if (-Not(Test-Path env:CUDA_TOOLKIT_ROOT_DIR)) {
-      $env:CUDA_TOOLKIT_ROOT_DIR = "${env:CUDA_PATH}"
-      Write-Host "Added missing env variable CUDA_TOOLKIT_ROOT_DIR" -ForegroundColor Yellow
-    }
-    if (-Not(Test-Path env:CUDACXX)) {
-      $env:CUDACXX = "${env:CUDA_PATH}/bin/nvcc"
-      Write-Host "Added missing env variable CUDACXX" -ForegroundColor Yellow
-    }
-  }
-}
 
 if (-Not $DoNotDeleteBuildFolder) {
   Write-Host "Removing build folders" -ForegroundColor Yellow
@@ -636,30 +394,6 @@ if (-Not $DoNotDeleteBuildFolder) {
 
 Write-Host "Build complete!" -ForegroundColor Green
 Pop-Location
-
-if ($ForceVCPKGBuildtreesRemoval -and (-Not $UseVCPKG)) {
-  Write-Host "VCPKG is not enabled, so local vcpkg buildtrees folder will not be deleted even if requested" -ForegroundColor Yellow
-}
-
-if ($UseVCPKG -and $ForceVCPKGBuildtreesRemoval) {
-  $vcpkgbuildtreespath = "$vcpkg_path/buildtrees"
-  Write-Host "Removing local vcpkg buildtrees folder from $vcpkgbuildtreespath" -ForegroundColor Yellow
-  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue $vcpkgbuildtreespath
-}
-
-if ($ForceVCPKGPackagesRemoval -and (-Not $UseVCPKG)) {
-  Write-Host "VCPKG is not enabled, so local vcpkg packages folder will not be deleted even if requested" -ForegroundColor Yellow
-}
-
-if ($UseVCPKG -and $ForceVCPKGPackagesRemoval) {
-  $vcpkgpackagespath = "$vcpkg_path/packages"
-  Write-Host "Removing local vcpkg packages folder from $vcpkgpackagespath" -ForegroundColor Yellow
-  Remove-Item -Force -Recurse -ErrorAction SilentlyContinue $vcpkgpackagespath
-}
-
-if ($vcpkg_root_set_by_this_script) {
-  $env:VCPKG_ROOT = $null
-}
 
 $ErrorActionPreference = "SilentlyContinue"
 Stop-Transcript | out-null
