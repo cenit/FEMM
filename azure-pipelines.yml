@@ -15,7 +15,7 @@ jobs:
     - task: PowerShell@2
       inputs:
         filePath: '$(System.DefaultWorkingDirectory)/build.ps1'
-        arguments: '-DoNotUpdateTOOL -DisableInteractive -DisableLaTeX'
+        arguments: '-DoNotUpdateTOOL -DisableInteractive -DisableLaTeX -ForceTriangle32bit'
       displayName: 'Build FEMM'
     - powershell: |
         makensis.exe $(System.DefaultWorkingDirectory)/script.nsi

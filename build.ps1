@@ -287,7 +287,7 @@ else {
 if ($BuildArch -eq "64") {
   if ($ForceTriangle32bit) {
     Write-Host "Triangle will be built as a 32 bit executable!" -ForegroundColor Yellow
-    New-Item -Path .\build_win_release64 -ItemType directory -Force | Out-Null
+    New-Item -Path .\build_win_release64_notriangle -ItemType directory -Force | Out-Null
     Set-Location build_win_release64_notriangle
     $cmake_args = "-A x64 $latexFOUND ${install_prefix} -DSKIP_triangle:BOOL=ON .."
     Write-Host "Configuring CMake project" -ForegroundColor Green
@@ -309,6 +309,7 @@ if ($BuildArch -eq "64") {
     if (-Not ($exitCode -eq 0)) {
       MyThrow("Build failed! Exited with error code $exitCode.")
     }
+    Set-Location ..
     New-Item -Path .\build_win_release32_triangle -ItemType directory -Force | Out-Null
     Set-Location build_win_release32_triangle
     $cmake_args = "-A Win32 $latexFOUND ${install_prefix} -DSKIP_belasolv:BOOL=ON -DSKIP_csolv:BOOL=ON -DSKIP_liblua:BOOL=ON -DSKIP_ResizableLib:BOOL=ON -DSKIP_femm:BOOL=ON -DSKIP_femmplot:BOOL=ON   -DSKIP_fkn:BOOL=ON -DSKIP_hsolv:BOOL=ON -DSKIP_scifemm:BOOL=ON .."

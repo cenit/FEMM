@@ -15,7 +15,8 @@ jobs:
 
     - name: 'Build FEMM'
       shell: pwsh
-      run: ${{ github.workspace }}/build.ps1 -DoNotUpdateTOOL -DisableInteractive -DisableLaTeX
+      run: ${{ github.workspace }}/build.ps1 -DoNotUpdateTOOL -DisableInteractive -DisableLaTeX -ForceTriangle32bit
+
     - name: 'Build Installer'
       shell: pwsh
       run: makensis.exe ${{ github.workspace }}/script.nsi
