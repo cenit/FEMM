@@ -72,7 +72,7 @@ BOOL cvCXYPlotDlg::OnInitDialog()
   m_XYPlotType.AddString("|Jc|   (Magnitude of conduction current density)");
   m_XYPlotType.AddString("Jc . n (Normal conduction current density)");
   m_XYPlotType.AddString("Jc . t (Tangential conduction current density)");
-  m_XYPlotType.AddString("|Jd|   (Magnitude of displacment current density)");
+  m_XYPlotType.AddString("|Jd|   (Magnitude of displacement current density)");
   m_XYPlotType.AddString("Jd . n (Normal displacement current density)");
   m_XYPlotType.AddString("Jd . t (Tangential displacement current density)");
   m_XYPlotType.SetCurSel(0);

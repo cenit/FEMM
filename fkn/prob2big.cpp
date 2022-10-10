@@ -910,7 +910,7 @@ BOOL CFemmeDocCore::WriteHarmonic2D(CBigComplexLinProb& L)
     i = labellist[k].InCircuit;
     if (i < 0) // if block not associated with any particular circuit
     {
-      // print out some "dummy" propeties that say that
+      // print out some "dummy" properties that say that
       // there is a fixed additional current density,
       // but that that additional current density is zero.
       fprintf(fp, "1	0	0\n");

@@ -150,7 +150,7 @@ segments and blocklabels. This function will clear all previously selected
 elements and leave the editmode in 4 (group)
 
 \item{\tt mi\_selectcircle(x,y,R,editmode)} selects objects within a circle of radius
-R centered at (x,y).  If only x, y, and R paramters are given, the current
+R centered at (x,y).  If only x, y, and R parameters are given, the current
 edit mode is used.  If the editmode parameter is used, 0 denotes nodes, 2
 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 specifies
 that all entity types are to be selected.
@@ -250,7 +250,7 @@ current geometry.
 magnetics input file upon which Lua commands are to act. If
 more than one magnetics input file is being edited at a time,
 this command can be used to switch between files so that the
-mutiple files can be operated upon programmatically via Lua. {\tt
+multiple files can be operated upon programmatically via Lua. {\tt
 documentname} should contain the name of the desired document as
 it appears on the window's title bar.
 
@@ -419,7 +419,7 @@ has a flux density of {\tt b} in units of Teslas and a field
 intensity of {\tt h} in units of Amps/Meter.
 
 \item{\tt mi\_clearbhpoints("blockname")} Clears all B-H data points
-associatied with the material specified by {\tt "blockname"}.
+associated with the material specified by {\tt "blockname"}.
 
 \item{\tt mi\_addpointprop("pointpropname",a,j)}
 adds a new point property of name {\tt "pointpropname"} with either
@@ -435,7 +435,7 @@ BdryFormat, ia, oa)} \\ adds a new boundary property with name {\tt
         A1, A2} and {\tt Phi} parameters as required. Set all other
         parameters to zero.
 
-        \item For a ``Small Skin Depth'' type boundary condtion, set the {\tt Mu}
+        \item For a ``Small Skin Depth'' type boundary condition, set the {\tt Mu}
         to the desired relative permeability and {\tt Sig} to the desired
         conductivity in MS/m.  Set {\tt BdryFormat} to 1 and all other
         parameters to zero.
@@ -577,7 +577,7 @@ names, the parameter should be set to 1.
 \item{\tt mi\_readdxf("filename")} This function imports a dxf file specified by {\tt "filename"}.
 \item{\tt mi\_savedxf("filename")} This function saves geometry informationin a dxf file specified by {\tt "filename"}.
 \item{\tt mi\_defineouterspace(Zo,Ro,Ri)} defines
-an axisymmetric external region to be used in conjuction with the
+an axisymmetric external region to be used in conjunction with the
 Kelvin Transformation method of modeling unbounded problems.  The
 {\tt Zo} parameter is the z-location of the origin of the outer region,
 the {\tt Ro} parameter is the radius of the outer region, and the {\tt
@@ -723,7 +723,7 @@ and {\tt NumPoints} are specified, the command is interpreted as a request to pl
 requested plot type to the screen.  If, in addition, the {\tt Filename} parameter is specified,
 the plot is instead written to disk to the specified file name as an extended metafile.
 If the {\tt FileFormat} parameter is also, the command is instead interpreted as a command to
-write the data to disk to the specfied file name, rather than display it to make a
+write the data to disk to the specified file name, rather than display it to make a
 graphical plot.
 Valid entries for {\tt PlotType} are:
 \begin{center}
@@ -859,7 +859,7 @@ selected points lie at the ends of an arcsegment, a contour is
 added that traces along the arcsegment.  The {\tt mo\_selectpoint}
 command has the same functionality as the left-button-click contour
 point selection when the program is running in interactive mode.
-\item{\tt mo\_clearcontour()} Clear a prevously defined contour
+\item{\tt mo\_clearcontour()} Clear a previously defined contour
 \item{\tt mo\_clearblock()} Clear block selection
 \end{itemize}
 

@@ -849,7 +849,7 @@ BOOL CFemmeDoc::FunnyOnWritePoly()
   // for each arc associated with a particular Air Gap Element...
 
   // find out the total arc length and arc elements
-  // corresponding ot each lineproplist entry
+  // corresponding to each lineproplist entry
   for (i = 0; i < arclist.GetSize(); i++) {
     if (arclist[i].BoundaryMarker != "<None>") {
       for (j = 0; j < agelst.GetSize(); j++) {

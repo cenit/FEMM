@@ -165,7 +165,7 @@ unknown platform
  * number is incremented whenever a named constant or function is added,
  * removed, or its behavior is changed in a way that could break existing
  * correct* client programs.  It is expected that the interface to MathLink
- * is improved over time so that implemenations of higher numbered 
+ * is improved over time so that implementations of higher numbered 
  * interfaces are more complete or more convenient to use for writing
  * effective client programs.  In particular, a specific interface provides
  * all the useful functionality of an earlier interface.
@@ -185,7 +185,7 @@ unknown platform
  *     load the MathLink library manually.)
  * 
  * 
- * If a distributed MathLink implmentation were labeled with its revision 
+ * If a distributed MathLink implementation were labeled with its revision 
  * and interface numbers in dotted notation so that, say, ML.1.6 means the
  * sixth revision of interface one, then the following may represent the
  * distribution history of MathLink.
@@ -711,7 +711,7 @@ typedef long long_et;
 #endif
 typedef __mlapi_result__ mlapi_result;
 
-#define MLSUCCESS (1) /*bugcheck:  this stuff doesnt belong where it can be seen at MLAPI_ layer */
+#define MLSUCCESS (1) /*bugcheck:  this stuff doesn't belong where it can be seen at MLAPI_ layer */
 #define MLFAILURE (0)
 
 ML_EXTERN_C
@@ -982,7 +982,7 @@ ML_EXTERN_C
  * #define MLTK_128BIT_UNSIGNED_2sCOMPLEMENT_BIGENDIAN_INTEGER   ((unsigned char)'\257')
  * with  Range[0, 340282366920938463463374607431768211456 (*approximately 3.40282e+38*)]
  * the dynamic range is still a monotonically increasing function of the token value.
- * An implementation might choose to set the high varient bit to mainain this property
+ * An implementation might choose to set the high variant bit to maintain this property
  * and dispatch more efficiently by avoiding overflow checks
  */
 
@@ -1164,7 +1164,7 @@ ML_END_EXTERN_C
 #define MLTK_CLONGDOUBLE MLTK_BIGENDIAN_IEEE754_DOUBLE
 #elif defined(__MRC__) && __MRC__ >= 0x0300 && __MRC__ != 0x0800
 /* MrC version 1.0 defined __MRC__ to be 0x0800 presumably because of its Symantec heritage */
-/* One cannot querry value of -ldsize with old MrC or PPCC -- assume -ldsize 128 */
+/* One cannot query value of -ldsize with old MrC or PPCC -- assume -ldsize 128 */
 #if __option(ldsize128)
 #define MLTK_CLONGDOUBLE MLTK_128BIT_LONGDOUBLE
 #else
@@ -2471,7 +2471,7 @@ MLDECL(void, MLDisownLongDoubleArray, (MLINK mlp, extendedp_nt data, longp_st di
 #endif
 ML_END_EXTERN_C
 
-/*************** seeking, transfering  and synchronization ***************/
+/*************** seeking, transferring  and synchronization ***************/
 
 #ifndef _MLMARK_H
 #define _MLMARK_H

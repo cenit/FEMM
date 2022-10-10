@@ -301,7 +301,7 @@ void CResizableSheet::EnableSaveRestore(LPCTSTR pszSection, BOOL bRectOnly, BOOL
   LoadPage();
 }
 
-// private memebers
+// private members
 
 // used to save/restore active page
 // either in the registry or a private .INI file

@@ -51,7 +51,7 @@ segments and block labels. This function will clear all previously selected
 elements and leave the edit mode in 4 (group)
 
 \item{\tt ci\_selectcircle(x,y,R,editmode)} selects objects within a circle of radius
-R centered at (x,y).  If only x, y, and R paramters are given, the current
+R centered at (x,y).  If only x, y, and R parameters are given, the current
 edit mode is used.  If the editmode parameter is used, 0 denotes nodes, 2
 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 specifies
 that all entity types are to be selected.
@@ -142,7 +142,7 @@ entries are
 \texttt{"mils"}, \texttt{"meters}, and \texttt{"micrometers"}. Set
 \texttt{problemtype} to \texttt{"planar"} for a 2-D planar problem, or to
 \texttt{"axi"} for an axisymmetric problem. The \texttt{frequency} parameter specifies the frequency
-in Hz at which the analysis ois to be performed. The \texttt{precision} parameter
+in Hz at which the analysis is to be performed. The \texttt{precision} parameter
 dictates the precision required by the solver. For example, entering
 \texttt{1.E-8} requires the RMS of the residual to be less than 10$^{ - 8}$.
 A fourth parameter, representing the depth of the problem in the
@@ -162,7 +162,7 @@ current geometry.
 electrostatics input file upon which Lua commands are to act. If
 more than one electrostatics input file is being edited at a time,
 this command can be used to switch between files so that the
-mutiple files can be operated upon programmatically via Lua. {\tt
+multiple files can be operated upon programmatically via Lua. {\tt
 documentname} should contain the name of the desired document as
 it appears on the window's title bar.
 
@@ -485,7 +485,7 @@ should be set to 1.
 \item{\tt ci\_savedxf("filename")} This function saves geometry information in a dxf file specified by {\tt "filename"}.
 
 \item{\tt ci\_defineouterspace(Zo,Ro,Ri)} defines
-an axisymmetric external region to be used in conjuction with the
+an axisymmetric external region to be used in conjunction with the
 Kelvin Transformation method of modeling unbounded problems.  The
 {\tt Zo} parameter is the z-location of the origin of the outer region,
 the {\tt Ro} parameter is the radius of the outer region, and the {\tt
@@ -605,7 +605,7 @@ are specified, the command is interpreted as a request to plot the requested
 plot type to the screen. If, in addition, the Filename parameter is
 specified, the plot is instead written to disk to the specified file name as
 an extended metafile. If the FileFormat parameter is also, the command is
-instead interpreted as a command to write the data to disk to the specfied
+instead interpreted as a command to write the data to disk to the specified
 file name, rather than display it to make a graphical plot. Valid entries
 for PlotType are:
 
@@ -708,7 +708,7 @@ arcsegment. The \texttt{selectpoint} command has the same
 functionality as the left-button-click contour point selection when
 the program is running in interactive mode.
 
-\item \texttt{co\_clearcontour()} Clear a prevously defined contour
+\item \texttt{co\_clearcontour()} Clear a previously defined contour
 
 \item \texttt{co\_clearblock()} Clear block selection
 \end{itemize}

@@ -81,7 +81,7 @@ BOOL CXYPlotDlg::OnInitDialog()
     m_XYPlotType.AddString("H . n      (Normal field intensity)");
     m_XYPlotType.AddString("H . t      (Tangential field intensity)");
     m_XYPlotType.AddString("J_eddy     (Eddy current density)");
-    m_XYPlotType.AddString("Js+J_eddy  (Source+eddy curent density)");
+    m_XYPlotType.AddString("Js+J_eddy  (Source+eddy current density)");
     m_XYPlotType.SetCurSel(1);
   }
 

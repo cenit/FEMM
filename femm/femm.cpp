@@ -757,8 +757,8 @@ int CFemmApp::lua_ERROR(lua_State* L)
   errmsg.Format("%s", lua_tostring(L, 1));
   theApp.LuaErrmsg = errmsg;
 
-  // Somthing went wrong in lua execution
-  // Windows dosn't have stdout so lets afxmessagebox it
+  // Something went wrong in lua execution
+  // Windows doesn't have stdout so lets afxmessagebox it
   if (theApp.bFileLink) {
     FILE* fp;
     fp = fopen(theApp.OFile, "wt");

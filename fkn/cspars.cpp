@@ -124,7 +124,7 @@ void CBigComplexLinProb::Put(CComplex v, int p, int q, int k)
       v = -conj(v); // antihermitian matrix
   }
 
-  // allocate space for auxilliary matrices if they are actually needed
+  // allocate space for auxiliary matrices if they are actually needed
   if ((k > 0) && (bNewton == FALSE)) {
     bNewton = TRUE;
 
@@ -254,12 +254,12 @@ void CBigComplexLinProb::MultA(CComplex* X, CComplex* Y, int k)
     Y[i] = 0;
 
   // force the program to give the plain matrix multiply
-  // if auxilliary matrices have not been built
+  // if auxiliary matrices have not been built
   if ((!bNewton) && (k != 0))
     k = 0;
 
   // Make the default call return the full multiply, including
-  // the auxilliary matrix multiplies, when these matrices exist
+  // the auxiliary matrix multiplies, when these matrices exist
   if ((bNewton) && (k == -1)) {
     MultA(X, Y, 0);
     MultA(X, uu, 1);

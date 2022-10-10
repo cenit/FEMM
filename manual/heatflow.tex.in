@@ -179,7 +179,7 @@ descriptive name for the material that is being described. Enter it in the
 \texttt{Name} edit box in lieu of {\tt New Material}.
 
 Next, the thermal conductivity for the material needs to be specified. There is a drop
-list on the dialog that allows the user to select either a contant thermal conductivity
+list on the dialog that allows the user to select either a constant thermal conductivity
 ({\em i.e.} independent of temperature), or a thermal conductivity that is prescribed
 as a function of temperature. If conductivity is selected, FEMM allows you
 to specify different conductivities in the vertical and horizontal
