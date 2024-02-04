@@ -36,9 +36,9 @@
 % ------------------------------------------------------------------------
 % Packages to use for a dvips document:
 % ------------------------------------------------------------------------
-\usepackage{pslatex}
-\usepackage[dvips]{graphicx}
-\usepackage[dvips]{hyperref}
+%\usepackage{pslatex}
+\usepackage{graphicx}
+\usepackage{hyperref}
 
 \UseRawInputEncoding
 
