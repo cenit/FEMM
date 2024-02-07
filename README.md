@@ -1,4 +1,20 @@
-﻿FEMM 4.2 25Jul2022
+﻿FEMM 4.2 22Oct2023
+
+22Oct2023
+
+* Updated radiation boundary condition in thermal problems so that convective
+  terms are also used, i.e. a combined radiation/convection/flux boundary can
+  be modeled if desired. Convection bc also updated so that convection/flux
+  can be modeled if desired.
+* Updated some low-level aspects how femm and the solvers are initialized to
+  support programmatically hiding the main window while using pyfemm in Wine.
+* Patched triangle source code from:
+  https://github.com/microsoft/vcpkg/tree/master/ports/triangle
+  added for VS2022 compatibility.  The VS2022 version of the solution points
+  to the triangle64 directory which contains the patched code.  However, the
+  distribution executables were compiled with VS2008 using the source in the
+  (unpatched) triangle directory for Wine compatibility.
+
 25Jul2022
 
 * Fixed a bug where imaginary part of a conductor voltage in a current flow
@@ -48,7 +64,8 @@
 * Changed all calls to Triangle to use the -j flag to "jettison vertices that
   are not part of the final triangulation from the output .node file". This
   gets rid of the spurious "singlarity flag tripped" and "can't solve the
-  problem" messages that popped up due to orphaned nodes in the solution domain.
+  problem" messages that popped up due to orphaned nodes in the solution 
+  domain.
 
 21Apr2019: 
 
@@ -66,10 +83,10 @@
   Sintered SmCo, and Alnico. See explanatory webpages on femm.info for sources
   and rationale.
 * Fixed precision in exported DXF so that no precision is lost in DXF exports.
-* Changed the algorithm that identifies limits for plotting flux density so that
-  exterior regions (both Kelvin Transformation and IABC) are not considered.
-  These exterior regions can have high flux densities that mask the flux density
-  variations in the interior region of interest.
+* Changed the algorithm that identifies limits for plotting flux density so 
+  that exterior regions (both Kelvin Transformation and IABC) are not 
+  considered. These exterior regions can have high flux densities that mask
+  the flux density variations in the interior region of interest.
   
 06Oct2018: (Test Build)
 

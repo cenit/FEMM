@@ -10,7 +10,7 @@ class hdCProbDlg : public CDialog {
   hdCProbDlg(CWnd* pParent = NULL); // standard constructor
 
   BOOL probtype; // variable denoting problem type
-      // so list entry can be correctly set
+                 // so list entry can be correctly set
   int lengthunits; // contains units of length;
   int bsmart;
 

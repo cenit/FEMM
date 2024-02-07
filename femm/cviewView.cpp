@@ -1835,7 +1835,7 @@ void CcviewView::OnLButtonDown(UINT nFlags, CPoint point)
 
       if (pDoc->contour.GetSize() > 0) {
 
-        //check to see if point is the same as last point in the contour;
+        // check to see if point is the same as last point in the contour;
         y = pDoc->contour[pDoc->contour.GetSize() - 1];
         if ((y.re == z.re) && (y.im == z.im))
           return;
@@ -1843,8 +1843,8 @@ void CcviewView::OnLButtonDown(UINT nFlags, CPoint point)
         j = pDoc->ClosestNode(y.re, y.im);
         x.Set(pDoc->nodelist[j].x, pDoc->nodelist[j].y);
 
-        //check to see if this point and the last point are ends of an
-        //input segment;
+        // check to see if this point and the last point are ends of an
+        // input segment;
         lineno = -1;
         d1 = 1.e08;
 
@@ -1867,8 +1867,8 @@ void CcviewView::OnLButtonDown(UINT nFlags, CPoint point)
           }
         }
 
-        //check to see if this point and last point are ends of an
-        // arc segment; if so, add entire arc to the contour;
+        // check to see if this point and last point are ends of an
+        //  arc segment; if so, add entire arc to the contour;
         arcno = -1;
         if (abs(x - y) < 1.e-08) {
           for (k = 0; k < pDoc->arclist.GetSize(); k++) {
@@ -2070,7 +2070,7 @@ void CcviewView::OnRButtonDown(UINT nFlags, CPoint point)
 
     if (j < 0)
       return; // return if the closest object is associated with
-          // the default group, or if there are no objects.
+              // the default group, or if there are no objects.
 
     pDoc->bHasMask = FALSE;
 

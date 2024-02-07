@@ -94,9 +94,9 @@ class CMaterialProp {
   CComplex* BHdata; // array of B-H pairs;
 
   int LamType; // flag that tells how block is laminated;
-      //	0 = not laminated or laminated in plane;
-      //  1 = laminated in the x-direction;
-      //  2 = laminated in the y-direction;
+               //	0 = not laminated or laminated in plane;
+               //  1 = laminated in the x-direction;
+               //  2 = laminated in the y-direction;
   double LamFill; // lamination fill factor, dimensionless;
   double Theta_m; // direction of the magnetization, degrees
   double H_c; // magnetization, A/m
@@ -118,19 +118,19 @@ class CBoundaryProp {
 
   CString BdryName;
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
-      // 3 = SDI
-      // 4 = Periodic
-      // 5 = Antiperiodic
-      // 6 = Periodic air gap element
-      // 7 = Antiperiodic air gap element
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
+                  // 3 = SDI
+                  // 4 = Periodic
+                  // 5 = Antiperiodic
+                  // 6 = Periodic air gap element
+                  // 7 = Antiperiodic air gap element
 
   double A0, A1, A2, phi; // set value of A for BdryFormat=0;
 
   double Mu, Sig; // material properties necessary to apply
-      // eddy current BC
+                  // eddy current BC
 
   CComplex c0, c1; // coefficients for mixed BC
 
@@ -171,7 +171,7 @@ class CPeriodicBoundary {
 
   CString BdryName;
   int BdryFormat; // 0 = Periodic
-      // 1 = Antiperiodic
+                  // 1 = Antiperiodic
   int nseg; // number of segs with this bc
   int narc; // number of arcs with this bc
   int seg[2]; // (arc)segments to which is applied
@@ -196,7 +196,7 @@ class CAirGapElement {
 
   CString BdryName;
   int BdryFormat; // 0 = Periodic
-      // 1 = Antiperiodic
+                  // 1 = Antiperiodic
 
   int totalArcElements; // total elements in the initial meshing
   double totalArcLength; // sum of the angles of all constituent arcs

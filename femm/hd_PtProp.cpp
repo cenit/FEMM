@@ -114,7 +114,7 @@ void hdCPtProp::OnAddProp()
     zDlg.m_htc = MProp.h;
     zDlg.m_To1 = MProp.Tinf;
     zDlg.m_beta = MProp.beta;
-    zDlg.m_To2 = MProp.Tinf;
+    zDlg.m_To2 = MProp.TinfRad;
     zDlg.BdryFormat = MProp.BdryFormat;
     zDlg.m_BdryName = MProp.BdryName;
 
@@ -126,10 +126,8 @@ void hdCPtProp::OnAddProp()
       lineproplist[k].qs = zDlg.m_qs;
       lineproplist[k].h = zDlg.m_htc;
       lineproplist[k].beta = zDlg.m_beta;
-      if (lineproplist[k].BdryFormat == 2)
-        lineproplist[k].Tinf = zDlg.m_To1;
-      else
-        lineproplist[k].Tinf = zDlg.m_To2;
+      lineproplist[k].Tinf = zDlg.m_To1;
+      lineproplist[k].TinfRad = zDlg.m_To2;
 
       m_namelist.AddString(lineproplist[k].BdryName);
       m_namelist.SetCurSel(k);
@@ -301,7 +299,7 @@ void hdCPtProp::OnModProp()
     zDlg.m_beta = lineproplist[k].beta;
     zDlg.m_htc = lineproplist[k].h;
     zDlg.m_To1 = lineproplist[k].Tinf;
-    zDlg.m_To2 = lineproplist[k].Tinf;
+    zDlg.m_To2 = lineproplist[k].TinfRad;
     zDlg.BdryFormat = lineproplist[k].BdryFormat;
     zDlg.m_BdryName = lineproplist[k].BdryName;
     for (int nn = 0; nn < lineproplist.GetSize(); nn++)
@@ -315,10 +313,8 @@ void hdCPtProp::OnModProp()
       lineproplist[k].qs = zDlg.m_qs;
       lineproplist[k].beta = zDlg.m_beta;
       lineproplist[k].h = zDlg.m_htc;
-      if (lineproplist[k].BdryFormat == 2)
-        lineproplist[k].Tinf = zDlg.m_To1;
-      else
-        lineproplist[k].Tinf = zDlg.m_To2;
+      lineproplist[k].Tinf = zDlg.m_To1;
+      lineproplist[k].TinfRad = zDlg.m_To2;
       m_namelist.InsertString(k, zDlg.m_BdryName);
       m_namelist.DeleteString(k + 1);
       m_namelist.SetCurSel(k);
@@ -421,5 +417,5 @@ BOOL hdCPtProp::OnInitDialog()
   }
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }

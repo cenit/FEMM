@@ -28,14 +28,14 @@ BOOL Chsolvdoc::SortElements()
   gap = NumEls;
 
   do {
-    //update the gap value for a next comb
+    // update the gap value for a next comb
     if (gap > 1) {
       gap = (gap * 10) / 13;
       if ((gap == 10) || (gap == 9))
         gap = 11;
     }
 
-    //a single "comb" over the input list
+    // a single "comb" over the input list
     for (j = 0, i = 0; (j + gap) < NumEls; j++) {
       if (Score[j] > Score[j + gap]) {
         k = j + gap;
@@ -186,8 +186,8 @@ BOOL Chsolvdoc::Cuthill()
         }
         if (j == 2)
           i = NumNodes; // break out if j==2,
-              // because this is the
-              // best we can do
+                        // because this is the
+                        // best we can do
       }
 
       // now, set things to restart;

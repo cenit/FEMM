@@ -1920,7 +1920,7 @@ PBITMAPINFO CbeladrawDoc::CreateBitmapInfoStruct(HWND hwnd, HBITMAP hBmp)
   WORD cClrBits;
 
   // Retrieve the bitmap's color format, width, and height.
-  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { //errhandler("GetObject", hwnd);
+  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { // errhandler("GetObject", hwnd);
     MsgBox("Critical error on getting bmp info, possible page fault ahoy1");
   }
   // Convert the color format to a count of bits.

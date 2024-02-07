@@ -284,6 +284,13 @@ BOOL Chsolvdoc::OnOpenDocument()
     if (_strnicmp(q, "<Tinf>", 6) == 0) {
       v = StripKey(s);
       sscanf(v, "%lf", &BProp.Tinf);
+      BProp.TinfRad = BProp.Tinf; // for backward compatibility
+      q[0] = NULL;
+    }
+
+    if (_strnicmp(q, "<TinfRad>", 9) == 0) {
+      v = StripKey(s);
+      sscanf(v, "%lf", &BProp.TinfRad);
       q[0] = NULL;
     }
 
@@ -513,7 +520,7 @@ BOOL Chsolvdoc::LoadMesh()
   //	double c[]={25.4,1.,10.,1000.,0.0254,0.001};
   double c[] = { 0.0254, 0.001, 0.01, 1, 2.54e-5, 1.e-6 };
 
-  //read meshnodes;
+  // read meshnodes;
   sprintf(infile, "%s.node", PathName);
   if ((fp = fopen(infile, "rt")) == NULL) {
     return FALSE;
@@ -554,7 +561,7 @@ BOOL Chsolvdoc::LoadMesh()
   }
   fclose(fp);
 
-  //read in periodic boundary conditions;
+  // read in periodic boundary conditions;
   sprintf(infile, "%s.pbc", PathName);
   if ((fp = fopen(infile, "rt")) == NULL) {
     return FALSE;
@@ -727,8 +734,8 @@ BOOL Chsolvdoc::LoadMesh()
 
         meshele[mbr[n0][q]] = elm;
 
-        //this is a little hack: line charge distributions should be applied
-        //to at most one element;
+        // this is a little hack: line charge distributions should be applied
+        // to at most one element;
         if ((lineproplist[j].BdryFormat == 2) && (n))
           q = nmbr[n0];
       }

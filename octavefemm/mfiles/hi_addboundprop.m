@@ -1,6 +1,6 @@
 % ActiveFEMM (C)2006 David Meeker, dmeeker@ieee.org
-
-function hi_addboundprop(pname,fmt,Tset,qs,Tinf,h,bta)
+% Modified 04Jun2023 to add in support for combined radiation/convection BC
+function hi_addboundprop(pname,fmt,Tset,qs,Tinf,h,bta,TinfRad)
 switch nargin
 	case 0
 		callfemm('hi_addboundprop()');
@@ -16,7 +16,9 @@ switch nargin
         callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , num(Tinf) , ')' ]);
 	case 6
         callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , num(h), ')' ]);
+	case 7
+        callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , numc(h) , num(bta) , ')' ]);
 	otherwise
-        callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , numc(h), num(bta) , ')' ]);
+		callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , numc(h) , numc(bta) , num(TinfRad) , ')' ]);
 end
 

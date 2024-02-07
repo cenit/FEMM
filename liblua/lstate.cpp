@@ -24,8 +24,8 @@ void luaB_opentests(lua_State* L);
 
 extern TObject luaO_nilobject;
 
-//luaO_nilobject.ttype = 1;
-//luaO_nilobject.Value = {NULL};
+// luaO_nilobject.ttype = 1;
+// luaO_nilobject.Value = {NULL};
 /*
 ** built-in implementation for ERRORMESSAGE. In a "correct" environment
 ** ERRORMESSAGE should have an external definition, and so this function

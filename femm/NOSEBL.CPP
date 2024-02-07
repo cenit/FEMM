@@ -157,7 +157,7 @@ void CMaterialProp::StripBHData(CString& b, CString& h)
   while (sscanf(nptr, "%lf", &z) != EOF) {
     z = strtod(nptr, &endptr);
     if (nptr == endptr)
-      nptr++; //catch special case
+      nptr++; // catch special case
     else
       nptr = endptr;
     if (B.GetSize() > 0) { // enforce monotonicity
@@ -228,9 +228,9 @@ CBoundaryProp::CBoundaryProp()
 {
   BdryName = "New Boundary";
   BdryFormat = 0; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
 
   A0 = 0.;
   A1 = 0.;
@@ -239,7 +239,7 @@ CBoundaryProp::CBoundaryProp()
 
   Mu = 0.;
   Sig = 0.; // material properties necessary to apply
-      // eddy current BC
+            // eddy current BC
 
   c0 = 0.;
   c1 = 0.; // coefficients for mixed BC

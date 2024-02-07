@@ -162,11 +162,11 @@ BOOL hdCLibDlg::OnInitDialog()
   fclose(fp);
 
   /*
-	// tutorial example
-    HTREEITEM hChapter;
-    hChapter = m_mytree.InsertItem( "Chapter 1", 0, 1 );
-    m_mytree.InsertItem( "What", 2, 2, hChapter );
-*/
+    // tutorial example
+      HTREEITEM hChapter;
+      hChapter = m_mytree.InsertItem( "Chapter 1", 0, 1 );
+      m_mytree.InsertItem( "What", 2, 2, hChapter );
+  */
 
   Focus = NULL;
 

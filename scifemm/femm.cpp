@@ -1,6 +1,6 @@
 // Machine generated IDispatch wrapper class(es) created with ClassWizard
 
-//#include "stdafx.h"
+// #include "stdafx.h"
 #include "femm.h"
 
 #ifdef _DEBUG

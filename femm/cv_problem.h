@@ -110,11 +110,11 @@ class CBoundaryProp {
   CString InConductor;
 
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = Fixed Voltage
-      // 1 = Mixed BC
-      // 2 = Surface Current Density
-      // 3 = Periodic
-      // 4 = Antiperiodic
+                  // 0 = Fixed Voltage
+                  // 1 = Mixed BC
+                  // 2 = Surface Current Density
+                  // 3 = Periodic
+                  // 4 = Antiperiodic
 
   CComplex V; // Fixed value of V for BdryFormat=0;
   CComplex c0, c1; // Coefficients for BdryFormat=1;

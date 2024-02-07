@@ -8,7 +8,7 @@
 #include "spars.h"
 #include "FemmeDocCore.h"
 
-//conversion to internal working units of mm
+// conversion to internal working units of mm
 double units[] = { 25.4, 1., 10., 1000., 0.0254, 0.001 };
 double sq(double x) { return x * x; }
 

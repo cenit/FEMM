@@ -72,7 +72,7 @@ BOOL cdCProbDlg::OnInitDialog()
   m_bsmart.SetCurSel(bsmart);
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void cdCProbDlg::OnOK()

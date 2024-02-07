@@ -2214,7 +2214,7 @@ void CFemmviewView::OnLButtonDown(UINT nFlags, CPoint point)
 
       if (pDoc->contour.GetSize() > 0) {
 
-        //check to see if point is the same as last point in the contour;
+        // check to see if point is the same as last point in the contour;
         y = pDoc->contour[pDoc->contour.GetSize() - 1];
         if ((y.re == z.re) && (y.im == z.im))
           return;
@@ -2222,8 +2222,8 @@ void CFemmviewView::OnLButtonDown(UINT nFlags, CPoint point)
         j = pDoc->ClosestNode(y.re, y.im);
         x.Set(pDoc->nodelist[j].x, pDoc->nodelist[j].y);
 
-        //check to see if this point and the last point are ends of an
-        //input segment;
+        // check to see if this point and the last point are ends of an
+        // input segment;
         lineno = -1;
         d1 = 1.e08;
 
@@ -2246,8 +2246,8 @@ void CFemmviewView::OnLButtonDown(UINT nFlags, CPoint point)
           }
         }
 
-        //check to see if this point and last point are ends of an
-        // arc segment; if so, add entire arc to the contour;
+        // check to see if this point and last point are ends of an
+        //  arc segment; if so, add entire arc to the contour;
         arcno = -1;
         if (abs(x - y) < 1.e-08) {
           for (k = 0; k < pDoc->arclist.GetSize(); k++) {
@@ -2335,44 +2335,44 @@ void CFemmviewView::OnLButtonDown(UINT nFlags, CPoint point)
         ReleaseDC(pDC);
       }
       /*			else{ // if not in an element, select nearest arc or line
-				CFemmviewDoc *pDoc=GetDocument();
-				int clseg,claseg;
-				int myType=0;
-				double dseg,daseg;
+              CFemmviewDoc *pDoc=GetDocument();
+              int clseg,claseg;
+              int myType=0;
+              double dseg,daseg;
 
-				// find distance to closest segment;
-				clseg=pDoc->ClosestSegment(mx,my);
-				if (clseg>=0){
-					dseg=pDoc->ShortestDistance(mx,my,clseg);
-					myType+=1;
-				}
-				else dseg=-1.;
+              // find distance to closest segment;
+              clseg=pDoc->ClosestSegment(mx,my);
+              if (clseg>=0){
+                dseg=pDoc->ShortestDistance(mx,my,clseg);
+                myType+=1;
+              }
+              else dseg=-1.;
 
-				// find distance to closest arc segment;
-				claseg=pDoc->ClosestArcSegment(mx,my);
-				if (claseg>=0) 
-				{
-					daseg=pDoc->ShortestDistanceFromArc(CComplex(mx,my),pDoc->arclist[claseg]);
-					myType+=2;
-				}
-				else daseg=-1.;
+              // find distance to closest arc segment;
+              claseg=pDoc->ClosestArcSegment(mx,my);
+              if (claseg>=0)
+              {
+                daseg=pDoc->ShortestDistanceFromArc(CComplex(mx,my),pDoc->arclist[claseg]);
+                myType+=2;
+              }
+              else daseg=-1.;
 
-				switch(myType)
-				{
-					case 1: pDoc->linelist[clseg].ToggleSelect(); break;
-					case 2: pDoc->arclist[claseg].ToggleSelect(); break;
-					case 3:
-						if (dseg<daseg) pDoc->linelist[clseg].ToggleSelect();
-						else pDoc->arclist[claseg].ToggleSelect();
-						break;
-					default: return;
-				}
+              switch(myType)
+              {
+                case 1: pDoc->linelist[clseg].ToggleSelect(); break;
+                case 2: pDoc->arclist[claseg].ToggleSelect(); break;
+                case 3:
+                  if (dseg<daseg) pDoc->linelist[clseg].ToggleSelect();
+                  else pDoc->arclist[claseg].ToggleSelect();
+                  break;
+                default: return;
+              }
 
-				CDC *pDC=GetDC();
-				OnDraw(pDC);
-				ReleaseDC(pDC);
+              CDC *pDC=GetDC();
+              OnDraw(pDC);
+              ReleaseDC(pDC);
 
-			} */
+            } */
     }
   }
 
@@ -3220,7 +3220,7 @@ void CFemmviewView::OnMenuIntegrate()
           }
 
           MyMessageBox(ss);
-          //AfxMessageBox(ss,MB_ICONINFORMATION);
+          // AfxMessageBox(ss,MB_ICONINFORMATION);
         }
 
         free(z);
@@ -3541,14 +3541,14 @@ void CFemmviewView::OnMenuIntegrate()
         lua_pop(lua, n);
       } else {
         lua_pushstring(lua, dlg.BdryName);
-        lua_pushnumber(lua, 0); //DC part of torque
+        lua_pushnumber(lua, 0); // DC part of torque
         pDoc->lua_gapintegral(lua);
         y1 = lua_todouble(lua, -1);
         n = lua_gettop(lua);
         lua_pop(lua, n);
 
         lua_pushstring(lua, dlg.BdryName);
-        lua_pushnumber(lua, 3); //2X part of torque
+        lua_pushnumber(lua, 3); // 2X part of torque
         pDoc->lua_gapintegral(lua);
         z1 = lua_tonumber(lua, -1);
         n = lua_gettop(lua);
@@ -3559,7 +3559,7 @@ void CFemmviewView::OnMenuIntegrate()
       MyMessageBox(s);
       break;
 
-    case 1: //Force
+    case 1: // Force
       if (pDoc->Frequency == 0) {
         lua_pushstring(lua, dlg.BdryName);
         lua_pushnumber(lua, 1);
@@ -3571,7 +3571,7 @@ void CFemmviewView::OnMenuIntegrate()
         s.Format("Fx = %g N\nFy = %g N", y1, y2);
       } else {
         lua_pushstring(lua, dlg.BdryName);
-        lua_pushnumber(lua, 1); //DC part of torque
+        lua_pushnumber(lua, 1); // DC part of torque
         pDoc->lua_gapintegral(lua);
         y1 = lua_todouble(lua, -2);
         y2 = lua_todouble(lua, -1);
@@ -3579,7 +3579,7 @@ void CFemmviewView::OnMenuIntegrate()
         lua_pop(lua, n);
 
         lua_pushstring(lua, dlg.BdryName);
-        lua_pushnumber(lua, 4); //2X part of torque
+        lua_pushnumber(lua, 4); // 2X part of torque
         pDoc->lua_gapintegral(lua);
         z1 = lua_tonumber(lua, -2);
         z2 = lua_tonumber(lua, -1);
@@ -3591,7 +3591,7 @@ void CFemmviewView::OnMenuIntegrate()
       MyMessageBox(s);
       break;
 
-    case 2: //Energy
+    case 2: // Energy
       lua_pushstring(lua, dlg.BdryName);
       lua_pushnumber(lua, 2);
       pDoc->lua_gapintegral(lua);
@@ -3606,7 +3606,7 @@ void CFemmviewView::OnMenuIntegrate()
       MyMessageBox(s);
       break;
 
-    case 3: //Interaction Torque
+    case 3: // Interaction Torque
       lua_pushstring(lua, dlg.BdryName);
       lua_pushnumber(lua, 5);
       pDoc->lua_gapintegral(lua);
@@ -3618,7 +3618,7 @@ void CFemmviewView::OnMenuIntegrate()
       MyMessageBox(s);
       break;
 
-    case 4: //Interaction Force
+    case 4: // Interaction Force
       lua_pushstring(lua, dlg.BdryName);
       lua_pushnumber(lua, 6);
       pDoc->lua_gapintegral(lua);

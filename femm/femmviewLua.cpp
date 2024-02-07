@@ -443,7 +443,7 @@ int CFemmviewDoc::lua_selectblock(lua_State* L)
       CDC* pDC;
       pDC = tempDC.FromHandle(myDCH);
 
-      //CDC *pDC=GetDC(theView->m_hWnd);
+      // CDC *pDC=GetDC(theView->m_hWnd);
       theView->OnDraw(pDC);
       theView->DrawSelected = -1;
       theView->ReleaseDC(pDC);
@@ -478,26 +478,26 @@ int CFemmviewDoc::lua_groupselectblock(lua_State* L)
       thisDoc->bHasMask = FALSE;
     }
     /*
-		for(j=0;j<thisDoc->linelist.GetSize();j++)
-		{
-			if ((thisDoc->linelist[j].InGroup==k) || (n==0))
-			thisDoc->linelist[j].ToggleSelect();
-			thisDoc->bHasMask=FALSE;
-		}
+        for(j=0;j<thisDoc->linelist.GetSize();j++)
+        {
+          if ((thisDoc->linelist[j].InGroup==k) || (n==0))
+          thisDoc->linelist[j].ToggleSelect();
+          thisDoc->bHasMask=FALSE;
+        }
 
-		for(j=0;j<thisDoc->arclist.GetSize();j++)
-		{
-			if ((thisDoc->arclist[j].InGroup==k) || (n==0))
-			thisDoc->arclist[j].ToggleSelect();
-			thisDoc->bHasMask=FALSE;
-		}
-*/
+        for(j=0;j<thisDoc->arclist.GetSize();j++)
+        {
+          if ((thisDoc->arclist[j].InGroup==k) || (n==0))
+          thisDoc->arclist[j].ToggleSelect();
+          thisDoc->bHasMask=FALSE;
+        }
+    */
     HDC myDCH = GetDC(theView->m_hWnd);
     CDC tempDC;
     CDC* pDC;
     pDC = tempDC.FromHandle(myDCH);
 
-    //CDC *pDC=GetDC(theView->m_hWnd);
+    // CDC *pDC=GetDC(theView->m_hWnd);
     theView->OnDraw(pDC);
     theView->DrawSelected = -1;
     theView->ReleaseDC(pDC);
@@ -532,7 +532,7 @@ int CFemmviewDoc::lua_clearblock(lua_State* L)
   //		CDC *pDC;
   //	pDC=tempDC.FromHandle(myDCH);
 
-  //CDC *pDC=GetDC(theView->m_hWnd);
+  // CDC *pDC=GetDC(theView->m_hWnd);
   //	theView->OnDraw(pDC);
   //	theView->DrawSelected=-1;
   //	theView->ReleaseDC(pDC);
@@ -834,7 +834,7 @@ int CFemmviewDoc::lua_showdensity(lua_State* L)
   double m_ub1, m_lb1;
   CString type;
   int btnState;
-  //type real,imag,mag;
+  // type real,imag,mag;
 
   CFemmviewDoc* thisDoc;
   CFemmviewView* theView;
@@ -1246,7 +1246,7 @@ PBITMAPINFO CFemmviewDoc::CreateBitmapInfoStruct(HWND hwnd, HBITMAP hBmp)
   WORD cClrBits;
 
   // Retrieve the bitmap's color format, width, and height.
-  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { //errhandler("GetObject", hwnd);
+  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { // errhandler("GetObject", hwnd);
     MsgBox("Critical error on getting bmp info, possible page fault ahoy25");
   }
   // Convert the color format to a count of bits.
@@ -1520,7 +1520,7 @@ int CFemmviewDoc::lua_selectline(lua_State* L)
 
       if (pDoc->contour.GetSize() > 0) {
 
-        //check to see if point is the same as last point in the contour;
+        // check to see if point is the same as last point in the contour;
         y = pDoc->contour[pDoc->contour.GetSize() - 1];
         if ((y.re == z.re) && (y.im == z.im))
           return 0;
@@ -1528,8 +1528,8 @@ int CFemmviewDoc::lua_selectline(lua_State* L)
         j = pDoc->ClosestNode(y.re, y.im);
         x.Set(pDoc->nodelist[j].x, pDoc->nodelist[j].y);
 
-        //check to see if this point and the last point are ends of an
-        //input segment;
+        // check to see if this point and the last point are ends of an
+        // input segment;
         lineno = -1;
         d1 = 1.e08;
 
@@ -1552,8 +1552,8 @@ int CFemmviewDoc::lua_selectline(lua_State* L)
           }
         }
 
-        //check to see if this point and last point are ends of an
-        // arc segment; if so, add entire arc to the contour;
+        // check to see if this point and last point are ends of an
+        //  arc segment; if so, add entire arc to the contour;
         arcno = -1;
         if (abs(x - y) < 1.e-08) {
           for (k = 0; k < pDoc->arclist.GetSize(); k++) {
@@ -1595,7 +1595,7 @@ int CFemmviewDoc::lua_selectline(lua_State* L)
         j = (int)pDoc->contour.GetSize();
         if (j > 1) {
           if (abs(pDoc->contour[j - 2] - z) < 1.e-08) {
-            //CView::OnLButtonDown(nFlags, point);
+            // CView::OnLButtonDown(nFlags, point);
             return 0;
           }
         }
@@ -1615,7 +1615,7 @@ int CFemmviewDoc::lua_selectline(lua_State* L)
           m = (int)pDoc->contour.GetSize();
           if (m > 1) {
             if (abs(pDoc->contour[m - 2] - y) < 1.e-08) {
-              //CView::OnLButtonDown(nFlags, point);
+              // CView::OnLButtonDown(nFlags, point);
               return 0;
             }
           }
@@ -1832,9 +1832,9 @@ int CFemmviewDoc::lua_vectorplot(lua_State* L)
 /*
 int CFemmviewDoc::lua_gradient(lua_State *L)
 {
-	// computes the gradients of the B field by differentiating
-	// the shape functions that are used to represent the smoothed
-	// B in an element.
+  // computes the gradients of the B field by differentiating
+  // the shape functions that are used to represent the smoothed
+  // B in an element.
 
     CatchNullDocument();
     CFemmviewDoc * thisDoc;
@@ -1862,43 +1862,43 @@ int CFemmviewDoc::lua_gradient(lua_State *L)
     for(i=0;i<3;i++) n[i]=elm.p[i];
     b[0]=thisDoc->meshnode[n[1]].y - thisDoc->meshnode[n[2]].y;
     b[1]=thisDoc->meshnode[n[2]].y - thisDoc->meshnode[n[0]].y;
-    b[2]=thisDoc->meshnode[n[0]].y - thisDoc->meshnode[n[1]].y;   
+    b[2]=thisDoc->meshnode[n[0]].y - thisDoc->meshnode[n[1]].y;
     c[0]=thisDoc->meshnode[n[2]].x - thisDoc->meshnode[n[1]].x;
     c[1]=thisDoc->meshnode[n[0]].x - thisDoc->meshnode[n[2]].x;
     c[2]=thisDoc->meshnode[n[1]].x - thisDoc->meshnode[n[0]].x;
     da=(b[0]*c[1]-b[1]*c[0])*thisDoc->LengthConv[thisDoc->LengthUnits];
 
-	dbxdx=0; dbxdy=0; dbydx=0; dbydy=0;
+  dbxdx=0; dbxdy=0; dbydx=0; dbydy=0;
     for(i=0;i<3;i++)
     {
-		dbxdx+=elm.b1[i]*b[i]/da;
-		dbxdy+=elm.b1[i]*c[i]/da;
-		dbydx+=elm.b2[i]*b[i]/da;
-		dbydy+=elm.b2[i]*c[i]/da;
-	}
+    dbxdx+=elm.b1[i]*b[i]/da;
+    dbxdy+=elm.b1[i]*c[i]/da;
+    dbydx+=elm.b2[i]*b[i]/da;
+    dbydy+=elm.b2[i]*c[i]/da;
+  }
 
-	if (thisDoc->ProblemType==PLANAR)
-	{
-		// in a source-free region, we can get a little bit
-		// of smoothing by enforcing the dependencies that
-		// are implied by the differential equation.
-		dbxdx=(dbxdx-dbydy)/2.;
-		dbydy=-dbxdx;
-		dbydx=(dbydx+dbxdy)/2;
-		dbxdy=dbydx;
-	}
+  if (thisDoc->ProblemType==PLANAR)
+  {
+    // in a source-free region, we can get a little bit
+    // of smoothing by enforcing the dependencies that
+    // are implied by the differential equation.
+    dbxdx=(dbxdx-dbydy)/2.;
+    dbydy=-dbxdx;
+    dbydx=(dbydx+dbxdy)/2;
+    dbxdy=dbydx;
+  }
 
     lua_pushnumber(L,Re(dbxdx));
     lua_pushnumber(L,Im(dbxdx));
-	lua_pushnumber(L,Re(dbxdy));
+  lua_pushnumber(L,Re(dbxdy));
     lua_pushnumber(L,Im(dbxdy));
-	lua_pushnumber(L,Re(dbydx));
+  lua_pushnumber(L,Re(dbydx));
     lua_pushnumber(L,Im(dbydx));
-	lua_pushnumber(L,Re(dbydy));
+  lua_pushnumber(L,Re(dbydy));
     lua_pushnumber(L,Im(dbydy));
 
     return 8;
-} 
+}
 */
 
 int CFemmviewDoc::lua_gradient(lua_State* L)
@@ -2418,30 +2418,30 @@ int CFemmviewDoc::lua_gapintegral(lua_State* L)
   }
 
   /*
-	if (IntegralType==0) // DC torque
-	{
-		int k;
-		CComplex tq=0;
+    if (IntegralType==0) // DC torque
+    {
+      int k;
+      CComplex tq=0;
 
-		double dt=(PI/180.)*(thisDoc->agelist[i].totalArcLength/thisDoc->agelist[i].totalArcElements);
-		CComplex br,bt;
+      double dt=(PI/180.)*(thisDoc->agelist[i].totalArcLength/thisDoc->agelist[i].totalArcElements);
+      CComplex br,bt;
 
-		for(k=0;k<thisDoc->agelist[i].totalArcElements;k++)
-		{
-			br = thisDoc->agelist[i].br[k];
-			bt = thisDoc->agelist[i].bt[k];
-			// add in torque contribution for this element
-			tq = tq + (br*conj(bt) + conj(br)*bt)/(2.*muo)*R*dt*R*thisDoc->Depth; 
-		}
+      for(k=0;k<thisDoc->agelist[i].totalArcElements;k++)
+      {
+        br = thisDoc->agelist[i].br[k];
+        bt = thisDoc->agelist[i].bt[k];
+        // add in torque contribution for this element
+        tq = tq + (br*conj(bt) + conj(br)*bt)/(2.*muo)*R*dt*R*thisDoc->Depth;
+      }
 
-		tq *= 360./((double) thisDoc->agelist[i].totalArcLength);
-		if (thisDoc->Frequency!=0) tq/=2.;
+      tq *= 360./((double) thisDoc->agelist[i].totalArcLength);
+      if (thisDoc->Frequency!=0) tq/=2.;
 
-		lua_pushnumber(L,tq);
+      lua_pushnumber(L,tq);
 
-		return 1;
-	}
-*/
+      return 1;
+    }
+  */
   if (IntegralType == 3) // 2X torque
   {
     int k;

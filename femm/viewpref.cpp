@@ -68,7 +68,7 @@ static char THIS_FILE[] = __FILE__;
 #define Grey19 clist[54]
 
 /////////////////////////////////////////////////////////////////////////////
-//CViewPref dialog
+// CViewPref dialog
 
 CViewPref::CViewPref(CWnd* pParent /*=NULL*/)
     : CDialog(CViewPref::IDD, pParent)
@@ -202,7 +202,7 @@ ON_BN_CLICKED(IDC_FV_RESET, OnResetColors)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-//CViewPref message handlers
+// CViewPref message handlers
 
 void CViewPref::OnModBtn()
 {

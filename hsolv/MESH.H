@@ -59,14 +59,15 @@ class CMaterialProp {
 class CBoundaryProp {
   public:
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = fixed voltage
-      // 1 = mixed BC
-      // 2 = surface charge
-      // 3 = periodic
-      // 4 = antiperiodic
+                  // 0 = fixed voltage
+                  // 1 = mixed BC
+                  // 2 = surface charge
+                  // 3 = periodic
+                  // 4 = antiperiodic
 
   double Tset; // Fixed value of temperature for BdryFormat=0;
-  double Tinf; // External temperature for convection or radiation
+  double Tinf; // External temperature for convection
+  double TinfRad; // Ambient temperature for radiation
   double qs; // Heat flux;
   double beta; // radiosity coefficient
   double h; // Heat transfer coefficient

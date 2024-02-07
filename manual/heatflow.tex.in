@@ -184,9 +184,9 @@ list on the dialog that allows the user to select either a constant thermal cond
 as a function of temperature. If conductivity is selected, FEMM allows you
 to specify different conductivities in the vertical and horizontal
 directions (\textit{$\varepsilon $}$_{x}$ for the x- or horizontal direction, and \textit{$\varepsilon $}$_{y}$ for the y-
-or vertical. If {\tt Thermal Conductivity Depends on Temperature} is selected, the
+or vertical. If {\tt Thermal Conductivity Depends on Temperature} is selected, the 
 {\tt Edit Nonlinear Thermal Conductivity Curve} becomes enabled.  Press the button
-to enter temperature-conductivity pairs.  The program will interpolate linearly between
+to enter temperature-conductivity pairs.  The program will interpolate linearly between 
 the entered points.  If the program must extrapolate off the end of the defined curve,
 conductivity takes the value of the nearest defined T-k point.
 
@@ -236,7 +236,7 @@ solution process.
 For fixed temperatures, one could alternatively apply a \texttt{Fixed
 Temperature} boundary condition. However, applying a fixed temperature
 as a conductor allows the user to group together several physically
-disjoint surfaces into one conductor upon which the total heat flux
+disjoint surfaces into one conductor upon which the total heat flux 
 is automatically computed.
 
 The dialog for entering conductor properties is pictured in
@@ -444,7 +444,7 @@ The line integrals currently supported are:
 \begin{itemize}
 
 
-\item \texttt{Temperature Difference (G.t)}. This integral returns the
+\item \texttt{Temperature Difference (G.t)}. This integral returns the 
 temperature difference between the ends of the contour
 
 \item \texttt{Heat Flux (F.n)}. This integral returns the total heat flux passing through
@@ -507,3 +507,4 @@ associated with that conductor are displayed.
 \caption{Conductor results dialog.}
 \label{hfig21}
 \end{figure}
+

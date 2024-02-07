@@ -135,11 +135,11 @@ class CMaterialProp {
   double* Bdata;
   CComplex* Hdata; // entries in B-H curve;
   CComplex* slope; // slopes used in interpolation
-      // of BHdata
+                   // of BHdata
   int LamType; // flag that tells how block is laminated;
-      //	0 = not laminated or laminated in plane;
-      //  1 = laminated in the x-direction;
-      //  2 = laminated in the y-direction;
+               //	0 = not laminated or laminated in plane;
+               //  1 = laminated in the x-direction;
+               //  2 = laminated in the y-direction;
   double LamFill; // lamination fill factor, dimensionless;
   double H_c; // magnetization, A/m
   double Nrg;
@@ -164,14 +164,14 @@ class CBoundaryProp {
 
   CString BdryName;
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
 
   double A0, A1, A2, phi; // set value of A for BdryFormat=0;
 
   double Mu, Sig; // material properties necessary to apply
-      // eddy current BC
+                  // eddy current BC
 
   CComplex c0, c1; // coefficients for mixed BC
 
@@ -247,7 +247,7 @@ class CAirGapElement {
   public:
   CString BdryName;
   int BdryFormat; // 0 = Periodic
-      // 1 = Antiperiodic
+                  // 1 = Antiperiodic
 
   int totalArcElements; // total elements in the initial meshing
   double totalArcLength; // sum of the angles of all constituent arcs

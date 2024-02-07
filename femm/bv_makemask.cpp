@@ -67,7 +67,7 @@ BOOL CbelaviewDoc::MakeMask()
   static int plus1mod3[3] = { 1, 2, 0 };
   static int minus1mod3[3] = { 2, 0, 1 };
 
-  //Display progress dialog
+  // Display progress dialog
   if (bLinehook == FALSE) {
     dlg.Create(IDD_MASKPROGRESS);
     dlg.ShowWindow(SW_SHOW);

@@ -1285,14 +1285,14 @@ void CFemmeDoc::EnforcePSLG()
 void CFemmeDoc::EnforcePSLG(double tol)
 {
   /*  need to enforce:
-		1) no duplicate point;
-		2) no intersections between line segments, lines and arcs, or arcs;
-		3) no duplicate block labels;
-		4) no overlapping lines or arcs.
+    1) no duplicate point;
+    2) no intersections between line segments, lines and arcs, or arcs;
+    3) no duplicate block labels;
+    4) no overlapping lines or arcs.
 
-		can do this by cleaning out the various lists, and rebuilding them
-		using the ``add'' functions that ensure that things come out right.
-	*/
+    can do this by cleaning out the various lists, and rebuilding them
+    using the ``add'' functions that ensure that things come out right.
+  */
 
   CArray<CNode, CNode&> newnodelist;
   CArray<CSegment, CSegment&> newlinelist;
@@ -2134,16 +2134,16 @@ BOOL CFemmeDoc::dxf_line_hook()
 
 void CFemmeDoc::FancyEnforcePSLG(double tol)
 {
-  /*  
-		need to enforce:
-		1) no duplicate point;
-		2) no intersections between line segments, lines and arcs, or arcs;
-		3) no duplicate block labels;
-		4) no overlapping lines or arcs.
+  /*
+    need to enforce:
+    1) no duplicate point;
+    2) no intersections between line segments, lines and arcs, or arcs;
+    3) no duplicate block labels;
+    4) no overlapping lines or arcs.
 
-		can do this by cleaning out the various lists, and rebuilding them
-		using the ``add'' functions that ensure that things come out right.
-	*/
+    can do this by cleaning out the various lists, and rebuilding them
+    using the ``add'' functions that ensure that things come out right.
+  */
 
   CArray<CNode, CNode&> newnodelist;
   CArray<CSegment, CSegment&> newlinelist;
@@ -2154,7 +2154,7 @@ void CFemmeDoc::FancyEnforcePSLG(double tol)
   double d;
 
   bLinehook = ImportDXF; // kludge to stop the program from giving a crash if
-      // the user tries to exit during a dxf import.
+                         // the user tries to exit during a dxf import.
 
   CFemmeView* pView;
   POSITION pos;

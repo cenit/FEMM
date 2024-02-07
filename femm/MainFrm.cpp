@@ -94,11 +94,11 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
   // flash up title;
   {
     CString s;
-    s = "Femm 4.0\r\n";
+    s = "Femm 4.2\r\n";
     s += "Magnetics finite element suite\r\n";
-    s += "Copyright 1998-2003\r\n\r\n";
+    s += "Copyright 1998-2023\r\n\r\n";
     s += "David Meeker\r\ndmeeker@ieee.org\r\n";
-    s += "http://femm.berlios.de";
+    s += "https://www.femm.info";
     m_dlgBar.SetDlgItemText(IDC_OUTBOX, s);
   }
 
@@ -272,15 +272,15 @@ void CMainFrame::OnInitMenu(CMenu* pMenu)
   CMDIFrameWnd::OnInitMenu(pMenu);
 
   /*
-	if( (m_toolBar.GetStyle() & WS_VISIBLE) != 0 ){
-		// make sure that toolbar entry is checked
-		pMenu->CheckMenuItem(ID_SHOW_TBAR, MF_CHECKED);
-	}
-	else{
-		// make sure that toolbar entry is not checked
-		pMenu->CheckMenuItem(ID_SHOW_TBAR, MF_UNCHECKED);
-	}
-*/
+    if( (m_toolBar.GetStyle() & WS_VISIBLE) != 0 ){
+      // make sure that toolbar entry is checked
+      pMenu->CheckMenuItem(ID_SHOW_TBAR, MF_CHECKED);
+    }
+    else{
+      // make sure that toolbar entry is not checked
+      pMenu->CheckMenuItem(ID_SHOW_TBAR, MF_UNCHECKED);
+    }
+  */
   if ((m_dlgBar.GetStyle() & WS_VISIBLE) != 0)
     pMenu->CheckMenuItem(ID_PT_PROP, MF_CHECKED);
   else

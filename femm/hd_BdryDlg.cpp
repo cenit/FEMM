@@ -82,7 +82,7 @@ BOOL hdCBdryDlg::OnInitDialog()
   OnSelchangeBdryformat();
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void hdCBdryDlg::OnSelchangeBdryformat()
@@ -113,7 +113,7 @@ void hdCBdryDlg::OnSelchangeBdryformat()
   case 2:
 
     m_IDC_Tset.EnableWindow(FALSE);
-    m_IDC_QS.EnableWindow(FALSE);
+    m_IDC_QS.EnableWindow(TRUE);
     m_IDC_htc.EnableWindow(TRUE);
     m_IDC_To1.EnableWindow(TRUE);
     m_IDC_beta.EnableWindow(FALSE);
@@ -124,9 +124,9 @@ void hdCBdryDlg::OnSelchangeBdryformat()
   case 3:
 
     m_IDC_Tset.EnableWindow(FALSE);
-    m_IDC_QS.EnableWindow(FALSE);
-    m_IDC_htc.EnableWindow(FALSE);
-    m_IDC_To1.EnableWindow(FALSE);
+    m_IDC_QS.EnableWindow(TRUE);
+    m_IDC_htc.EnableWindow(TRUE);
+    m_IDC_To1.EnableWindow(TRUE);
     m_IDC_beta.EnableWindow(TRUE);
     m_IDC_To2.EnableWindow(TRUE);
     break;

@@ -5,7 +5,7 @@
 #include "luadebug.h"
 #include "luaconsoledlg.h"
 
-//#define APPROXGAP
+// #define APPROXGAP
 
 extern CFemmApp theApp; //<DP>
 

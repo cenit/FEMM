@@ -4,21 +4,21 @@
 /*
 class CXYPlot
 {
-	public:
-		// data members
-		double **M;
-		double **lbls;
-		int NumRows;
-		int NumCols;
-		
-		// member functions
-		CXYPlot();
-		~CXYPlot();
-		BOOL Create(int rows, int cols);
-		BOOL MakePlot();
-		BOOL ToDisk();
+  public:
+    // data members
+    double **M;
+    double **lbls;
+    int NumRows;
+    int NumCols;
 
-	private:
+    // member functions
+    CXYPlot();
+    ~CXYPlot();
+    BOOL Create(int rows, int cols);
+    BOOL MakePlot();
+    BOOL ToDisk();
+
+  private:
 }
 */
 
@@ -120,7 +120,7 @@ void CXYPlot::MakePlot(CDC* pDC, char* BoundingBox)
   LoY = dy * floor(LoY / dy);
   HiY = dy * ceil(HiY / dy);
   HiX = M[NumRows - 1][0];
-  LoX = 0.; //LoX=M[0][0];
+  LoX = 0.; // LoX=M[0][0];
   dx = pow(10., floor(log10(HiX - LoX)));
 
   // scale those suckers...

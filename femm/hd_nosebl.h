@@ -92,7 +92,7 @@ class CMaterialProp {
   // properties for nonlinear conductivity
   int npts; // number of points in the nonlinear conductivity curve
   CComplex Kn[128]; // here, I'm being _very_ lazy by defining a fixed-length buffer for the
-      // thermal conductivity data points.
+                    // thermal conductivity data points.
 
   private:
 };
@@ -103,14 +103,15 @@ class CBoundaryProp {
 
   CString BdryName;
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = Fixed Voltage
-      // 1 = Mixed BC
-      // 2 = Surface Charge Density
-      // 3 = Periodic
-      // 4 = Antiperiodic
+                  // 0 = Fixed Voltage
+                  // 1 = Mixed BC
+                  // 2 = Surface Charge Density
+                  // 3 = Periodic
+                  // 4 = Antiperiodic
 
   double Tset; // Fixed value of temperature for BdryFormat=0;
-  double Tinf; // External temperature for convection or radiation
+  double Tinf; // External temperature for convection
+  double TinfRad; // External temperature for radiation
   double qs; // Heat flux;
   double beta; // radiosity coefficient
   double h; // Heat transfer coefficient
@@ -147,7 +148,7 @@ class CPeriodicBoundary {
 
   CString BdryName;
   int BdryFormat; // 0 = Periodic
-      // 1 = Antiperiodic
+                  // 1 = Antiperiodic
   int nseg; // number of segs with this bc
   int narc; // number of arcs with this bc
   int seg[2]; // (arc)segments to which is applied

@@ -66,7 +66,7 @@ BOOL CFemmviewDoc::MakeMask()
   static int plus1mod3[3] = { 1, 2, 0 };
   static int minus1mod3[3] = { 2, 0, 1 };
 
-  //Display progress dialog
+  // Display progress dialog
   if (bLinehook == FALSE) {
     dlg.Create(IDD_MASKPROGRESS);
     dlg.ShowWindow(SW_SHOW);
@@ -263,30 +263,40 @@ BOOL CFemmviewDoc::MakeMask()
       break;
 
     case 3:
-      // determine a weighting for the element
-      // based on an error measure;
-      for (j = 0, bsq = 0, dbsq = 0; j < 3; j++) {
-        dbsq += Re((meshelem[i].B1 - meshelem[i].b1[j]) * conj(meshelem[i].B1 - meshelem[i].b1[j]) + (meshelem[i].B2 - meshelem[i].b2[j]) * conj(meshelem[i].B2 - meshelem[i].b2[j]));
-        bsq += Re(meshelem[i].B1 * conj(meshelem[i].B1) + meshelem[i].B2 * conj(meshelem[i].B2));
-      }
-      if (bsq != 0)
-        v = dbsq / bsq;
-      else
-        (v = 1);
+      /*	// determine a weighting for the element
+        // based on an error measure;
+        for(j=0,bsq=0,dbsq=0;j<3;j++)
+        {
+          dbsq+=Re((meshelem[i].B1-meshelem[i].b1[j])*
+             conj(meshelem[i].B1-meshelem[i].b1[j]) +
+               (meshelem[i].B2-meshelem[i].b2[j])*
+             conj(meshelem[i].B2-meshelem[i].b2[j]));
+          bsq +=Re(meshelem[i].B1*conj(meshelem[i].B1) +
+               meshelem[i].B2*conj(meshelem[i].B2));
+        }
+        if(bsq!=0) v=dbsq/bsq;
+        else(v=1); */
+
+      // all elements evenly weighted.  Then, apply warping function later
+      v = 1;
       break;
 
     case 4:
-      // determine a weighting for the element
-      // based on an error measure;
-      for (k = 0, dbsq = 0, bsq = 0; k < 3; k++)
-        for (j = 0; j < NumList[n[k]]; j++) {
-          dbsq += Re((meshelem[i].B1 - meshelem[ConList[n[k]][j]].B1) * conj(meshelem[i].B1 - meshelem[ConList[n[k]][j]].B1) + (meshelem[i].B2 - meshelem[ConList[n[k]][j]].B2) * conj(meshelem[i].B2 - meshelem[ConList[n[k]][j]].B2));
-          bsq += Re(meshelem[i].B1 * conj(meshelem[i].B1) + meshelem[i].B2 * conj(meshelem[i].B2));
-        }
-      if (bsq != 0)
-        v = dbsq / bsq;
-      else
-        (v = 1);
+      /*	// determine a weighting for the element
+        // based on an error measure;
+        for(k=0,dbsq=0,bsq=0;k<3;k++)
+          for(j=0;j<NumList[n[k]];j++)
+          {
+            dbsq+=Re((meshelem[i].B1-meshelem[ConList[n[k]][j]].B1)*
+               conj(meshelem[i].B1-meshelem[ConList[n[k]][j]].B1) +
+               (meshelem[i].B2-meshelem[ConList[n[k]][j]].B2)*
+               conj(meshelem[i].B2-meshelem[ConList[n[k]][j]].B2));
+            bsq +=Re(meshelem[i].B1*conj(meshelem[i].B1) +
+               meshelem[i].B2*conj(meshelem[i].B2));
+          }
+        if(bsq!=0) v=dbsq/bsq;
+        else(v=1); */
+      v = 1;
       break;
 
     default:
@@ -341,6 +351,17 @@ BOOL CFemmviewDoc::MakeMask()
         meshnode[i].msk = 1;
       else
         meshnode[i].msk = 0;
+      break;
+
+    case 3:
+      v = L.V[i];
+#define Warp 5
+      meshnode[i].msk = (tanh(Warp / 2.) + tanh((-0.5 + v) * Warp)) / (2. * tanh(Warp / 2.));
+      break;
+
+    case 4:
+      v = L.V[i];
+      meshnode[i].msk = 3. * v * v - 2. * v * v * v;
       break;
 
     default:

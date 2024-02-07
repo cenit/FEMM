@@ -1621,12 +1621,16 @@ int ChdrawDoc::lua_addboundprop(lua_State* L)
     m.Tset = lua_todouble(L, 3);
   if (n > 3)
     m.qs = lua_todouble(L, 4);
-  if (n > 4)
+  if (n > 4) {
     m.Tinf = lua_todouble(L, 5);
+    m.TinfRad = m.Tinf; // for backward compatibility
+  }
   if (n > 5)
     m.h = lua_todouble(L, 6);
   if (n > 6)
     m.beta = lua_todouble(L, 7);
+  if (n > 7)
+    m.TinfRad = lua_todouble(L, 8);
 
   ((ChdrawDoc*)phdrawDoc)->lineproplist.Add(m);
 
@@ -1673,12 +1677,19 @@ int ChdrawDoc::lua_modboundprop(lua_State* L)
     break;
   case 4:
     thisDoc->lineproplist[k].Tinf = lua_todouble(L, 3);
+    // note--may break backward compatibility for old scripts that used
+    // radiation boundary condition because Tinf for radiation
+    // now changed as 7th value. No bullet-proofed way to surreptitiously
+    // define TinfRad here when Tinf is defined.
     break;
   case 5:
     thisDoc->lineproplist[k].h = lua_todouble(L, 3);
     break;
   case 6:
     thisDoc->lineproplist[k].beta = lua_todouble(L, 3);
+    break;
+  case 7:
+    thisDoc->lineproplist[k].TinfRad = lua_todouble(L, 3);
     break;
 
   default:
@@ -1955,7 +1966,7 @@ PBITMAPINFO ChdrawDoc::CreateBitmapInfoStruct(HWND hwnd, HBITMAP hBmp)
   WORD cClrBits;
 
   // Retrieve the bitmap's color format, width, and height.
-  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { //errhandler("GetObject", hwnd);
+  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { // errhandler("GetObject", hwnd);
     MsgBox("Critical error on getting bmp info, possible page fault ahoy1");
   }
   // Convert the color format to a count of bits.

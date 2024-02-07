@@ -813,16 +813,20 @@ point {x,y}.  An equivalent form is:\n
 HIAddBlockLabel[{x,y}]"
 
 HIAddBoundProp::usage =
-"HIAddBoundProp[\"boundpropname\", BdryFormat, Tset, qs, Tinf, h, beta] adds a new boundary
+"HIAddBoundProp[\"boundpropname\", BdryFormat, Tset, qs, Tinf, h, beta, TinfRad] adds a new boundary
 property with name \"boundpropname\"\n
 For a \"Fixed Temperature\" type boundary condition, set the Tset parameter to the
 desired temperature and all other parameters to zero.\n
 To obtain a \"Heat Flux\" type boundary condition, set qs to be the heat flux density and
 BdryFormat to 1. Set all other parameters to zero.\n
 To obtain a convection boundary condition, set h to the desired heat transfer coefficient and
-Tinf to the desired external temperature and set BdryFormat to 2.\n
-For a Radiation boundary condition, set beta equal to the desired emmissivity and Tinf to the 
-desired external temperature and set BdryFormat to 3.\n
+Tinf to the desired external temperature and set BdryFormat to 2.  Additional heat specified by
+qs is also added in this case, i.e. can be used to model convection and additional heat flux at 
+at the same time.\n
+For a Radiation boundary condition, set beta equal to the desired emmissivity and TinfRad to the 
+desired external temperature and set BdryFormat to 3. Radiation BC includes the possibility of
+convection and additional heat flux happening at the same time, so non-zero h, Tinf, and qs are also
+honored with this BC type.\n
 For a \"Periodic\" boundary condition, set BdryFormat to 4 and set all other
 parameters to zero.\n
 For an \"Anti-Perodic\" boundary condition, set BdryFormat to 5 set all other
@@ -999,9 +1003,10 @@ that can be modified are listed below:\n
 1 - BdryFormat -  Type of boundary condition (0 = Prescribed Temperature; 1 = Heat Flux; 2 = Convection; 3 = Radiation; 4 = Periodic; 5 = Antiperiodic)
 2 - Tset - Fixed Temperature\n
 3 - qs - Prescribed heat flux density\n
-4 - Tinf - External temperature\n
+4 - Tinf - External temperature for convection\n
 5 - h - heat transfer coefficient\n
-6 - beta - emmissivity"
+6 - beta - emmissivity\n
+7 - TinfRad - External temperature for radiation"
 
 HIModifyConductorProp::usage =
 "HIModifyConductorProp[\"ConductorName\",propnum,value] allows for
@@ -4565,10 +4570,10 @@ HIAddConductorProp[name_,vc_,qc_]:=
         MLPut["hi_addconductorprop(" <> QuoteC[name] <> NumC[vc] <> Num[qc]
                 <> ")" ];
 
-HIAddBoundProp[name_,fmt_,Tset_,qs_,Tinf_,h_,bta_]:=
+HIAddBoundProp[name_,fmt_,Tset_,qs_,Tinf_,h_,bta_,TinfRad_]:=
         MLPut["hi_addboundprop(" <> QuoteC[name] <> NumC[fmt] <> NumC[Tset] <>
-                NumC[qs] <> NumC[Tinf] <> NumC[h] <> Num[bta] <> ")" ]
-
+                NumC[qs] <> NumC[Tinf] <> NumC[h] <> NumC[bta] <> Num[TinfRad] <> ")" ]
+				
 HIAddBoundProp[name_]:=
         MLPut["hi_addboundprop(" <> Quote[name] <> ")" ]
 
@@ -4587,6 +4592,10 @@ HIAddBoundProp[name_,fmt_,Tset_,qs_,Tinf_]:=
 HIAddBoundProp[name_,fmt_,Tset_,qs_,Tinf_,h_]:=
         MLPut["hi_addboundprop(" <> QuoteC[name] <> NumC[fmt] <> NumC[Tset] <> NumC[qs] <> NumC[Tinf] <> Num[h] <> ")" ]
 
+HIAddBoundProp[name_,fmt_,Tset_,qs_,Tinf_,h_,bta_]:=
+        MLPut["hi_addboundprop(" <> QuoteC[name] <> NumC[fmt] <> NumC[Tset] <>
+                NumC[qs] <> NumC[Tinf] <> NumC[h] <> Num[bta] <> ")" ]
+				
 HIModifyMaterial[name_,num_,val_]:=
         If[num==0,
                 MLPut["hi_modifymaterial(" <> QuoteC[name] <> NumC[num] <> Quote[val] <> ")"],

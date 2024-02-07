@@ -641,7 +641,7 @@ static int str_format(lua_State* L)
         const char* s = luaL_check_lstr(L, arg, &l);
         if (cap.capture[1].len == 0 && l >= 100) {
           /* no precision and string is too long to be formatted;
-               keep original string */
+             keep original string */
           lua_pushvalue(L, arg);
           luaL_addvalue(&b);
           continue; /* skip the "addsize" at the end */

@@ -70,7 +70,7 @@ BOOL CResizablePage::OnEraseBkgnd(CDC* pDC)
   return TRUE;
 
   /*	ClipChildren(pDC);	// old-method (for safety)
-	
-	return CPropertyPage::OnEraseBkgnd(pDC);
-*/
+
+    return CPropertyPage::OnEraseBkgnd(pDC);
+  */
 }

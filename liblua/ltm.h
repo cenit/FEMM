@@ -11,9 +11,9 @@
 #include "lstate.h"
 
 /*
-* WARNING: if you change the order of this enumeration,
-* grep "ORDER TM"
-*/
+ * WARNING: if you change the order of this enumeration,
+ * grep "ORDER TM"
+ */
 typedef enum {
   TM_GETTABLE = 0,
   TM_SETTABLE,

@@ -62,7 +62,7 @@ BOOL CFullMatrix::Create(int d)
 BOOL CFullMatrix::GaussSolve()
 {
   /* solves the linear system m x = b for x.  The result is returned
-	   in b, m is destroyed in the process */
+     in b, m is destroyed in the process */
 
   int i, j, k, q;
   double* z;
@@ -158,7 +158,7 @@ BOOL CComplexFullMatrix::Create(int d)
 BOOL CComplexFullMatrix::GaussSolve()
 {
   /* solves the linear system m x = b for x.  The result is returned
-	   in b, m is destroyed in the process */
+     in b, m is destroyed in the process */
 
   int i, j, k, q;
   CComplex* z;

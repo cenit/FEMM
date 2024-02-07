@@ -31,8 +31,8 @@ what unit is associated with the dimensions prescribed in the
 model's geometry. Currently, the program supports inches,
 millimeters, centimeters, meters, mils, and $\mu $meters.
 
-The first edit box, {\tt Frequency, Hz}, denotes the frequency at
-which the problem is to be analyzed.
+The first edit box, {\tt Frequency, Hz}, denotes the frequency at 
+which the problem is to be analyzed. 
 
 The second edit box is the \texttt{Depth} specification. If a Planar
 problem is selected, this edit box becomes enabled. This value is
@@ -239,7 +239,7 @@ solution process.
 For fixed voltages, one could alternatively apply a \texttt{Fixed
 Voltage} boundary condition. However, applying a fixed voltage
 as a conductor allows the user to group together several physically
-disjoint surfaces into one conductor upon which the total current flow
+disjoint surfaces into one conductor upon which the total current flow 
 is automatically computed.
 
 The dialog for entering conductor properties is pictured in
@@ -394,7 +394,7 @@ will appear and prompt for a filename to which to write the data.
 The data is written in two-column text format. If \texttt{Write
 data to text file} is selected, a plot window will not appear.
 
-Currently, the type of line plots supported are:
+Currently, the type of line plots supported are: 
 \begin{itemize}
     \item {\tt V}      Voltage
 	\item {\tt |J|   } Magnitude of current density
@@ -429,7 +429,7 @@ the screen in a pop-up box.
 The line integrals currently supported are:
 
 \begin{itemize}
-\item \texttt{Voltage Difference (E.t)}. This integral returns the
+\item \texttt{Voltage Difference (E.t)}. This integral returns the 
 voltage difference between the ends of the contour
 
 \item \texttt{Current Flow (J.n)}. This integral returns the total current passing through
@@ -485,3 +485,4 @@ associated with that conductor are displayed.
 \caption{Conductor results dialog.}
 \label{cfig21}
 \end{figure}
+

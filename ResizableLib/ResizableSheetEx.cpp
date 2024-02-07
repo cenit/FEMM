@@ -269,8 +269,8 @@ BOOL CResizableSheetEx::OnEraseBkgnd(CDC* pDC)
 
   /*	ClipChildren(pDC);	// old-method (for safety)
 
-	return CPropertySheetEx::OnEraseBkgnd(pDC);
-*/
+    return CPropertySheetEx::OnEraseBkgnd(pDC);
+  */
 }
 
 void CResizableSheetEx::OnGetMinMaxInfo(MINMAXINFO FAR* lpMMI)

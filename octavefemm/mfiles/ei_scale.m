@@ -6,5 +6,5 @@ if (nargin==3)
 elseif (nargin==2)
 	bx=p1(1); by=p1(2); sc=p2;
 end
-callfemm(['ei_scale(' , numc(bx) , numc(by) , numc(sc) , ')' ]);
+callfemm(['ei_scale(' , numc(bx) , numc(by) , num(sc) , ')' ]);
 

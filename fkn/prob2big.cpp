@@ -140,7 +140,7 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
 
       if (circproplist[i].CircType == 0) // specified current
       {
-        if (CircInt2[i] == 0) { //circuit composed of zero cond. materials
+        if (CircInt2[i] == 0) { // circuit composed of zero cond. materials
           circproplist[i].Case = 1;
           if (CircInt1[i] == 0.)
             circproplist[i].J = 0.;
@@ -148,8 +148,8 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
             circproplist[i].J = 0.01 * ((circproplist[i].Amps_re + I * circproplist[i].Amps_im) - CircInt3[i]) / CircInt1[i];
         } else {
           circproplist[i].Case = 2; // need to include an extra
-              // entry in matrix to solve for
-              // voltage grad in the circuit
+                                    // entry in matrix to solve for
+                                    // voltage grad in the circuit
         }
       } else {
         // case where voltage gradient is specified a priori...
@@ -344,7 +344,7 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
         // scale by weight to get periodic/antiperiodic right
         for (int ii = 0; ii < 10; ii++)
           for (int jj = ii; jj < 10; jj++)
-            L.AddTo(-MG[ii][jj] * ww[ii] * ww[jj], nn[ii], nn[jj]); //needs different sign than prob1big version
+            L.AddTo(-MG[ii][jj] * ww[ii] * ww[jj], nn[ii], nn[jj]); // needs different sign than prob1big version
       }
     }
 
@@ -368,13 +368,13 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
           Mx[j][k] = 0;
           My[j][k] = 0;
           Mxy[j][k] = 0;
-          //#ifdef NEWTON
+          // #ifdef NEWTON
           if (ACSolver == 1) {
             Mnh[j][k] = 0;
             Mna[j][k] = 0;
             Mns[j][k] = 0;
           }
-          //#endif
+          // #endif
           Mn[j][k] = 0;
         }
         be[j] = 0;
@@ -576,8 +576,8 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
                 v[j] += (Mx[j][ww] + My[j][ww]) * L.V[n[ww]];
             }
 
-            //Newton-like Iteration
-            //Comment out for successive approx
+            // Newton-like Iteration
+            // Comment out for successive approx
             K = -200. * c * c * c * dv / a;
             for (j = 0; j < 3; j++)
               for (ww = 0; ww < 3; ww++) {
@@ -591,7 +591,7 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
                 Mns[j][ww] = 0.5 * K * v[j] * v[ww];
               }
           }
-          //#else
+          // #else
           else {
             // find out new mu from saturation curve;
             murel = 1. / (muo * blockproplist[k].Get_v(B));
@@ -608,7 +608,7 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
               for (ww = 0; ww < 3; ww++)
                 Mn[j][ww] = K * (Mx[j][ww] + My[j][ww]);
           }
-          //#endif
+          // #endif
         }
       }
 
@@ -640,7 +640,7 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
         for (k = j; k < 3; k++) {
           //			L.Put(L.Get(n[j],n[k]) + Me[j][k],n[j],n[k]);
           L.AddTo(Me[j][k], n[j], n[k]);
-          //#ifdef NEWTON
+          // #ifdef NEWTON
           if (ACSolver == 1) {
             if (Mnh[j][k] != 0)
               L.Put(L.Get(n[j], n[k], 1) + Mnh[j][k], n[j], n[k], 1);
@@ -649,7 +649,7 @@ BOOL CFemmeDocCore::Harmonic2D(CBigComplexLinProb& L)
             if (Mna[j][k] != 0)
               L.Put(L.Get(n[j], n[k], 3) + Mna[j][k], n[j], n[k], 3);
           }
-          //#endif
+          // #endif
         }
         L.b[n[j]] += be[j];
       }
@@ -889,21 +889,21 @@ BOOL CFemmeDocCore::WriteHarmonic2D(CBigComplexLinProb& L)
       fprintf(fp, "\n");
   }
   /*
-	// print out circuit info
-	fprintf(fp,"%i\n",NumCircPropsOrig);
-	for(i=0;i<NumCircPropsOrig;i++){
-		if (circproplist[i].Case==0)
-			fprintf(fp,"0	%.17g	%.17g\n",circproplist[i].dV.Re(),
-								      circproplist[i].dV.Im());
-		if (circproplist[i].Case==1)
-			fprintf(fp,"1	%.17g	%.17g\n",circproplist[i].J.Re(),
-									  circproplist[i].J.Im());
+    // print out circuit info
+    fprintf(fp,"%i\n",NumCircPropsOrig);
+    for(i=0;i<NumCircPropsOrig;i++){
+      if (circproplist[i].Case==0)
+        fprintf(fp,"0	%.17g	%.17g\n",circproplist[i].dV.Re(),
+                        circproplist[i].dV.Im());
+      if (circproplist[i].Case==1)
+        fprintf(fp,"1	%.17g	%.17g\n",circproplist[i].J.Re(),
+                      circproplist[i].J.Im());
 
-		if (circproplist[i].Case==2)
-			fprintf(fp,"0	%.17g	%.17g\n",L.b[NumNodes+i].Re(),
-									  L.b[NumNodes+i].Im());
-	}
-*/
+      if (circproplist[i].Case==2)
+        fprintf(fp,"0	%.17g	%.17g\n",L.b[NumNodes+i].Re(),
+                      L.b[NumNodes+i].Im());
+    }
+  */
   // print out circuit info on a blocklabel by blocklabel basis;
   fprintf(fp, "%i\n", NumBlockLabels);
   for (k = 0; k < NumBlockLabels; k++) {

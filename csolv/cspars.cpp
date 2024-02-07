@@ -213,8 +213,8 @@ CComplex CBigComplexLinProb::ConjDot(CComplex* x, CComplex* y)
 void CBigComplexLinProb::MultPC(CComplex* X, CComplex* Y)
 {
   /*	// Jacobi preconditioner:
-	int i;
-	for(i=0;i<n;i++) Y[i]=X[i]/M[i]->x; */
+    int i;
+    for(i=0;i<n;i++) Y[i]=X[i]/M[i]->x; */
 
   // SSOR preconditioner
   int i;
@@ -255,12 +255,12 @@ int CBigComplexLinProb::PBCGSolve(int flag)
   CComplex res, res_new, del, rho, pAp;
   double er, res_o;
   /*
-	// quick check for most obvious sign of singularity;
-	for(i=0;i<n;i++) if((M[i]->x.re==0) && (M[i]->x.im==0)){
-		fprintf(stderr,"singular flag tripped.");
-		return 0;
-	}
-*/
+    // quick check for most obvious sign of singularity;
+    for(i=0;i<n;i++) if((M[i]->x.re==0) && (M[i]->x.im==0)){
+      fprintf(stderr,"singular flag tripped.");
+      return 0;
+    }
+  */
   // initialize progress bar;
   TheView->SetDlgItemText(IDC_FRAME1, "BiConjugate Gradient Solver");
   TheView->m_prog1.SetPos(0);
@@ -507,12 +507,12 @@ int CBigComplexLinProb::QMRSolve(int flag)
   CComplex alpha, beta, tau, rho, theta, sigma, psi, z;
   double tau_o, er;
   /*
-	// quick check for most obvious sign of singularity;
-	for(i=0;i<n;i++) if((M[i]->x.re==0) && (M[i]->x.im==0)){
-		fprintf(stderr,"singular flag tripped.");
-		return 0;
-	}
-*/
+    // quick check for most obvious sign of singularity;
+    for(i=0;i<n;i++) if((M[i]->x.re==0) && (M[i]->x.im==0)){
+      fprintf(stderr,"singular flag tripped.");
+      return 0;
+    }
+  */
   // initialize progress bar;
   TheView->SetDlgItemText(IDC_FRAME1, "QMR Solver");
   TheView->m_prog1.SetPos(0);
@@ -600,12 +600,12 @@ int CBigComplexLinProb::PCGSQSolve(int flag)
   CComplex res, res_new, del, rho, pAp;
   double er, res_o;
   /*
-	// quick check for most obvious sign of singularity;
-	for(i=0;i<n;i++) if((M[i]->x.re==0) && (M[i]->x.im==0)){
-		fprintf(stderr,"singular flag tripped.");
-		return 0;
-	}
-*/
+    // quick check for most obvious sign of singularity;
+    for(i=0;i<n;i++) if((M[i]->x.re==0) && (M[i]->x.im==0)){
+      fprintf(stderr,"singular flag tripped.");
+      return 0;
+    }
+  */
   // initialize progress bar;
   TheView->SetDlgItemText(IDC_FRAME1, "Conjugate Gradient Solver");
   TheView->m_prog1.SetPos(0);

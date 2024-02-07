@@ -77,12 +77,12 @@ CFemmviewDoc::CFemmviewDoc()
   WeightingScheme = 0;
   bHasMask = FALSE;
   LengthConv = (double*)calloc(6, sizeof(double));
-  LengthConv[0] = 0.0254; //inches
-  LengthConv[1] = 0.001; //millimeters
-  LengthConv[2] = 0.01; //centimeters
-  LengthConv[3] = 1.; //meters
-  LengthConv[4] = 2.54e-05; //mils
-  LengthConv[5] = 1.e-06; //micrometers
+  LengthConv[0] = 0.0254; // inches
+  LengthConv[1] = 0.001; // millimeters
+  LengthConv[2] = 0.01; // centimeters
+  LengthConv[3] = 1.; // meters
+  LengthConv[4] = 2.54e-05; // mils
+  LengthConv[5] = 1.e-06; // micrometers
   Coords = FALSE;
 
   for (int i = 0; i < 10; i++)
@@ -940,7 +940,7 @@ BOOL CFemmviewDoc::OnOpenDocument(LPCTSTR lpszPathName)
       for (i = 0; i < k; i++) {
         fgets(s, 1024, fp);
 
-        //some defaults
+        // some defaults
         blk.MaxArea = 0.;
         blk.MagDir = 0.;
         blk.MagDirFctn.Empty();
@@ -1812,20 +1812,20 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals& u)
         u.A.re += meshnode[n[i]].A.re * (a[i] + b[i] * x + c[i] * y) / (da);
     } else {
       /* Old way that I interpolated potential in axi case:
-			// interpolation from A from nodal points.
-			// note that the potential that's actually stored
-			// for axisymmetric problems is 2*Pi*r*A, so divide
-			// by nodal r to get 2*Pi*A at the nodes.  Linearly
-			// interpolate this, then multiply by r at the point
-			// of interest to get back to 2*Pi*r*A.
-			for(i=0,rp=0;i<3;i++){
-				r=meshnode[n[i]].x;
-				rp+=meshnode[n[i]].x*(a[i]+b[i]*x+c[i]*y)/da;
-				if (r>1.e-6) u.A.re+=meshnode[n[i]].A.re*
-					(a[i]+b[i]*x+c[i]*y)/(r*da);
-			}
-			u.A.re*=rp;
-		*/
+        // interpolation from A from nodal points.
+        // note that the potential that's actually stored
+        // for axisymmetric problems is 2*Pi*r*A, so divide
+        // by nodal r to get 2*Pi*A at the nodes.  Linearly
+        // interpolate this, then multiply by r at the point
+        // of interest to get back to 2*Pi*r*A.
+        for(i=0,rp=0;i<3;i++){
+          r=meshnode[n[i]].x;
+          rp+=meshnode[n[i]].x*(a[i]+b[i]*x+c[i]*y)/da;
+          if (r>1.e-6) u.A.re+=meshnode[n[i]].A.re*
+            (a[i]+b[i]*x+c[i]*y)/(r*da);
+        }
+        u.A.re*=rp;
+      */
 
       // a ``smarter'' interpolation.  One based on A can't
       // represent constant flux density very well.
@@ -1873,12 +1873,12 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals& u)
       u.A.re = v[0] - p * (3. * v[0] - 4. * v[1] + v[2]) + 2. * p * p * (v[0] - 2. * v[1] + v[2]) - q * (3. * v[0] + v[4] - 4. * v[5]) + 2. * q * q * (v[0] + v[4] - 2. * v[5]) + 4. * p * q * (v[0] - v[1] + v[3] - v[5]);
 
       /*		// "simple" way to do it...
-			// problem is that this mucks up things
-			// near the centerline, where things ought
-			// to look pretty quadratic.
-			for(i=0;i<3;i++)
-				u.A.re+=meshnode[n[i]].A.re*(a[i]+b[i]*x+c[i]*y)/(da);
-	*/
+          // problem is that this mucks up things
+          // near the centerline, where things ought
+          // to look pretty quadratic.
+          for(i=0;i<3;i++)
+            u.A.re+=meshnode[n[i]].A.re*(a[i]+b[i]*x+c[i]*y)/(da);
+      */
     }
 
     // Need to catch bIncremental case here...
@@ -1908,7 +1908,7 @@ BOOL CFemmviewDoc::GetPointValues(double x, double y, int k, CPointVals& u)
         u.mu1 = (B1p * B1p * muinc + B2p * B2p * murel) / (B * B);
         u.mu12 = (B1p * B2p * (muinc - murel)) / (B * B);
         u.mu2 = (B2p * B2p * muinc + B1p * B1p * murel) / (B * B);
-      } else { //bIncremental==2
+      } else { // bIncremental==2
         // For "frozen" permeability, same permeability as previous problem
         u.mu1 = murel;
         u.mu2 = murel;
@@ -2216,10 +2216,10 @@ void CFemmviewDoc::GetNodalB(CComplex* b1, CComplex* b2, CElement& elm)
       v1 = 0;
       v2 = 0;
 
-      //scan ccw for an interface...
+      // scan ccw for an interface...
       e = &elm;
       for (q = 0; q < NumList[k]; q++) {
-        //find ccw side of the element;
+        // find ccw side of the element;
         for (j = 0; j < 3; j++)
           if (e->p[j] == k)
             pt = j;
@@ -2228,7 +2228,7 @@ void CFemmviewDoc::GetNodalB(CComplex* b1, CComplex* b2, CElement& elm)
           pt = 2;
         pt = e->p[pt];
 
-        //scan to find element adjacent to this side;
+        // scan to find element adjacent to this side;
         for (j = 0, nxt = -1; j < NumList[k]; j++) {
           if (&meshelem[ConList[k][j]] != e) {
             for (l = 0; l < 3; l++)
@@ -2272,12 +2272,12 @@ void CFemmviewDoc::GetNodalB(CComplex* b1, CComplex* b2, CElement& elm)
           e = &meshelem[nxt];
       }
 
-      //scan cw for an interface...
+      // scan cw for an interface...
       if (v2 == 0) // catches the "special-case punt" where we have
       { // already set nodal B values....
         e = &elm;
         for (q = 0; q < NumList[k]; q++) {
-          //find cw side of the element;
+          // find cw side of the element;
           for (j = 0; j < 3; j++)
             if (e->p[j] == k)
               pt = j;
@@ -2286,7 +2286,7 @@ void CFemmviewDoc::GetNodalB(CComplex* b1, CComplex* b2, CElement& elm)
             pt = 0;
           pt = e->p[pt];
 
-          //scan to find element adjacent to this side;
+          // scan to find element adjacent to this side;
           for (j = 0, nxt = -1; j < NumList[k]; j++) {
             if (&meshelem[ConList[k][j]] != e) {
               for (l = 0; l < 3; l++)
@@ -2391,7 +2391,7 @@ void CFemmviewDoc::GetNodalB(CComplex* b1, CComplex* b2, CElement& elm)
           }
       }
 
-    //check for special case of node on r=0 axisymmetric; set Br=0;
+    // check for special case of node on r=0 axisymmetric; set Br=0;
     if ((fabs(p.re) < 1.e-06) && (ProblemType == 1))
       b1[i].Set(0., 0);
   }
@@ -2558,15 +2558,15 @@ void CFemmviewDoc::GetLineValues(CXYPlot& p, int PlotType, int NumPlotPoints)
   dz = z / (NumPlotPoints - 1);
 
   /*
-		m_XYPlotType.AddString("Potential");
-		m_XYPlotType.AddString("|B|        (Magnitude of flux density)");
-		m_XYPlotType.AddString("B . n      (Normal flux density)");
-		m_XYPlotType.AddString("B . t      (Tangential flux density)");
-		m_XYPlotType.AddString("|H|        (Magnitude of field intensity)");
-		m_XYPlotType.AddString("H . n      (Normal field intensity)");
-		m_XYPlotType.AddString("H . t      (Tangential field intensity)");
-		m_XYPlotType.AddString("J_eddy     
-	*/
+    m_XYPlotType.AddString("Potential");
+    m_XYPlotType.AddString("|B|        (Magnitude of flux density)");
+    m_XYPlotType.AddString("B . n      (Normal flux density)");
+    m_XYPlotType.AddString("B . t      (Tangential flux density)");
+    m_XYPlotType.AddString("|H|        (Magnitude of field intensity)");
+    m_XYPlotType.AddString("H . n      (Normal field intensity)");
+    m_XYPlotType.AddString("H . t      (Tangential field intensity)");
+    m_XYPlotType.AddString("J_eddy
+  */
 
   if (Frequency == 0) {
     switch (PlotType) {
@@ -2822,7 +2822,7 @@ BOOL CFemmviewDoc::InTriangleTest(double x, double y, int i)
       if (z < 0)
         return FALSE;
     }
-    //Case 2: p[k]<p[j]
+    // Case 2: p[k]<p[j]
     else {
       z = (meshnode[meshelem[i].p[j]].x - meshnode[meshelem[i].p[k]].x) * (y - meshnode[meshelem[i].p[k]].y) - (meshnode[meshelem[i].p[j]].y - meshnode[meshelem[i].p[k]].y) * (x - meshnode[meshelem[i].p[k]].x);
       if (z > 0)
@@ -3057,7 +3057,7 @@ CComplex CFemmviewDoc::BlockIntegral(int inttype)
     U[i] = 1.;
 
   if (inttype == 6)
-    z = BlockIntegral(3) + BlockIntegral(4); //total losses
+    z = BlockIntegral(3) + BlockIntegral(4); // total losses
   else
     for (i = 0; i < meshelem.GetSize(); i++) {
       // Integrals performed only over the selected region (as opposed to Mask Integrals),

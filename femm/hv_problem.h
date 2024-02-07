@@ -100,7 +100,7 @@ class CMaterialProp {
   // properties for nonlinear conductivity
   int npts; // number of points in the nonlinear conductivity curve
   CComplex Kn[128]; // here, I'm being _very_ lazy by defining a fixed-length buffer for the
-      // thermal conductivity data points.
+                    // thermal conductivity data points.
   CComplex GetK(double t);
 
   CMaterialProp();
@@ -117,7 +117,8 @@ class CBoundaryProp {
   int BdryFormat;
 
   double Tset; // Fixed value of temperature for BdryFormat=0;
-  double Tinf; // External temperature for convection or radiation
+  double Tinf; // External temperature for convection
+  double TinfRad; // External temperature for radiation
   double qs; // Heat flux;
   double beta; // radiosity coefficient
   double h; // Heat transfer coefficient

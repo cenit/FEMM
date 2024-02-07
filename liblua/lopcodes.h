@@ -71,8 +71,8 @@
 
 typedef enum {
   /*----------------------------------------------------------------------
-name		args	stack before	stack after	side effects
-------------------------------------------------------------------------*/
+  name		args	stack before	stack after	side effects
+  ------------------------------------------------------------------------*/
   OP_END, /*	-	-		(return)	no results	*/
   OP_RETURN, /*	U	v_n-v_x(at u)	(return)	returns v_x-v_n	*/
 

@@ -164,8 +164,8 @@ BOOL CResizableFormView::OnEraseBkgnd(CDC* pDC)
 
   /*	ClipChildren(pDC);	// old-method (for safety)
 
-	return CFormView::OnEraseBkgnd(pDC);
-*/
+    return CFormView::OnEraseBkgnd(pDC);
+  */
 }
 
 int CResizableFormView::OnCreate(LPCREATESTRUCT lpCreateStruct)

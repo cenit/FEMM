@@ -126,9 +126,9 @@ CBoundaryProp::CBoundaryProp()
 {
   BdryName = "New Boundary";
   BdryFormat = 0; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
   V = qs = c0 = c1 = 0;
 }
 

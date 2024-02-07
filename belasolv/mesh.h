@@ -54,11 +54,11 @@ class CMaterialProp {
 class CBoundaryProp {
   public:
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = fixed voltage
-      // 1 = mixed BC
-      // 2 = surface charge
-      // 3 = periodic
-      // 4 = antiperiodic
+                  // 0 = fixed voltage
+                  // 1 = mixed BC
+                  // 2 = surface charge
+                  // 3 = periodic
+                  // 4 = antiperiodic
 
   double V; // set value of V for BdryFormat=0;
   double qs; // surface charge density
