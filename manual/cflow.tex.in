@@ -16,7 +16,7 @@ option brings up the Problem Definition dialog, shown in
 Figure~\ref{cfig5}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd1.ps}}
+\centerline{\includegraphics{cd1.png}}
 \caption{Problem Definition dialog.}
 \label{cfig5}
 \end{figure}
@@ -87,7 +87,7 @@ Conductors. When any one of these selections is chosen, the dialog
 pictured in Figure~\ref{cfig7} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hpropdef.ps}}
+\centerline{\includegraphics{hpropdef.png}}
 \caption{Property Definition dialog box.}
 \label{cfig7}
 \end{figure}
@@ -112,7 +112,7 @@ If a new point property is added or an existing point property modified, the
 Figure~\ref{cfig8}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd2.ps}}
+\centerline{\includegraphics{cd2}}
 \caption{Nodal Property dialog.}
 \label{cfig8}
 \end{figure}
@@ -135,7 +135,7 @@ added or an existing property modified, the \texttt{Boundary
 Property} dialog pictured in Figure~\ref{cfig9} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd3.ps}}
+\centerline{\includegraphics{cd3}}
 \caption{Boundary Property dialog.}
 \label{cfig9}
 \end{figure}
@@ -161,7 +161,7 @@ existing property modified, the
 \texttt{Block Property} dialog pictured in Figure~\ref{cfig10} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd4.ps}}
+\centerline{\includegraphics{cd4}}
 \caption{Block Property dialog.}
 \label{cfig10}
 \end{figure}
@@ -246,7 +246,7 @@ The dialog for entering conductor properties is pictured in
 Figure~\ref{cfig12}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd5.ps}}
+\centerline{\includegraphics{cd5}}
 \caption{Conductor Property dialog.}
 \label{cfig12}
 \end{figure}
@@ -258,7 +258,7 @@ most easily performed by the toolbar buttons pictured in
 Figure~\ref{cfig13}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman13.eps}}
+\centerline{\includegraphics{belaman13}}
 \caption{Toolbar buttons for starting analysis tasks.}
 \label{cfig13}
 \end{figure}
@@ -324,7 +324,7 @@ the Graph Mode section of the toolbar (see Figure~\ref{cfig17}). The
 Contour Plot icon is the icon with the black contours.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hplotbar.ps}}
+\centerline{\includegraphics{hplotbar}}
 \caption{Graph Mode toolbar buttons.}
 \label{cfig17}
 \end{figure}
@@ -367,7 +367,7 @@ function'' icon in the Plot, Integration and Conductor Results group of toolbar
 buttons, shown in Figure~\ref{cfig18}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd8.ps}}
+\centerline{\includegraphics{cd8.png}}
 \caption{Line Plot, Integration, and Conductor Results toolbar buttons.}
 \label{cfig18}
 \end{figure}
@@ -378,7 +378,7 @@ of line plots available. Choose the desired type of plot and press
 ``OK.''
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd6.ps}}
+\centerline{\includegraphics{cd6}}
 \caption{X-Y Plot dialog.}
 \label{cfig19}
 \end{figure}
@@ -481,7 +481,7 @@ are desired. When a conductor is selected, the voltage and current
 associated with that conductor are displayed.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/cd7.ps}}
+\centerline{\includegraphics{cd7.png}}
 \caption{Conductor results dialog.}
 \label{cfig21}
 \end{figure}

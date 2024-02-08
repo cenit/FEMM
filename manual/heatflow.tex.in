@@ -16,7 +16,7 @@ option brings up the Problem Definition dialog, shown in
 Figure~\ref{hfig5}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman6.eps}}
+\centerline{\includegraphics{belaman6}}
 \caption{Problem Definition dialog.}
 \label{hfig5}
 \end{figure}
@@ -92,7 +92,7 @@ Conductors. When any one of these selections is chosen, the dialog
 pictured in Figure~\ref{hfig7} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hpropdef.ps}}
+\centerline{\includegraphics{hpropdef.png}}
 \caption{Property Definition dialog box.}
 \label{hfig7}
 \end{figure}
@@ -120,7 +120,7 @@ If a new point property is added or an existing point property modified, the
 Figure~\ref{hfig8}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hnodeprop.ps}}
+\centerline{\includegraphics{hnodeprop.png}}
 \caption{Nodal Property dialog.}
 \label{hfig8}
 \end{figure}
@@ -143,7 +143,7 @@ added or an existing property modified, the \texttt{Boundary
 Property} dialog pictured in Figure~\ref{hfig9} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hbdryprop.ps}}
+\centerline{\includegraphics{hbdryprop.png}}
 \caption{Boundary Property dialog.}
 \label{hfig9}
 \end{figure}
@@ -169,7 +169,7 @@ existing property modified, the
 \texttt{Block Property} dialog pictured in Figure~\ref{hfig10} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hblockprop.ps}}
+\centerline{\includegraphics{hblockprop.png}}
 \caption{Block Property dialog.}
 \label{hfig10}
 \end{figure}
@@ -203,7 +203,7 @@ main menu. When this option is selected, the
 \texttt{Materials Library} dialog pictured in Figure~\ref{hfig11} appears.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hmatlib.ps}}
+\centerline{\includegraphics{hmatlib.png}}
 \caption{Materials Library dialog}
 \label{hfig11}
 \end{figure}
@@ -243,7 +243,7 @@ The dialog for entering conductor properties is pictured in
 Figure~\ref{hfig12}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hcircprop.ps}}
+\centerline{\includegraphics{hcircprop.png}}
 \caption{Conductor Property dialog.}
 \label{hfig12}
 \end{figure}
@@ -255,7 +255,7 @@ most easily performed by the toolbar buttons pictured in
 Figure~\ref{hfig13}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman13.eps}}
+\centerline{\includegraphics{belaman13}}
 \caption{Toolbar buttons for starting analysis tasks.}
 \label{hfig13}
 \end{figure}
@@ -321,7 +321,7 @@ the Graph Mode section of the toolbar (see Figure~\ref{hfig17}). The
 Contour Plot icon is the icon with the black contours.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hplotbar.ps}}
+\centerline{\includegraphics{hplotbar}}
 \caption{Graph Mode toolbar buttons.}
 \label{hfig17}
 \end{figure}
@@ -364,7 +364,7 @@ function'' icon in the Plot, Integration and Conductor Results group of toolbar
 buttons, shown in Figure~\ref{hfig18}.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hresbar.ps}}
+\centerline{\includegraphics{hresbar.png}}
 \caption{Line Plot, Integration, and Conductor Results toolbar buttons.}
 \label{hfig18}
 \end{figure}
@@ -375,7 +375,7 @@ of line plots available. Choose the desired type of plot and press
 ``OK.''
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hpltdlg.ps}}
+\centerline{\includegraphics{hpltdlg}}
 \caption{X-Y Plot dialog.}
 \label{hfig19}
 \end{figure}
@@ -402,7 +402,7 @@ be as shown in Figure~\ref{hfig20}. The tangential direction is
 understood to be the direction in which the contour was defined.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/belaman20.eps}}
+\centerline{\includegraphics{belaman20}}
 \caption{When in doubt plots and integrals taken on this side of a contour.}
 \label{hfig20}
 \end{figure}
@@ -503,7 +503,7 @@ are desired. When a conductor is selected, the temperature and heat flux
 associated with that conductor are displayed.
 
 \begin{figure}[htbp]
-\centerline{\includegraphics{@CMAKE_CURRENT_SOURCE_DIR@/hcircres.ps}}
+\centerline{\includegraphics{hcircres.png}}
 \caption{Conductor results dialog.}
 \label{hfig21}
 \end{figure}

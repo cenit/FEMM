@@ -9,37 +9,15 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/manual.tex.in ${CMAKE_CURRENT_SOURCE_
 
 if(LATEX_COMPILER)
   add_custom_command(
-    OUTPUT    ${CMAKE_CURRENT_BINARY_DIR}/manual.dvi
+    OUTPUT    ${CMAKE_CURRENT_BINARY_DIR}/manual.pdf
     COMMAND   ${LATEX_COMPILER}
-    ARGS      ${CMAKE_CURRENT_SOURCE_DIR}/manual.tex
+    ARGS      -output-directory=${CMAKE_CURRENT_BINARY_DIR}
+              ${CMAKE_CURRENT_SOURCE_DIR}/manual.tex
     DEPENDS   ${CMAKE_CURRENT_SOURCE_DIR}/manual.tex
-    COMMENT   "Tex2dvi"
-    POST_BUILD
-      COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_CURRENT_SOURCE_DIR}/manual.dvi ${CMAKE_CURRENT_SOURCE_DIR}/.
-  )
-
-if(DVIPS_CONVERTER)
-  add_custom_command(
-    OUTPUT    ${CMAKE_CURRENT_SOURCE_DIR}/manual.ps
-    COMMAND   ${DVIPS_CONVERTER}
-    ARGS      ${CMAKE_CURRENT_SOURCE_DIR}/manual.dvi
-              -o ${CMAKE_CURRENT_SOURCE_DIR}/manual.ps
-    DEPENDS   ${CMAKE_CURRENT_SOURCE_DIR}/manual.dvi
-    COMMENT   "dvi2ps"
- )
-
-if(PS2PDF_CONVERTER)
-  add_custom_command(
-    OUTPUT    ${CMAKE_CURRENT_SOURCE_DIR}/manual.pdf
-    COMMAND   ${PS2PDF_CONVERTER}
-    ARGS      ${CMAKE_CURRENT_SOURCE_DIR}/manual.ps
-    DEPENDS   ${CMAKE_CURRENT_SOURCE_DIR}/manual.ps
-    COMMENT   "ps2pdf"
+    COMMENT   "pdflatex"
   )
 
 add_custom_target(LaTeXDocument ALL echo
   DEPENDS   ${CMAKE_CURRENT_SOURCE_DIR}/manual.pdf
 )
-endif()  # PS2PDF_CONVERTER
-endif()  # DVIPS_CONVERTER
 endif()  # LATEX_COMPILER
