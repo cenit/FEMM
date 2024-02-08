@@ -2049,7 +2049,7 @@ end
 
 endfunction
 
-function hi_addboundprop(pname,fmt,Tset,qs,Tinf,h,bta)
+function hi_addboundprop(pname,fmt,Tset,qs,Tinf,h,bta,TinfRad)
 select argn(2)
 	case 0 then
 		callfemm('hi_addboundprop()');
@@ -2065,8 +2065,10 @@ select argn(2)
         callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , num(Tinf) , ')' ]);
 	case 6 then
         callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , num(h), ')' ]);
-	else
+	case 7 then
         callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , numc(h), num(bta) , ')' ]);
+	else
+        callfemm(['hi_addboundprop(' , quotec(pname) , numc(fmt) , numc(Tset) , numc(qs) , numc(Tinf) , numc(h), numc(bta) , num(TinfRad) , ')' ]);
 end
 
 endfunction

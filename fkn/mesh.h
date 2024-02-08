@@ -97,19 +97,19 @@ class CMaterialProp {
 class CBoundaryProp {
   public:
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
-      // 3 = SDI boundary (deprecated)
-      // 4 = Periodic
-      // 5 = Antiperiodic
-      // 6 = Periodic AGE
-      // 7 = Antiperiodic AGE
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
+                  // 3 = SDI boundary (deprecated)
+                  // 4 = Periodic
+                  // 5 = Antiperiodic
+                  // 6 = Periodic AGE
+                  // 7 = Antiperiodic AGE
 
   double A0, A1, A2, phi; // set value of A for BdryFormat=0;
 
   double Mu, Sig; // material properties necessary to apply
-      // eddy current BC
+                  // eddy current BC
 
   CComplex c0, c1; // coefficients for mixed BC
 
@@ -155,7 +155,7 @@ class CAirGapElement {
   public:
   char BdryName[80];
   int BdryFormat; // 0 = Periodic
-      // 1 = Antiperiodic
+                  // 1 = Antiperiodic
 
   int totalArcElements; // total elements in the initial meshing
   double totalArcLength; // sum of the angles of all constituent arcs

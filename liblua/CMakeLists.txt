@@ -64,3 +64,4 @@ set(liblua_SOURCES
 
 add_library(liblua ${liblua_SOURCES})
 target_include_directories(liblua PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_definitions(liblua PRIVATE _CRT_SECURE_NO_WARNINGS)

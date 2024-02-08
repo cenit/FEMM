@@ -54,5 +54,5 @@ BOOL hvCVPlotDlg::OnInitDialog()
   m_vplottype.SetCurSel(m_plottype);
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }

@@ -80,7 +80,7 @@ BOOL probdlg::OnInitDialog()
   m_prevtype.SetCurSel(prevtype);
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void probdlg::OnOK()

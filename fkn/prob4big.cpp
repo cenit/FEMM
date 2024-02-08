@@ -169,7 +169,7 @@ BOOL CFemmeDocCore::HarmonicAxisymmetric(CBigComplexLinProb& L)
     for (i = 0; i < NumCircProps; i++) {
       if (circproplist[i].CircType == 0) // specified current
       {
-        if (CircInt2[i] == 0) { //circuit composed of zero cond. materials
+        if (CircInt2[i] == 0) { // circuit composed of zero cond. materials
           circproplist[i].Case = 1;
           if (CircInt1[i] == 0.)
             circproplist[i].J = 0.;
@@ -177,8 +177,8 @@ BOOL CFemmeDocCore::HarmonicAxisymmetric(CBigComplexLinProb& L)
             circproplist[i].J = 0.01 * ((circproplist[i].Amps_re + I * circproplist[i].Amps_im) - CircInt3[i]) / CircInt1[i];
         } else {
           circproplist[i].Case = 2; // need to include an extra
-              // entry in matrix to solve for
-              // voltage grad in the circuit
+                                    // entry in matrix to solve for
+                                    // voltage grad in the circuit
         }
       } else {
         // case where voltage gradient is specified a priori...
@@ -294,6 +294,7 @@ BOOL CFemmeDocCore::HarmonicAxisymmetric(CBigComplexLinProb& L)
 
       for (j = 0, a_hat = 0; j < 3; j++)
         a_hat += (rn[j] * rn[j] * p[j] / (4. * R));
+      a_hat = fabs(a_hat);
       vol = 2. * R * a_hat;
 
       for (j = 0, flag = 0; j < 3; j++)
@@ -592,24 +593,24 @@ BOOL CFemmeDocCore::HarmonicAxisymmetric(CBigComplexLinProb& L)
       // combine block matrices into global matrices;
       for (j = 0; j < 3; j++)
         for (k = 0; k < 3; k++) {
-          //#ifdef NEWTON
+          // #ifdef NEWTON
           if (ACSolver == 1) {
             Me[j][k] += (Mx[j][k] / (El->mu2) + My[j][k] / (El->mu1) + Mxy[j][k] * (El->v12) + Mn[j][k]);
             be[j] += (Mnh[j][k] + Mna[j][k] + Mn[j][k]) * L.V[n[k]];
             be[j] += Mns[j][k] * L.V[n[k]].Conj();
           }
-          //#else
+          // #else
           else {
             Me[j][k] += (Mx[j][k] / (El->mu2) + My[j][k] / (El->mu1) + Mxy[j][k] * (El->v12));
             be[j] += Mn[j][k] * L.V[n[k]];
           }
-          //#endif
+          // #endif
         }
 
       for (j = 0; j < 3; j++) {
         for (k = j; k < 3; k++) {
           L.Put(L.Get(n[j], n[k]) + Me[j][k], n[j], n[k]);
-          //#ifdef NEWTON
+          // #ifdef NEWTON
           if (ACSolver == 1) {
             if (Mnh[j][k] != 0)
               L.Put(L.Get(n[j], n[k], 1) + Mnh[j][k], n[j], n[k], 1);
@@ -618,7 +619,7 @@ BOOL CFemmeDocCore::HarmonicAxisymmetric(CBigComplexLinProb& L)
             if (Mna[j][k] != 0)
               L.Put(L.Get(n[j], n[k], 3) + Mna[j][k], n[j], n[k], 3);
           }
-          //#endif
+          // #endif
         }
         L.b[n[j]] += be[j];
       }
@@ -766,13 +767,13 @@ BOOL CFemmeDocCore::HarmonicAxisymmetric(CBigComplexLinProb& L)
 
       // report some results
       char outstr[256];
-      //#ifdef NEWTON
+      // #ifdef NEWTON
       if (ACSolver == 1)
         sprintf(outstr, "Newton Iteration(%i) Relax=%.4g", Iter, Relax);
-      //#else
+      // #else
       else
         sprintf(outstr, "Successive Approx(%i) Relax=%.4g", Iter, Relax);
-      //#endif
+      // #endif
       TheView->SetDlgItemText(IDC_FRAME2, outstr);
       j = (int)(100. * log10(res) / (log10(Precision) + 2.));
       if (j > 100)

@@ -1,0 +1,19 @@
+v0.1.0 17Mar2018 -- Initial release.
+
+v0.1.1 11May2020 -- Bug fix update.
+1) Fixed errors in the implemenation of ci_smartmesh, mi_smartmesh, ei_smartmesh, and hi_smartmesh functions
+2) Fixed error in mo_showcontourplot
+
+v0.1.2 15Jul2021 -- Bug fix update / Support for non-Windows machines
+1) Support for non-Windows machine using a file-based message passing scheme like the one used by FEMM to support legacy or Linux and Mac version of Octave (big thanks to Melina Merkel)
+2) Fixed an error in the "doargs" function that broke complex numbers being returned by FEMM
+3) Fixed a bug in "ci_setnodeprop"
+4) Added "mi_setcomment", "ei_setcomment", "hi_setcomment", and "ci_setcomment" functions to allow the comment field in the problem definition to be programmatically defined
+
+v0.1.3 20Jul2021 -- Bug fix update
+1) Fixed bug in openfemm that wouldn't honor flag to hide main windows
+
+v0.1.4 22Oct2023 -- Bug fix update
+1) Fixed bug in ci_makeABC() -- thanks Uri R!
+2) Upgraded hi_addboundprop to support simultaneous radiation and convection BCs.  Extra parameter for radiation-related ambient temperature can be specified separate from the convection-related ambient temperature.
+3) Changed openfemm to support hiding the main windows via openfemm(1) when running in Wine. Development build 22Oct2023 or later is needed to use this additional functionality.

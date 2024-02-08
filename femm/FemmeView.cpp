@@ -428,19 +428,19 @@ void CFemmeView::DrawPSLG()
       side = sqrt(pDoc->blocklist[i].MaxArea / PI);
       j = (int)ceil(side * mag);
       /*
-			// zoom-safe replacement
-			CComplex p;
-			int kmax;
-			MyMoveTo(pDC,xs+j,ys);
-			kmax=(int) (2.*PI*((double) j)/5.);
-			if (kmax>36) kmax=36;
-			if ((kmax<8) && (kmax>0)) kmax=8;
-			for(k=1;k<=kmax;k++)
-			{
-				p=exp(I*k*2.*PI/((double) kmax))*((double) j);
-				MyLineTo(pDC,xs+((int) Re(p)),ys+((int) Im(p)));
-			}
-		*/
+        // zoom-safe replacement
+        CComplex p;
+        int kmax;
+        MyMoveTo(pDC,xs+j,ys);
+        kmax=(int) (2.*PI*((double) j)/5.);
+        if (kmax>36) kmax=36;
+        if ((kmax<8) && (kmax>0)) kmax=8;
+        for(k=1;k<=kmax;k++)
+        {
+          p=exp(I*k*2.*PI/((double) kmax))*((double) j);
+          MyLineTo(pDC,xs+((int) Re(p)),ys+((int) Im(p)));
+        }
+      */
       pDC->Arc(xs - j, ys - j, xs + j + 1, ys + j + 1, xs + j + 1, ys, xs + j + 1, ys);
     }
 
@@ -728,20 +728,20 @@ void CFemmeView::OnDraw(CDC* pDC)
       side = sqrt(pDoc->blocklist[i].MaxArea / PI);
       j = (int)ceil(side * mag);
 
-      /*			
-			// zoom-safe replacement
-			CComplex p;
-			int kmax;
-			MyMoveTo(pDC,xs+j,ys);
-			kmax=(int) (2.*PI*((double) j)/5.);
-			if (kmax>36) kmax=36;
-			if ((kmax<8) && (kmax>0)) kmax=8;
-			for(k=1;k<=kmax;k++)
-			{
-				p=exp(I*k*2.*PI/((double) kmax))*((double) j);
-				MyLineTo(pDC,xs+((int) Re(p)),ys+((int) Im(p)));
-			}
-*/
+      /*
+            // zoom-safe replacement
+            CComplex p;
+            int kmax;
+            MyMoveTo(pDC,xs+j,ys);
+            kmax=(int) (2.*PI*((double) j)/5.);
+            if (kmax>36) kmax=36;
+            if ((kmax<8) && (kmax>0)) kmax=8;
+            for(k=1;k<=kmax;k++)
+            {
+              p=exp(I*k*2.*PI/((double) kmax))*((double) j);
+              MyLineTo(pDC,xs+((int) Re(p)),ys+((int) Im(p)));
+            }
+      */
       pDC->Arc(xs - j, ys - j, xs + j + 1, ys + j + 1, xs + j + 1, ys, xs + j + 1, ys);
     }
 
@@ -2110,7 +2110,7 @@ void CFemmeView::OnRButtonDown(UINT nFlags, CPoint point)
   CFemmeDoc* pDoc = GetDocument();
   int i, j;
 
-  //toggle select of nearest point
+  // toggle select of nearest point
   if (EditAction == 0) {
     j = pDoc->ClosestNode(mx, my);
     if (j >= 0)
@@ -2118,7 +2118,7 @@ void CFemmeView::OnRButtonDown(UINT nFlags, CPoint point)
     DrawPSLG();
   }
 
-  //toggle select of nearest segment
+  // toggle select of nearest segment
   if (EditAction == 1) {
     j = pDoc->ClosestSegment(mx, my);
     if (j >= 0)
@@ -2126,14 +2126,14 @@ void CFemmeView::OnRButtonDown(UINT nFlags, CPoint point)
     DrawPSLG();
   }
 
-  //toggle select of nearest arc segment
+  // toggle select of nearest arc segment
   if (EditAction == 3) {
     j = pDoc->ClosestArcSegment(mx, my);
     if (j >= 0)
       pDoc->arclist[j].ToggleSelect();
     DrawPSLG();
   }
-  //toggle select of nearest blocklabel
+  // toggle select of nearest blocklabel
   if (EditAction == 2) {
     j = pDoc->ClosestBlockLabel(mx, my);
     if (j >= 0)
@@ -2194,7 +2194,7 @@ void CFemmeView::OnRButtonDown(UINT nFlags, CPoint point)
 
     if (j < 1)
       return; // return if the closest object is associated with
-          // the default group, or if there are no objects.
+              // the default group, or if there are no objects.
 
     // now, the group associated with the nearest entity is in j;
     // toggle the select of all objects in this group;
@@ -2557,10 +2557,10 @@ void CFemmeView::OnMenuAnalyze()
   char CommandLine[512];
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
 
-  if (bLinehook == FALSE)
-    sprintf(CommandLine, "\"%sfkn.exe\" %s", (const char*)BinDir, (const char*)rootname);
-  else
+  if (bLinehook == HiddenLua)
     sprintf(CommandLine, "\"%sfkn.exe\" %s bLinehook", (const char*)BinDir, (const char*)rootname);
+  else
+    sprintf(CommandLine, "\"%sfkn.exe\" %s", (const char*)BinDir, (const char*)rootname);
 
   CString MyPath = pn.Left(pn.ReverseFind('\\'));
 
@@ -3440,7 +3440,7 @@ void CFemmeView::OnMakeABC()
     dlg.abcr = 0.75 * abs((xx[0] + I * yy[0]) - (xx[1] + I * yy[1]));
     dlg.abcx = (xx[0] + xx[1]) / 2.0;
     dlg.abcy = (yy[0] + yy[1]) / 2.0;
-  } else { //Axi case
+  } else { // Axi case
     dlg.abcx = 0;
     dlg.abcy = (yy[0] + yy[1]) / 2.0;
     dlg.abcr = 1.5 * abs(xx[1] + I * (yy[1] - yy[0]) / 2.0);

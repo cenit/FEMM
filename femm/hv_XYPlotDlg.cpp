@@ -74,7 +74,7 @@ BOOL hvCXYPlotDlg::OnInitDialog()
   m_fileformat.SetCurSel(0);
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void hvCXYPlotDlg::OnOK()

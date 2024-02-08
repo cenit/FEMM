@@ -191,6 +191,7 @@ BOOL CFemmeDocCore::StaticAxisymmetric(CBigLinProb& L)
 
       for (j = 0, a_hat = 0; j < 3; j++)
         a_hat += (rn[j] * rn[j] * p[j] / (4. * R));
+      a_hat = fabs(a_hat);
       vol = 2. * R * a_hat;
 
       for (j = 0, flag = 0; j < 3; j++)

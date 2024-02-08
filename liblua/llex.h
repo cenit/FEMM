@@ -16,9 +16,9 @@
 #define TOKEN_LEN 15
 
 /*
-* WARNING: if you change the order of this enumeration,
-* grep "ORDER RESERVED"
-*/
+ * WARNING: if you change the order of this enumeration,
+ * grep "ORDER RESERVED"
+ */
 enum RESERVED {
   /* terminal symbols denoted by reserved words */
   TK_AND = FIRST_RESERVED,

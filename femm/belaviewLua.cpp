@@ -373,7 +373,7 @@ int CbelaviewDoc::lua_selectblock(lua_State* L)
       CDC* pDC;
       pDC = tempDC.FromHandle(myDCH);
 
-      //CDC *pDC=GetDC(theView->m_hWnd);
+      // CDC *pDC=GetDC(theView->m_hWnd);
       theView->OnDraw(pDC);
       theView->DrawSelected = -1;
       theView->ReleaseDC(pDC);
@@ -413,7 +413,7 @@ int CbelaviewDoc::lua_groupselectblock(lua_State* L)
     CDC* pDC;
     pDC = tempDC.FromHandle(myDCH);
 
-    //CDC *pDC=GetDC(theView->m_hWnd);
+    // CDC *pDC=GetDC(theView->m_hWnd);
     theView->OnDraw(pDC);
     theView->DrawSelected = -1;
     theView->ReleaseDC(pDC);
@@ -1085,7 +1085,7 @@ PBITMAPINFO CbelaviewDoc::CreateBitmapInfoStruct(HWND hwnd, HBITMAP hBmp)
   WORD cClrBits;
 
   // Retrieve the bitmap's color format, width, and height.
-  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { //errhandler("GetObject", hwnd);
+  if (!GetObject(hBmp, sizeof(BITMAP), (LPSTR)&bmp)) { // errhandler("GetObject", hwnd);
     MsgBox("Critical error on getting bmp info, possible page fault ahoy9");
   }
   // Convert the color format to a count of bits.
@@ -1347,7 +1347,7 @@ int CbelaviewDoc::lua_selectline(lua_State* L)
 
       if (pDoc->contour.GetSize() > 0) {
 
-        //check to see if point is the same as last point in the contour;
+        // check to see if point is the same as last point in the contour;
         y = pDoc->contour[pDoc->contour.GetSize() - 1];
         if ((y.re == z.re) && (y.im == z.im))
           return 0;
@@ -1355,8 +1355,8 @@ int CbelaviewDoc::lua_selectline(lua_State* L)
         j = pDoc->ClosestNode(y.re, y.im);
         x.Set(pDoc->nodelist[j].x, pDoc->nodelist[j].y);
 
-        //check to see if this point and the last point are ends of an
-        //input segment;
+        // check to see if this point and the last point are ends of an
+        // input segment;
         lineno = -1;
         d1 = 1.e08;
 
@@ -1379,8 +1379,8 @@ int CbelaviewDoc::lua_selectline(lua_State* L)
           }
         }
 
-        //check to see if this point and last point are ends of an
-        // arc segment; if so, add entire arc to the contour;
+        // check to see if this point and last point are ends of an
+        //  arc segment; if so, add entire arc to the contour;
         arcno = -1;
         if (abs(x - y) < 1.e-08) {
           for (k = 0; k < pDoc->arclist.GetSize(); k++) {
@@ -1422,7 +1422,7 @@ int CbelaviewDoc::lua_selectline(lua_State* L)
         j = (int)pDoc->contour.GetSize();
         if (j > 1) {
           if (abs(pDoc->contour[j - 2] - z) < 1.e-08) {
-            //CView::OnLButtonDown(nFlags, point);
+            // CView::OnLButtonDown(nFlags, point);
             return 0;
           }
         }
@@ -1442,7 +1442,7 @@ int CbelaviewDoc::lua_selectline(lua_State* L)
           m = (int)pDoc->contour.GetSize();
           if (m > 1) {
             if (abs(pDoc->contour[m - 2] - y) < 1.e-08) {
-              //CView::OnLButtonDown(nFlags, point);
+              // CView::OnLButtonDown(nFlags, point);
               return 0;
             }
           }

@@ -44,8 +44,8 @@ static int luaI_checkevent(lua_State* L, const char* name, int t)
 }
 
 /* events in LUA_TNIL are all allowed, since this is used as a
-*  'placeholder' for "default" fallbacks
-*/
+ *  'placeholder' for "default" fallbacks
+ */
 /* ORDER LUA_T, ORDER TM */
 static const char luaT_validevents[NUM_TAGS][TM_N] = {
   { 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1 }, /* LUA_TUSERDATA */

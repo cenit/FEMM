@@ -151,6 +151,6 @@ BOOL CResizableDialog::OnEraseBkgnd(CDC* pDC)
 
   /*	ClipChildren(pDC);	// old-method (for safety)
 
-	return CDialog::OnEraseBkgnd(pDC);
-*/
+    return CDialog::OnEraseBkgnd(pDC);
+  */
 }

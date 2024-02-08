@@ -87,7 +87,7 @@ BOOL cdCNodeProp::OnInitDialog()
   );
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void cdCNodeProp::OnOK()

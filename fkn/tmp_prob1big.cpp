@@ -249,16 +249,16 @@ BOOL CFemmeDocCore::Static2D(CBigLinProb& L)
               X.re, X.im, arg(X) * 180 / PI, abs(X), labellist[El->lbl].MagDirFctn);
           top1 = lua_gettop(lua);
           if ((lua_error_code = lua_dostring(lua, str)) != 0) {
-            /*		
-					if (lua_error_code==LUA_ERRRUN)
-						AfxMessageBox("Run Error");
-					if (lua_error_code==LUA_ERRMEM)
-						AfxMessageBox("Lua memory Error");
-					if (lua_error_code==LUA_ERRERR)
-						AfxMessageBox("User error error");
-					if (lua_error_code==LUA_ERRFILE)
-						AfxMessageBox("File Error");
-			*/
+            /*
+                if (lua_error_code==LUA_ERRRUN)
+                  AfxMessageBox("Run Error");
+                if (lua_error_code==LUA_ERRMEM)
+                  AfxMessageBox("Lua memory Error");
+                if (lua_error_code==LUA_ERRERR)
+                  AfxMessageBox("User error error");
+                if (lua_error_code==LUA_ERRFILE)
+                  AfxMessageBox("File Error");
+            */
 
             MsgBox("Lua error evaluating \"%s\"", labellist[El->lbl].MagDirFctn);
 
@@ -654,15 +654,15 @@ BOOL CFemmeDocCore::WriteStatic2D(CBigLinProb& L)
         meshele[i].p[0], meshele[i].p[1], meshele[i].p[2], meshele[i].lbl,
         meshele[i].e[0], meshele[i].e[1], meshele[i].e[2], meshele[i].Jprev);
   /*
-	// print out circuit info
-	fprintf(fp,"%i\n",NumCircPropsOrig);
-	for(i=0;i<NumCircPropsOrig;i++){
-		if (circproplist[i].Case==0)
-			fprintf(fp,"0	%.17g\n",circproplist[i].dV.Re());
-		if (circproplist[i].Case==1)
-			fprintf(fp,"1	%.17g\n",circproplist[i].J.Re());
-	}
-*/
+    // print out circuit info
+    fprintf(fp,"%i\n",NumCircPropsOrig);
+    for(i=0;i<NumCircPropsOrig;i++){
+      if (circproplist[i].Case==0)
+        fprintf(fp,"0	%.17g\n",circproplist[i].dV.Re());
+      if (circproplist[i].Case==1)
+        fprintf(fp,"1	%.17g\n",circproplist[i].J.Re());
+    }
+  */
 
   // print out circuit info on a blocklabel by blocklabel basis;
   fprintf(fp, "%i\n", NumBlockLabels);

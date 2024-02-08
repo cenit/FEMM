@@ -48,7 +48,7 @@ BOOL CGridMod::OnInitDialog()
   m_coords.SetCurSel(coords);
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void CGridMod::OnOK()

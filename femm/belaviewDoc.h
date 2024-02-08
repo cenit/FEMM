@@ -104,19 +104,19 @@ class CbelaviewDoc : public CDocument {
   CComplex d(int k, int i);
 
   /*	// Tests for whether or not one is inside a user-defined
-    // contour; this was really mostly used pre- v3.0, when
-	// the areas over which block integrals were taken were
-	// defined by a closed, user-generated contour.
-	BOOL ContourClosed();
-	BOOL SlowInContour(double x, double y);
-	BOOL InContour(double x, double y);
-	BOOL InContour(CElement &elm);
-	BOOL InContour(CComplex p);
-	BOOL OnContour(CElement &elm);
-	void AvgMaxwell(double &fx, double &fy);
-	void AvgMaxwell(double &fx,  double &fy,
-					CComplex &f2x, CComplex &f2y); 
-*/
+      // contour; this was really mostly used pre- v3.0, when
+    // the areas over which block integrals were taken were
+    // defined by a closed, user-generated contour.
+    BOOL ContourClosed();
+    BOOL SlowInContour(double x, double y);
+    BOOL InContour(double x, double y);
+    BOOL InContour(CElement &elm);
+    BOOL InContour(CComplex p);
+    BOOL OnContour(CElement &elm);
+    void AvgMaxwell(double &fx, double &fy);
+    void AvgMaxwell(double &fx,  double &fy,
+            CComplex &f2x, CComplex &f2y);
+  */
 
   // Operations
   public:

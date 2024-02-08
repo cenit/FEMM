@@ -37,9 +37,9 @@ BOOL ChdrawDoc::HasPeriodicBC()
   if (flag == FALSE)
     return FALSE;
 
-  //now, if there are some periodic boundary conditions,
-  //we have to check to see if any have actually been
-  //applied to the model
+  // now, if there are some periodic boundary conditions,
+  // we have to check to see if any have actually been
+  // applied to the model
   flag = FALSE; // reset flag
 
   // first, test the segments
@@ -342,7 +342,7 @@ BOOL ChdrawDoc::OnWritePoly()
   fprintf(fp, "0\n");
   fclose(fp);
 
-  //call triangle
+  // call triangle
 
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
   char CommandLine[512];
@@ -631,7 +631,7 @@ BOOL ChdrawDoc::FunnyOnWritePoly()
 
   fclose(fp);
 
-  //call triangle
+  // call triangle
   CString rootname = "\"" + pn.Left(pn.ReverseFind('.')) + "\"";
   char CommandLine[512];
   sprintf(CommandLine, "\"%striangle.exe\" -p -P -j -q%f -e -A -a -z -Q -I %s",
@@ -678,14 +678,14 @@ BOOL ChdrawDoc::FunnyOnWritePoly()
     UnselectAll();
     return FALSE;
   }
-  //#endif
+  // #endif
 
   // So far, so good.  Now, read back in the .edge file
   // to make sure the points in the segments and arc
   // segments are ordered in a consistent way so that
   // the (anti)periodic boundary conditions can be applied.
 
-  //read meshlines;
+  // read meshlines;
   plyname = pn.Left(pn.ReverseFind('.')) + ".edge";
   if ((fp = fopen(plyname, "rt")) == NULL) {
     MsgBox("Call to triangle was unsuccessful");
@@ -696,8 +696,8 @@ BOOL ChdrawDoc::FunnyOnWritePoly()
   fgets(instring, 1024, fp);
   sscanf(instring, "%i", &k);
   UnselectAll(); // abuse IsSelected again to keep a
-      // tally of how many subsegments each
-      // entity is sliced into.
+                 // tally of how many subsegments each
+                 // entity is sliced into.
 
   ptlst.SetSize(linelist.GetSize() + arclist.GetSize());
   for (i = 0; i < ptlst.GetSize(); i++)
@@ -1421,24 +1421,24 @@ BOOL ChdrawDoc::FunnyOnWritePoly()
   // so that this isn't the case.  Look through the points to try and catch
   // this one.
   /*
-	// let's let this check go away for a minute...
+    // let's let this check go away for a minute...
 
-	for(k=0,n=FALSE;(k+1)<ptlst.GetSize();k++)
-	{
-		for(j=k+1;j<ptlst.GetSize();j++)
-		{
-			if(ptlst[k].x==ptlst[j].x) n=TRUE;
-			if(ptlst[k].y==ptlst[j].y) n=TRUE;
-			if(ptlst[k].x==ptlst[j].y) n=TRUE;
-			if(ptlst[k].y==ptlst[j].x) n=TRUE;
-		}
-	}
-	if (n==TRUE){
-		MsgBox("Nonphysical (anti)periodic boundary assignments");
-		Undo();  UnselectAll();
-		return FALSE;
-	}
-*/
+    for(k=0,n=FALSE;(k+1)<ptlst.GetSize();k++)
+    {
+      for(j=k+1;j<ptlst.GetSize();j++)
+      {
+        if(ptlst[k].x==ptlst[j].x) n=TRUE;
+        if(ptlst[k].y==ptlst[j].y) n=TRUE;
+        if(ptlst[k].x==ptlst[j].y) n=TRUE;
+        if(ptlst[k].y==ptlst[j].x) n=TRUE;
+      }
+    }
+    if (n==TRUE){
+      MsgBox("Nonphysical (anti)periodic boundary assignments");
+      Undo();  UnselectAll();
+      return FALSE;
+    }
+  */
   // write out a pbc file containing a list of linked nodes
   plyname = pn.Left(pn.ReverseFind('.')) + ".pbc";
   if ((fp = fopen(plyname, "wt")) == NULL) {

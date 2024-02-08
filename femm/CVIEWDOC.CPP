@@ -61,12 +61,12 @@ CcviewDoc::CcviewDoc()
   ConList = NULL;
   bHasMask = FALSE;
   LengthConv = (double*)calloc(6, sizeof(double));
-  LengthConv[0] = 0.0254; //inches
-  LengthConv[1] = 0.001; //millimeters
-  LengthConv[2] = 0.01; //centimeters
-  LengthConv[3] = 1.; //meters
-  LengthConv[4] = 2.54e-05; //mils
-  LengthConv[5] = 1.e-06; //micrometers
+  LengthConv[0] = 0.0254; // inches
+  LengthConv[1] = 0.001; // millimeters
+  LengthConv[2] = 0.01; // centimeters
+  LengthConv[3] = 1.; // meters
+  LengthConv[4] = 2.54e-05; // mils
+  LengthConv[5] = 1.e-06; // micrometers
   Coords = FALSE;
 
   for (int i = 0; i < 9; i++)
@@ -1407,20 +1407,20 @@ void CcviewDoc::GetLineValues(CXYPlot& p, int PlotType, int NumPlotPoints)
   dz = z / (NumPlotPoints - 1);
 
   /*
-	m_XYPlotType.AddString("V     (Voltage)");
-	m_XYPlotType.AddString("|J|   (Magnitude of current density)");
-	m_XYPlotType.AddString("J . n (Normal current density)");
-	m_XYPlotType.AddString("J . t (Tangential current density)");
-	m_XYPlotType.AddString("|E|   (Magnitude of electric field intensity)");
-	m_XYPlotType.AddString("E . n (Normal electric field intensity)");
-	m_XYPlotType.AddString("E . t (Tangential electric field intensity)");
-	m_XYPlotType.AddString("|Jc|   (Magnitude of conduction current density)");
-	m_XYPlotType.AddString("Jc . n (Normal conduction current density)");
-	m_XYPlotType.AddString("Jc . t (Tangential conduction current density)");
-	m_XYPlotType.AddString("|Jd|   (Magnitude of displacement current density)");
-	m_XYPlotType.AddString("Jd . n (Normal displacement current density)");
-	m_XYPlotType.AddString("Jd . t (Tangential displacement current density)");
-	*/
+  m_XYPlotType.AddString("V     (Voltage)");
+  m_XYPlotType.AddString("|J|   (Magnitude of current density)");
+  m_XYPlotType.AddString("J . n (Normal current density)");
+  m_XYPlotType.AddString("J . t (Tangential current density)");
+  m_XYPlotType.AddString("|E|   (Magnitude of electric field intensity)");
+  m_XYPlotType.AddString("E . n (Normal electric field intensity)");
+  m_XYPlotType.AddString("E . t (Tangential electric field intensity)");
+  m_XYPlotType.AddString("|Jc|   (Magnitude of conduction current density)");
+  m_XYPlotType.AddString("Jc . n (Normal conduction current density)");
+  m_XYPlotType.AddString("Jc . t (Tangential conduction current density)");
+  m_XYPlotType.AddString("|Jd|   (Magnitude of displacement current density)");
+  m_XYPlotType.AddString("Jd . n (Normal displacement current density)");
+  m_XYPlotType.AddString("Jd . t (Tangential displacement current density)");
+  */
 
   switch (PlotType) {
   case 0:
@@ -1654,7 +1654,7 @@ BOOL CcviewDoc::InTriangleTest(double x, double y, int i)
       if (z < 0)
         return FALSE;
     }
-    //Case 2: p[k]<p[j]
+    // Case 2: p[k]<p[j]
     else {
       z = (meshnode[meshelem[i].p[j]].x - meshnode[meshelem[i].p[k]].x) * (y - meshnode[meshelem[i].p[k]].y) - (meshnode[meshelem[i].p[j]].y - meshnode[meshelem[i].p[k]].y) * (x - meshnode[meshelem[i].p[k]].x);
       if (z > 0)

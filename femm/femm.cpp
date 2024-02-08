@@ -190,7 +190,7 @@ BOOL CFemmApp::InitInstance()
     COleObjectFactory::UpdateRegistryAll();
   }
 
-  //04EF434A-1A91-495A-85AA-C625602B4AF4
+  // 04EF434A-1A91-495A-85AA-C625602B4AF4
   const IID LIBID_ActiveFEMM = { 0x04EF434A, 0x1A91, 0x495A, { 0x85, 0xAA, 0xC6, 0x25, 0x60, 0x2B, 0x4A, 0xF4 } };
 
   //	if(AfxOleRegisterTypeLib(AfxGetInstanceHandle(), LIBID_ActiveFEMM, _T("femm.TLB"))==FALSE) MsgBox("TypeLib not registered!");
@@ -374,6 +374,12 @@ BOOL CFemmApp::InitInstance()
       return FALSE;
   }
 
+  // Kludge to force femm to come up minimized in Wine when commanded to
+  HKEY h_key_registry = NULL;
+  if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Wine"), 0, KEY_READ, &h_key_registry) == ERROR_SUCCESS)
+    if (m_luaWindowStatus == SW_SHOWMINNOACTIVE)
+      theApp.GetMainWnd()->ShowWindow(SW_SHOWNOACTIVATE);
+
   // lua extension: if we are running in quiet mode, hide window
   this->m_nCmdShow = m_luaWindowStatus;
 
@@ -394,7 +400,6 @@ BOOL CFemmApp::InitInstance()
   }
 #endif
 
-  // !!!
   // Load up an external lua script that does canned initialization.
   // Users can modify this file to get their own custom initialization functionality.
   CString initlua = GetExecutablePath() + "init.lua";

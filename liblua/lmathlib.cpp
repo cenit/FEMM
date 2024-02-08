@@ -5,7 +5,7 @@
 */
 
 #include <afx.h>
-//#include <stdlib.h>
+// #include <stdlib.h>
 #include <math.h>
 
 #include "lua.h"

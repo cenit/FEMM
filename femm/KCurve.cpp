@@ -71,7 +71,7 @@ void CTKData::StripTKData()
   while (sscanf(nptr, "%lf", &z) != EOF) {
     z = strtod(nptr, &endptr);
     if (nptr == endptr)
-      nptr++; //catch special case
+      nptr++; // catch special case
     else
       nptr = endptr;
     T.Add(z);
@@ -329,7 +329,7 @@ BOOL CTKData::OnInitDialog()
   UpdateData(FALSE);
 
   return TRUE; // return TRUE unless you set the focus to a control
-      // EXCEPTION: OCX Property Pages should return FALSE
+               // EXCEPTION: OCX Property Pages should return FALSE
 }
 
 void CTKData::OnOK()

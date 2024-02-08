@@ -74,7 +74,7 @@ void CBHData::StripBHData()
   while (sscanf(nptr, "%lf", &z) != EOF) {
     z = strtod(nptr, &endptr);
     if (nptr == endptr)
-      nptr++; //catch special case
+      nptr++; // catch special case
     else
       nptr = endptr;
     if (B.GetSize() > 0) { // enforce monotonicity
@@ -187,12 +187,12 @@ void CBHData::GetSlopes()
         X1 = (-c1 + u0) / (2. * c2);
       }
 
-      //now, see if we've struck gold!
+      // now, see if we've struck gold!
       if (((X0 >= 0.) && (X0 <= L)) || ((X1 >= 0.) && (X1 <= L)))
         CurveOK = FALSE;
     }
 
-    if (CurveOK != TRUE) //remedial action
+    if (CurveOK != TRUE) // remedial action
     {
       // Smooth out input points
       // to get rid of rapid transitions;
@@ -220,39 +220,39 @@ void CBHData::GetSlopes()
 /*
 void CBHData::GetSlopes()
 {
-	if (BHpoints==0) return; // catch trivial case;
+  if (BHpoints==0) return; // catch trivial case;
 
-	int i,bDone;
-	double m1,m2;
+  int i,bDone;
+  double m1,m2;
 
-	slope=(double *)calloc(BHpoints,sizeof(double));
+  slope=(double *)calloc(BHpoints,sizeof(double));
 
-	do{
-		for(i=1;i<BHpoints-1;i++)
-		{
-			// calculate nominal slope of each intermediate knot
-			m1=(H[i]-H[i-1])/(B[i]-B[i-1]);
-			m2=(H[i+1]-H[i])/(B[i+1]-B[i]);
+  do{
+    for(i=1;i<BHpoints-1;i++)
+    {
+      // calculate nominal slope of each intermediate knot
+      m1=(H[i]-H[i-1])/(B[i]-B[i-1]);
+      m2=(H[i+1]-H[i])/(B[i+1]-B[i]);
 
-			// average of the linear interpolation slope on either side of the knot
-			slope[i]=(m1+m2)/2.;
-			
-			// check a sufficient condition for monotonicity.
-			bDone=TRUE;
-			if ((slope[i]>3.*m1) || (slope[i]>3.*m2))
-			{
-				H[i]=(8.*H[i]+H[i-1]+H[i+1])/10.;
-				B[i]=(8.*B[i]+B[i-1]+B[i+1])/10.;
-				bDone=FALSE;
-			}
-		}
-	}while(!bDone);
+      // average of the linear interpolation slope on either side of the knot
+      slope[i]=(m1+m2)/2.;
 
-	// do endpoints
-	slope[0]=(H[1]-H[0])/(B[1]-B[0]);
-	slope[i]=(H[i]-H[i-1])/(B[i]-B[i-1]);
+      // check a sufficient condition for monotonicity.
+      bDone=TRUE;
+      if ((slope[i]>3.*m1) || (slope[i]>3.*m2))
+      {
+        H[i]=(8.*H[i]+H[i-1]+H[i+1])/10.;
+        B[i]=(8.*B[i]+B[i-1]+B[i+1])/10.;
+        bDone=FALSE;
+      }
+    }
+  }while(!bDone);
 
-	return;
+  // do endpoints
+  slope[0]=(H[1]-H[0])/(B[1]-B[0]);
+  slope[i]=(H[i]-H[i-1])/(B[i]-B[i-1]);
+
+  return;
 }
 */
 

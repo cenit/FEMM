@@ -162,12 +162,12 @@ void CMaterialProp::GetSlopes(double omega)
         X1 = (-c1 + u0) / (2. * c2);
       }
 
-      //now, see if we've struck gold!
+      // now, see if we've struck gold!
       if (((X0 >= 0.) && (X0 <= L)) || ((X1 >= 0.) && (X1 <= L)))
         CurveOK = FALSE;
     }
 
-    if (CurveOK != TRUE) //remedial action
+    if (CurveOK != TRUE) // remedial action
     {
       // Smooth out input points
       // to get rid of rapid transitions;

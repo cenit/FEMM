@@ -75,9 +75,9 @@ BOOL CResizablePageEx::OnEraseBkgnd(CDC* pDC)
   return TRUE;
 
   /*	ClipChildren(pDC);	// old-method (for safety)
-	
-	return CPropertyPageEx::OnEraseBkgnd(pDC);
-*/
+
+    return CPropertyPageEx::OnEraseBkgnd(pDC);
+  */
 }
 
 BOOL CResizablePageEx::NeedsRefresh(const CResizableLayout::LayoutInfo& layout,

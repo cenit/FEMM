@@ -23,8 +23,8 @@ class CComplex {
   double Im();
   char* ToString(char* s);
 
-  //operator redefinition
-  //Addition
+  // operator redefinition
+  // Addition
   CComplex operator+(const CComplex& z);
   CComplex operator+(double z);
   CComplex operator+(int z);
@@ -35,7 +35,7 @@ class CComplex {
   void operator+=(double z);
   void operator+=(int z);
 
-  //Subtraction
+  // Subtraction
   CComplex operator-();
   CComplex operator-(const CComplex& z);
   CComplex operator-(double z);
@@ -48,7 +48,7 @@ class CComplex {
   void operator-=(double z);
   void operator-=(int z);
 
-  //Multiplication
+  // Multiplication
   CComplex operator*(const CComplex& z);
   CComplex operator*(double z);
   CComplex operator*(int z);
@@ -59,7 +59,7 @@ class CComplex {
   void operator*=(double z);
   void operator*=(int z);
 
-  //Division
+  // Division
   CComplex operator/(const CComplex& z);
   CComplex operator/(double z);
   CComplex operator/(int z);
@@ -70,11 +70,11 @@ class CComplex {
   void operator/=(double z);
   void operator/=(int z);
 
-  //Equals
+  // Equals
   void operator=(double z);
   void operator=(int z);
 
-  //Tests
+  // Tests
   BOOL operator==(const CComplex& z);
   BOOL operator==(double z);
   BOOL operator==(int z);

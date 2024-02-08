@@ -118,7 +118,7 @@ CMaterialProp::CMaterialProp()
   qv = 0.; // thermal conductivity
   Kt = 0.; // volume heat generation
   npts = 0; // number of points in the curve of
-      // conductivity versus temperature
+            // conductivity versus temperature
 }
 
 CMaterialProp::~CMaterialProp()
@@ -129,9 +129,9 @@ CBoundaryProp::CBoundaryProp()
 {
   BdryName = "New Boundary";
   BdryFormat = 0; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
   Tset = Tinf = qs = beta = h = 0;
 }
 

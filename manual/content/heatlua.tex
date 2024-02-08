@@ -59,7 +59,7 @@ that all entity types are to be selected.
 \item{\tt hi\_selectrectangle(x1,y1,x2,y2,editmode)} selects objects within a rectangle
 defined by points (x1,y1) and (x2,y2). If no editmode parameter is supplied,
 the current edit mode is used.  If the editmode parameter is used, 0 denotes
-nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4
+nodes, 2 denotes block labels, 2 denotes segments, 3 denotes arcs, and 4 
 specifies that all entity types are to be selected.
 \end{itemize}
 
@@ -313,7 +313,7 @@ parameter is set to \texttt{"cart"} for Cartesian coordinates or
 \subsection{Object Properties}
 
 \begin{itemize}
-\item \texttt{hi\_getmaterial("materialname")} fetches the material specified by \texttt{materialname}
+\item \texttt{hi\_getmaterial("materialname")} fetches the material specified by \texttt{materialname} 
 from the materials library.
 
 \item \texttt{hi\_addmaterial("materialname", kx, ky, qv, kt)} adds a new material with
@@ -331,7 +331,7 @@ called \texttt{"materialname"} with the material properties:
 name \texttt{"pointpropname"} with either a specified temperature
 \texttt{Tp} or a point heat generation density \texttt{qp} in units of W/m.
 
-\item \texttt{hi\_addboundprop("boundpropname", BdryFormat, Tset, qs, Tinf, h, beta)}
+\item \texttt{hi\_addboundprop("boundpropname", BdryFormat, Tset, qs, Tinf, h, beta, TinfRad)}
  adds a new boundary property with name {\tt "boundpropname"}.
 \begin{itemize}
 \item For a ``Fixed Temperature'' type boundary condition, set the {\tt Tset} parameter to the
@@ -339,9 +339,10 @@ desired temperature and all other parameters to zero.
 \item To obtain a ``Heat Flux'' type boundary condition, set {\tt qs} to be the heat flux density and
 {\tt BdryFormat} to 1. Set all other parameters to zero.
 \item To obtain a convection boundary condition, set {\tt h} to the desired heat transfer coefficient and
-{\tt Tinf} to the desired external temperature and set {\tt BdryFormat} to 2.
-\item For a Radiation boundary condition, set {\tt beta} equal to the desired emissivity and {\tt Tinf} to the
-desired external temperature and set {\tt BdryFormat} to 3.
+{\tt Tinf} to the desired external temperature and set {\tt BdryFormat} to 2.  Heat flux {\tt qs} is also honored with this boundary
+condition type, i.e. can model convection + flux.
+\item For a Radiation boundary condition, set {\tt beta} equal to the desired emissivity and {\tt TinfRad} to the 
+desired external temperature and set {\tt BdryFormat} to 3. Also includes a convection contribution and heat , so {\tt h} and {\tt Tinf} that define convection and specified heat flux {\tt qs} are also honored with this BC type.  If no {\tt TinfRad} is specified, it is assumed that {\tt Tinf} applies to both convection and radiation portions.
 \item For a ``Periodic'' boundary condition, set {\tt BdryFormat} to 4 and set all other
 parameters to zero.
 \item For an ``Anti-Perodic'' boundary condition, set {\tt BdryFormat} to 5 set all other
@@ -381,7 +382,7 @@ propnum & Symbol &  Description \\ \hline
  1 & \texttt{kx} & x (or r) direction thermal conductivity \\
  2 & \texttt{ky} & y (or z) direction thermal conductivity \\
  3 & \texttt{qs} & Volume heat generation \\
- 4 & \texttt{kt} & Volumetric heat capacity
+ 4 & \texttt{kt} & Volumetric heat capacity 
 \end{tabular}
 
 
@@ -393,7 +394,7 @@ The various properties that can be modified are listed below:
 
 \begin{tabular}{lll}
  \texttt{propnum} & Symbol & Description \\ \hline
- 0 & \texttt{BdryName} & Name of boundary property \\
+ 0 & \texttt{BdryName} & Name of boundary property \\ 
  1 & \texttt{BdryFormat} & Type of boundary condition:\\
    &   &
    \begin{tabular}{lll}
@@ -406,9 +407,10 @@ The various properties that can be modified are listed below:
    \end{tabular} \\
  2 & \texttt{Tset} & Fixed Temperature \\
  3 & \texttt{qs} & Prescribed heat flux density \\
- 4 & \texttt{Tinf} & External temperature \\
+ 4 & \texttt{Tinf} & External temperature for convection \\
  5 & \texttt{h} & Heat transfer coefficient \\
  6 & \texttt{beta} & Emissivity \\
+ 7 & \texttt{TinfRad} & External temperature for radiation \\
 \end{tabular}
 
 \item \texttt{hi\_modifypointprop("PointName",propnum,value)} This function allows for

@@ -1592,6 +1592,7 @@ BOOL ChdrawDoc::OnOpenDocument(LPCTSTR lpszPathName)
       BProp.BdryFormat = 0;
       BProp.Tset = 0;
       BProp.Tinf = 0;
+      BProp.TinfRad = 0;
       BProp.qs = 0;
       BProp.beta = 0;
       BProp.h = 0;
@@ -1651,6 +1652,13 @@ BOOL ChdrawDoc::OnOpenDocument(LPCTSTR lpszPathName)
     if (_strnicmp(q, "<Tinf>", 6) == 0) {
       v = StripKey(s);
       sscanf(v, "%lf", &BProp.Tinf);
+      BProp.TinfRad = BProp.Tinf; // for backward compatibility
+      q[0] = NULL;
+    }
+
+    if (_strnicmp(q, "<TinfRad>", 9) == 0) {
+      v = StripKey(s);
+      sscanf(v, "%lf", &BProp.TinfRad);
       q[0] = NULL;
     }
 
@@ -1905,7 +1913,7 @@ BOOL ChdrawDoc::OnOpenDocument(LPCTSTR lpszPathName)
       for (i = 0; i < k; i++) {
         fgets(s, 1024, fp);
 
-        //some defaults
+        // some defaults
         t = 0;
         blk.MaxArea = 0.;
         blk.InGroup = 0;
@@ -1946,13 +1954,13 @@ BOOL ChdrawDoc::OnOpenDocument(LPCTSTR lpszPathName)
     // equal to 1 meter, because 3.2 was all per-meter calculations
     switch (LengthUnits) {
     case 1:
-      Depth = 1000.; //mm
+      Depth = 1000.; // mm
       break;
     case 2:
-      Depth = 100.; //cm
+      Depth = 100.; // cm
       break;
     case 3:
-      Depth = 1.; //m
+      Depth = 1.; // m
       break;
     case 4:
       Depth = 1000. / 0.0254; // mils
@@ -2066,6 +2074,7 @@ BOOL ChdrawDoc::OnSaveDocument(LPCTSTR lpszPathName)
     fprintf(fp, "    <beta> = %.17g\n", lineproplist[i].beta);
     fprintf(fp, "    <h>    = %.17g\n", lineproplist[i].h);
     fprintf(fp, "    <Tinf> = %.17g\n", lineproplist[i].Tinf);
+    fprintf(fp, "    <TinfRad> = %.17g\n", lineproplist[i].TinfRad);
     fprintf(fp, "  <EndBdry>\n");
   }
 
@@ -2201,7 +2210,7 @@ BOOL ChdrawDoc::LoadMesh()
 
   rootname = pathname.Left(pathname.ReverseFind('.'));
 
-  //read meshnodes;
+  // read meshnodes;
   infile = rootname + ".node";
   if ((fp = fopen(infile, "rt")) == NULL) {
     MsgBox("No mesh to display");
@@ -2218,7 +2227,7 @@ BOOL ChdrawDoc::LoadMesh()
   }
   fclose(fp);
 
-  //read meshlines;
+  // read meshlines;
   infile = rootname + ".edge";
   if ((fp = fopen(infile, "rt")) == NULL) {
     MsgBox("No mesh to display");

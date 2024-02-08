@@ -19,15 +19,15 @@
 // const TObject luaO_nilobject = {LUA_TNIL, {NULL}};
 TObject luaO_nilobject;
 
-//luaO_nilobject.ttype = 1;
-//luaO_nilobject.Value = {NULL};
+// luaO_nilobject.ttype = 1;
+// luaO_nilobject.Value = {NULL};
 
 const char* const luaO_typenames[] = {
   "userdata", "nil", "number", "string", "table", "function"
 };
 
 /*
-** returns smaller power of 2 larger than `n' (minimum is MINPOWER2) 
+** returns smaller power of 2 larger than `n' (minimum is MINPOWER2)
 */
 lint32 luaO_power2(lint32 n)
 {
@@ -139,20 +139,20 @@ int luaO_str2d(const char* s, Number* result)
 // LUA_NUMBER
 int luaO_str2d(const char *v, Number *result)
 {
-	char s[256];
+  char s[256];
     int i,k;
 
-	lua_State *L = lua_open(100);
-	i=lua_gettop(L);
-	sprintf(s,"return %s",s);
-	lua_dostring(L,s);
-	k=lua_gettop(L);
-	if(k!=i)
-	{
-		*result=lua_tonumber(L,-1);
-		lua_close(L);
-		return 1;
-	}
+  lua_State *L = lua_open(100);
+  i=lua_gettop(L);
+  sprintf(s,"return %s",s);
+  lua_dostring(L,s);
+  k=lua_gettop(L);
+  if(k!=i)
+  {
+    *result=lua_tonumber(L,-1);
+    lua_close(L);
+    return 1;
+  }
     lua_close(L);
     return 0;
 }

@@ -298,12 +298,12 @@ void CMaterialProp::GetSlopes(double omega)
         X1 = (-c1 + u0) / (2. * c2);
       }
 
-      //now, see if we've struck gold!
+      // now, see if we've struck gold!
       if (((X0 >= 0.) && (X0 <= L)) || ((X1 >= 0.) && (X1 <= L)))
         CurveOK = FALSE;
     }
 
-    if (CurveOK != TRUE) //remedial action
+    if (CurveOK != TRUE) // remedial action
     {
       // Smooth out input points
       // to get rid of rapid transitions;
@@ -737,7 +737,7 @@ void CMaterialProp::GetMu(CComplex b1, CComplex b2,
   if (LamType == 0) {
     biron = sqrt(b1 * conj(b1) + b2 * conj(b2));
     if (abs(biron) < 1.e-08)
-      mu1 = 1. / slope[0]; //catch degenerate case
+      mu1 = 1. / slope[0]; // catch degenerate case
     else
       mu1 = biron / GetH(biron);
     mu2 = mu1;
@@ -812,7 +812,7 @@ void CMaterialProp::GetMu(double b1, double b2,
     if (LamType == 0) {
       biron = sqrt(b1 * b1 + b2 * b2);
       if (biron < 1.e-08)
-        mu1 = 1. / Re(slope[0]); //catch degenerate case
+        mu1 = 1. / Re(slope[0]); // catch degenerate case
       else
         mu1 = biron / GetH(biron);
       mu2 = mu1;
@@ -947,9 +947,9 @@ CBoundaryProp::CBoundaryProp()
 {
   BdryName = "New Boundary";
   BdryFormat = 0; // type of boundary condition we are applying
-      // 0 = constant value of A
-      // 1 = Small skin depth eddy current BC
-      // 2 = Mixed BC
+                  // 0 = constant value of A
+                  // 1 = Small skin depth eddy current BC
+                  // 2 = Mixed BC
 
   A0 = 0.;
   A1 = 0.;
@@ -958,7 +958,7 @@ CBoundaryProp::CBoundaryProp()
 
   Mu = 0.;
   Sig = 0.; // material properties necessary to apply
-      // eddy current BC
+            // eddy current BC
 
   c0 = 0.;
   c1 = 0.; // coefficients for mixed BC

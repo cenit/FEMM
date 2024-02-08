@@ -151,7 +151,7 @@ char* ParseDbl(char* t, double* f)
   }
 
   if (u == 0)
-    return NULL; //nothing left in the string;
+    return NULL; // nothing left in the string;
   if (v == NULL)
     v = t + k;
 
@@ -190,7 +190,7 @@ char* ParseInt(char* t, int* f)
   }
 
   if (u == 0)
-    return NULL; //nothing left in the string;
+    return NULL; // nothing left in the string;
   if (v == NULL)
     v = t + k;
 
@@ -1002,7 +1002,7 @@ BOOL CFemmeDocCore::OnOpenDocument()
         //				sscanf(s,"%lf	%lf	%i	%lf	%i	%lf	%i	%i	%i",&blk.x,&blk.y,&blk.BlockType,&blk.MaxArea,
         //					&blk.InCircuit,&blk.MagDir,&blk.InGroup,&blk.Turns,&blk.IsExternal);
 
-        //some defaults
+        // some defaults
         blk.x = 0;
         blk.y = 0;
         blk.BlockType = 0;
@@ -1102,9 +1102,9 @@ BOOL CFemmeDocCore::LoadMesh()
   char s[1024];
   double c[] = { 2.54, 0.1, 1., 100., 0.00254, 1.e-04 };
 
-  //if there's a "previous solution" specified,
-  //and if this is an incremental or frozen permeability problem,
-  //slurp of the mesh out of that file.
+  // if there's a "previous solution" specified,
+  // and if this is an incremental or frozen permeability problem,
+  // slurp of the mesh out of that file.
   if ((PrevSoln.GetLength() > 0) && (PrevType > 0)) {
     // clear out mesh files
     sprintf(infile, "%s.ele", PathName);
@@ -1121,7 +1121,7 @@ BOOL CFemmeDocCore::LoadMesh()
     return LoadPrev();
   }
 
-  //read meshnodes;
+  // read meshnodes;
   sprintf(infile, "%s.node", PathName);
   if ((fp = fopen(infile, "rt")) == NULL) {
     return FALSE;
@@ -1151,7 +1151,7 @@ BOOL CFemmeDocCore::LoadMesh()
   }
   fclose(fp);
 
-  //read in periodic boundary conditions;
+  // read in periodic boundary conditions;
   sprintf(infile, "%s.pbc", PathName);
   if ((fp = fopen(infile, "rt")) == NULL) {
     return FALSE;
@@ -1453,80 +1453,80 @@ void CFemmeDocCore::GetFillFactor(int lbl)
 /*
 void CFemmeDocCore::GetFillFactor(int lbl)
 {
-	// Get the fill factor associated with a stranded and
-	// current-carrying region.  For AC problems, also compute
-	// the apparent conductivity and permeability for use in
-	// post-processing the voltage.
-	
-	CMaterialProp* bp= &blockproplist[labellist[lbl].BlockType];
-	CBlockLabel* bl= &labellist[lbl];
-	double atot,awire,r,FillFactor;
-	int i,wiretype;
-	CComplex ufd;
-	double W=2.*PI*Frequency;
+  // Get the fill factor associated with a stranded and
+  // current-carrying region.  For AC problems, also compute
+  // the apparent conductivity and permeability for use in
+  // post-processing the voltage.
 
-	if ((Frequency==0) || (blockproplist[labellist[lbl].BlockType].LamType<3))
-	{
-		bl->ProximityMu=0;
-		return;
-	}
+  CMaterialProp* bp= &blockproplist[labellist[lbl].BlockType];
+  CBlockLabel* bl= &labellist[lbl];
+  double atot,awire,r,FillFactor;
+  int i,wiretype;
+  CComplex ufd;
+  double W=2.*PI*Frequency;
 
-	wiretype=bp->LamType-3;
-	// wiretype = 0 for magnet wire
-	// wiretype = 1 for stranded but non-litz wire
-	// wiretype = 2 for litz wire
-	// wiretype = 3 for rectangular wire
-	r=bp->WireD*0.0005;
-	
-	for(i=0,atot=0;i<NumEls;i++)
-		  if(meshele[i].lbl==lbl) atot+=ElmArea(i);
+  if ((Frequency==0) || (blockproplist[labellist[lbl].BlockType].LamType<3))
+  {
+    bl->ProximityMu=0;
+    return;
+  }
 
-	awire=PI*r*r;
-	if (wiretype==3) awire*=(4./PI); // if rectangular wire;
-	awire*=((double) bp->NStrands);
-	awire*=((double) bl->Turns);
-	
-	if (atot==0) return;
-	FillFactor=fabs(awire/atot);
+  wiretype=bp->LamType-3;
+  // wiretype = 0 for magnet wire
+  // wiretype = 1 for stranded but non-litz wire
+  // wiretype = 2 for litz wire
+  // wiretype = 3 for rectangular wire
+  r=bp->WireD*0.0005;
 
-	double w,d,h,o,fill,dd;
-	
-	// if stranded but non-litz, use an effective wire radius that
-	// gives the same cross-section as total stranded area
-	if (wiretype==1) r*=sqrt((double) bp->NStrands);
+  for(i=0,atot=0;i<NumEls;i++)
+      if(meshele[i].lbl==lbl) atot+=ElmArea(i);
 
-	if (wiretype!=3){
-		d=r*sqrt(3.);
-		h=PI/sqrt(3.)*r;
-		w=r*sqrt(PI/(2.*sqrt(3.)*FillFactor));
-		dd=sqrt(3.)*w;
-	}
-	else{
-		d=2.*r;
-		h=2.*r;
-		w=r/sqrt(FillFactor);
-		dd=2.*w;
-	}
-	o=bp->Cduct*(h/w)*5.e5; // conductivity in S/m
-	fill=d/dd; //fill for purposes of equivalent foil analysis
+  awire=PI*r*r;
+  if (wiretype==3) awire*=(4./PI); // if rectangular wire;
+  awire*=((double) bp->NStrands);
+  awire*=((double) bl->Turns);
 
-	// At this point, sanity-check the fill factor;
-	if (fill>1)
-	{
-		CString mymsg;
-		mymsg.Format("Block label at (%g,%g) has a fill factor",bl->x,bl->y);
-		mymsg +=     "greater than the theoretical maximum.  Couldn't solve the problem.";
-		MsgBox(mymsg);
-		exit(5);
-	}
+  if (atot==0) return;
+  FillFactor=fabs(awire/atot);
 
-	// effective permeability for the equivalent foil.  Note that this is
-	// the same equation as effective permeability of a lamination...
-	if (o!=0) ufd=muo*tanh(sqrt(I*W*o*muo)*d/2.)/(sqrt(I*W*o*muo)*d/2.);
-	else ufd=0;
-	
-	// relative complex permeability
-	bl->ProximityMu=(fill*ufd+(1.-fill)*muo)/muo;
+  double w,d,h,o,fill,dd;
+
+  // if stranded but non-litz, use an effective wire radius that
+  // gives the same cross-section as total stranded area
+  if (wiretype==1) r*=sqrt((double) bp->NStrands);
+
+  if (wiretype!=3){
+    d=r*sqrt(3.);
+    h=PI/sqrt(3.)*r;
+    w=r*sqrt(PI/(2.*sqrt(3.)*FillFactor));
+    dd=sqrt(3.)*w;
+  }
+  else{
+    d=2.*r;
+    h=2.*r;
+    w=r/sqrt(FillFactor);
+    dd=2.*w;
+  }
+  o=bp->Cduct*(h/w)*5.e5; // conductivity in S/m
+  fill=d/dd; //fill for purposes of equivalent foil analysis
+
+  // At this point, sanity-check the fill factor;
+  if (fill>1)
+  {
+    CString mymsg;
+    mymsg.Format("Block label at (%g,%g) has a fill factor",bl->x,bl->y);
+    mymsg +=     "greater than the theoretical maximum.  Couldn't solve the problem.";
+    MsgBox(mymsg);
+    exit(5);
+  }
+
+  // effective permeability for the equivalent foil.  Note that this is
+  // the same equation as effective permeability of a lamination...
+  if (o!=0) ufd=muo*tanh(sqrt(I*W*o*muo)*d/2.)/(sqrt(I*W*o*muo)*d/2.);
+  else ufd=0;
+
+  // relative complex permeability
+  bl->ProximityMu=(fill*ufd+(1.-fill)*muo)/muo;
 }
 */
 

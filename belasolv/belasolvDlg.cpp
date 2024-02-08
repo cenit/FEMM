@@ -10,6 +10,7 @@
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
+extern CbelasolvApp theApp;
 
 /////////////////////////////////////////////////////////////////////////////
 // CbelasolvDlg dialog
@@ -51,6 +52,15 @@ BOOL CbelasolvDlg::OnInitDialog()
   SetIcon(m_hIcon, FALSE); // Set small icon
 
   // TODO: Add extra initialization here
+
+  // Kludge to force the solver to come up minimized in Wine, since wine doesn't honor SW_SHOWMINNOACTIVE startup parameters
+  HKEY h_key_registry = NULL;
+  if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Wine"), 0, KEY_READ, &h_key_registry) == ERROR_SUCCESS) {
+    if (ComLine.Find("bLinehook") > 0) {
+      theApp.GetMainWnd()->ShowWindow(SW_SHOWNOACTIVATE);
+      theApp.GetMainWnd()->ShowWindow(SW_SHOWMINNOACTIVE);
+    }
+  }
 
   return FALSE; // return TRUE  unless you set the focus to a control
 }

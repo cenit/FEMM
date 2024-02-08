@@ -98,11 +98,11 @@ class CBoundaryProp {
 
   CString BdryName;
   int BdryFormat; // type of boundary condition we are applying
-      // 0 = Fixed Voltage
-      // 1 = Mixed BC
-      // 2 = Surface Current Density
-      // 3 = Periodic
-      // 4 = Antiperiodic
+                  // 0 = Fixed Voltage
+                  // 1 = Mixed BC
+                  // 2 = Surface Current Density
+                  // 3 = Periodic
+                  // 4 = Antiperiodic
 
   CComplex vs; // Fixed value of V for BdryFormat=0;
   CComplex c0, c1; // Coefficients for BdryFormat=1;
@@ -140,7 +140,7 @@ class CPeriodicBoundary {
 
   CString BdryName;
   int BdryFormat; // 0 = Periodic
-      // 1 = Antiperiodic
+                  // 1 = Antiperiodic
   int nseg; // number of segs with this bc
   int narc; // number of arcs with this bc
   int seg[2]; // (arc)segments to which is applied

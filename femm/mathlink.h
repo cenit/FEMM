@@ -151,25 +151,25 @@ unknown platform
  * the various shared library facilities in use.  (Although certain of these
  * facilities provide more sophisticated mechanisms than are required by the
  * following simple strategy.)
- * 
+ *
  * MathLink evolves by improving its implementation and by improving its
- * interface.  The values of MLREVISION or MLINTERFACE defined here are 
+ * interface.  The values of MLREVISION or MLINTERFACE defined here are
  * incremented whenever an improvement is made and released.
- * 
- * MLREVISION is the current revision number. It is incremented every time 
+ *
+ * MLREVISION is the current revision number. It is incremented every time
  * a change is made to the source and MathLink is rebuilt and distributed
  * on any platform.  (Bug fixes, optimizations, or other improvements
  * transparent to the interface increment only this number.)
- * 
+ *
  * MLINTERFACE is a name for a documented interface to MathLink.  This
  * number is incremented whenever a named constant or function is added,
  * removed, or its behavior is changed in a way that could break existing
  * correct* client programs.  It is expected that the interface to MathLink
- * is improved over time so that implementations of higher numbered 
+ * is improved over time so that implementations of higher numbered
  * interfaces are more complete or more convenient to use for writing
  * effective client programs.  In particular, a specific interface provides
  * all the useful functionality of an earlier interface.
- * 
+ *
  *     *(It is possible that an incorrect MathLink program still works
  *     because it relies on some undocumented detail of a particular
  *     revision.  It may not always be possible to change the interface
@@ -183,27 +183,27 @@ unknown platform
  *     could use a statically linked version of the library, make use of
  *     the search algorithm used by the runtime loader, or dynamically
  *     load the MathLink library manually.)
- * 
- * 
- * If a distributed MathLink implementation were labeled with its revision 
+ *
+ *
+ * If a distributed MathLink implementation were labeled with its revision
  * and interface numbers in dotted notation so that, say, ML.1.6 means the
  * sixth revision of interface one, then the following may represent the
  * distribution history of MathLink.
- * 
+ *
  *     first distribution
  *         ML.1.5   (Perhaps earlier revisions were never
  *                   distributed for this platform.)
- * 
+ *
  *     second distribution
  *         ML.1.6   (Bug fixes or other improvements were
  *                   made that don't affect the interface.)
- * 
+ *
  *     third distribution
  *         ML.2.7   (Perhaps some new functions were added.)
- *         
+ *
  *         ML.1.7   (And improvements were made that don't
  *                   affect the old interface.)
- * 
+ *
  *     fourth distribution
  *         ML.3.8   (Perhaps the return values of an existing
  *                   function changed.)
@@ -211,11 +211,11 @@ unknown platform
  *                   to interface 2.)
  *         ML.1.7   (Clients of interface 1 see no improvements
  *                   in this eighth revision.)
- * 
+ *
  * Note that the distribution history may not be the same on different
  * platforms.  But revision numbers represent a named body of source code
  * across all platforms.
- * 
+ *
  * The mechanism for deploying this strategy differs between platforms
  * because of differing platform-specific facilities and conventions.
  * The interface and revision numbers may form part of the filename of
@@ -235,16 +235,16 @@ unknown platform
 #define MLINTERFACE 2
 #define MLAPIREVISION MLAPI2REVISION
 /*
-		 * Interface 2 adds the following exported functions:
-		 *      MLGetBinaryNumberArray0
-		 *      MLTransfer0
-		 *      MLNextCharacter0
-		 * And, for WINDOWS_MATHLINK, some constants in "mlntypes.h"
-		 * were changed in a way that causes MLGetRawType to return
-		 * different values.
-		 *
-		 *      MLPutNullSequence and MLEGETENDEXPR pushed to interface 3
-		 */
+ * Interface 2 adds the following exported functions:
+ *      MLGetBinaryNumberArray0
+ *      MLTransfer0
+ *      MLNextCharacter0
+ * And, for WINDOWS_MATHLINK, some constants in "mlntypes.h"
+ * were changed in a way that causes MLGetRawType to return
+ * different values.
+ *
+ *      MLPutNullSequence and MLEGETENDEXPR pushed to interface 3
+ */
 #else
 #if MLINTERFACE == 1
 #define MLAPIREVISION MLAPI1REVISION
@@ -1045,9 +1045,9 @@ ML_END_EXTERN_C
 /* syntax error */ )
 #endif
 
-/* MLTK_CSHORT_P         193 
-   MLTK_CINT_P           194 
-   MLTK_CLONG_P          195 
+/* MLTK_CSHORT_P         193
+   MLTK_CINT_P           194
+   MLTK_CLONG_P          195
    MLTK_CFLOAT_P         209
    MLTK_CDOUBLE_P        210
    MLTK_CLONGDOUBLE_P    211 */
@@ -1200,9 +1200,9 @@ ML_END_EXTERN_C
 #define MLTK_CLONGDOUBLE MLTK_CDOUBLE
 #else
 /* no error directive here as the user may be
-				 * using a different compiler.  Some macros
-				 * simply won't be available.
-				 */
+ * using a different compiler.  Some macros
+ * simply won't be available.
+ */
 #endif
 #endif
 
@@ -1229,14 +1229,14 @@ ML_END_EXTERN_C
 #define MLTK_CLONGDOUBLE MLTK_96BIT_HIGHPADDED_INTEL_80BIT_EXTENDED
 #elif defined(__GNUC__) || defined(__GNUG__)
 /* no error directive here as the user may be
-			 * using a different compiler.  Some macros
-			 * simply won't be available.
-			 */
+ * using a different compiler.  Some macros
+ * simply won't be available.
+ */
 #else
 /* no error directive here as the user may be
-			 * using a different compiler.  Some macros
-			 * simply won't be available.
-			 */
+ * using a different compiler.  Some macros
+ * simply won't be available.
+ */
 #endif
 
 #else
@@ -1943,9 +1943,9 @@ ML_END_EXTERN_C
 #define MLEGETENDEXPR 20
 #define MLEPUTENDPACKET 21 /* unexpected call of MLEndPacket */
 /* currently atoms aren't
-                             * counted on the way out so this error is raised only when
-                             * MLEndPacket is called in the midst of an atom
-                             */
+ * counted on the way out so this error is raised only when
+ * MLEndPacket is called in the midst of an atom
+ */
 #define MLENEXTPACKET 22
 #define MLEUNKNOWNPACKET 23
 #define MLEGETENDPACKET 24
@@ -2679,22 +2679,22 @@ typedef MLRequestArgvUPP MLRequestArgvFunctionType;
 typedef MLRequestToInteractUPP MLRequestToInteractFunctionType;
 typedef MLDialogUPP MLDialogFunctionType;
 
-/* 
-	MLDDECL( mldlg_result, alert_user, ( MLEnvironment env, kcharp_ct message));
-	MLDDEFN( mldlg_result, alert_user, ( MLEnvironment env, kcharp_ct message))
-	{
-		fprintf( stderr, "%s\n", message);
-	}
+/*
+  MLDDECL( mldlg_result, alert_user, ( MLEnvironment env, kcharp_ct message));
+  MLDDEFN( mldlg_result, alert_user, ( MLEnvironment env, kcharp_ct message))
+  {
+    fprintf( stderr, "%s\n", message);
+  }
 
 
-	...
-	MLDialogFunctionType f = NewMLAlertProc(alert_user);
-	MLSetDialogFunction( ep, MLAlertFunction, f);
-	...
-	or
-	...
-	MLSetDialogFunction( ep, MLAlertFunction, NewMLAlertProc(alert_user));
-	...
+  ...
+  MLDialogFunctionType f = NewMLAlertProc(alert_user);
+  MLSetDialogFunction( ep, MLAlertFunction, f);
+  ...
+  or
+  ...
+  MLSetDialogFunction( ep, MLAlertFunction, NewMLAlertProc(alert_user));
+  ...
 */
 
 enum { MLAlertFunction = 1,

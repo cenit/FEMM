@@ -485,7 +485,7 @@ BOOL CFemmeDocCore::LoadMesh()
   char s[1024];
   double c[] = { 25.4, 1., 10., 1000., 0.0254, 0.001 };
 
-  //read meshnodes;
+  // read meshnodes;
   sprintf(infile, "%s.node", PathName);
   if ((fp = fopen(infile, "rt")) == NULL) {
     return FALSE;
@@ -526,7 +526,7 @@ BOOL CFemmeDocCore::LoadMesh()
   }
   fclose(fp);
 
-  //read in periodic boundary conditions;
+  // read in periodic boundary conditions;
   sprintf(infile, "%s.pbc", PathName);
   if ((fp = fopen(infile, "rt")) == NULL) {
     return FALSE;
@@ -699,8 +699,8 @@ BOOL CFemmeDocCore::LoadMesh()
 
         meshele[mbr[n0][q]] = elm;
 
-        //this is a little hack: line charge distributions should be applied
-        //to at most one element;
+        // this is a little hack: line charge distributions should be applied
+        // to at most one element;
         if ((lineproplist[j].BdryFormat == 2) && (n))
           q = nmbr[n0];
       }
