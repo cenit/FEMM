@@ -1071,7 +1071,7 @@ BOOL CcviewDoc::GetPointValues(double x, double y, int k, CPointVals& u)
   }
   if (Smooth == FALSE) {
     u.Jx = meshelem[k].Jx;
-    u.Jx = meshelem[k].Jx;
+    u.Jy = meshelem[k].Jy;
   }
 
   // ac conductivity
