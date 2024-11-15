@@ -9,7 +9,7 @@ jobs:
   win-vcpkg:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - uses: lukka/get-cmake@latest
 
@@ -21,7 +21,7 @@ jobs:
       shell: pwsh
       run: makensis.exe ${{ github.workspace }}/script.nsi
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v4
       with:
         name: FEMM-windows
         path: ${{ github.workspace }}/FEMM_installer.exe
